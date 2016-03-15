@@ -1,16 +1,16 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-       xmlns:f="http://java.sun.com/jsf/core">
-<h:head>
-<title>ShareMyTrip - Inicie sesión</title> 
-</h:head>
-<h:body>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
 
-<div>
+	<ui:define name="titulo">
+      ShareMyTrip - Inicie sesión
+    </ui:define>
+
+	<ui:define name="cuerpo">
+		<div>
 		<form action="validarse" method="post">
-
 
 			<center>
 				<h1>Inicie sesión</h1>
@@ -43,8 +43,12 @@
 		</form>
 		<hr>
 		<br>
-		<%@include file="muestraMensaje.jsp"%>
+		<!-- <ui:include src="/snippets/muestraMensaje.xhtml" /> -->
 	</div>
+	</ui:define>
 
-</h:body>
-</html>
+	<ui:define name="pie">
+		<ui:include src="/snippets/pie-casa.xhtml" />
+	</ui:define>
+
+</ui:composition>

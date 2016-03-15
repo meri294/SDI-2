@@ -5,49 +5,33 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
-	
+
+<!-- Si que si quisiera tomar el idioma del navegador -->
+<!-- <f:view locale="#{facesContext.externalContext.requestLocale}">  -->
+<!-- Para tomar el idioma del bean de configuración beanSettings  -->
 <f:view locale="#{settings.locale}">
 	<h:head>
-		<title>#{msgs.tituloHead}</title>
+		<meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+		<title>ShareMyTrip</title>
 	</h:head>
 	<h:body>
 		<h:form id="form-cabecera">
-			<center>
-				<h1>#{msgs.tituloAplicacion1}</h1>
-				<br /> <br />
-				<h2>#{msgs.tituloAplicacion2}</h2>
-			</center>
-			<br />
-			<br />
-			<table border="5" align="center">
+			<table border="0" align="center">
 				<tr>
-					<th class="title"><ui:insert name="titulo">#{msgs.tituloDefectoCabecera}</ui:insert>
+					<th class="title">
+						<h1>
+							<ui:insert name="titulo"></ui:insert>
+						</h1>
 					</th>
 				</tr>
 			</table>
-			<p:menubar>
-				<p:submenu label="#{msgs.tituloOpciones}" icon="ui-icon-document">
-					<p:menuitem value="#{msgs.enlaceListado}"
-						action="#{controller.listado}" />
-					<p:separator />
-					<p:menuitem value="#{msgs.enlaceAlta}" action="alta"
-						actionListener="#{alumno.iniciaAlumno}" />
-				</p:submenu>
-				<f:facet name="options">
-					<h:commandLink value="#{msgs.enlaceIdiomaES}"
-						actionListener="#{settings.setSpanish}" immediate="true">
-					</h:commandLink>
-					<h:commandLink value="#{msgs.enlaceIdiomaEN}"
-						actionListener="#{settings.setEnglish}" immediate="true">
-					</h:commandLink>
-				</f:facet>
-			</p:menubar>
-
 		</h:form>
 
-		<ui:insert name="cuerpo">#{msgs.tituloDefectoCuerpo}</ui:insert>
+		<ui:insert name="cuerpo"></ui:insert>
 
-		<ui:insert name="pie">#{msgs.tituloPie}</ui:insert>
+		<br />
+		<br />
+		<ui:insert name="pie"></ui:insert>
 
 	</h:body>
 </f:view>
