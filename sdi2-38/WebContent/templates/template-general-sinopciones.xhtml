@@ -5,28 +5,30 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
-	<f:view locale="#{settings.locale}">
+
+<f:view locale="#{settings.locale}">
 	<h:head>
-		<meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
 		<title>#{msgs.tituloHead}</title>
 	</h:head>
 	<h:body>
-		<h:form id="form-cabecera">
-			<table border="0" align="center">
+		<h:form id="cabecera">
+			<center>
+				<h1>#{msgs.tituloAplicacion}</h1>
+			</center>
+			<br />
+			<br />
+			<table border="5" align="center">
 				<tr>
-					<th class="title">
-						<h1>
-							<ui:insert name="titulo">#{msgs.tituloDefectoCabecera}</ui:insert>
-						</h1>
+					<th class="title"><ui:insert name="titulo">#{msgs.tituloDefectoCabecera}</ui:insert>
 					</th>
 				</tr>
 			</table>
+			<ui:include src="/snippets/menu-sinopciones.xhtml" />
+
 		</h:form>
 
 		<ui:insert name="cuerpo">#{msgs.tituloDefectoCuerpo}</ui:insert>
 
-		<br />
-		<br />
 		<ui:insert name="pie">#{msgs.tituloPie}</ui:insert>
 
 	</h:body>
