@@ -1,0 +1,30 @@
+@CHARSET "ISO-8859-1";
+
+html {
+	background: url(img/playa.jpg) no-repeat center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+
+div, form{
+	background: #FFFFFF;
+}
+
+ul {
+	list-style: none;
+}
+
+li {
+	display: inline;
+	margin-right: 2.3%;
+}
+
+li.dosLeft{
+	float: left;
+}
+
+li.dosRigth{
+	float: right;
+}

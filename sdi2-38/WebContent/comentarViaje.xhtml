@@ -1,0 +1,57 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="titulo">
+      ShareMyTrip - Comentar viaje
+    </ui:define>
+
+	<ui:define name="cuerpo">
+		<form action="guardarComentario?id=${viaje}" method="post">
+		<center>
+			<h1>Escriba un comentario</h1>
+		</center>
+		<hr>
+		<br>
+		<table align="center">
+			<tr>
+				<td align="right">Usuario</td>
+				<td>
+					<select name="userComentado">
+						<c:forEach var="entry" items="${participantes}" 
+						varStatus="i">
+							<option value="${entry.id}">${entry.name}
+								${entry.surname}</option>
+						</c:forEach>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td align="right">Puntación (0-10)</td>
+				<td>
+					<input type="text" name="points" align="left" size="2">
+				</td>
+			</tr>
+			<tr>
+				<td align="right">Comentario</td>
+				<td>
+					<textarea name="comment" cols="40" rows="10">
+					</textarea>
+				</td>
+			</tr>
+			<tr>
+				<td><input type="submit" value="Enviar" /></td>
+			</tr>
+		</table>
+		
+		<!-- <ui:include src="/snippets/muestraMensaje.xhtml" /> -->
+	</form>
+	</ui:define>
+
+	<ui:define name="pie">
+		<ui:include src="/snippets/pie-casa.xhtml" />
+	</ui:define>
+
+</ui:composition>
