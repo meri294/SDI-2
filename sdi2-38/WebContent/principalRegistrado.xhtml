@@ -1,0 +1,33 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="titulo">
+      ShareMyTrip - Bienvenido
+    </ui:define>
+
+	<ui:define name="cuerpo">
+		<div>
+		<center>
+			<h1>Bienvenido ${user.name}</h1>
+		</center>
+		<ul>
+			<li><a href="cerrarSesion">Cerrar sesión</a></li>
+			<li><a href="abrirModificacion">Modificar datos</a></li>
+			<li><a id="listaViaje" href="listarViajes">Listar viajes</a></li>
+			<li><a id="registrarViaje" href="registrarViaje">Registrar
+					nuevo viaje</a></li>
+			<li><a href="misViajes">Mis viajes</a></li>
+			<li><a href="viajesAComentar">Comentar viaje</a></li>
+		</ul>
+		<!-- <ui:include src="/snippets/muestraMensaje.xhtml" /> -->
+	</div>
+	</ui:define>
+
+	<ui:define name="pie">
+		<ui:include src="/snippets/pie-casa.xhtml" />
+	</ui:define>
+
+</ui:composition>

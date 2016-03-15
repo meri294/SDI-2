@@ -1,0 +1,47 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="titulo">
+      ShareMyTrip - Listado de solicitantes
+    </ui:define>
+
+	<ui:define name="cuerpo">
+	<div>
+		<table border="1" align="center">
+			<tr>
+				<th>ID</th>
+				<th>Nombre</th>
+				<th>Estado</th>
+				<th>Opciones</th>
+			</tr>
+			<c:forEach var="entry" items="${pendiente}" varStatus="i">
+				<tr>
+					<td>
+						<a href="infoUsuario?id=${entry.id}">${entry.id}</a>
+					</td>
+					<td>${entry.name}${entry.surname}</td>
+					<td>Pendiente</td>
+					<td><a href="aceptar?user=${entry.id}&id=${viaje.id}">
+							Aceptar</a><br> 
+						<a href="excluir?user=${entry.id}&id=${viaje.id}"> 
+						Excluir</a>
+					</td>
+				</tr>
+			</c:forEach>
+		</table>
+		<center>
+			<p>Quedan ${viaje.availablePax} plazas libres</p>
+		</center>
+		<a href="irAInicio">Cancelar</a>
+		<!-- <ui:include src="/snippets/muestraMensaje.xhtml" /> -->
+	</div>
+	</ui:define>
+
+	<ui:define name="pie">
+		<ui:include src="/snippets/pie-casa.xhtml" />
+	</ui:define>
+
+</ui:composition>

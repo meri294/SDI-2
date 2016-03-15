@@ -1,0 +1,122 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="titulo">
+      ShareMyTrip - Mis viajes
+    </ui:define>
+
+	<ui:define name="cuerpo">
+		<div>
+		<table border="1" align="center">
+			<tr>
+				<th>ID viaje</th>
+				<th>Estado viaje</th>
+				<th>Fecha cierre</th>
+				<th>Fecha salida</th>
+				<th>Fecha fecha llegada</th>
+				<th>Estado</th>
+				<th>Opciones</th>
+			</tr>
+
+			<c:forEach var="entry" items="${promocionados}" varStatus="i">
+				<tr id="item_${i.index}">
+					<td>
+						<a href="mostrarViaje?id=${entry.id}">${entry.id}</a>
+					</td>
+					<td>${entry.status}</td>
+					<td>${entry.closingDate}</td>
+					<td>${entry.departureDate}</td>
+					<td>${entry.arrivalDate}</td>
+					<td>Promotor</td>
+					<td>
+						<a href="verSolicitantes?id=${entry.id}"> Ver
+						solicitantes</a><br> 
+						<a href="cancelarViaje?id=${entry.id}">Cancelar
+							viaje</a><br> 
+						<a href="modificarViaje?id=${entry.id}">Modificar
+							Viaje</a>
+					</td>
+				</tr>
+			</c:forEach>
+
+			<c:forEach var="entry" items="${participante}" varStatus="i">
+				<tr id="item_${i.index}">
+					<td>
+						<a href="mostrarViaje?id=${entry.id}">${entry.id}</a>
+					</td>
+					<td>${entry.status}</td>
+					<td>${entry.closingDate}</td>
+					<td>${entry.departureDate}</td>
+					<td>${entry.arrivalDate}</td>
+					<td>Aceptado</td>
+					<td><a
+						href="cancelarSolicitud?user=${user.id}
+								&viaje=${entry.id}">Cancelar
+							solicitud</a></td>
+				</tr>
+			</c:forEach>
+
+			<c:forEach var="entry" items="${enEspera}" varStatus="i">
+				<tr id="item_${i.index}">
+					<td>
+						<a href="mostrarViaje?id=${entry.id}">${entry.id}</a>
+					</td>
+					<td>${entry.status}</td>
+					<td>${entry.closingDate}</td>
+					<td>${entry.departureDate}</td>
+					<td>${entry.arrivalDate}</td>
+					<td>Pendiente</td>
+					<td><a
+						href="cancelarSolicitud?user=${user.id}
+								&viaje=${entry.id}">Cancelar
+							solicitud</a></td>
+				</tr>
+			</c:forEach>
+
+			<c:forEach var="entry" items="${excluido}" varStatus="i">
+				<tr id="item_${i.index}">
+					<td>
+						<a href="mostrarViaje?id=${entry.id}">${entry.id}</a>
+					</td>
+					<td>${entry.status}</td>
+					<td>${entry.closingDate}</td>
+					<td>${entry.departureDate}</td>
+					<td>${entry.arrivalDate}</td>
+					<td>Excluido</td>
+					<td><a
+						href="cancelarSolicitud?user=${user.id}
+								&viaje=${entry.id}">Cancelar
+							solicitud</a></td>
+				</tr>
+			</c:forEach>
+
+			<c:forEach var="entry" items="${sinPlaza}" varStatus="i">
+				<tr id="item_${i.index}">
+					<td>
+						<a href="mostrarViaje?id=${entry.id}">${entry.id}</a>
+					</td>
+					<td>${entry.status}</td>
+					<td>${entry.closingDate}</td>
+					<td>${entry.departureDate}</td>
+					<td>${entry.arrivalDate}</td>
+					<td>Sin plaza</td>
+					<td><a
+						href="cancelarSolicitud?user=${user.id}
+								&viaje=${entry.id}">Cancelar
+							solicitud</a></td>
+				</tr>
+			</c:forEach>
+		</table>
+		<a href="irAInicio">Cancelar</a>
+		<!-- <ui:include src="/snippets/muestraMensaje.xhtml" /> -->
+	</div>
+	</ui:define>
+
+	<ui:define name="pie">
+		<ui:include src="/snippets/pie-casa.xhtml" />
+	</ui:define>
+
+</ui:composition>

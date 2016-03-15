@@ -1,0 +1,65 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="titulo">
+      ShareMyTrip - Registro
+    </ui:define>
+
+	<ui:define name="cuerpo">
+		<form action="registrarse" method="post">
+
+		<center>
+			<h1>Registre una nueva cuenta</h1>
+		</center>
+		<hr>
+		<br>
+		<table align="center">
+			<tr>
+				<td align="right">Identificador</td>
+				<td>
+					<input type="text" name="idUsuario" align="left" size="15">
+				</td>
+			</tr>
+			<tr>
+				<td align="right">Nombre</td>
+				<td><input type="text" name="nombreUsuario" align="left"
+					size="30"></td>
+			</tr>
+			<tr>
+				<td align="right">Apellidos</td>
+				<td><input type="text" name="apellidosUsuario" align="left"
+					size="50"></td>
+			</tr>
+			<tr>
+				<td align="right">Email</td>
+				<td><input type="text" name="emailUsuario" align="left"
+					size="30"></td>
+			</tr>
+			<tr>
+				<td align="right">Contraseña</td>
+				<td><input id="etPasswd" type="password" name="passwordUsuario"
+					align="left" size="15"></td>
+			</tr>
+			<tr>
+				<td align="right">Repita la contraseña</td>
+				<td><input id="etPasswd" type="password" name="repetedPassword"
+					align="left" size="15"></td>
+			</tr>
+			<tr>
+				<td><input type="submit" value="Enviar" /></td>
+			</tr>
+		</table>
+		<!-- <ui:include src="/snippets/muestraMensaje.xhtml" /> -->
+	</form>
+	<a href="login.jsp">Cancelar</a>
+	<hr>
+	</ui:define>
+
+	<ui:define name="pie">
+		<ui:include src="/snippets/pie-casa.xhtml" />
+	</ui:define>
+
+</ui:composition>

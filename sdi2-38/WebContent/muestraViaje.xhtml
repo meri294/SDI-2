@@ -1,0 +1,56 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="titulo">
+      ShareMyTrip - Información del viaje "${viaje.id}"
+    </ui:define>
+
+	<ui:define name="cuerpo">
+		<div>
+		<table border="1" align="center">
+			<tr>
+				<th>Origen</th>
+				<th>Fecha salida</th>
+				<th>Destino</th>
+				<th>Fecha llegada</th>
+				<th>Plazas libres</th>
+				<th>Plazas totales</th>
+				<th>Precio</th>
+				<th>Fecha cierre</th>
+
+			</tr>
+
+			<tr>
+				<td>${viaje.departure.address}-${viaje.departure.zipCode},
+					${viaje.departure.city}(${viaje.departure.city})</td>
+				<td>${viaje.departureDate}</td>
+				<td>${viaje.destination.address}-${viaje.destination.zipCode},
+					${viaje.destination.city}(${viaje.destination.city})</td>
+				<td>${viaje.arrivalDate}</td>
+				<td>${viaje.availablePax}</td>
+				<td>${viaje.maxPax}</td>
+				<td>${viaje.estimatedCost}</td>
+				<td>${viaje.closingDate}</td>
+			</tr>
+		</table>
+
+		<center>
+			<p>
+				Si desea consultar más información sobre este viaje (promotor,
+				viajeros confirmados, comentarios...) por favor pulse <a
+					href="masInfo?id=${viaje.id}">aquí</a>
+			</p>
+		</center>
+		<a href="irAInicio">Cancelar</a>
+		<!-- <ui:include src="/snippets/muestraMensaje.xhtml" /> -->
+	</div>
+	</ui:define>
+
+	<ui:define name="pie">
+		<ui:include src="/snippets/pie-casa.xhtml" />
+	</ui:define>
+
+</ui:composition>

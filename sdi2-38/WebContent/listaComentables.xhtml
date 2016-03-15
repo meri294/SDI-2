@@ -1,0 +1,54 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="titulo">
+      ShareMyTrip - Viajes a comentar
+    </ui:define>
+
+	<ui:define name="cuerpo">
+		<div>
+		<c:choose>
+			<c:when test="${viajes.isEmpty()}">
+				<center>Actualmente no hay viajes para comentar</center>
+			</c:when>
+			<c:otherwise>
+				<table border="1" align="center">
+					<tr>
+						<th></th>
+						<th>ID viaje</th>
+						<th>Origen</th>
+						<th>Destino</th>
+						<th>Fecha</th>
+					</tr>
+
+					<c:forEach var="entry" items="${viajes}" varStatus="i">
+						<tr id="item_${i.index}">
+							<td><a id="comentar_${entry.id}"
+								href="comentar?id=${entry.id}"> 
+								Comentar</a>
+							</td>
+							<td>
+								<a href="mostrarViaje?id=${entry.id}">
+									${entry.id}</a>
+							</td>
+							<td>${entry.departure.city}</td>
+							<td>${entry.destination.city}</td>
+							<td>${entry.departureDate}</td>
+						</tr>
+					</c:forEach>
+				</table>
+			</c:otherwise>
+		</c:choose>
+		<a href="irAInicio">Cancelar</a>
+		<!-- <ui:include src="/snippets/muestraMensaje.xhtml" /> -->
+	</div>
+	</ui:define>
+
+	<ui:define name="pie">
+		<ui:include src="/snippets/pie-casa.xhtml" />
+	</ui:define>
+
+</ui:composition>
