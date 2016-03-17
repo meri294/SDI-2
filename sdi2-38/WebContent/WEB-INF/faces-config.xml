@@ -14,5 +14,25 @@
 		<managed-bean-class>com.sdi.presentation.BeanLanguages</managed-bean-class>
 		<managed-bean-scope>session</managed-bean-scope>
 	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>registro</managed-bean-name>
+		<managed-bean-class>com.sdi.presentation.BeanRegistro</managed-bean-class>
+		<managed-bean-scope>view</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>login</managed-bean-name>
+		<managed-bean-class>com.sdi.presentation.BeanLogin</managed-bean-class>
+		<managed-bean-scope>view</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>sesion</managed-bean-name>
+		<managed-bean-class>com.sdi.presentation.BeanSesion</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>cambio</managed-bean-name>
+		<managed-bean-class>com.sdi.presentation.BeanCambio</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
 
 </faces-config>
