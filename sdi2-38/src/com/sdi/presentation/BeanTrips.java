@@ -13,8 +13,11 @@ import javax.faces.event.ActionEvent;
 
 import com.sdi.infrastructure.Factories;
 import com.sdi.model.Trip;
+import com.sdi.services.TripService;
+import com.sdi.util.MariaDateUtil;
+import com.sdi.util.MariaModelUtil;
 
-@ManagedBean(name = "controller")
+@ManagedBean(name = "tripsController")
 @SessionScoped
 public class BeanTrips implements Serializable {
 	private static final long serialVersionUID = 55555L;
@@ -74,17 +77,39 @@ public class BeanTrips implements Serializable {
 		this.trips = trips;
 	}
 
-	public void iniciaAlumno(ActionEvent event) {
+	public void iniciaTrip(ActionEvent event) {
 		FacesContext facesContext = FacesContext.getCurrentInstance();
 		// Obtenemos el archivo de propiedades correspondiente al idioma que
 		// tengamos seleccionado y que viene envuelto en facesContext
 		ResourceBundle bundle = facesContext.getApplication()
 				.getResourceBundle(facesContext, "msgs");
 		trip.setId(null);
-		/*trip.setIduser(bundle.getString("default_value_departure_city"));
-		alumno.setNombre(bundle.getString("valorDefectoNombre"));
-		alumno.setApellidos(bundle.getString("valorDefectoApellidos"));
-		alumno.setEmail(bundle.getString("valorDefectoCorreo"));*/
+		trip.setArrivalDate(MariaDateUtil.completeFromBundle(
+				bundle.getString("default_arrival_date")));
+		trip.setAvailablePax(Integer.valueOf(
+				bundle.getString("default_available_pax")));
+		trip.setClosingDate(MariaDateUtil.completeFromBundle(
+				bundle.getString("default_closing_date")));
+		trip.setComments(bundle.getString("default_trip_comments"));
+		trip.setDeparture(MariaModelUtil.AddressPointFromString(
+				bundle.getString("default_address"),
+				bundle.getString("default_city"),
+				bundle.getString("default_state"),
+				bundle.getString("default_country"),
+				bundle.getString("default_cp"),
+				bundle.getString("default_coordinates")));
+		trip.setDestination(MariaModelUtil.AddressPointFromString(
+				bundle.getString("default_address"),
+				bundle.getString("default_city"),
+				bundle.getString("default_state"),
+				bundle.getString("default_country"),
+				bundle.getString("default_cp"),
+				bundle.getString("default_coordinates")));
+		trip.setEstimatedCost(Double.valueOf(bundle.getString
+				("default_estimated_cost")));
+		trip.setMaxPax(Integer.valueOf(bundle.getString("default_maxPax")));
+		trip.setPromoterId(null);
+		trip.setStatus(null);
 	}
 
 	public String listado() {
@@ -92,7 +117,7 @@ public class BeanTrips implements Serializable {
 		try {
 			// Acceso a la implementacion de la capa de negocio
 			// a trav��s de la factor��a
-			service = Factories.services.createListarViajesService();
+			service = Factories.services.createTripService();
 			// De esta forma le damos informaci��n a toArray para poder hacer el
 			// casting a Alumno[]
 			trips = (Trip[]) service.getTrips().toArray(new Trip[0]);
@@ -115,7 +140,7 @@ public class BeanTrips implements Serializable {
 			// Aliminamos el alumno seleccionado en la tabla
 			service.deleteTrip(trip.getId());
 			// Actualizamos el javabean de alumnos inyectado en la tabla.
-			trips = (Trip[]) service.getAlumnos().toArray(new Trip[0]);
+			trips = (Trip[]) service.getTrips().toArray(new Trip[0]);
 			return "exito"; // Nos vamos a la vista de listado.
 
 		} catch (Exception e) {
