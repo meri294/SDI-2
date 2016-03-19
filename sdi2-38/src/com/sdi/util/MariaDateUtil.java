@@ -17,6 +17,16 @@ public class MariaDateUtil {
 				Integer.parseInt(hourString[0]),
 				Integer.parseInt(hourString[1]));
 	}
+	
+	public static Date completeFromBundle(String date){
+		String dateString[]=date.split(" ")[0].split("/");
+		String hourString[]=date.split(" ")[1].split(":");
+		return MariaDateUtil.fromDdMmYyyyH(Integer.parseInt(dateString[0]),
+				Integer.parseInt(dateString[1]),
+				Integer.parseInt(dateString[2]),
+				Integer.parseInt(hourString[0]),
+				Integer.parseInt(hourString[1]));
+	}
 
 	public static Date fromDdMmYyyyH(int dd, int mm, int yyyy, int h, int m) {
 		Calendar c = Calendar.getInstance();

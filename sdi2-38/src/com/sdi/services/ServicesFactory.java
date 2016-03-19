@@ -7,5 +7,7 @@ public interface ServicesFactory {
 	public CambioUsuarioService createCambioUsuarioService();
 	
 	public ReinicioBBDDService createReinicioBBDDService();
+	
+	public TripService createTripService();
 
 }
