@@ -6,14 +6,14 @@
 	template="/templates/template-general.xhtml">
 
 	<ui:define name="titulo">
-      #{msgs.list_trip_title}
+	<h:outputFormat value="#{msgs.titulo_rellenable}"> <f:param value="#{msgs.titulo_listaViajes}"/></h:outputFormat>
     </ui:define>
 
 	<ui:define name="cuerpo">
 		<div>
 		<c:choose>
 			<c:when test="${listaViajes.isEmpty()}">
-				<center>Actualmente no hay viajes disponibles</center>
+				<center>#{msgs.mensaje_sinViajesDisponibles}</center>
 			</c:when>
 			<c:otherwise>
 				<table border="1" align="center">
