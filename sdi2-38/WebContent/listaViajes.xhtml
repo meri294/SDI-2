@@ -6,7 +6,7 @@
 	template="/templates/template-general.xhtml">
 
 	<ui:define name="titulo">
-	<h:outputFormat value="#{msgs.titulo_rellenable}"> <f:param value="#{msgs.titulo_listaViajes}"/></h:outputFormat>
+	<h:outputFormat value="#{msgs.cabecera_rellenable}"> <f:param value="#{msgs.cabecera_listaViajes}"/></h:outputFormat>
     </ui:define>
 
 	<ui:define name="cuerpo">
@@ -19,17 +19,17 @@
 				<table border="1" align="center">
 					<tr>
 						<th></th>
-						<th>ID viaje</th>
-						<th>Origen</th>
-						<th>Destino</th>
-						<th>Plazas libres</th>
+						<th>#{msgs.campo_idViaje}</th>
+						<th>#{msgs.campo_origen}</th>
+						<th>#{msgs.campo_origen}</th>
+						<th>#{msgs.campo_plazasLibres}</th>
 					</tr>
 
 					<c:forEach var="entry" items="${listaViajes}" varStatus="i">
 						<tr id="item_${i.index}">
 							<td><a id="solicita_${entry.id}"
 								href="solicitarPlaza?id=${entry.id}"> 
-								Solicitar</a>
+								#{msgs.enlace_solicitar}</a>
 							</td>
 							<td>
 								<a href="mostrarViaje?id=${entry.id}">

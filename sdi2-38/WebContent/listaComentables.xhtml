@@ -5,30 +5,30 @@
 	xmlns:p="http://primefaces.org/ui">
 
 	<ui:define name="titulo">
-      ShareMyTrip - Viajes a comentar
+	<h:outputFormat value="#{msgs.cabecera_rellenable}"> <f:param value="#{msgs.cabecera_listaComentables}"/></h:outputFormat>
     </ui:define>
 
 	<ui:define name="cuerpo">
 		<div>
 		<c:choose>
 			<c:when test="${viajes.isEmpty()}">
-				<center>Actualmente no hay viajes para comentar</center>
+				<center>#{msgs.mensaje_sinViajesComentables}</center>
 			</c:when>
 			<c:otherwise>
 				<table border="1" align="center">
 					<tr>
 						<th></th>
-						<th>ID viaje</th>
-						<th>Origen</th>
-						<th>Destino</th>
-						<th>Fecha</th>
+						<th>#{msgs.campo_idViaje}</th>
+						<th>#{msgs.campo_origen}</th>
+						<th>#{msgs.campo_destino}</th>
+						<th>#{msgs.campo_fechaSalida}</th>
 					</tr>
 
 					<c:forEach var="entry" items="${viajes}" varStatus="i">
 						<tr id="item_${i.index}">
 							<td><a id="comentar_${entry.id}"
 								href="comentar?id=${entry.id}"> 
-								Comentar</a>
+								#{msgs.enlace_comentar}</a>
 							</td>
 							<td>
 								<a href="mostrarViaje?id=${entry.id}">
@@ -42,7 +42,7 @@
 				</table>
 			</c:otherwise>
 		</c:choose>
-		<a href="irAInicio">Cancelar</a>
+		<a href="irAInicio">#{msgs.enlace_cancelar}</a>
 		<!-- <ui:include src="/snippets/muestraMensaje.xhtml" /> -->
 	</div>
 	</ui:define>

@@ -5,15 +5,14 @@
 	xmlns:p="http://primefaces.org/ui">
 
 	<ui:define name="titulo">
-      ShareMyTrip - Valoraciones de usuario
+	<h:outputFormat value="#{msgs.cabecera_rellenable}"> <f:param value="#{msgs.cabecera_infoUsuario}"/></h:outputFormat>
     </ui:define>
 
 	<ui:define name="cuerpo">
 		<div>
 		<c:choose>
 			<c:when test="${valoraciones.isEmpty()}">
-				<center>Actualmente no hay valoraciones sobre el usuario
-					seleccionado</center>
+				<center>#{msgs.mensaje_sinValoracionesUsuario}</center>
 			</c:when>
 			<c:otherwise>
 				<ul>
@@ -24,7 +23,7 @@
 				</ul>
 			</c:otherwise>
 		</c:choose>
-		<a href="irAInicio">Cancelar</a>
+		<a href="irAInicio">#{msgs.enlace_cancelar}</a>
 		<!-- <ui:include src="/snippets/muestraMensaje.xhtml" /> -->
 	</div>
 	</ui:define>

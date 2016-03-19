@@ -5,21 +5,23 @@
 	xmlns:p="http://primefaces.org/ui">
 
 	<ui:define name="titulo">
-      ShareMyTrip - Información del viaje "${viaje.id}"
+	<h:outputFormat value="#{msgs.cabecera_rellenable}"> 
+	<f:param value="<h:outputFormat value=&quot;#{msgs.cabecera_muestraViaje}&quot;> <f:param value=&quot;${viaje.id}&quot;/></h:outputFormat>"/>
+	</h:outputFormat>
     </ui:define>
 
 	<ui:define name="cuerpo">
 		<div>
 		<table border="1" align="center">
 			<tr>
-				<th>Origen</th>
-				<th>Fecha salida</th>
-				<th>Destino</th>
-				<th>Fecha llegada</th>
-				<th>Plazas libres</th>
-				<th>Plazas totales</th>
-				<th>Precio</th>
-				<th>Fecha cierre</th>
+				<th>#{msgs.campo_origen}</th>
+				<th>#{msgs.campo_fechaSalida}</th>
+				<th>#{msgs.campo_destino}</th>
+				<th>#{msgs.campo_fechaLlegada}</th>
+				<th>#{msgs.campo_plazasLibres}</th>
+				<th>#{msgs.campo_plazasTotales}</th>
+				<th>#{msgs.campo_precio}</th>
+				<th>#{msgs.campo_fechaCierre}</th>
 
 			</tr>
 
@@ -38,13 +40,11 @@
 		</table>
 
 		<center>
-			<p>
-				Si desea consultar más información sobre este viaje (promotor,
-				viajeros confirmados, comentarios...) por favor pulse <a
-					href="masInfo?id=${viaje.id}">aquí</a>
+			<p><a href="masInfo?id=${viaje.id}">
+				#{msgs.mensaje_consultarMasInformacionViaje}</a>
 			</p>
 		</center>
-		<a href="irAInicio">Cancelar</a>
+		<a href="irAInicio">#{msgs.enlace_cancelar}</a>
 		<!-- <ui:include src="/snippets/muestraMensaje.xhtml" /> -->
 	</div>
 	</ui:define>

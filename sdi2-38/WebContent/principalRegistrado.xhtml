@@ -5,22 +5,20 @@
 	xmlns:p="http://primefaces.org/ui">
 
 	<ui:define name="titulo">
-      ShareMyTrip - Bienvenido
+      <h:outputFormat value="#{msgs.cabecera_rellenable}"> <f:param value="#{msgs.cabecera_principalRegistrado}"/></h:outputFormat>
     </ui:define>
 
 	<ui:define name="cuerpo">
 		<div>
 		<center>
-			<h1>Bienvenido ${user.name}</h1>
+			<h1><h:outputFormat value="#{msgs.titulo_bienvenido}"> <f:param value="${user.name}"/></h:outputFormat></h1>
 		</center>
 		<ul>
-			<li><a href="cerrarSesion">Cerrar sesión</a></li>
-			<li><a href="abrirModificacion">Modificar datos</a></li>
-			<li><a id="listaViaje" href="listarViajes">Listar viajes</a></li>
-			<li><a id="registrarViaje" href="registrarViaje">Registrar
-					nuevo viaje</a></li>
-			<li><a href="misViajes">Mis viajes</a></li>
-			<li><a href="viajesAComentar">Comentar viaje</a></li>
+			<li><a href="cerrarSesion">#{msgs.enlace_cerrarSesion}</a></li>
+			<li><a id="listaViaje" href="listarViajes">#{msgs.enlace_listarViajes}</a></li>
+			<li><a id="registrarViaje" href="registrarViaje">#{msgs.enlace_registrarViaje}</a></li>
+			<li><a href="misViajes">#{msgs.enlace_misViajes}</a></li>
+			<li><a href="viajesAComentar">#{msgs.enlace_comentarViaje}</a></li>
 		</ul>
 		<!-- <ui:include src="/snippets/muestraMensaje.xhtml" /> -->
 	</div>

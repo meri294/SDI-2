@@ -5,26 +5,26 @@
 	xmlns:p="http://primefaces.org/ui"
 	template="/templates/template-inicio.xhtml">
 
-	<ui:define name="titulo">#{msgs.login_form_title}</ui:define>
+	<ui:define name="titulo">#{msgs.cabecera_login}</ui:define>
 
 	<ui:define name="cuerpo">
 		<div>
 			<h:form action="validarse" method="post">
 				<center>
-					<h1>#{msgs.login_title}</h1>
+					<h1>#{msgs.titulo_inicieSesion}</h1>
 				</center>
 				<hr/>
 				<br/>
 				<table>
 					<tr>
-						<td>#{msgs.login_id_user}</td>
+						<td>#{msgs.campo_nombreUsuario}</td>
 						<td>
 							<input type="text" name="nombreUsuario"
 							size="15" />
 						</td>
 					</tr>
 					<tr>
-						<td>#{msgs.login_password}</td>
+						<td>#{msgs.campo_suContraseña}</td>
 						<td>
 							<input id="etPasswd" type="password"
 							name="passwordUsuario" size="15" />
@@ -39,11 +39,11 @@
 				<ul>
 					<li class="dosLeft">
 						<a id="listarViajes" href="listarViajes">
-							#{msgs.trip_list}</a>
+							#{msgs.enlace_listarViajes}</a>
 					</li>
 					<li class="dosRight">
 						<a id="registrarse" href="abrirRegistro">
-							#{msgs.login_new_user}</a>
+							#{msgs.enlace_registrarse}</a>
 					</li>
 				</ul>
 			</h:form>

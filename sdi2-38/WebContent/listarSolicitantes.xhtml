@@ -5,17 +5,17 @@
 	xmlns:p="http://primefaces.org/ui">
 
 	<ui:define name="titulo">
-      ShareMyTrip - Listado de solicitantes
+	<h:outputFormat value="#{msgs.cabecera_rellenable}"> <f:param value="#{msgs.cabecera_listarSolicitantes}"/></h:outputFormat>
     </ui:define>
 
 	<ui:define name="cuerpo">
 	<div>
 		<table border="1" align="center">
 			<tr>
-				<th>ID</th>
-				<th>Nombre</th>
-				<th>Estado</th>
-				<th>Opciones</th>
+				<th>#{msgs.campo_identificador}</th>
+				<th>#{msgs.campo_nombre}</th>
+				<th>#{msgs.campo_estado}</th>
+				<th>#{msgs.campo_opciones}</th>
 			</tr>
 			<c:forEach var="entry" items="${pendiente}" varStatus="i">
 				<tr>
@@ -23,19 +23,19 @@
 						<a href="infoUsuario?id=${entry.id}">${entry.id}</a>
 					</td>
 					<td>${entry.name}${entry.surname}</td>
-					<td>Pendiente</td>
+					<td>#{msgs.campo_pendiente}</td>
 					<td><a href="aceptar?user=${entry.id}&id=${viaje.id}">
-							Aceptar</a><br> 
+							#{msgs.enlace_aceptar}</a><br> 
 						<a href="excluir?user=${entry.id}&id=${viaje.id}"> 
-						Excluir</a>
+						#{msgs.enlace_excluir}</a>
 					</td>
 				</tr>
 			</c:forEach>
 		</table>
 		<center>
-			<p>Quedan ${viaje.availablePax} plazas libres</p>
+			<p><h:outputFormat value="#{msgs.mensaje_quedanXplazas}"> <f:param value="${viaje.availablePax}"/></h:outputFormat></p>
 		</center>
-		<a href="irAInicio">Cancelar</a>
+		<a href="irAInicio">#{msgs.enlace_cancelar}</a>
 		<!-- <ui:include src="/snippets/muestraMensaje.xhtml" /> -->
 	</div>
 	</ui:define>

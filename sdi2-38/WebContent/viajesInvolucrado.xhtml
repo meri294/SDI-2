@@ -5,20 +5,20 @@
 	xmlns:p="http://primefaces.org/ui">
 
 	<ui:define name="titulo">
-      ShareMyTrip - Mis viajes
+      <h:outputFormat value="#{msgs.cabecera_rellenable}"> <f:param value="#{msgs.cabecera_viajesInvolucrado}"/></h:outputFormat>
     </ui:define>
 
 	<ui:define name="cuerpo">
 		<div>
 		<table border="1" align="center">
 			<tr>
-				<th>ID viaje</th>
-				<th>Estado viaje</th>
-				<th>Fecha cierre</th>
-				<th>Fecha salida</th>
-				<th>Fecha fecha llegada</th>
-				<th>Estado</th>
-				<th>Opciones</th>
+				<th>#{msgs.campo_idViaje}</th>
+				<th>#{msgs.campo_estadoViaje}</th>
+				<th>#{msgs.campo_fechaCierre}</th>
+				<th>#{msgs.campo_fechaSalida}</th>
+				<th>#{msgs.campo_fechaLlegada}</th>
+				<th>#{msgs.campo_estado}</th>
+				<th>#{msgs.campo_opciones}</th>
 			</tr>
 
 			<c:forEach var="entry" items="${promocionados}" varStatus="i">
@@ -30,14 +30,11 @@
 					<td>${entry.closingDate}</td>
 					<td>${entry.departureDate}</td>
 					<td>${entry.arrivalDate}</td>
-					<td>Promotor</td>
+					<td>#{msgs.campo_promotor}</td>
 					<td>
-						<a href="verSolicitantes?id=${entry.id}"> Ver
-						solicitantes</a><br> 
-						<a href="cancelarViaje?id=${entry.id}">Cancelar
-							viaje</a><br> 
-						<a href="modificarViaje?id=${entry.id}">Modificar
-							Viaje</a>
+						<a href="verSolicitantes?id=${entry.id}">#{msgs.enlace_verSolicitantes}</a><br> 
+						<a href="cancelarViaje?id=${entry.id}">#{msgs.enlace_cancelarViaje}</a><br> 
+						<a href="modificarViaje?id=${entry.id}">#{msgs.enlace_modificarViaje}</a>
 					</td>
 				</tr>
 			</c:forEach>
@@ -51,11 +48,10 @@
 					<td>${entry.closingDate}</td>
 					<td>${entry.departureDate}</td>
 					<td>${entry.arrivalDate}</td>
-					<td>Aceptado</td>
+					<td>#{msgs.campo_aceptado}</td>
 					<td><a
 						href="cancelarSolicitud?user=${user.id}
-								&viaje=${entry.id}">Cancelar
-							solicitud</a></td>
+								&viaje=${entry.id}">#{msgs.enlace_cancelarSolicitud}</a></td>
 				</tr>
 			</c:forEach>
 
@@ -68,11 +64,10 @@
 					<td>${entry.closingDate}</td>
 					<td>${entry.departureDate}</td>
 					<td>${entry.arrivalDate}</td>
-					<td>Pendiente</td>
+					<td>#{msgs.campo_pendiente}</td>
 					<td><a
 						href="cancelarSolicitud?user=${user.id}
-								&viaje=${entry.id}">Cancelar
-							solicitud</a></td>
+								&viaje=${entry.id}">#{msgs.enlace_cancelarSolicitud}</a></td>
 				</tr>
 			</c:forEach>
 
@@ -85,11 +80,10 @@
 					<td>${entry.closingDate}</td>
 					<td>${entry.departureDate}</td>
 					<td>${entry.arrivalDate}</td>
-					<td>Excluido</td>
+					<td>#{msgs.campo_excluido}</td>
 					<td><a
 						href="cancelarSolicitud?user=${user.id}
-								&viaje=${entry.id}">Cancelar
-							solicitud</a></td>
+								&viaje=${entry.id}">#{msgs.enlace_cancelarSolicitud}</a></td>
 				</tr>
 			</c:forEach>
 
@@ -102,15 +96,14 @@
 					<td>${entry.closingDate}</td>
 					<td>${entry.departureDate}</td>
 					<td>${entry.arrivalDate}</td>
-					<td>Sin plaza</td>
+					<td>#{msgs.campo_sinPlaza}</td>
 					<td><a
 						href="cancelarSolicitud?user=${user.id}
-								&viaje=${entry.id}">Cancelar
-							solicitud</a></td>
+								&viaje=${entry.id}">#{msgs.enlace_cancelarSolicitud}</a></td>
 				</tr>
 			</c:forEach>
 		</table>
-		<a href="irAInicio">Cancelar</a>
+		<a href="irAInicio">#{msgs.enlace_cancelar}</a>
 		<!-- <ui:include src="/snippets/muestraMensaje.xhtml" /> -->
 	</div>
 	</ui:define>

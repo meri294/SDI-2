@@ -5,19 +5,19 @@
 	xmlns:p="http://primefaces.org/ui">
 
 	<ui:define name="titulo">
-      ShareMyTrip - Comentar viaje
+	<h:outputFormat value="#{msgs.cabecera_rellenable}"> <f:param value="#{msgs.cabecera_comentarViaje}"/></h:outputFormat>
     </ui:define>
 
 	<ui:define name="cuerpo">
 		<form action="guardarComentario?id=${viaje}" method="post">
 		<center>
-			<h1>Escriba un comentario</h1>
+			<h1>#{msgs.titulo_escribaComentario}</h1>
 		</center>
 		<hr>
 		<br>
 		<table align="center">
 			<tr>
-				<td align="right">Usuario</td>
+				<td align="right">#{msgs.campo_usuario}</td>
 				<td>
 					<select name="userComentado">
 						<c:forEach var="entry" items="${participantes}" 
@@ -29,13 +29,13 @@
 				</td>
 			</tr>
 			<tr>
-				<td align="right">Puntación (0-10)</td>
+				<td align="right">#{msgs.campo_puntuacion}</td>
 				<td>
 					<input type="text" name="points" align="left" size="2">
 				</td>
 			</tr>
 			<tr>
-				<td align="right">Comentario</td>
+				<td align="right">#{msgs.campo_comentario}</td>
 				<td>
 					<textarea name="comment" cols="40" rows="10">
 					</textarea>
