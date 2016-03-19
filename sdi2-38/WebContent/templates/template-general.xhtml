@@ -8,6 +8,7 @@
 <f:view locale="#{settings.locale}">
 	<h:head>
 		<meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+		<title>#{msgs.titulo_aplicacion}</title>
 	</h:head>
 	<h:body>
 		<h:form id="form-cabecera">
@@ -16,13 +17,13 @@
 					<th class="title">
 						<h1>
 							<ui:insert name="titulo">
-								#{msgs.tituloDefectoCabecera}</ui:insert>
+								<!-- #{msgs.tituloDefectoCabecera} --></ui:insert>
 						</h1>
 					</th>
 				</tr>
 			</table>
 			<p:menubar id="mimenu">
-				<p:submenu style="float:right" label="#{msgs.textoIdioma}"
+				<p:submenu style="float:right" label="#{msgs.menu_Idioma}"
 					icon="ui-icon-document">
 					<p:menuitem id="linkespa" value="#{msgs.enlace_idiomaES}"
 						actionListener="#{settings.setSpanish}" update="@all" />
@@ -32,11 +33,11 @@
 			</p:menubar>
 		</h:form>
 
-		<ui:insert name="cuerpo">#{msgs.tituloDefectoCuerpo}</ui:insert>
+		<ui:insert name="cuerpo"><!-- #{msgs.tituloDefectoCuerpo} --></ui:insert>
 
 		<br />
 		<br />
-		<ui:insert name="pie">#{msgs.tituloPie}</ui:insert>
+		<ui:insert name="pie">#{msgs.titulo_pie}</ui:insert>
 
 	</h:body>
 </f:view>

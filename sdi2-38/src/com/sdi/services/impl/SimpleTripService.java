@@ -17,22 +17,22 @@ public class SimpleTripService implements TripService {
 	}
 
 	@Override
-	public void saveTrip(Trip trip) throws EntityAlreadyExistsException {
+	public void saveTrip(Trip trip) {
 		new TripsAlta().save(trip);
 	}
 
 	@Override
-	public void updateTrip(Trip trip) throws EntityNotFoundException {
+	public void updateTrip(Trip trip) {
 		new TripsUpdate().update(trip);
 	}
 
 	@Override
-	public void deleteTrip(Long id) throws EntityNotFoundException {
+	public void deleteTrip(Long id) {
 		new TripsBaja().delete(id);
 	}
 
 	@Override
-	public Trip findById(Long id) throws EntityNotFoundException {
+	public Trip findById(Long id) {
 		return new TripsBuscar().find(id);
 	}
 
