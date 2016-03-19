@@ -5,10 +5,9 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
-	<f:view locale="#{settings.locale}">
+<f:view locale="#{settings.locale}">
 	<h:head>
 		<meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
-		<title>#{msgs.tituloHead}</title>
 	</h:head>
 	<h:body>
 		<h:form id="form-cabecera">
@@ -21,6 +20,15 @@
 					</th>
 				</tr>
 			</table>
+			<p:menubar id="mimenu">
+				<p:submenu style="float:right" label="#{msgs.textoIdioma}"
+					icon="ui-icon-document">
+					<p:menuitem id="linkespa" value="#{msgs.enlaceIdiomaES}"
+						actionListener="#{settings.setSpanish}" update="@all" />
+					<p:menuitem id="linkingles" value="#{msgs.enlaceIdiomaEN}"
+						actionListener="#{settings.setEnglish}" update="@all" />
+				</p:submenu>
+			</p:menubar>
 		</h:form>
 
 		<ui:insert name="cuerpo">#{msgs.tituloDefectoCuerpo}</ui:insert>
