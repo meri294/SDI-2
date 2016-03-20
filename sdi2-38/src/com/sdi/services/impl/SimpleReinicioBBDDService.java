@@ -1,11 +1,7 @@
 package com.sdi.services.impl;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import alb.util.log.Log;
 
-import com.sdi.infrastructure.Factories;
 import com.sdi.services.ReinicioBBDDService;
 
 public class SimpleReinicioBBDDService implements ReinicioBBDDService {

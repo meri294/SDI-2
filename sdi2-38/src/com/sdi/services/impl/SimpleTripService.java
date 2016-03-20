@@ -2,12 +2,13 @@ package com.sdi.services.impl;
 
 import java.util.List;
 
-import javax.persistence.EntityNotFoundException;
-
 import com.sdi.model.Trip;
 import com.sdi.services.TripService;
 import com.sdi.services.impl.classes.trip.TripsAlta;
+import com.sdi.services.impl.classes.trip.TripsBaja;
+import com.sdi.services.impl.classes.trip.TripsBuscar;
 import com.sdi.services.impl.classes.trip.TripsListado;
+import com.sdi.services.impl.classes.trip.TripsUpdate;
 
 public class SimpleTripService implements TripService {
 
@@ -22,17 +23,17 @@ public class SimpleTripService implements TripService {
 	}
 
 	@Override
-	public void updateTrip(Trip trip) {
+	public void updateTrip(Trip trip) throws Exception {
 		new TripsUpdate().update(trip);
 	}
 
 	@Override
-	public void deleteTrip(Long id) {
+	public void deleteTrip(Long id) throws Exception {
 		new TripsBaja().delete(id);
 	}
 
 	@Override
-	public Trip findById(Long id) {
+	public Trip findById(Long id) throws Exception {
 		return new TripsBuscar().find(id);
 	}
 

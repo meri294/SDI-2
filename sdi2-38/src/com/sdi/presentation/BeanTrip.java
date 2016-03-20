@@ -48,12 +48,14 @@ public class BeanTrip extends Trip implements Serializable {
 				.getResourceBundle(facesContext, "msgs");
 		setId(null);
 		setArrivalDate(MariaDateUtil.completeFromBundle(
-				bundle.getString("default_arrival_date")));
+				bundle.getString("default_date")));
 		setAvailablePax(Integer.valueOf(
 				bundle.getString("default_available_pax")));
 		setClosingDate(MariaDateUtil.completeFromBundle(
-				bundle.getString("default_closing_date")));
+				bundle.getString("default_date")));
 		setComments(bundle.getString("default_trip_comments"));
+		setDepartureDate(MariaDateUtil.completeFromBundle(
+				bundle.getString("default_date")));
 		setDeparture(MariaModelUtil.AddressPointFromString(
 				bundle.getString("default_address"),
 				bundle.getString("default_city"),

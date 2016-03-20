@@ -21,7 +21,7 @@ import com.sdi.util.MariaModelUtil;
 @SessionScoped
 public class BeanTrips implements Serializable {
 	private static final long serialVersionUID = 55555L;
-	// Se añade este atributo de entidad para recibir el alumno concreto
+	// Se añade este atributo de entidad para recibir el trip concreto
 	// selecionado de la tabla o de un formulario
 	// Es necesario inicializarlo para que al entrar desde el formulario de
 	// AltaForm.xml se puedan
@@ -43,16 +43,16 @@ public class BeanTrips implements Serializable {
 	@PostConstruct
 	public void init() {
 		System.out.println("BeanTrips - PostConstruct");
-		// Buscamos el alumno en la sesión. Esto es un patrón factoría
+		// Buscamos el trip en la sesión. Esto es un patrón factoría
 		// claramente.
 		trip = (BeanTrip) FacesContext.getCurrentInstance()
 				.getExternalContext().getSessionMap().get(new String("trip"));
 		// si no existe lo creamos e inicializamos
 		if (trip == null) {
-			System.out.println("BeanAlumnos - No existia");
+			System.out.println("BeanTrips - No existia");
 			trip = new BeanTrip();
 			FacesContext.getCurrentInstance().getExternalContext()
-					.getSessionMap().put("alumno", trip);
+					.getSessionMap().put("trip", trip);
 		}
 	}
 
@@ -61,19 +61,19 @@ public class BeanTrips implements Serializable {
 		System.out.println("BeanTrips - PreDestroy");
 	}
 
-	public Trip[] getAlumnos() {
+	public Trip[] getTrips() {
 		return (trips);
 	}
 
-	public void setAlumno(BeanTrip trip) {
+	public void setTrip(BeanTrip trip) {
 		this.trip = trip;
 	}
 
-	public BeanTrip getAlumno() {
+	public BeanTrip getTrip() {
 		return trip;
 	}
 
-	public void setAlumnos(Trip[] trips) {
+	public void setTrips(Trip[] trips) {
 		this.trips = trips;
 	}
 
@@ -85,12 +85,14 @@ public class BeanTrips implements Serializable {
 				.getResourceBundle(facesContext, "msgs");
 		trip.setId(null);
 		trip.setArrivalDate(MariaDateUtil.completeFromBundle(
-				bundle.getString("default_arrival_date")));
+				bundle.getString("default_date")));
 		trip.setAvailablePax(Integer.valueOf(
 				bundle.getString("default_available_pax")));
 		trip.setClosingDate(MariaDateUtil.completeFromBundle(
-				bundle.getString("default_closing_date")));
+				bundle.getString("default_date")));
 		trip.setComments(bundle.getString("default_trip_comments"));
+		trip.setDepartureDate(MariaDateUtil.completeFromBundle(
+				bundle.getString("default_date")));
 		trip.setDeparture(MariaModelUtil.AddressPointFromString(
 				bundle.getString("default_address"),
 				bundle.getString("default_city"),
@@ -119,7 +121,7 @@ public class BeanTrips implements Serializable {
 			// a trav��s de la factor��a
 			service = Factories.services.createTripService();
 			// De esta forma le damos informaci��n a toArray para poder hacer el
-			// casting a Alumno[]
+			// casting a Trip[]
 			trips = (Trip[]) service.getTrips().toArray(new Trip[0]);
 
 			return "exito"; 
@@ -137,9 +139,9 @@ public class BeanTrips implements Serializable {
 			// Acceso a la implementacion de la capa de negocio
 			// a trav��s de la factor��a
 			service = Factories.services.createTripService();
-			// Aliminamos el alumno seleccionado en la tabla
+			// Aliminamos el trip seleccionado en la tabla
 			service.deleteTrip(trip.getId());
-			// Actualizamos el javabean de alumnos inyectado en la tabla.
+			// Actualizamos el javabean de trips inyectado en la tabla.
 			trips = (Trip[]) service.getTrips().toArray(new Trip[0]);
 			return "exito"; // Nos vamos a la vista de listado.
 
@@ -156,7 +158,7 @@ public class BeanTrips implements Serializable {
 			// Acceso a la implementacion de la capa de negocio
 			// a trav��s de la factor��a
 			service = Factories.services.createTripService();
-			// Recargamos el alumno seleccionado en la tabla de la base de datos
+			// Recargamos el trip seleccionado en la tabla de la base de datos
 			// por si hubiera cambios.
 			trip = (BeanTrip)service.findById(trip.getId());
 			return "exito"; // Nos vamos a la vista de Edición.
@@ -174,14 +176,14 @@ public class BeanTrips implements Serializable {
 			// Acceso a la implementacion de la capa de negocio
 			// a trav��s de la factor��a
 			service = Factories.services.createTripService();
-			// Salvamos o actualizamos el alumno segun sea una operacion de alta
+			// Salvamos o actualizamos el trip segun sea una operacion de alta
 			// o de edici��n
 			if (trip.getId() == null) {
 				service.saveTrip(trip);
 			} else {
 				service.updateTrip(trip);
 			}
-			// Actualizamos el javabean de alumnos inyectado en la tabla
+			// Actualizamos el javabean de trips inyectado en la tabla
 			trips = (Trip[]) service.getTrips().toArray(new Trip[0]);
 			return "exito"; // Nos vamos a la vista de listado.
 
