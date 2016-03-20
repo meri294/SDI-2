@@ -42,7 +42,7 @@
 			<to-view-id>/error.xhtml</to-view-id>
 		</navigation-case>
 		<navigation-case>
-			<from-action>#{triplController.listado}</from-action>
+			<from-action>#{tripsController.listado}</from-action>
 			<from-outcome>exito</from-outcome>
 			<to-view-id>/listaViajes.xhtml</to-view-id>
 		</navigation-case>
