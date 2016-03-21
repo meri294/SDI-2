@@ -22,15 +22,7 @@
 					</th>
 				</tr>
 			</table>
-			<p:menubar id="mimenu">
-				<p:submenu style="float:right" label="#{msgs.menu_Idioma}"
-					icon="ui-icon-document">
-					<p:menuitem id="linkespa" value="#{msgs.enlace_idiomaES}"
-						actionListener="#{settings.setSpanish}" update="@all" />
-					<p:menuitem id="linkingles" value="#{msgs.enlace_idiomaEN}"
-						actionListener="#{settings.setEnglish}" update="@all" />
-				</p:submenu>
-			</p:menubar>
+			<ui:include src="/snippets/menu-idiomas.xhtml" />
 		</h:form>
 
 		<ui:insert name="cuerpo"><!-- #{msgs.tituloDefectoCuerpo} --></ui:insert>
