@@ -54,8 +54,8 @@ public class BeanLogin implements Serializable {
 		User usuario = sesion.getUsuario();
 
 		if (usuario != null) {
-			Log.info(
-					"Se ha intentado iniciar sesión como [%s] teniendo la sesión iniciada como [%s]",
+			Log.info("Se ha intentado iniciar sesión como [%s] "
+				+ "teniendo la sesión iniciada como [%s]",
 					login, usuario.getName());
 			sesion.cerrar();
 			return Resultado.error.name();

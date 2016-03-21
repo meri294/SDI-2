@@ -13,32 +13,18 @@
 				<center>
 					<h1>#{msgs.titulo_inicieSesion}</h1>
 				</center>
-				<hr/>
-				<br/>
-				<table>
-					<tr>
-						<td>#{msgs.campo_nombreUsuario}</td>
-						<td>
-							<input type="text" name="nombreUsuario"
-							size="15" />
-						</td>
-					</tr>
-					<tr>
-						<td>#{msgs.campo_suContraseña}</td>
-						<td>
-							<input id="etPasswd" type="password"
-							name="passwordUsuario" size="15" />
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<input type="submit" value="#{msgs.enlace_enviar}"/>
-						</td>
-					</tr>
-				</table>
+				<hr />
+				<br />
+				<h:panelGrid columns="2" styleClass="formTable">
+						#{msgs.campo_nombreUsuario}
+						<h:inputText value="#{login.login}" size="15" />
+						#{msgs.campo_suContraseña}
+						<h:inputSecret value="#{login.pass}" size="15" />
+						<h:commandButton value="#{msgs.enlace_enviar}" action="#{login.validar}" />
+				</h:panelGrid>
 			</h:form>
-			<hr/>
-			<br/>
+			<hr />
+			<br />
 		</div>
 	</ui:define>
 

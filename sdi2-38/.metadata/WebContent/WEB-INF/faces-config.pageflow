@@ -3,6 +3,10 @@
   <nodes xsi:type="pageflow:PFPage" name="*" id="pf14584039081390" referenceLink="//@navigationRule.0/@fromViewId|" outlinks="pf14584039081391 pf14584039081392" path="*"/>
   <nodes xsi:type="pageflow:PFPage" name="error.xhtml" id="pf14584039081393" referenceLink="//@navigationRule.0/@navigationCase.0/@toViewId|" inlinks="pf14584039081391" path="/error.xhtml"/>
   <nodes xsi:type="pageflow:PFPage" name="listaViajes.xhtml" id="pf14584039081394" referenceLink="//@navigationRule.0/@navigationCase.1/@toViewId|" inlinks="pf14584039081392" path="/listaViajes.xhtml"/>
-  <links id="pf14584039081391" target="pf14584039081393" source="pf14584039081390" outcome="error"/>
-  <links id="pf14584039081392" target="pf14584039081394" source="pf14584039081390" outcome="exito" fromaction="#{tripsController.listado}"/>
+  <nodes xsi:type="pageflow:PFPage" name="login.xhtml" id="pf14585679846210" referenceLink="//@navigationRule.1/@fromViewId|" outlinks="pf14585679846211 pf14585679846212" inlinks="pf14585679846211" path="/login.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="principalRegistrado.xhtml" id="pf14585679846213" referenceLink="//@navigationRule.1/@navigationCase.1/@toViewId|" inlinks="pf14585679846212" path="/principalRegistrado.xhtml"/>
+  <links id="pf14584039081391" target="pf14584039081393" source="pf14584039081390" outcome="error" redirect="true"/>
+  <links id="pf14584039081392" target="pf14584039081394" source="pf14584039081390" outcome="exito" redirect="true" fromaction="#{tripsController.listado}"/>
+  <links id="pf14585679846211" target="pf14585679846210" source="pf14585679846210" outcome="fracaso" redirect="true"/>
+  <links id="pf14585679846212" target="pf14585679846213" source="pf14585679846210" outcome="exito" redirect="true"/>
 </pageflow:Pageflow>
