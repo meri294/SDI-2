@@ -1,3 +1,5 @@
 # SDI-2
 
-Prueba de cambio del readme
+TO-DO:
+  · Añadir navegación de cierre de sesión en faces-config.
+  · Comprobar que funciona bien el cierre de sesión.
