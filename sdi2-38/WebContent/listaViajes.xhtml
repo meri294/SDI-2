@@ -6,45 +6,36 @@
 	template="/templates/template-general.xhtml">
 
 	<ui:define name="titulo">
-	<h:outputFormat value="#{msgs.cabecera_rellenable}"> <f:param value="#{msgs.cabecera_listaViajes}"/></h:outputFormat>
-    </ui:define>
+		<h:outputFormat value="#{msgs.cabecera_rellenable}">
+			<f:param value="#{msgs.cabecera_listaViajes}" />
+		</h:outputFormat>
+	</ui:define>
 
 	<ui:define name="cuerpo">
-		<div>
-		<c:choose>
-			<c:when test="${listaViajes.isEmpty()}">
-				<center>#{msgs.mensaje_sinViajesDisponibles}</center>
-			</c:when>
-			<c:otherwise>
-				<table border="1" align="center">
-					<tr>
-						<th></th>
-						<th>#{msgs.campo_idViaje}</th>
-						<th>#{msgs.campo_origen}</th>
-						<th>#{msgs.campo_origen}</th>
-						<th>#{msgs.campo_plazasLibres}</th>
-					</tr>
-
-					<c:forEach var="entry" items="${listaViajes}" varStatus="i">
-						<tr id="item_${i.index}">
-							<td><a id="solicita_${entry.id}"
-								href="solicitarPlaza?id=${entry.id}"> 
-								#{msgs.enlace_solicitar}</a>
-							</td>
-							<td>
-								<a href="mostrarViaje?id=${entry.id}">
-									${entry.id}</a>
-							</td>
-							<td>${entry.departure.city}</td>
-							<td>${entry.destination.city}</td>
-							<td>${entry.availablePax}</td>
-						</tr>
-					</c:forEach>
-				</table>
-			</c:otherwise>
-		</c:choose>
+		<h:form>
+			<p:panel>
+				<p:dataTable id="tablaViajes" var="valtrip"
+					value="#{tripsController.trips}" border="10">
+					<p:column id="idViaje">
+						<f:facet name="header">#{msgs.campo_idViaje}</f:facet>
+						#{valtrip.id}
+					</p:column>
+					<p:column id="tablaorigen">
+						<f:facet name="header">#{msgs.campo_origen}</f:facet>
+						#{valtrip.departure.toStringPrincipal()}
+					</p:column>
+					<p:column id="tabladestino">
+						<f:facet name="header">#{msgs.campo_destino}</f:facet>
+						#{valtrip.destination.toStringPrincipal()}
+					</p:column>
+					<p:column id="tablalibres">
+						<f:facet name="header">#{msgs.campo_plazasLibres}</f:facet>
+						#{valtrip.availablePax}
+					</p:column>
+				</p:dataTable>
+			</p:panel>
+		</h:form>
 		<!-- <ui:include src="/snippets/muestraMensaje.xhtml" /> -->
-	</div>
 	</ui:define>
 
 	<ui:define name="pie">
