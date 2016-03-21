@@ -11,9 +11,9 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 
+import com.sdi.business.TripService;
 import com.sdi.infrastructure.Factories;
 import com.sdi.model.Trip;
-import com.sdi.services.TripService;
 import com.sdi.util.MariaDateUtil;
 import com.sdi.util.MariaModelUtil;
 

@@ -8,9 +8,9 @@ import javax.faces.bean.SessionScoped;
 
 import alb.util.log.Log;
 
+import com.sdi.business.ReinicioBBDDService;
 import com.sdi.infrastructure.Factories;
 import com.sdi.model.User;
-import com.sdi.services.ReinicioBBDDService;
 
 @ManagedBean(name = "sesion")
 @SessionScoped

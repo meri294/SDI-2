@@ -56,6 +56,10 @@ public class AddressPoint {
 				+ ", state=" + state + ", country=" + country + ", zipCode="
 				+ zipCode + ", waypoint=" + waypoint + "]";
 	}
+	
+	public String toStringPrincipal(){
+		return address + ", "+city+ "-"+country;
+	}
 
 	@Override
 	public int hashCode() {

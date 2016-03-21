@@ -3,14 +3,13 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui"
-	template="/templates/template-inicio.xhtml"
-	template="/templates/template-general.xhtml">
+	template="/templates/template-inicio.xhtml">
 
 	<ui:define name="titulo">#{msgs.cabecera_login}</ui:define>
 
 	<ui:define name="cuerpo">
 		<div>
-			<h:form action="validarse" method="post">
+			<h:form  method="post">
 				<center>
 					<h1>#{msgs.titulo_inicieSesion}</h1>
 				</center>
@@ -27,10 +26,6 @@
 			<hr />
 			<br />
 		</div>
-	</ui:define>
-
-	<ui:define name="pie">
-		<!-- En la pantalla de login no se deberia mostrar link para ir a la pagina principal // <ui:include src="/snippets/pie-casa.xhtml" /> -->
 	</ui:define>
 
 </ui:composition>
