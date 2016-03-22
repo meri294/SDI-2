@@ -22,14 +22,20 @@
 					</th>
 				</tr>
 			</table>
+			
+			<p:menubar id="mimenu">
+			<ui:include src="/snippets/menu-opcionesRegistrado.xhtml" />
 			<ui:include src="/snippets/menu-idiomas.xhtml" />
+			</p:menubar>
 		</h:form>
 
 		<ui:insert name="cuerpo"><!-- #{msgs.tituloDefectoCuerpo} --></ui:insert>
 
 		<br />
 		<br />
-		<ui:insert name="pie">#{msgs.titulo_pie}</ui:insert>
+		<ui:insert name="pie"></ui:insert>
+		<br />
+		<em>#{msgs.titulo_pie}</em>
 
 	</h:body>
 </f:view>
