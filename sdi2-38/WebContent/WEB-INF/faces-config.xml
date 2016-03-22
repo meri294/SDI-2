@@ -47,6 +47,11 @@
 			<from-outcome>exito</from-outcome>
 			<to-view-id>/listaViajes.xhtml</to-view-id>
 			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>cerrar</from-outcome>
+			<to-view-id>/login.xhtml</to-view-id>
+			<redirect />
 		</navigation-case>		
 	</navigation-rule>
 	

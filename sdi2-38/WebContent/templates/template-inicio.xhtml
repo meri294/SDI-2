@@ -16,8 +16,7 @@
 				<tr>
 					<th class="title">
 						<h1>
-							<ui:insert name="titulo">
-								<!-- #{msgs.tituloDefectoCabecera} --></ui:insert>
+							<ui:insert name="titulo"></ui:insert>
 						</h1>
 					</th>
 				</tr>
@@ -41,11 +40,12 @@
 			</p:menubar>
 		</h:form>
 
-		<ui:insert name="cuerpo"><!-- #{msgs.tituloDefectoCuerpo} --></ui:insert>
+		<ui:insert name="cuerpo"></ui:insert>
 
 		<br />
 		<br />
-		<ui:insert name="pie">#{msgs.titulo_pie}</ui:insert>
+		<ui:insert name="pie"></ui:insert>
+		<em>#{msgs.titulo_pie}</em>
 
 	</h:body>
 </f:view>

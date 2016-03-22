@@ -22,7 +22,8 @@
 				rendered="#{sesion.usuario!=null}" />
 			<p:menuitem id="linkCerrarSesion" style="float:left"
 				value="#{msgs.enlace_cerrarSesion}"
-				rendered="#{sesion.usuario!=null}" />
+				rendered="#{sesion.usuario!=null}"
+				action="#{sesion.cerrar}" />
 		</p:submenu>
 		<p:submenu style="float:right" label="#{msgs.menu_Idioma}"
 			icon="ui-icon-document">
