@@ -17,50 +17,81 @@
 		</center>
 		<hr>
 		<br>
-		<table align="center">
-			<tr>
-				<td align="right">#{msgs.campo_identificador}</td>
-				<td>
-					<input type="text" name="idUsuario" align="left" size="15">
-				</td>
-			</tr>
-			<tr>
-				<td align="right">#{msgs.campo_nombre}</td>
-				<td><input type="text" name="nombreUsuario" align="left"
-					size="30"></td>
-			</tr>
-			<tr>
-				<td align="right">#{msgs.campo_apellidos}</td>
-				<td><input type="text" name="apellidosUsuario" align="left"
-					size="50"></td>
-			</tr>
-			<tr>
-				<td align="right">#{msgs.campo_email}</td>
-				<td><input type="text" name="emailUsuario" align="left"
-					size="30"></td>
-			</tr>
-			<tr>
-				<td align="right">#{msgs.campo_contraseña}</td>
-				<td><input id="etPasswd" type="password" name="passwordUsuario"
-					align="left" size="15"></td>
-			</tr>
-			<tr>
-				<td align="right">#{msgs.campo_repetirContraseña}</td>
-				<td><input id="etPasswd" type="password" name="repetedPassword"
-					align="left" size="15"></td>
-			</tr>
-			<tr>
-				<td><input type="submit" value="Enviar" /></td>
-			</tr>
-		</table>
+			<h:panelGrid columns="2" styleClass="formTable">
+			
+			#{msgs.campo_identificador}
+			<h:panelGroup>
+  				<h:inputText value="#{registro.login}"
+               	required="true"
+               	requiredMessage="#{msgs.mensaje_campoObligatorio}"
+               	id="login"
+               	size="15">        
+  				</h:inputText>
+  				<h:message for="login"/>
+  			</h:panelGroup>
+  			
+			#{msgs.campo_nombre}
+			<h:panelGroup>
+  				<h:inputText value="#{registro.nombre}"
+               	required="true"
+               	requiredMessage="#{msgs.mensaje_campoObligatorio}"
+               	id="nombre">        
+  				</h:inputText>
+  				<h:message for="nombre"/>
+  			</h:panelGroup>
+  			
+  			#{msgs.campo_apellidos}
+  			<h:panelGroup>
+  				<h:inputText value="#{registro.apellidos}"
+               	required="true"
+               	requiredMessage="#{msgs.mensaje_campoObligatorio}"
+               	id="apellidos">          
+  				</h:inputText>
+  				<h:message for="apellidos"/>
+  			</h:panelGroup>
+  			
+  			#{msgs.campo_email}
+  			<h:panelGroup>
+  				<h:inputText value="#{registro.email}"
+               	required="true"
+               	requiredMessage="#{msgs.mensaje_campoObligatorio}"
+               	id="email">          
+  				</h:inputText>
+  				<h:message for="email"/>
+  			</h:panelGroup>
+  			
+  			#{msgs.campo_contraseña}
+  			<h:panelGroup>
+  				<h:inputSecret value="#{registro.pass}"
+               	required="true"
+               	requiredMessage="#{msgs.mensaje_campoObligatorio}"
+               	id="pass">          
+  				</h:inputSecret>
+  				<h:message for="pass"/>
+  			</h:panelGroup>
+  			
+			#{msgs.campo_repetirContraseña}
+			<h:panelGroup> 
+  				<h:inputSecret value="#{registro.repitePass}"
+               	required="true"
+               	requiredMessage="#{msgs.mensaje_campoObligatorio}"
+               	id="repitePass">          
+  				</h:inputSecret>
+  				<h:message for="repitePass"/>
+  			</h:panelGroup>
+  			
+  			<h:commandButton value="#{msgs.enlace_enviar}" action="#{registro.registrar}">  
+     <!-- Ojo que aquí render tiene que incluir todo el formulario 
+     ya que los mensajes de error pueden ser renderizados también por Ajax de form implícita -->              
+     			<f:ajax execute="@form" render="@form"/>                   
+  			</h:commandButton>
+  			
+			</h:panelGrid>
 		<!-- <ui:include src="/snippets/muestraMensaje.xhtml" /> -->
+		
+		<!-- TODO Terminar implementacion -->
+	<h:commandLink value="#{msgs.enlace_cancelar}" action="Algo que me devuelva a login.xhtml" />
 	</form>
-	<a href="login.jsp">#{msgs.enlace_cancelar}</a>
-	<hr>
-	</ui:define>
-
-	<ui:define name="pie">
-		<ui:include src="/snippets/pie-casa.xhtml" />
 	</ui:define>
 
 </ui:composition>

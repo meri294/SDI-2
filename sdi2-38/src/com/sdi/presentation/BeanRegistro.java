@@ -21,6 +21,7 @@ public class BeanRegistro implements Serializable {
 	private String login = "";
 	private String nombre = "";
 	private String apellidos = "";
+	private String email = "";
 	private String pass = "";
 	private String repitePass = "";
 	
@@ -49,6 +50,14 @@ public class BeanRegistro implements Serializable {
 		this.apellidos = apellidos;
 	}
 	
+	public String getEmail() {
+	    return email;
+	}
+
+	public void setEmail(String email) {
+	    this.email = email;
+	}
+
 	public String getPass() {
 		return pass;
 	}
@@ -85,7 +94,7 @@ public class BeanRegistro implements Serializable {
 		u.setName(nombre);
 		u.setSurname(apellidos);
 		u.setPassword(pass);
-		u.setEmail(login + "@micorreo.es");
+		u.setEmail(email);
 		u.setStatus(UserStatus.ACTIVE);
 		//u.setRol(Rol.cliente);
 		

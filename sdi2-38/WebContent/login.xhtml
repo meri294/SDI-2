@@ -18,8 +18,10 @@
 				<h:panelGrid columns="2" styleClass="formTable">
 						#{msgs.campo_nombreUsuario}
 						<h:inputText value="#{login.login}" size="15" />
+						
 						#{msgs.campo_suContraseña}
 						<h:inputSecret value="#{login.pass}" size="15" />
+						
 						<h:commandButton value="#{msgs.enlace_enviar}" action="#{login.validar}" />
 				</h:panelGrid>
 			</h:form>
