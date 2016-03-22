@@ -1,0 +1,60 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core">
+  <h:panelGrid columns="2" styleClass="formTable">
+  #{msgs.nombre} 
+  <h:panelGroup>
+  <h:inputText value="#{alumno.nombre}"
+               required="true"
+               requiredMessage="#{msgs.formAlta_nombre_requiredMessage}"
+               validatorMessage="#{msgs.formAlta_nombre_validatorMessage}"
+               id="nombre">
+    <f:validateLength maximum="20"/>           
+  </h:inputText>
+  <h:message for="nombre"/>
+  </h:panelGroup>
+  
+  #{msgs.apellidos} 
+  <h:panelGroup>
+  <h:inputText value="#{alumno.apellidos}"
+               required="true"
+               requiredMessage="#{msgs.formAlta_apellidos_requiredMessage}"
+               validatorMessage="#{msgs.formAlta_apellidos_validatorMessage}"
+               id="apellidos">
+    <f:validateLength  maximum="40"/>           
+  </h:inputText>
+  <h:message for="apellidos"/>
+  </h:panelGroup>
+  
+  #{msgs.userid}
+  <h:panelGroup>
+  <h:inputText value="#{alumno.iduser}"
+               required="true"
+               requiredMessage="#{msgs.formAlta_iduser_requiredMessage}"
+               validatorMessage="#{msgs.formAlta_iduser_validatorMessage}"
+               id="iduser">
+    <f:validateLength minimum="5" maximum="8"/>           
+  </h:inputText>
+  <h:message for="iduser"/>
+  </h:panelGroup>  
+  
+  #{msgs.correo}
+  <h:panelGroup> 
+  <h:inputText value="#{alumno.email}"
+               required="true"
+               requiredMessage="#{msgs.formAlta_correo_requiredMessage}"
+               validatorMessage="#{msgs.formAlta_correo_validatorMessage}"
+               id="correo">
+    <f:validateRegex pattern=".+@.+\.[a-z]+"/>           
+  </h:inputText>
+  <h:message for="correo"/>
+  </h:panelGroup>
+  <h:commandButton value="#{msgs.botonSalvar}" 
+                   action="#{controller.salva}">  
+     <!-- Ojo que aquí render tiene que incluir todo el formulario 
+     ya que los mensajes de error pueden ser renderizados también por Ajax de form implícita -->              
+     <f:ajax execute="@form" render="@form"/>                   
+  </h:commandButton>
+  </h:panelGrid>
+</ui:composition>

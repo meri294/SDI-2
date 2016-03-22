@@ -1,0 +1,45 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/templates/template-general.xhtml">
+	<ui:define name="titulo">
+    #{msgs.titulo_creacionCorreo}
+</ui:define>
+
+	<ui:define name="cuerpo">
+		<h:form id="form-principal">
+			<ui:include src="/snippets/cerrarSesion.xhtml" />
+			<h:panelGrid columns="2" styleClass="formTable">
+  #{msgs.campo_asunto} 
+  <h:inputText value="#{correos.correo.asunto}" />
+  
+  #{msgs.campo_destinatarios} #{msgs.campo_ponerIDDestinatario}
+  <h:panelGroup>
+					<h:inputText value="#{correos.idDestinatarios}" required="true"
+						requiredMessage="#{msgs.mensaje_campoObligatorio}"
+						validatorMessage="#{msgs.mensaje_valorInvalido}"
+						id="destinatarios">
+						<f:validateRegex pattern="[0-9]+(\,[0-9]+)*" />
+					</h:inputText>
+					<h:message for="destinatarios" />
+				</h:panelGroup>
+  
+  #{msgs.campo_cuerpo} 
+  <h:inputTextarea value="#{correos.correo.cuerpo}" cols="80" rows="10"
+					wrap="virtual" />
+				<h:commandButton value="#{msgs.link_guardarBorrador}"
+					action="#{correos.guardarBorrador}" />
+				<h:commandButton value="#{msgs.link_enviar}"
+					action="#{correos.enviar}" />
+				<h:commandLink value="#{msgs.link_volverListaCorreos}"
+					action="listarCorreos" inmediate />
+			</h:panelGrid>
+		</h:form>
+	</ui:define>
+
+	<ui:define name="pie">
+		<ui:include src="/snippets/pie-idiomas-casa.xhtml" />
+	</ui:define>
+
+</ui:composition>

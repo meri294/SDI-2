@@ -1,0 +1,22 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    template="/templates/template-general.xhtml">
+<ui:define name="titulo">
+    #{msgs.titulo_reiniciarBBDD}
+</ui:define>
+
+<ui:define name="cuerpo">
+<h:form id="form-principal">
+<ui:include src="/snippets/cerrarSesion.xhtml"/>
+<p>#{msgs.mensaje_bbdd1}</p>
+<p>#{msgs.mensaje_bbdd2}</p> 
+<h:commandButton value="#{msgs.link_reiniciarBBDD}" action="#{sesion.reiniciarBBDD}" />
+<h:commandButton value="#{msgs.link_volverPrincipal}" action="principal" />     
+</h:form>
+</ui:define>
+<ui:define name="pie">
+   <ui:include src="/snippets/pie-idiomas.xhtml"/>
+</ui:define>
+</ui:composition>

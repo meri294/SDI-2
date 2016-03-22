@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf14277430675730" configfile="/sdi2-31/WebContent/WEB-INF/faces-config.xml">
+  <nodes xsi:type="pageflow:PFPage" name="*" x="-11" id="pf14283326719039" referenceLink="//@navigationRule.0/@fromViewId|" outlinks="pf142833267190310 pf142833267190311 pf142833267190312 pf142833267190313 pf14358341246363" path="*"/>
+  <nodes xsi:type="pageflow:PFPage" name="error.xhtml" x="-11" y="101" id="pf142833267190314" referenceLink="//@navigationRule.0/@navigationCase.0/@toViewId|" inlinks="pf142833267190310" path="/error.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="listaCorreos.xhtml" x="396" y="271" id="pf142833267190315" referenceLink="//@navigationRule.11/@navigationCase.0/@toViewId|" outlinks="pf142833267190316 pf142833267190317" inlinks="pf142833267190311 pf142833267190318 pf142833267190319 pf142833267190320" path="/listaCorreos.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="login.xhtml" x="720" y="360" id="pf142833267190321" referenceLink="//@navigationRule.3/@navigationCase.0/@toViewId|" outlinks="pf142833267190322 pf142833267190323 pf142833267190324" inlinks="pf142833267190312 pf142833267190325 pf142833267190322 pf142833267190326" path="/login.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="principal.xhtml" x="264" id="pf142833267190327" referenceLink="//@navigationRule.0/@navigationCase.4/@toViewId|" outlinks="pf142833267190328 pf142833267190329 pf142833267190330 pf142833267190318 pf142833267190331 pf142833267190332" inlinks="pf142833267190313 pf142833267190323 pf142833267190333 pf142833267190334" path="/principal.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="registro.xhtml" x="876" y="353" id="pf142833267190335" referenceLink="//@navigationRule.3/@navigationCase.2/@toViewId|" outlinks="pf142833267190336 pf142833267190325" inlinks="pf142833267190336 pf142833267190324" path="/registro.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="modificarDatos.xhtml" x="876" y="132" id="pf142833267190337" referenceLink="//@navigationRule.4/@navigationCase.1/@toViewId|" outlinks="pf142833267190333 pf142833267190338" inlinks="pf142833267190328 pf142833267190338" path="/modificarDatos.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="modificarPass.xhtml" x="-11" y="209" id="pf142833267190339" referenceLink="//@navigationRule.5/@navigationCase.1/@toViewId|" outlinks="pf142833267190334 pf142833267190340" inlinks="pf142833267190329 pf142833267190340" path="/modificarPass.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="listaContactos.xhtml" x="108" y="228" id="pf142833267190441" referenceLink="//@navigationRule.7/@navigationCase.0/@toViewId|" outlinks="pf142833267190442" inlinks="pf142833267190330 pf142833267190443" path="/listaContactos.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="listaUsuarios.xhtml" x="504" y="120" id="pf142833267190444" referenceLink="//@navigationRule.14/@navigationCase.0/@toViewId|" outlinks="pf142833267190445 pf142833267190446 pf142833267190447" inlinks="pf142833267190331 pf142833267190447 pf142833267190448 pf142833267190449" path="/listaUsuarios.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="reiniciarBBDD.xhtml" x="490" id="pf142833267190450" referenceLink="//@navigationRule.15/@fromViewId|" outlinks="pf142833267190326" inlinks="pf142833267190332" path="/reiniciarBBDD.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="altaContacto.xhtml" x="36" y="353" id="pf142833267190451" referenceLink="//@navigationRule.7/@navigationCase.1/@toViewId|" outlinks="pf142833267190443 pf142833267190452" inlinks="pf142833267190442 pf142833267190452" path="/altaContacto.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="creacionCorreo.xhtml" x="180" y="336" id="pf142833267190453" referenceLink="//@navigationRule.9/@navigationCase.1/@toViewId|" outlinks="pf142833267190319 pf142833267190454" inlinks="pf142833267190316 pf142833267190454" path="/creacionCorreo.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="verCorreo.xhtml" x="401" y="384" id="pf142833267190455" referenceLink="//@navigationRule.10/@fromViewId|" outlinks="pf142833267190456" inlinks="pf142833267190317" path="/verCorreo.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="editarCorreo.xhtml" x="586" y="360" id="pf142833267190457" referenceLink="//@navigationRule.11/@navigationCase.1/@toViewId|" outlinks="pf142833267190320 pf14357712487870" inlinks="pf142833267190456 pf14357712487870" path="/editarCorreo.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="adminModificarUsuario.xhtml" x="744" y="209" id="pf142833267190458" referenceLink="//@navigationRule.13/@navigationCase.1/@toViewId|" outlinks="pf142833267190448 pf142833267190459" inlinks="pf142833267190445 pf142833267190459" path="/adminModificarUsuario.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="adminModificarPassUsuario.xhtml" x="809" y="12" id="pf142833267190460" referenceLink="//@navigationRule.14/@navigationCase.1/@toViewId|" outlinks="pf142833267190449 pf142833267190461" inlinks="pf142833267190446 pf142833267190461" path="/adminModificarPassUsuario.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="principalAdmin2.xhtml" id="pf14358310611491" referenceLink="//@navigationRule.0/@navigationCase.4/@toViewId|" outlinks="pf14358320582952" inlinks="pf14358320582952 pf14358341246363" path="/principalAdmin2.xhtml"/>
+  <links id="pf142833267190310" target="pf142833267190314" source="pf14283326719039" outcome="error" redirect="true"/>
+  <links id="pf142833267190311" target="pf142833267190315" source="pf14283326719039" outcome="listarCorreos" redirect="true"/>
+  <links id="pf142833267190312" target="pf142833267190321" source="pf14283326719039" outcome="cerrar" redirect="true"/>
+  <links id="pf142833267190313" target="pf142833267190327" source="pf14283326719039" outcome="principal" redirect="true"/>
+  <links id="pf142833267190336" target="pf142833267190335" source="pf142833267190335" outcome="fracaso" redirect="true"/>
+  <links id="pf142833267190325" target="pf142833267190321" source="pf142833267190335" outcome="exito" redirect="true"/>
+  <links id="pf142833267190322" target="pf142833267190321" source="pf142833267190321" outcome="fracaso" redirect="true"/>
+  <links id="pf142833267190323" target="pf142833267190327" source="pf142833267190321" outcome="exito" redirect="true"/>
+  <links id="pf142833267190324" target="pf142833267190335" source="pf142833267190321" outcome="registro" redirect="true"/>
+  <links id="pf142833267190328" target="pf142833267190337" source="pf142833267190327" outcome="modificarDatos" redirect="true"/>
+  <links id="pf142833267190329" target="pf142833267190339" source="pf142833267190327" outcome="modificarPass" redirect="true"/>
+  <links id="pf142833267190330" target="pf142833267190441" source="pf142833267190327" outcome="listarContactos" redirect="true"/>
+  <links id="pf142833267190318" target="pf142833267190315" source="pf142833267190327" outcome="listarCorreos" redirect="true"/>
+  <links id="pf142833267190331" target="pf142833267190444" source="pf142833267190327" outcome="listarUsuarios" redirect="true"/>
+  <links id="pf142833267190332" target="pf142833267190450" source="pf142833267190327" outcome="reiniciarBBDD" redirect="true"/>
+  <links id="pf142833267190333" target="pf142833267190327" source="pf142833267190337" outcome="exito" redirect="true"/>
+  <links id="pf142833267190338" target="pf142833267190337" source="pf142833267190337" outcome="fracaso" redirect="true"/>
+  <links id="pf142833267190334" target="pf142833267190327" source="pf142833267190339" outcome="exito" redirect="true"/>
+  <links id="pf142833267190340" target="pf142833267190339" source="pf142833267190339" outcome="fracaso" redirect="true"/>
+  <links id="pf142833267190442" target="pf142833267190451" source="pf142833267190441" outcome="crearContacto" redirect="true"/>
+  <links id="pf142833267190443" target="pf142833267190441" source="pf142833267190451" outcome="exito" redirect="true"/>
+  <links id="pf142833267190452" target="pf142833267190451" source="pf142833267190451" outcome="fracaso" redirect="true"/>
+  <links id="pf142833267190316" target="pf142833267190453" source="pf142833267190315" outcome="crearCorreo" redirect="true"/>
+  <links id="pf142833267190317" target="pf142833267190455" source="pf142833267190315" outcome="verCorreo" redirect="true"/>
+  <links id="pf142833267190319" target="pf142833267190315" source="pf142833267190453" outcome="exito" redirect="true"/>
+  <links id="pf142833267190454" target="pf142833267190453" source="pf142833267190453" outcome="fracaso" redirect="true"/>
+  <links id="pf142833267190456" target="pf142833267190457" source="pf142833267190455" outcome="editarBorrador" redirect="true"/>
+  <links id="pf142833267190320" target="pf142833267190315" source="pf142833267190457" outcome="exito" redirect="true"/>
+  <links id="pf142833267190445" target="pf142833267190458" source="pf142833267190444" outcome="modificarUsuario" redirect="true"/>
+  <links id="pf142833267190446" target="pf142833267190460" source="pf142833267190444" outcome="modificarPassUsuario" redirect="true"/>
+  <links id="pf142833267190447" target="pf142833267190444" source="pf142833267190444" outcome="exito" redirect="true"/>
+  <links id="pf142833267190448" target="pf142833267190444" source="pf142833267190458" outcome="exito" redirect="true"/>
+  <links id="pf142833267190459" target="pf142833267190458" source="pf142833267190458" outcome="fracaso" redirect="true"/>
+  <links id="pf142833267190449" target="pf142833267190444" source="pf142833267190460" outcome="exito" redirect="true"/>
+  <links id="pf142833267190326" target="pf142833267190321" source="pf142833267190450" outcome="exito" redirect="true"/>
+  <links id="pf142833267190461" target="pf142833267190460" source="pf142833267190460" outcome="fracaso" redirect="true"/>
+  <links id="pf14357712487870" target="pf142833267190457" source="pf142833267190457" outcome="fracaso" redirect="true"/>
+  <links id="pf14358320582952" target="pf14358310611491" source="pf14358310611491" outcome="exito" redirect="true"/>
+  <links id="pf14358341246363" target="pf14358310611491" source="pf14283326719039" outcome="admin2" redirect="true"/>
+</pageflow:Pageflow>

@@ -1,0 +1,48 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/templates/template-general.xhtml">
+	<ui:define name="titulo">
+    #{msgs.titulo_listadoUsuarios}
+</ui:define>
+
+	<ui:define name="cuerpo">
+		<h:form id="form-principal">
+		<ui:include src="/snippets/cerrarSesion.xhtml"/>
+			<h:dataTable var="vusuario"
+				value="#{usuarios.usuarios}" border="0">
+				<h:column>
+					<f:facet name="header">#{msgs.campo_login}</f:facet>#{vusuario.login}</h:column>
+				<h:column>
+					<f:facet name="header">#{msgs.campo_nombre}</f:facet>#{vusuario.nombre}</h:column>
+				<h:column>
+					<f:facet name="header">#{msgs.campo_apellidos}</f:facet>#{vusuario.apellidos}</h:column>
+				<h:column>
+					<f:facet name="header">#{msgs.campo_email}</f:facet>#{vusuario.email}</h:column>
+				<h:column>
+				<!-- Activar/Desactivar -->
+					<f:facet name="header">#{msgs.campo_activarDesactivar}</f:facet>
+					<h:panelGroup rendered="#{vusuario.activo}">#{msgs.campo_activo}
+					<h:commandLink action="#{usuarios.desactivar(vusuario)}" value="#{msgs.link_desactivar}"/></h:panelGroup>
+					
+					<h:panelGroup rendered="#{!vusuario.activo}">#{msgs.campo_inactivo}
+					<h:commandLink action="#{usuarios.activar(vusuario)}" value="#{msgs.link_activar}"/></h:panelGroup>
+					</h:column>
+				<h:column>
+				<!-- Modificar datos -->
+					<f:facet name="header">#{msgs.link_modificarDatos}</f:facet>
+						<h:commandLink action="modificarUsuario" actionListener="#{cambio.setUsuario(vusuario)}" value="#{msgs.link_modificarDatos}"/></h:column>
+						<h:column>
+				<!-- Cambiar pass -->
+					<f:facet name="header">#{msgs.link_modificarDatos}</f:facet>
+						<h:commandLink action="modificarPassUsuario" actionListener="#{cambio.setUsuario(vusuario)}" value="#{msgs.titulo_cambiarPass}"/></h:column>
+			</h:dataTable>
+			<h:commandButton value="#{msgs.link_refrescar}" 
+                   action="#{usuarios.refrescar}"/>
+		</h:form>
+	</ui:define>
+	<ui:define name="pie">
+		<ui:include src="/snippets/pie-idiomas-casa.xhtml" />
+	</ui:define>
+</ui:composition>

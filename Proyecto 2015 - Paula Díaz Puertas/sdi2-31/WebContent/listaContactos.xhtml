@@ -1,0 +1,52 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/templates/template-general.xhtml">
+	<ui:define name="titulo">
+    #{msgs.titulo_listadoContactos}
+</ui:define>
+
+	<ui:define name="cuerpo">
+		<h:form id="form-principal">
+			<ui:include src="/snippets/cerrarSesion.xhtml" />
+			<h:panelGroup rendered="#{!sesion.admin}">
+				<h1>#{msgs.titulo_contactosPrivados}</h1> <h:dataTable
+						var="contacto" value="#{contactos.contactosPrivados}" border="0">
+						<h:column>
+							<f:facet name="header">#{msgs.campo_id}</f:facet>#{contacto.id}</h:column>
+						<h:column>
+							<f:facet name="header">#{msgs.campo_nombre}</f:facet>#{contacto.nombre}</h:column>
+						<h:column>
+							<f:facet name="header">#{msgs.campo_apellidos}</f:facet>#{contacto.apellidos}</h:column>
+						<h:column>
+							<f:facet name="header">#{msgs.campo_email}</f:facet>#{contacto.email}</h:column>
+						<h:column>
+							<f:facet name="header">#{msgs.campo_direccion}</f:facet>#{contacto.direccion}</h:column>
+						<h:column>
+							<f:facet name="header">#{msgs.campo_ciudad}</f:facet>#{contacto.ciudad}</h:column>
+					</h:dataTable>
+			</h:panelGroup>
+
+			<h1>#{msgs.titulo_contactosPublicos}</h1> <h:dataTable
+					var="contacto" value="#{contactos.contactosPublicos}" border="0">
+					<h:column>
+						<f:facet name="header">#{msgs.campo_id}</f:facet>#{contacto.id}</h:column>
+					<h:column>
+						<f:facet name="header">#{msgs.campo_nombre}</f:facet>#{contacto.nombre}</h:column>
+					<h:column>
+						<f:facet name="header">#{msgs.campo_apellidos}</f:facet>#{contacto.apellidos}</h:column>
+					<h:column>
+						<f:facet name="header">#{msgs.campo_email}</f:facet>#{contacto.email}</h:column>
+					<h:column>
+						<f:facet name="header">#{msgs.campo_direccion}</f:facet>#{contacto.direccion}</h:column>
+					<h:column>
+						<f:facet name="header">#{msgs.campo_ciudad}</f:facet>#{contacto.ciudad}</h:column>
+				</h:dataTable> <br /> <h:commandLink value="#{msgs.link_crearContacto}"
+					action="crearContacto" />
+		</h:form>
+	</ui:define>
+	<ui:define name="pie">
+		<ui:include src="/snippets/pie-idiomas-casa.xhtml" />
+	</ui:define>
+</ui:composition>

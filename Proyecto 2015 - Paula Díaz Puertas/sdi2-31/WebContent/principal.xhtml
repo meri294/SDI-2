@@ -1,0 +1,36 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    template="/templates/template-general.xhtml">
+<ui:define name="titulo">
+    #{msgs.titulo_paginaPrincipal}
+</ui:define>
+
+<ui:define name="cuerpo">
+<h:form id="form-principal">
+<ui:include src="/snippets/cerrarSesion.xhtml"/>
+#{msgs.campo_login}: #{sesion.usuario.login} <br/>
+#{msgs.campo_nombre}: #{sesion.usuario.nombre} <br/>
+#{msgs.campo_apellidos}: #{sesion.usuario.apellidos} <br/>
+#{msgs.campo_email}: #{sesion.usuario.email} <br/>
+<br/> <br/>
+<!-- REVISAR ACTION/ACTIONLISTENER DE TODOS LOS LINKS -->
+<h:commandLink value="#{msgs.link_modificarDatos}" action="modificarDatos" actionListener="#{cambio.setUsuario(sesion.usuario)}"/> 
+<br/>
+<h:commandLink value="#{msgs.titulo_cambiarPass}" action="modificarPass" actionListener="#{cambio.setUsuario(sesion.usuario)}"/> 
+<br/>
+<h:commandLink value="#{msgs.link_listarContactos}" action="listarContactos"/> 
+<br/>
+<h:commandLink value="#{msgs.link_listarCorreos}" action="listarCorreos"/> 
+<br/>
+<h:commandLink value="#{msgs.link_listarUsuarios}" rendered="#{sesion.admin}" action="listarUsuarios"/> 
+<br/>
+<h:commandLink value="#{msgs.link_reiniciarBBDD}" rendered="#{sesion.admin}" action="reiniciarBBDD"/> 
+<br/>
+</h:form>
+</ui:define>
+<ui:define name="pie">
+     <ui:include src="/snippets/pie-idiomas.xhtml"/>
+</ui:define>
+</ui:composition>

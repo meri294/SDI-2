@@ -1,0 +1,42 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    template="/templates/template-general.xhtml">
+<ui:define name="titulo">
+<h:outputFormat value="#{msgs.titulo_adminModificarPass}"><f:param value="#{cambio.usuario.login}"/></h:outputFormat> 
+</ui:define>
+
+<ui:define name="cuerpo">
+<h:form id="form-principal">
+<ui:include src="/snippets/cerrarSesion.xhtml"/>
+  
+<h:panelGrid columns="2" styleClass="formTable">
+  #{msgs.campo_passNueva}
+  <h:panelGroup> 
+  <h:inputSecret value="#{cambio.passNueva}"
+               required="true"
+               requiredMessage="#{msgs.mensaje_campoObligatorio}"
+               id="passNueva">          
+  </h:inputSecret>
+  <h:message for="passNueva"/>
+  </h:panelGroup>
+  
+  #{msgs.campo_repitePassNueva}
+  <h:panelGroup> 
+  <h:inputSecret value="#{cambio.repitePassNueva}"
+               required="true"
+               requiredMessage="#{msgs.mensaje_campoObligatorio}"
+               id="repitePassNueva">          
+  </h:inputSecret>
+  <h:message for="repitePassNueva"/>
+  </h:panelGroup>
+  </h:panelGrid>
+  <h:commandButton value="#{msgs.titulo_cambiarPass}" 
+                   action="#{cambio.cambiarPass}"/>
+</h:form>
+</ui:define>
+<ui:define name="pie">
+     <ui:include src="/snippets/pie-idiomas-casa.xhtml"/>
+</ui:define>
+</ui:composition>

@@ -1,0 +1,53 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    template="/templates/template-general.xhtml">
+<ui:define name="titulo">
+<h:outputFormat value="#{msgs.titulo_adminModificarUsuario}"> <f:param value="#{cambio.usuario.login}"/></h:outputFormat> 
+</ui:define>
+
+<ui:define name="cuerpo">
+<h:form id="form-principal">
+<ui:include src="/snippets/cerrarSesion.xhtml"/>
+<h:panelGrid columns="2" styleClass="formTable">
+  #{msgs.campo_nuevoNombre} 
+  <h:panelGroup>
+  <h:inputText value="#{cambio.nombre}"
+               required="true"
+               requiredMessage="#{msgs.mensaje_campoObligatorio}"
+               id="nombre">        
+  </h:inputText>
+  <h:message for="nombre"/>
+  </h:panelGroup>
+  
+  #{msgs.campo_nuevosApellidos} 
+  <h:panelGroup>
+  <h:inputText value="#{cambio.apellidos}"
+               required="true"
+               requiredMessage="#{msgs.mensaje_campoObligatorio}"
+               id="apellidos">        
+  </h:inputText>
+  <h:message for="apellidos"/>
+  </h:panelGroup>
+  
+  #{msgs.campo_nuevoEmail} 
+  <h:panelGroup>
+  <h:inputText value="#{cambio.email}"
+               required="true"
+               requiredMessage="#{msgs.mensaje_campoObligatorio}"
+               validatorMessage="#{msgs.mensaje_valorInvalido}"
+               id="email">
+  		<f:validateRegex pattern=".+@.+\.[a-z]+"/>          
+  </h:inputText>
+  <h:message for="email"/>
+  </h:panelGroup>   
+  </h:panelGrid>
+  <h:commandButton value="#{msgs.titulo_cambiarDatos}" 
+                   action="#{cambio.cambiarDatos}"/>
+</h:form>
+</ui:define>
+<ui:define name="pie">
+     <ui:include src="/snippets/pie-idiomas-casa.xhtml"/>
+</ui:define>
+</ui:composition>

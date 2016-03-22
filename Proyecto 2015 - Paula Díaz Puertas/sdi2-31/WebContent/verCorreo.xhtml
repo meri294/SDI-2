@@ -1,0 +1,37 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/templates/template-general.xhtml">
+	<ui:define name="titulo">
+    #{msgs.titulo_detalles}
+</ui:define>
+
+	<ui:define name="cuerpo">
+		<h:form id="form-principal">
+			<ui:include src="/snippets/cerrarSesion.xhtml" />
+			<h:panelGrid columns="2" styleClass="formTable">
+  #{msgs.campo_asunto} 
+  <h:inputText value="#{correos.correo.asunto}" readonly="true" />
+  
+  #{msgs.campo_destinatarios}
+	<h:inputTextarea value="#{correos.emailDestinatarios}" cols="80"
+					rows="10" readonly="true" />
+  
+  #{msgs.campo_cuerpo} 
+  <h:inputTextarea value="#{correos.correo.cuerpo}" cols="80" rows="10"
+					wrap="virtual" readonly="true" />
+			</h:panelGrid>
+			
+				<h:commandButton value="#{msgs.titulo_editarBorrador}"
+					action="editarBorrador" rendered="#{correos.borrador}" /><br/>
+					<h:commandLink value="#{msgs.link_volverListaCorreos}"
+					action="listarCorreos" />
+		</h:form>
+	</ui:define>
+
+	<ui:define name="pie">
+		<ui:include src="/snippets/pie-idiomas-casa.xhtml" />
+	</ui:define>
+
+</ui:composition>

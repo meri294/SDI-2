@@ -1,0 +1,29 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    template="/templates/template-general.xhtml">
+<ui:define name="titulo">
+    #{msgs.titulo_iniciarSesion}
+</ui:define>
+
+<ui:define name="cuerpo">
+<h:form id="form-principal">
+  <h:panelGrid columns="2" styleClass="formTable">
+  #{msgs.campo_login} 
+  <h:inputText value="#{login.login}"/>
+  
+  #{msgs.campo_pass} 
+  <h:inputSecret value="#{login.pass}"/>
+  <h:commandButton value="#{msgs.link_iniciarSesion}" 
+                   action="#{login.validar}"/>
+  </h:panelGrid>
+  <h:commandLink value="#{msgs.link_registrarse}" action="registro"/>
+</h:form>
+</ui:define>
+
+<ui:define name="pie">
+     <ui:include src="/snippets/pie-idiomas.xhtml"/>
+</ui:define>
+
+</ui:composition>

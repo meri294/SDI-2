@@ -1,0 +1,76 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    template="/templates/template-general.xhtml">
+<ui:define name="titulo">
+    #{msgs.titulo_registro}
+</ui:define>
+
+<ui:define name="cuerpo">
+<h:form id="form-principal">
+  <h:panelGrid columns="2" styleClass="formTable">
+  #{msgs.campo_login} 
+  <h:panelGroup>
+  <h:inputText value="#{registro.login}"
+               required="true"
+               requiredMessage="#{msgs.mensaje_campoObligatorio}"
+               id="login">        
+  </h:inputText>
+  <h:message for="login"/>
+  </h:panelGroup>
+  
+  #{msgs.campo_nombre} 
+  <h:panelGroup>
+  <h:inputText value="#{registro.nombre}"
+               required="true"
+               requiredMessage="#{msgs.mensaje_campoObligatorio}"
+               id="nombre">        
+  </h:inputText>
+  <h:message for="nombre"/>
+  </h:panelGroup>
+  
+  #{msgs.campo_apellidos} 
+  <h:panelGroup>
+  <h:inputText value="#{registro.apellidos}"
+               required="true"
+               requiredMessage="#{msgs.mensaje_campoObligatorio}"
+               id="apellidos">          
+  </h:inputText>
+  <h:message for="apellidos"/>
+  </h:panelGroup>
+  
+  #{msgs.campo_pass}
+  <h:panelGroup>
+  <h:inputSecret value="#{registro.pass}"
+               required="true"
+               requiredMessage="#{msgs.mensaje_campoObligatorio}"
+               id="pass">          
+  </h:inputSecret>
+  <h:message for="pass"/>
+  </h:panelGroup>  
+  
+  #{msgs.campo_repitePass}
+  <h:panelGroup> 
+  <h:inputSecret value="#{registro.repitePass}"
+               required="true"
+               requiredMessage="#{msgs.mensaje_campoObligatorio}"
+               id="repitePass">          
+  </h:inputSecret>
+  <h:message for="repitePass"/>
+  </h:panelGroup>
+  <h:commandButton value="#{msgs.link_registrar}" 
+                   action="#{registro.registrar}">  
+     <!-- Ojo que aquí render tiene que incluir todo el formulario 
+     ya que los mensajes de error pueden ser renderizados también por Ajax de form implícita -->              
+     <f:ajax execute="@form" render="@form"/>                   
+  </h:commandButton>
+  </h:panelGrid>
+</h:form>
+</ui:define>
+
+<ui:define name="pie">
+     <ui:include src="/snippets/pie-idiomas.xhtml"/>
+</ui:define>
+
+</ui:composition>

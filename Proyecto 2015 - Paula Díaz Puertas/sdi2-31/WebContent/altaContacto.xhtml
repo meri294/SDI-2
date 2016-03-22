@@ -1,0 +1,52 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    template="/templates/template-general.xhtml">
+<ui:define name="titulo">
+    #{msgs.titulo_creacionContacto}
+</ui:define>
+
+<ui:define name="cuerpo">
+<h:form id="form-principal">
+<ui:include src="/snippets/cerrarSesion.xhtml"/>
+  <h:panelGrid columns="2" styleClass="formTable">
+  #{msgs.campo_email}
+  <h:panelGroup>
+  <h:inputText value="#{contactos.contacto.email}"
+               required="true"
+               requiredMessage="#{msgs.mensaje_campoObligatorio}"
+               validatorMessage="#{msgs.mensaje_valorInvalido}"
+               id="email">
+          <f:validateRegex pattern=".+@.+\.[a-z]+"/>       
+  </h:inputText>
+  <h:message for="email"/>
+  </h:panelGroup>
+  
+  #{msgs.campo_nombre} 
+  <h:inputText value="#{contactos.contacto.nombre}"/>
+  
+  #{msgs.campo_apellidos} 
+  <h:inputText value="#{contactos.contacto.apellidos}"/>
+  
+  #{msgs.campo_direccion}
+  <h:inputText value="#{contactos.contacto.direccion}"/>
+  
+  #{msgs.campo_ciudad}
+  <h:inputText value="#{contactos.contacto.ciudad}"/>
+  
+  <h:commandButton value="#{msgs.link_crearContacto}" 
+                   action="#{contactos.guardarContacto}">  
+     <!-- Ojo que aquí render tiene que incluir todo el formulario 
+     ya que los mensajes de error pueden ser renderizados también por Ajax de form implícita -->              
+     <f:ajax execute="@form" render="@form"/>                   
+  </h:commandButton>
+  </h:panelGrid>
+</h:form>
+</ui:define>
+
+<ui:define name="pie">
+     <ui:include src="/snippets/pie-idiomas-casa.xhtml"/>
+</ui:define>
+
+</ui:composition>
