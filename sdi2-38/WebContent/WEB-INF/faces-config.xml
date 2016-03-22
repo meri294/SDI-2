@@ -47,17 +47,7 @@
 			<from-outcome>exito</from-outcome>
 			<to-view-id>/listaViajes.xhtml</to-view-id>
 			<redirect />
-		</navigation-case>
-		<navigation-case>
-			<from-outcome>cerrar</from-outcome>
-			<to-view-id>/login.xhtml</to-view-id>
-			<redirect />
-		</navigation-case>
-		<navigation-case>
-			<from-outcome>principal</from-outcome>
-			<to-view-id>/principalRegistrado.xhtml</to-view-id>
-			<redirect />
-		</navigation-case>	
+		</navigation-case>		
 	</navigation-rule>
 	
 	<navigation-rule>
@@ -69,6 +59,7 @@
 			<redirect />
 		</navigation-case>
 		<navigation-case>
+			<from-action>#{login.validar}</from-action>
 			<from-outcome>fracaso</from-outcome>
 			<to-view-id>/login.xhtml</to-view-id>
 			<redirect />

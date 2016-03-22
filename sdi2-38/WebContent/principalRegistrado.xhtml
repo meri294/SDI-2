@@ -10,19 +10,16 @@
     </ui:define>
 
 	<ui:define name="cuerpo">
-		<h:form  method="post">
+		<div>
 		<center>
 			<h1><h:outputFormat value="#{msgs.titulo_bienvenido}"> <f:param value="#{sesion.usuario.name}"/></h:outputFormat></h1>
 		</center>
-		<ul>
-			<li><h:commandLink value="#{msgs.enlace_listarViajes}" action="#{tripsController.listado}"/></li>
-			<!-- TODO: IMPLEMENTAR -->
-			<li><h:commandLink value="#{msgs.enlace_registrarViaje}" action="Algo que me pase a registroViaje.xhtml" actionListener="Algo que inicialice el trip en tripsController para rellenarlo posteriormente (a no ser que se haga en el action)"/></li>
-			<li><h:commandLink value="#{msgs.enlace_misViajes}" action="Algo que me pase a viajesInvolucrado.xhtml" actionListener="Algo que prepare la variable en la que se almacenarán los viajes del usuario (a no ser que se haga en el action)"/></li>
-			<li><h:commandLink value="#{msgs.enlace_comentarViaje}" action="Algo que me pase a listaComentables.xhtml" actionListener="Algo que prepare la variable en la que se almacenarán los viajes a comentar (a no ser que se haga en el action)"/></li>
-		</ul>
-		</h:form>
 		<!-- <ui:include src="/snippets/muestraMensaje.xhtml" /> -->
+	</div>
 	</ui:define>
+
+	<!-- <ui:define name="pie">
+		<ui:include src="/snippets/pie-casa.xhtml" />
+	</ui:define> -->
 
 </ui:composition>

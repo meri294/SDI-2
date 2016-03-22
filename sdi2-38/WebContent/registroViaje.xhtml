@@ -2,8 +2,7 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:p="http://primefaces.org/ui"
-	template="/templates/template-general.xhtml">
+	xmlns:p="http://primefaces.org/ui">
 
 	<ui:define name="titulo">
       <h:outputFormat value="#{msgs.cabecera_rellenable}"> <f:param value="#{msgs.cabecera_registroViaje}"/></h:outputFormat>
@@ -151,6 +150,10 @@
 		<!-- <ui:include src="/snippets/muestraMensaje.xhtml" /> -->
 	</form>
 	<hr>
+	</ui:define>
+
+	<ui:define name="pie">
+		<ui:include src="/snippets/pie-casa.xhtml" />
 	</ui:define>
 
 </ui:composition>

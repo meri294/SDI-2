@@ -17,25 +17,22 @@
 					<th class="title">
 						<h1>
 							<ui:insert name="titulo">
-								<!-- #{msgs.tituloDefectoCabecera} --></ui:insert>
+								<!-- #{msgs.tituloDefectoCabecera} -->
+							</ui:insert>
 						</h1>
 					</th>
 				</tr>
 			</table>
-			
-			<p:menubar id="mimenu">
-			<ui:include src="/snippets/menu-opcionesRegistrado.xhtml" />
-			<ui:include src="/snippets/menu-idiomas.xhtml" />
-			</p:menubar>
+			<ui:include src="/snippets/menu.xhtml"/>
 		</h:form>
 
-		<ui:insert name="cuerpo"><!-- #{msgs.tituloDefectoCuerpo} --></ui:insert>
+		<ui:insert name="cuerpo">
+			<!-- #{msgs.tituloDefectoCuerpo} -->
+		</ui:insert>
 
 		<br />
 		<br />
-		<ui:insert name="pie"></ui:insert>
-		<br />
-		<em>#{msgs.titulo_pie}</em>
+		<ui:insert name="pie">#{msgs.titulo_pie}</ui:insert>
 
 	</h:body>
 </f:view>
