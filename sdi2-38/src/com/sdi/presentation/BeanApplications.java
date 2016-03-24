@@ -1,12 +1,11 @@
 package com.sdi.presentation;
 
-import java.io.Serializable;
-
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
-import javax.faces.bean.SessionScoped;
+import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 
@@ -15,10 +14,9 @@ import com.sdi.infrastructure.Factories;
 import com.sdi.model.Application;
 
 @ManagedBean(name = "applicationsController")
-@SessionScoped
-public class BeanApplications implements Serializable {
-	private static final long serialVersionUID = 55555L;
-	
+public class BeanApplications{
+	private UIComponent comp;
+	private FacesContext context=FacesContext.getCurrentInstance();
 	@ManagedProperty(value = "#{application}")
 	private BeanApplication application;
 
@@ -72,7 +70,7 @@ public class BeanApplications implements Serializable {
 			return "exito"; 
 
 		} catch (Exception e) {
-			e.printStackTrace();
+			context.addMessage(null, new FacesMessage(e.getMessage()));
 			return "error";
 		}
 
@@ -109,12 +107,14 @@ public class BeanApplications implements Serializable {
 
 	}
 
-	public String salva() {
+	public String salva(Long userId, Long tripId) {
 		ApplicationService service;
 		try {
 			service = Factories.services.createApplicationService();
 			if (application.getUserId() == null 
 					&& application.getTripId()==null) {
+				application.setTripId(tripId);
+				application.setUserId(userId);
 				service.saveApplication(application);
 			} else {
 				service.updateApplication(application);
@@ -123,7 +123,7 @@ public class BeanApplications implements Serializable {
 			return "exito";
 
 		} catch (Exception e) {
-			e.printStackTrace();
+			context.addMessage(comp.getClientId(context), new FacesMessage(e.getMessage()));
 			return "error"; 
 		}
 

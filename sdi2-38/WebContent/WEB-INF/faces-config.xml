@@ -9,7 +9,7 @@
 			<var>msgs</var>
 		</resource-bundle>
 	</application>
-	
+
 	<managed-bean>
 		<managed-bean-name>settings</managed-bean-name>
 		<managed-bean-class>com.sdi.presentation.BeanLanguages</managed-bean-class>
@@ -50,7 +50,7 @@
 		<managed-bean-class>com.sdi.presentation.BeanApplications</managed-bean-class>
 		<managed-bean-scope>session</managed-bean-scope>
 	</managed-bean>
-	
+
 	<navigation-rule>
 		<from-view-id>*</from-view-id>
 		<navigation-case>
@@ -68,9 +68,9 @@
 			<from-outcome>cerrar</from-outcome>
 			<to-view-id>/login.xhtml</to-view-id>
 			<redirect />
-		</navigation-case>		
+		</navigation-case>
 	</navigation-rule>
-	
+
 	<navigation-rule>
 		<from-view-id>/login.xhtml</from-view-id>
 		<navigation-case>
@@ -93,9 +93,14 @@
 	<navigation-rule>
 		<from-view-id>/listaViajes.xhtml</from-view-id>
 		<navigation-case>
-			<from-action>#{applicationsController.salva}</from-action>
+			<from-action>#{applicationsController.salva(sesion.usuario.id, valtrip.id)}</from-action>
 			<from-outcome>exito</from-outcome>
 			<to-view-id>/principalRegistrado.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-action>#{applicationsController.salva(sesion.usuario.id, valtrip.id)}</from-action>
+			<from-outcome>error</from-outcome>
+			<to-view-id>/listaViajes.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
 

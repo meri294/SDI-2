@@ -1,17 +1,12 @@
 package com.sdi.presentation;
 
-import java.io.Serializable;
-
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
 import javax.faces.event.ActionEvent;
 
 import com.sdi.model.Application;
 
 @ManagedBean(name = "application")
-@SessionScoped
-public class BeanApplication extends Application implements Serializable {
-	private static final long serialVersionUID = 55556L;
+public class BeanApplication extends Application{
 
 	public BeanApplication() {
 		iniciaApplication(null);
