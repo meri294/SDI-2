@@ -12,6 +12,7 @@ import alb.util.log.Log;
 
 import com.sdi.infrastructure.Factories;
 import com.sdi.model.User;
+import com.sdi.util.CifradoMD5;
 
 @ManagedBean(name = "login")
 @ViewScoped
@@ -63,7 +64,8 @@ public class BeanLogin implements Serializable {
 		// El service debe devolver un usuario si se ha validado correctamente
 		// o null si no.
 
-		usuario = Factories.services.createLoginService().validar(login, pass);
+		usuario = Factories.services.createLoginService().validar(login, 
+				CifradoMD5.getStringMessageDigest(pass));
 		if (usuario != null) {
 			sesion.setUsuario(usuario);
 			Log.info("El usuario [%s] ha iniciado sesión", login);
