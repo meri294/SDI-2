@@ -69,6 +69,18 @@
 			<to-view-id>/login.xhtml</to-view-id>
 			<redirect />
 		</navigation-case>
+		<navigation-case>
+			<from-outcome>registro</from-outcome>
+			<to-view-id>/registro.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<from-view-id>/listaViajes.xhtml</from-view-id>
+		<navigation-case>
+			<from-action>#{applicationsController.salva}</from-action>
+			<from-outcome>exito</from-outcome>
+			<to-view-id>/principalRegistrado.xhtml</to-view-id>
+		</navigation-case>
 	</navigation-rule>
 
 </faces-config>

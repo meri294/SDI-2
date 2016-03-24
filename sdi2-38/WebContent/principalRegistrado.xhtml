@@ -10,12 +10,12 @@
     </ui:define>
 
 	<ui:define name="cuerpo">
-		<div>
+		<h:form>
 		<center>
 			<h1><h:outputFormat value="#{msgs.titulo_bienvenido}"> <f:param value="#{sesion.usuario.name}"/></h:outputFormat></h1>
 		</center>
 		<!-- <ui:include src="/snippets/muestraMensaje.xhtml" /> -->
-	</div>
+	</h:form>
 	</ui:define>
 
 </ui:composition>

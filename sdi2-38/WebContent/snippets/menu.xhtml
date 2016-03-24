@@ -11,7 +11,8 @@
 				action="#{tripsController.listado}" />
 			<p:menuitem id="linkRegistrarse" style="float:left"
 				value="#{msgs.enlace_registrarse}"
-				rendered="#{sesion.usuario==null}" />
+				rendered="#{sesion.usuario==null}" 
+				action="registro"/>
 			<p:menuitem id="linkMisViajes" style="float:left"
 				value="#{msgs.enlace_misViajes}" rendered="#{sesion.usuario!=null}" />
 			<p:menuitem id="linkRegistrarViaje" style="float:left"

@@ -33,10 +33,15 @@
 						<f:facet name="header">#{msgs.campo_plazasLibres}</f:facet>
 						#{valtrip.availablePax}
 					</p:column>
+					<p:column rendered="#{sesion.usuario!=null}">
+						<f:facet name="header">#{msgs.enlace_solicitar}</f:facet>
+						<p:commandLink id="solicitarlink" action="#{applicationsController.salva}" type="submit"
+							value="#{msgs.enlace_solicitar}">
+						</p:commandLink>
+					</p:column>
 				</p:dataTable>
 			</p:panel>
 		</h:form>
-		<!-- <ui:include src="/snippets/muestraMensaje.xhtml" /> -->
 	</ui:define>
 
 </ui:composition>

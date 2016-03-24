@@ -1,5 +1,6 @@
 package com.sdi.business.impl;
 
+import com.sdi.business.ApplicationService;
 import com.sdi.business.CambioUsuarioService;
 import com.sdi.business.LoginService;
 import com.sdi.business.ReinicioBBDDService;
@@ -26,6 +27,11 @@ public class SimpleServicesFactory implements ServicesFactory {
 	@Override
 	public TripService createTripService() {
 		return new SimpleTripService();
+	}
+
+	@Override
+	public ApplicationService createApplicationService() {
+		return new SimpleApplicationService();
 	}
 
 }

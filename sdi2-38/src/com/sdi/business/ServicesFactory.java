@@ -10,4 +10,6 @@ public interface ServicesFactory {
 	
 	public TripService createTripService();
 
+	public ApplicationService createApplicationService();
+
 }
