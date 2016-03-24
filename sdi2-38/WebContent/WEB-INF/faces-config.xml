@@ -9,6 +9,7 @@
 			<var>msgs</var>
 		</resource-bundle>
 	</application>
+	
 	<managed-bean>
 		<managed-bean-name>settings</managed-bean-name>
 		<managed-bean-class>com.sdi.presentation.BeanLanguages</managed-bean-class>
@@ -30,8 +31,23 @@
 		<managed-bean-scope>session</managed-bean-scope>
 	</managed-bean>
 	<managed-bean>
-		<managed-bean-name>cambio</managed-bean-name>
-		<managed-bean-class>com.sdi.presentation.BeanCambio</managed-bean-class>
+		<managed-bean-name>trip</managed-bean-name>
+		<managed-bean-class>com.sdi.presentation.BeanTrip</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>tripsController</managed-bean-name>
+		<managed-bean-class>com.sdi.presentation.BeanTrips</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>application</managed-bean-name>
+		<managed-bean-class>com.sdi.presentation.BeanApplication</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>applicationsController</managed-bean-name>
+		<managed-bean-class>com.sdi.presentation.BeanApplications</managed-bean-class>
 		<managed-bean-scope>session</managed-bean-scope>
 	</managed-bean>
 	

@@ -18,6 +18,7 @@ import com.sdi.model.Application;
 @SessionScoped
 public class BeanApplications implements Serializable {
 	private static final long serialVersionUID = 55555L;
+	
 	@ManagedProperty(value = "#{application}")
 	private BeanApplication application;
 
