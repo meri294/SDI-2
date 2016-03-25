@@ -81,7 +81,7 @@
 		</navigation-case>
 		<navigation-case>
 			<from-action>#{login.validar}</from-action>
-			<from-outcome>fracaso</from-outcome>
+			<from-outcome>error</from-outcome>
 			<to-view-id>/login.xhtml</to-view-id>
 			<redirect />
 		</navigation-case>

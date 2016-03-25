@@ -61,34 +61,35 @@ public class BeanLogin implements Serializable {
 
 		if (usuario != null) {
 			Log.info("Se ha intentado iniciar sesión como [%s] "
-				+ "teniendo la sesión iniciada como [%s]",
-					login, usuario.getName());
+					+ "teniendo la sesión iniciada como [%s]", login,
+					usuario.getName());
 			sesion.cerrar();
-			FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR,
-					bundle.getString("error_sesionYaIniciada"), 
+			FacesMessage message = new FacesMessage(
+					FacesMessage.SEVERITY_ERROR,
+					bundle.getString("error_sesionYaIniciada"),
 					bundle.getString("error_sesionYaIniciada"));
 			facesContext.addMessage(null, message);
 			return Resultado.error.name();
 		}
 		// El service debe devolver un usuario si se ha validado correctamente
 		// o null si no.
-
-		usuario = Factories.services.createLoginService().validar(login, 
-				CifradoMD5.getStringMessageDigest(pass));
-		if (usuario != null) {
+		try {
+			usuario = Factories.services.createLoginService().validar(login,
+					CifradoMD5.getStringMessageDigest(pass));
 			sesion.setUsuario(usuario);
 			Log.info("El usuario [%s] ha iniciado sesión", login);
 			return Resultado.exito.name();
+		} catch (Exception e) {
+			facesContext.addMessage(null, new FacesMessage(e.getMessage()));		
 		}
-
-		return Resultado.fracaso.name();
+		return Resultado.fracaso.name();		
 	}
 
 	@PostConstruct
 	public void init() {
 		sesion = (BeanSesion) FacesContext.getCurrentInstance()
 				.getExternalContext().getSessionMap().get("sesion");
-		
+
 		if (sesion == null) {
 			sesion = new BeanSesion();
 			FacesContext.getCurrentInstance().getExternalContext()
