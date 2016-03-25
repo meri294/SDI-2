@@ -11,9 +11,16 @@
 
 	<ui:define name="cuerpo">
 		<h:form id="form-principal">
-		<p:panel header="#{msgs.tituloOperacionError}">
-		 <p>#{msgs.mensajeError}</p>
-		 </p:panel>
-		 </h:form>
+			<p:panel header="#{msgs.tituloOperacionError}">
+				<h:messages />
+			</p:panel>
+			<h:commandLink value="#{msgs.enlace_casa}"
+			action="/principalRegistrado.xhtml" rendered="#{sesion.usuario!=null}">
+		</h:commandLink>
+		<h:commandLink value="#{msgs.enlace_casa}"
+			action="/login.xhtml" rendered="#{sesion.usuario==null}">
+		</h:commandLink>
+		</h:form>
+		
 	</ui:define>
 </ui:composition>

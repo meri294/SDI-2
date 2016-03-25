@@ -2,7 +2,9 @@ package com.sdi.business.impl.classes.application;
 
 import java.util.ResourceBundle;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import javax.faces.validator.ValidatorException;
 
 import com.sdi.infrastructure.Factories;
 import com.sdi.model.Application;
@@ -19,7 +21,9 @@ public class ApplicationsAlta {
 		if(posible==null)
 			dao.save(application);
 		else{
-			throw new Exception (posible);
+			FacesMessage message= new FacesMessage(FacesMessage.SEVERITY_ERROR,
+					posible, posible);
+			throw new ValidatorException(message);
 		}
 	}
 	

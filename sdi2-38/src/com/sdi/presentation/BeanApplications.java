@@ -1,13 +1,15 @@
 package com.sdi.presentation;
 
+import java.util.ResourceBundle;
+
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
-import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
+import javax.faces.validator.ValidatorException;
 
 import com.sdi.business.ApplicationService;
 import com.sdi.infrastructure.Factories;
@@ -15,7 +17,6 @@ import com.sdi.model.Application;
 
 @ManagedBean(name = "applicationsController")
 public class BeanApplications{
-	private UIComponent comp;
 	private FacesContext context=FacesContext.getCurrentInstance();
 	@ManagedProperty(value = "#{application}")
 	private BeanApplication application;
@@ -86,7 +87,7 @@ public class BeanApplications{
 			return "exito";
 
 		} catch (Exception e) {
-			e.printStackTrace();
+			context.addMessage(null, new FacesMessage(e.getMessage()));
 			return "error"; 
 		}
 
@@ -101,7 +102,7 @@ public class BeanApplications{
 			return "exito";
 
 		} catch (Exception e) {
-			e.printStackTrace();
+			context.addMessage(null, new FacesMessage(e.getMessage()));
 			return "error";
 		}
 
@@ -109,6 +110,9 @@ public class BeanApplications{
 
 	public String salva(Long userId, Long tripId) {
 		ApplicationService service;
+		FacesContext facesContext = FacesContext.getCurrentInstance();
+		ResourceBundle bundle = facesContext.getApplication()
+				.getResourceBundle(facesContext, "msgs");
 		try {
 			service = Factories.services.createApplicationService();
 			if (application.getUserId() == null 
@@ -117,13 +121,17 @@ public class BeanApplications{
 				application.setUserId(userId);
 				service.saveApplication(application);
 			} else {
-				service.updateApplication(application);
+				FacesMessage message= new FacesMessage(
+						FacesMessage.SEVERITY_ERROR, 
+						bundle.getString("error_solicitudRealizada"),
+						bundle.getString("error_solicitudRealizada"));
+				throw new ValidatorException(message);
 			}
 			applications = (Application[]) service.getApplications().toArray(new Application[0]);
 			return "exito";
 
 		} catch (Exception e) {
-			context.addMessage(comp.getClientId(context), new FacesMessage(e.getMessage()));
+			context.addMessage(null, new FacesMessage(e.getMessage()));
 			return "error"; 
 		}
 
