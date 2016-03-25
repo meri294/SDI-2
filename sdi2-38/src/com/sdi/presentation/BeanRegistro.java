@@ -1,15 +1,18 @@
 package com.sdi.presentation;
 
 import java.io.Serializable;
+import java.util.ResourceBundle;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
 
-import com.sdi.model.UserStatus;
 import alb.util.log.Log;
 
 import com.sdi.infrastructure.Factories;
 import com.sdi.model.User;
+import com.sdi.model.UserStatus;
 
 @ManagedBean(name = "registro")
 @ViewScoped
@@ -77,15 +80,24 @@ public class BeanRegistro implements Serializable {
 	public String registrar() {
 		
 		User u = Factories.persistence.createUserDao().findByLogin(login);
+		FacesContext facesContext = FacesContext.getCurrentInstance();
+		ResourceBundle bundle = facesContext.getApplication()
+				.getResourceBundle(facesContext, "msgs");
 		
 		if(u != null) { //Si ya existe un usuario con ese login...
 			Log.info("Se ha intentado registrar un usuario con login [%s] ya existente", login);
-			//TODO request.setAttribute("mensaje", "El login elegido ya existe. Por favor, escoja otro.");
+			FacesMessage message= new FacesMessage (FacesMessage.SEVERITY_ERROR,
+					bundle.getString("error_loginExistente"),
+					bundle.getString("error_loginExistente"));
+			facesContext.addMessage(null, message);
 			return Resultado.fracaso.name();
 		}
 		
 		if(!pass.equals(repitePass)) {
-			//TODO request.setAttribute("mensaje", "Sus contraseñas no coinciden.");
+			FacesMessage message= new FacesMessage (FacesMessage.SEVERITY_ERROR,
+					bundle.getString("error_contraDistinta"),
+					bundle.getString("error_contraDistinta"));
+			facesContext.addMessage(null, message);
 			return Resultado.fracaso.name();
 		}
 		

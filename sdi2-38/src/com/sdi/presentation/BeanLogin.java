@@ -1,8 +1,10 @@
 package com.sdi.presentation;
 
 import java.io.Serializable;
+import java.util.ResourceBundle;
 
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
@@ -53,12 +55,19 @@ public class BeanLogin implements Serializable {
 	public String validar() {
 
 		User usuario = sesion.getUsuario();
+		FacesContext facesContext = FacesContext.getCurrentInstance();
+		ResourceBundle bundle = facesContext.getApplication()
+				.getResourceBundle(facesContext, "msgs");
 
 		if (usuario != null) {
 			Log.info("Se ha intentado iniciar sesión como [%s] "
 				+ "teniendo la sesión iniciada como [%s]",
 					login, usuario.getName());
 			sesion.cerrar();
+			FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR,
+					bundle.getString("error_sesionYaIniciada"), 
+					bundle.getString("error_sesionYaIniciada"));
+			facesContext.addMessage(null, message);
 			return Resultado.error.name();
 		}
 		// El service debe devolver un usuario si se ha validado correctamente

@@ -10,6 +10,7 @@
 	<ui:define name="cuerpo">
 		<div>
 			<h:form  method="post">
+				<h:messages/>
 				<center>
 					<h1>#{msgs.titulo_inicieSesion}</h1>
 				</center>
@@ -17,10 +18,10 @@
 				<br />
 				<h:panelGrid columns="2" styleClass="formTable">
 						#{msgs.campo_nombreUsuario}
-						<h:inputText value="#{login.login}" size="15" />
+						<p:inputText value="#{login.login}" size="15" />
 						
 						#{msgs.campo_suContraseña}
-						<h:inputSecret value="#{login.pass}" size="15" />
+						<p:password value="#{login.pass}" size="15" />
 						
 						<h:commandButton value="#{msgs.enlace_enviar}" action="#{login.validar}" />
 				</h:panelGrid>

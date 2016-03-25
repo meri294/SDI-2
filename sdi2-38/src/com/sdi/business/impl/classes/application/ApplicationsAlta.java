@@ -37,6 +37,8 @@ public class ApplicationsAlta {
 			return bundle.getString("error_esPromotor");
 		if(MariaDateUtil.isAfter(MariaDateUtil.now(), trip.getClosingDate()))
 			return bundle.getString("error_viajeCerrado");
+		if(trip.getAvailablePax()==0)
+			return bundle.getString("error_sinPlaza");
 		return null;
 	}
 
