@@ -36,7 +36,7 @@ public class LoginListener implements PhaseListener {
 
 	//Si el usuario no está registrado...
 	if (sesion == null || sesion.getUsuario() == null) {
-	    if (view.contains("login") || view.contains("registro")
+	    if (view.contains("login") || view.contains("registro.xhtml")
 		    || view.contains("error") || view.contains("listaViajes")) {
 		// Es permitido
 		return;
@@ -47,7 +47,7 @@ public class LoginListener implements PhaseListener {
 
 	//Si el usuario está registrado...
 	else {
-	    if (view.contains("login") || view.contains("registro")) {
+	    if (view.contains("login") || view.contains("registro.xhtml")) {
 
 		NavigationHandler nh = fc.getApplication()
 			.getNavigationHandler();
