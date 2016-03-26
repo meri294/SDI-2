@@ -3,37 +3,49 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:f="http://java.sun.com/jsf/core">
+	
 	<p:menubar id="mimenu">
 		<p:submenu id="opciones" style="float:left" label="#{msgs.menu_Opciones}"
 			icon="ui-icon-document">
+			
 			<p:menuitem id="linkOpciones" style="float:left"
 				value="#{msgs.enlace_listarViajes}"
 				action="#{tripsController.listado}" />
+				
 			<p:menuitem id="linkRegistrarse" style="float:left"
 				value="#{msgs.enlace_registrarse}"
 				rendered="#{sesion.usuario==null}" 
 				action="registro"/>
+				
 			<p:menuitem id="linkMisViajes" style="float:left"
 				value="#{msgs.enlace_misViajes}" 
 				rendered="#{sesion.usuario!=null}" 
 				action="#{involucrado.misViajes(sesion.usuario.id)}"/>
+				
 			<p:menuitem id="linkRegistrarViaje" style="float:left"
 				value="#{msgs.enlace_registrarViaje}"
 				rendered="#{sesion.usuario!=null}" />
+				
 			<p:menuitem id="linkComentarViaje" style="float:left"
 				value="#{msgs.enlace_comentarViaje}"
 				rendered="#{sesion.usuario!=null}" />
+				
 			<p:menuitem id="linkCerrarSesion" style="float:left"
 				value="#{msgs.enlace_cerrarSesion}"
 				rendered="#{sesion.usuario!=null}"
 				action="#{sesion.cerrar}" />
+				
 		</p:submenu>
+		
 		<p:submenu style="float:right" label="#{msgs.menu_Idioma}"
 			icon="ui-icon-document">
+			
 			<p:menuitem id="linkespa" value="#{msgs.enlace_idiomaES}"
 				actionListener="#{settings.setSpanish}" update="@all" />
+				
 			<p:menuitem id="linkingles" value="#{msgs.enlace_idiomaEN}"
 				actionListener="#{settings.setEnglish}" update="@all" />
+				
 		</p:submenu>
 	</p:menubar>
 </ui:composition>
