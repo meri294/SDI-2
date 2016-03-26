@@ -109,7 +109,6 @@ public class BeanRegistro implements Serializable {
 		u.setPassword(CifradoMD5.getStringMessageDigest(pass));
 		u.setEmail(email);
 		u.setStatus(UserStatus.ACTIVE);
-		//u.setRol(Rol.cliente);
 		
 		try {
 			Factories.persistence.createUserDao().save(u);
