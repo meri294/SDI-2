@@ -9,6 +9,12 @@
 			<var>msgs</var>
 		</resource-bundle>
 	</application>
+	
+	<lifecycle>
+		<phase-listener>
+			com.sdi.listener.LoginListener
+		</phase-listener>
+	</lifecycle>
 
 	<managed-bean>
 		<managed-bean-name>settings</managed-bean-name>

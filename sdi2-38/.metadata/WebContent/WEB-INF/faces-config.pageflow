@@ -1,32 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf145803288310712" configfile="/sdi2-38/WebContent/WEB-INF/faces-config.xml">
-  <nodes xsi:type="pageflow:PFPage" name="*" id="pf14589219433400" referenceLink="//@navigationRule.0/@fromViewId|" outlinks="pf14589219433411 pf14589219433412 pf14589219433413 pf145892211902614" path="*"/>
-<<<<<<< HEAD
-  <nodes xsi:type="pageflow:PFPage" name="error.xhtml" id="pf14589219433414" referenceLink="//@navigationRule.2/@navigationCase.1/@toViewId|" inlinks="pf14589219433411 pf14589219433415" path="/error.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="listaViajes.xhtml" id="pf14589219433416" referenceLink="//@navigationRule.2/@fromViewId|" outlinks="pf14589219433415 pf14589934397810" inlinks="pf14589219433412" path="/listaViajes.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="login.xhtml" id="pf14589219433418" referenceLink="//@navigationRule.2/@navigationCase.0/@toViewId|" outlinks="pf14589219433419 pf145892194334110 pf145892194334111" inlinks="pf14589219433413 pf145892194334110 pf14590126119240" path="/login.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="principalRegistrado.xhtml" id="pf145892194334112" referenceLink="//@navigationRule.2/@navigationCase.0/@toViewId|" inlinks="pf14589219433419" path="/principalRegistrado.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="registro.xhtml" id="pf145892194334113" referenceLink="//@navigationRule.2/@navigationCase.1/@toViewId|" outlinks="pf14590126119240" inlinks="pf145892194334111" path="/registro.xhtml"/>
-=======
-  <nodes xsi:type="pageflow:PFPage" name="error.xhtml" id="pf14589219433414" referenceLink="//@navigationRule.2/@navigationCase.1/@toViewId|" inlinks="pf14589219433411" path="/error.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="listaViajes.xhtml" id="pf14589219433416" referenceLink="//@navigationRule.2/@navigationCase.1/@toViewId|" outlinks="pf14589934397810 pf14590119814830" inlinks="pf14589219433412 pf14590119814830" path="/listaViajes.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="login.xhtml" id="pf14589219433418" referenceLink="//@navigationRule.1/@fromViewId|" outlinks="pf14589219433419 pf145892194334110 pf145892194334111" inlinks="pf14589219433413 pf145892194334110" path="/login.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="principalRegistrado.xhtml" id="pf145892194334112" referenceLink="//@navigationRule.1/@navigationCase.0/@toViewId|" inlinks="pf14589219433419" path="/principalRegistrado.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="registro.xhtml" id="pf145892194334113" referenceLink="//@navigationRule.1/@navigationCase.2/@toViewId|" inlinks="pf145892194334111" path="/registro.xhtml"/>
->>>>>>> branch 'master' of https://github.com/meri294/SDI-2.git
-  <nodes xsi:type="pageflow:PFPage" name="viajesInvolucrado.xhtml" id="pf145892211902715" referenceLink="//@navigationRule.2/@navigationCase.0/@toViewId|" inlinks="pf145892211902614 pf14589934397810" path="/viajesInvolucrado.xhtml"/>
-  <links id="pf14589219433411" target="pf14589219433414" source="pf14589219433400" outcome="error" redirect="true"/>
-  <links id="pf14589219433412" target="pf14589219433416" source="pf14589219433400" outcome="exito" redirect="true" fromaction="#{tripsController.listado}"/>
-  <links id="pf14589219433413" target="pf14589219433418" source="pf14589219433400" outcome="cerrar" redirect="true"/>
-  <links id="pf14589219433419" target="pf145892194334112" source="pf14589219433418" outcome="exito" redirect="true" fromaction="#{login.validar}"/>
-  <links id="pf145892194334110" target="pf14589219433418" source="pf14589219433418" outcome="error" redirect="true" fromaction="#{login.validar}"/>
-  <links id="pf145892194334111" target="pf145892194334113" source="pf14589219433418" outcome="registro" redirect="true"/>
-  <links id="pf145892211902614" target="pf145892211902715" source="pf14589219433400" outcome="exito" redirect="true" fromaction="#{involucrado.misViajes(sesion.usuario.id)}"/>
-<<<<<<< HEAD
-  <links id="pf14589934397810" target="pf145892211902715" source="pf14589219433416" outcome="exito" fromaction="#{applicationsController.salva(sesion.usuario.id, valtrip.id)}"/>
-  <links id="pf14590126119240" target="pf14589219433418" source="pf145892194334113" outcome="exito" redirect="true"/>
-=======
-  <links id="pf14589934397810" target="pf145892211902715" source="pf14589219433416" outcome="exito" redirect="true" fromaction="#{applicationsController.salva(sesion.usuario.id, valtrip.id)}"/>
-  <links id="pf14590119814830" target="pf14589219433416" source="pf14589219433416" outcome="error" redirect="true" fromaction="#{applicationsController.salva(sesion.usuario.id, valtrip.id)}"/>
->>>>>>> branch 'master' of https://github.com/meri294/SDI-2.git
+<pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf14590148040662" configfile="/sdi2-38/WebContent/WEB-INF/faces-config.xml">
+  <nodes xsi:type="pageflow:PFPage" name="*" x="122" y="764" id="pf14590151734473" referenceLink="//@navigationRule.0/@fromViewId|" outlinks="pf14590151734474 pf14590151734475 pf14590151734476 pf14590151734477" path="*"/>
+  <nodes xsi:type="pageflow:PFPage" name="error.xhtml" x="338" y="178" id="pf14590151734478" referenceLink="//@navigationRule.0/@navigationCase.0/@toViewId|" inlinks="pf14590151734474" path="/error.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="listaViajes.xhtml" x="338" y="562" id="pf14590151734479" referenceLink="//@navigationRule.3/@navigationCase.1/@toViewId|" outlinks="pf145901517344710 pf145901517344711" inlinks="pf14590151734475 pf145901517344711" path="/listaViajes.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="login.xhtml" x="338" y="1148" id="pf145901517344712" referenceLink="//@navigationRule.2/@navigationCase.0/@toViewId|" outlinks="pf145901517344713 pf145901517344714 pf145901517344715" inlinks="pf14590151734476 pf145901517344714 pf145901517344716" path="/login.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="viajesInvolucrado.xhtml" x="554" y="764" id="pf145901517344717" referenceLink="//@navigationRule.3/@navigationCase.0/@toViewId|" inlinks="pf14590151734477 pf145901517344710" path="/viajesInvolucrado.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="principalRegistrado.xhtml" x="554" y="1148" id="pf145901517344718" referenceLink="//@navigationRule.1/@navigationCase.0/@toViewId|" inlinks="pf145901517344713" path="/principalRegistrado.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="registro.xhtml" x="122" y="1148" id="pf145901517344719" referenceLink="//@navigationRule.2/@fromViewId|" outlinks="pf145901517344716" inlinks="pf145901517344715" path="/registro.xhtml"/>
+  <links id="pf14590151734474" target="pf14590151734478" source="pf14590151734473" outcome="error" redirect="true"/>
+  <links id="pf14590151734475" target="pf14590151734479" source="pf14590151734473" outcome="exito" redirect="true" fromaction="#{tripsController.listado}"/>
+  <links id="pf14590151734476" target="pf145901517344712" source="pf14590151734473" outcome="cerrar" redirect="true"/>
+  <links id="pf14590151734477" target="pf145901517344717" source="pf14590151734473" outcome="exito" redirect="true" fromaction="#{involucrado.misViajes(sesion.usuario.id)}"/>
+  <links id="pf145901517344713" target="pf145901517344718" source="pf145901517344712" outcome="exito" redirect="true" fromaction="#{login.validar}"/>
+  <links id="pf145901517344715" target="pf145901517344719" source="pf145901517344712" outcome="registro" redirect="true"/>
+  <links id="pf145901517344716" target="pf145901517344712" source="pf145901517344719" outcome="exito" redirect="true"/>
+  <links id="pf145901517344710" target="pf145901517344717" source="pf14590151734479" outcome="exito" redirect="true" fromaction="#{applicationsController.salva(sesion.usuario.id, valtrip.id)}"/>
+  <links id="pf145901517344714" target="pf145901517344712" source="pf145901517344712" outcome="error" redirect="true" fromaction="#{login.validar}">
+    <bendPoints d1Height="-36" d2Height="-36"/>
+    <bendPoints d1Width="-64" d1Height="-36" d2Width="-64" d2Height="-36"/>
+    <bendPoints d1Width="-64" d2Width="-64"/>
+  </links>
+  <links id="pf145901517344711" target="pf14590151734479" source="pf14590151734479" outcome="error" redirect="true" fromaction="#{applicationsController.salva(sesion.usuario.id, valtrip.id)}">
+    <bendPoints d1Height="-36" d2Height="-36"/>
+    <bendPoints d1Width="-64" d1Height="-36" d2Width="-64" d2Height="-36"/>
+    <bendPoints d1Width="-64" d2Width="-64"/>
+  </links>
 </pageflow:Pageflow>
