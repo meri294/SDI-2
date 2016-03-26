@@ -90,7 +90,7 @@ public class BeanRegistro implements Serializable {
 			FacesMessage message= new FacesMessage (FacesMessage.SEVERITY_ERROR,
 					bundle.getString("error_loginExistente"),
 					bundle.getString("error_loginExistente"));
-			facesContext.addMessage(null, message);
+			facesContext.addMessage("login", message);
 			return Resultado.fracaso.name();
 		}
 		
