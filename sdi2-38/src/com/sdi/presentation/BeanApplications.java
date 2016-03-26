@@ -4,6 +4,7 @@ import java.util.ResourceBundle;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
+import javax.el.ELContext;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
@@ -123,6 +124,11 @@ public class BeanApplications {
 				application.setTripId(tripId);
 				application.setUserId(userId);
 				service.saveApplication(application);
+				ELContext elContext = FacesContext.getCurrentInstance().getELContext();
+				BeanInvolucrado bean 
+				    = (BeanInvolucrado) FacesContext.getCurrentInstance().getApplication()
+				    .getELResolver().getValue(elContext, null, "involucrado");
+				bean.misViajes(userId);
 			} else {
 				FacesMessage message = new FacesMessage(
 						FacesMessage.SEVERITY_ERROR,
@@ -132,6 +138,9 @@ public class BeanApplications {
 			}
 			applications = (Application[]) service.getApplications().toArray(
 					new Application[0]);
+			//new BeanInvolucrado().misViajes(userId);
+			//TODO actualizar BeanInvolucrado antes de que se lance misViajes 
+			
 			return "exito";
 
 		} catch (Exception e) {

@@ -10,6 +10,7 @@ import javax.annotation.PreDestroy;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
+import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 
@@ -20,6 +21,7 @@ import com.sdi.util.MariaDateUtil;
 import com.sdi.util.MariaModelUtil;
 
 @ManagedBean(name = "involucrado")
+@ViewScoped
 public class BeanInvolucrado implements Serializable {
 	private static final long serialVersionUID = 55555L;
 	@ManagedProperty(value = "#{trip}")
