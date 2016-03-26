@@ -41,6 +41,11 @@
 						<f:facet name="header">#{msgs.campo_estado}</f:facet>
 						#{msgs.relation_promoter}
 					</p:column>
+					<p:column id="promoOpciones">
+						<f:facet name="header">#{msgs.campo_opciones}</f:facet>
+						<h:commandLink>
+							#{msgs.enlace_verSolicitantes}</h:commandLink>
+					</p:column>
 				</p:dataTable>
 				<p:dataTable id="tablaViajesParti" var="valtrip"
 					value="#{involucrado.participante}"
@@ -52,6 +57,8 @@
 					<p:column id="partiLlegada">#{valtrip.arrivalDate}</p:column>
 					<p:column id="partiRelacion">#{msgs.relation_participante}
 					</p:column>
+					<p:column id="exOpciones" rendered="#{valtrip.status==OPEN}">
+					#{msgs.enlace_cancelar}</p:column>
 				</p:dataTable>
 				<p:dataTable id="tablaViajesEx" var="valtrip"
 					value="#{involucrado.excluido}"
@@ -62,6 +69,9 @@
 					<p:column id="excSalida">#{valtrip.departureDate}</p:column>
 					<p:column id="excLlegada">#{valtrip.arrivalDate}</p:column>
 					<p:column id="excRelacion">#{msgs.relation_excluido}
+					</p:column>
+					<p:column id="exOpciones" rendered="#{valtrip.status==OPEN}">
+					#{msgs.enlace_cancelar}
 					</p:column>
 				</p:dataTable>
 				<p:dataTable id="tablaViajesEspera" var="valtrip"
@@ -74,6 +84,9 @@
 					<p:column id="espLlegada">#{valtrip.arrivalDate}</p:column>
 					<p:column id="espRelacion">#{msgs.relation_enEspera}
 					</p:column>
+					<p:column id="espOpciones" rendered="#{valtrip.status==OPEN}">
+					#{msgs.enlace_cancelar}
+					</p:column>
 				</p:dataTable>
 				<p:dataTable id="tablaViajesSin" var="valtrip"
 					value="#{involucrado.sinPlaza}"
@@ -84,6 +97,9 @@
 					<p:column id="sinSalida">#{valtrip.departureDate}</p:column>
 					<p:column id="sinLlegada">#{valtrip.arrivalDate}</p:column>
 					<p:column id="sinRelacion">#{msgs.relation_sinPlaza}
+					</p:column>
+					<p:column id="sinOpciones" rendered="#{valtrip.status==OPEN}">
+					#{msgs.enlace_cancelar}
 					</p:column>
 				</p:dataTable>
 			</p:panel>

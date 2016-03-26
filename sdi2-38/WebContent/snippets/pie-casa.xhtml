@@ -5,9 +5,13 @@
 	xmlns:p="http://primefaces.org/ui">
 	
 	<h:form id="form-pie">
-		<p:separator />
-		<h:commandLink value="#{msgs.enlace_casa}"
-			action="/principalRegistrado.xhtml">
+		
+		<h:commandLink value="#{msgs.enlace_casa}" immediate="true"
+			action="/principalRegistrado.xhtml" rendered="#{sesion.usuario!=null}">
 		</h:commandLink>
+		<h:commandLink value="#{msgs.enlace_casa}"
+			action="/login.xhtml" rendered="#{sesion.usuario==null}">
+		</h:commandLink>
+		<p:separator />
 	</h:form>
 </ui:composition>
