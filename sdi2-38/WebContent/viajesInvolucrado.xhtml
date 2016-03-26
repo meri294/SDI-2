@@ -12,92 +12,83 @@
 	</ui:define>
 
 	<ui:define name="cuerpo">
-		<div>
-			<table border="1" align="center">
-				<tr>
-					<th>#{msgs.campo_idViaje}</th>
-					<th>#{msgs.campo_estadoViaje}</th>
-					<th>#{msgs.campo_fechaCierre}</th>
-					<th>#{msgs.campo_fechaSalida}</th>
-					<th>#{msgs.campo_fechaLlegada}</th>
-					<th>#{msgs.campo_estado}</th>
-					<th>#{msgs.campo_opciones}</th>
-				</tr>
-
-				<c:forEach var="entry" items="${promocionados}" varStatus="i">
-					<tr id="item_${i.index}">
-						<td><a href="mostrarViaje?id=${entry.id}">${entry.id}</a></td>
-						<td>${entry.status}</td>
-						<td>${entry.closingDate}</td>
-						<td>${entry.departureDate}</td>
-						<td>${entry.arrivalDate}</td>
-						<td>#{msgs.campo_promotor}</td>
-						<td><a href="verSolicitantes?id=${entry.id}">#{msgs.enlace_verSolicitantes}</a><br>
-						<a href="cancelarViaje?id=${entry.id}">#{msgs.enlace_cancelarViaje}</a><br>
-						<a href="modificarViaje?id=${entry.id}">#{msgs.enlace_modificarViaje}</a>
-						</td>
-					</tr>
-				</c:forEach>
-
-				<c:forEach var="entry" items="${participante}" varStatus="i">
-					<tr id="item_${i.index}">
-						<td><a href="mostrarViaje?id=${entry.id}">${entry.id}</a></td>
-						<td>${entry.status}</td>
-						<td>${entry.closingDate}</td>
-						<td>${entry.departureDate}</td>
-						<td>${entry.arrivalDate}</td>
-						<td>#{msgs.campo_aceptado}</td>
-						<td><a
-							href="cancelarSolicitud?user=${user.id}
-								&viaje=${entry.id}">#{msgs.enlace_cancelarSolicitud}</a></td>
-					</tr>
-				</c:forEach>
-
-				<c:forEach var="entry" items="${enEspera}" varStatus="i">
-					<tr id="item_${i.index}">
-						<td><a href="mostrarViaje?id=${entry.id}">${entry.id}</a></td>
-						<td>${entry.status}</td>
-						<td>${entry.closingDate}</td>
-						<td>${entry.departureDate}</td>
-						<td>${entry.arrivalDate}</td>
-						<td>#{msgs.campo_pendiente}</td>
-						<td><a
-							href="cancelarSolicitud?user=${user.id}
-								&viaje=${entry.id}">#{msgs.enlace_cancelarSolicitud}</a></td>
-					</tr>
-				</c:forEach>
-
-				<c:forEach var="entry" items="${excluido}" varStatus="i">
-					<tr id="item_${i.index}">
-						<td><a href="mostrarViaje?id=${entry.id}">${entry.id}</a></td>
-						<td>${entry.status}</td>
-						<td>${entry.closingDate}</td>
-						<td>${entry.departureDate}</td>
-						<td>${entry.arrivalDate}</td>
-						<td>#{msgs.campo_excluido}</td>
-						<td><a
-							href="cancelarSolicitud?user=${user.id}
-								&viaje=${entry.id}">#{msgs.enlace_cancelarSolicitud}</a></td>
-					</tr>
-				</c:forEach>
-
-				<c:forEach var="entry" items="${sinPlaza}" varStatus="i">
-					<tr id="item_${i.index}">
-						<td><a href="mostrarViaje?id=${entry.id}">${entry.id}</a></td>
-						<td>${entry.status}</td>
-						<td>${entry.closingDate}</td>
-						<td>${entry.departureDate}</td>
-						<td>${entry.arrivalDate}</td>
-						<td>#{msgs.campo_sinPlaza}</td>
-						<td><a
-							href="cancelarSolicitud?user=${user.id}
-								&viaje=${entry.id}">#{msgs.enlace_cancelarSolicitud}</a></td>
-					</tr>
-				</c:forEach>
-			</table>
-			<a href="irAInicio">#{msgs.enlace_cancelar}</a>
-			<!-- <ui:include src="/snippets/muestraMensaje.xhtml" /> -->
-		</div>
+		<h:form>
+			<p:panel>
+				<p:dataTable id="tablaViajesPromo" var="valtrip"
+					value="#{involucrado.promotor}"
+					emptyMessage="#{msgs.mensaje_sinViajesPromotor}">
+					<p:column id="promoidViaje">
+						<f:facet name="header">#{msgs.campo_idViaje}</f:facet>
+						#{valtrip.id}
+					</p:column>
+					<p:column id="promoEstado">
+						<f:facet name="header">#{msgs.campo_estadoViaje}</f:facet>
+						#{valtrip.status}
+					</p:column>
+					<p:column id="promoCierre">
+						<f:facet name="header">#{msgs.campo_fechaCierre}</f:facet>
+						#{valtrip.closingDate}
+					</p:column>
+					<p:column id="promoSalida">
+						<f:facet name="header">#{msgs.campo_fechaSalida}</f:facet>
+						#{valtrip.departureDate}
+					</p:column>
+					<p:column id="promoLlegada">
+						<f:facet name="header">#{msgs.campo_fechaLlegada}</f:facet>
+						#{valtrip.arrivalDate}
+					</p:column>
+					<p:column id="promoRelacion">
+						<f:facet name="header">#{msgs.campo_estado}</f:facet>
+						#{msgs.relation_promoter}
+					</p:column>
+				</p:dataTable>
+				<p:dataTable id="tablaViajesParti" var="valtrip"
+					value="#{involucrado.participante}"
+					emptyMessage="#{msgs.mensaje_sinViajesParticipante}">
+					<p:column id="partiidViaje">#{valtrip.id}</p:column>
+					<p:column id="partiEstado">#{valtrip.status}</p:column>
+					<p:column id="partiCierre">#{valtrip.closingDate}</p:column>
+					<p:column id="partiSalida">#{valtrip.departureDate}</p:column>
+					<p:column id="partiLlegada">#{valtrip.arrivalDate}</p:column>
+					<p:column id="partiRelacion">#{msgs.relation_participante}
+					</p:column>
+				</p:dataTable>
+				<p:dataTable id="tablaViajesEx" var="valtrip"
+					value="#{involucrado.excluido}"
+					emptyMessage="#{msgs.mensaje_sinViajesExcluidos}">
+					<p:column id="partiidViaje">#{valtrip.id}</p:column>
+					<p:column id="excEstado">#{valtrip.status}</p:column>
+					<p:column id="excCierre">#{valtrip.closingDate}</p:column>
+					<p:column id="excSalida">#{valtrip.departureDate}</p:column>
+					<p:column id="excLlegada">#{valtrip.arrivalDate}</p:column>
+					<p:column id="excRelacion">#{msgs.relation_excluido}
+					</p:column>
+				</p:dataTable>
+				<p:dataTable id="tablaViajesEspera" var="valtrip"
+					value="#{involucrado.enEspera}"
+					emptyMessage="#{msgs.mensaje_noViajesEspera}">
+					<p:column id="partiidViaje">#{valtrip.id}</p:column>
+					<p:column id="espEstado">#{valtrip.status}</p:column>
+					<p:column id="espCierre">#{valtrip.closingDate}</p:column>
+					<p:column id="espSalida">#{valtrip.departureDate}</p:column>
+					<p:column id="espLlegada">#{valtrip.arrivalDate}</p:column>
+					<p:column id="espRelacion">#{msgs.relation_enEspera}
+					</p:column>
+				</p:dataTable>
+				<p:dataTable id="tablaViajesSin" var="valtrip"
+					value="#{involucrado.sinPlaza}"
+					emptyMessage="#{msgs.mensaje_noViajeSinPlaza}">
+					<p:column id="partiidViaje">#{valtrip.id}</p:column>
+					<p:column id="sinEstado">#{valtrip.status}</p:column>
+					<p:column id="sinCierre">#{valtrip.closingDate}</p:column>
+					<p:column id="sinSalida">#{valtrip.departureDate}</p:column>
+					<p:column id="sinLlegada">#{valtrip.arrivalDate}</p:column>
+					<p:column id="sinRelacion">#{msgs.relation_sinPlaza}
+					</p:column>
+				</p:dataTable>
+			</p:panel>
+			<h:messages/>
+		</h:form>
 	</ui:define>
 
 	<ui:define name="pie">

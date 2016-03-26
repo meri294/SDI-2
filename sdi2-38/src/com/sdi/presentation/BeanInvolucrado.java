@@ -1,10 +1,13 @@
 package com.sdi.presentation;
 
 import java.io.Serializable;
+import java.util.List;
+import java.util.Map;
 import java.util.ResourceBundle;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.context.FacesContext;
@@ -16,13 +19,18 @@ import com.sdi.model.Trip;
 import com.sdi.util.MariaDateUtil;
 import com.sdi.util.MariaModelUtil;
 
-@ManagedBean(name = "tripsController")
-public class BeanTrips implements Serializable {
+@ManagedBean(name = "involucrado")
+public class BeanInvolucrado implements Serializable {
 	private static final long serialVersionUID = 55555L;
 	@ManagedProperty(value = "#{trip}")
 	private BeanTrip trip;
 
-	private Trip[] trips = null;
+	private Trip[] promotor = null;
+	private Trip[] excluido=null;
+	private Trip[] participante=null;
+	private Trip[] enEspera=null;
+	private Trip[] sinPlaza=null;
+	
 
 	@PostConstruct
 	public void init() {
@@ -42,10 +50,6 @@ public class BeanTrips implements Serializable {
 		System.out.println("BeanTrips - PreDestroy");
 	}
 
-	public Trip[] getTrips() {
-		return (trips);
-	}
-
 	public void setTrip(BeanTrip trip) {
 		this.trip = trip;
 	}
@@ -54,8 +58,44 @@ public class BeanTrips implements Serializable {
 		return trip;
 	}
 
-	public void setTrips(Trip[] trips) {
-		this.trips = trips;
+	public Trip[] getPromotor() {
+		return promotor;
+	}
+
+	public void setPromotor(Trip[] promotor) {
+		this.promotor = promotor;
+	}
+
+	public Trip[] getExcluido() {
+		return excluido;
+	}
+
+	public void setExcluido(Trip[] excluido) {
+		this.excluido = excluido;
+	}
+
+	public Trip[] getParticipante() {
+		return participante;
+	}
+
+	public void setParticipante(Trip[] participante) {
+		this.participante = participante;
+	}
+
+	public Trip[] getEnEspera() {
+		return enEspera;
+	}
+
+	public void setEnEspera(Trip[] enEspera) {
+		this.enEspera = enEspera;
+	}
+
+	public Trip[] getSinPlaza() {
+		return sinPlaza;
+	}
+
+	public void setSinPlaza(Trip[] sinPlaza) {
+		this.sinPlaza = sinPlaza;
 	}
 
 	public void iniciaTrip(ActionEvent event) {
@@ -93,83 +133,22 @@ public class BeanTrips implements Serializable {
 		trip.setStatus(null);
 	}
 
-	public String listado() {
+	
+	public String misViajes(Long userId){
 		TripService service;
-		try {
-			// Acceso a la implementacion de la capa de negocio
-			// a trav��s de la factor��a
-			service = Factories.services.createTripService();
-			// De esta forma le damos informaci��n a toArray para poder hacer el
-			// casting a Trip[]
-			trips = (Trip[]) service.getTrips().toArray(new Trip[0]);
-
-			return "exito"; 
-
-		} catch (Exception e) {
-			e.printStackTrace();
-			return "error"; // Nos vamos la vista de error
+		try{
+			service=Factories.services.createTripService();
+			Map<String, List<Trip>> invol=service.findInvolucrado(userId);
+			promotor=(Trip[])invol.get("promotor").toArray(new Trip[0]);
+			enEspera=(Trip[])invol.get("enEspera").toArray(new Trip[0]);
+			participante=(Trip[])invol.get("participante").toArray(new Trip[0]);
+			excluido=(Trip[])invol.get("excluido").toArray(new Trip[0]);
+			sinPlaza=(Trip[])invol.get("sinPlaza").toArray(new Trip[0]);
+		}catch(Exception e){
+			FacesContext.getCurrentInstance().addMessage(null, 
+					new FacesMessage(e.getMessage()));
+			return "error";
 		}
-
-	}
-
-	public String baja(Trip trip) {
-		TripService service;
-		try {
-			// Acceso a la implementacion de la capa de negocio
-			// a trav��s de la factor��a
-			service = Factories.services.createTripService();
-			// Aliminamos el trip seleccionado en la tabla
-			service.deleteTrip(trip.getId());
-			// Actualizamos el javabean de trips inyectado en la tabla.
-			trips = (Trip[]) service.getTrips().toArray(new Trip[0]);
-			return "exito"; // Nos vamos a la vista de listado.
-
-		} catch (Exception e) {
-			e.printStackTrace();
-			return "error"; // Nos vamos a la vista de error
-		}
-
-	}
-
-	public String edit() {
-		TripService service;
-		try {
-			// Acceso a la implementacion de la capa de negocio
-			// a trav��s de la factor��a
-			service = Factories.services.createTripService();
-			// Recargamos el trip seleccionado en la tabla de la base de datos
-			// por si hubiera cambios.
-			trip = (BeanTrip)service.findById(trip.getId());
-			return "exito"; // Nos vamos a la vista de Edición.
-
-		} catch (Exception e) {
-			e.printStackTrace();
-			return "error"; // Nos vamos a la vista de error.
-		}
-
-	}
-
-	public String salva() {
-		TripService service;
-		try {
-			// Acceso a la implementacion de la capa de negocio
-			// a trav��s de la factor��a
-			service = Factories.services.createTripService();
-			// Salvamos o actualizamos el trip segun sea una operacion de alta
-			// o de edici��n
-			if (trip.getId() == null) {
-				service.saveTrip(trip);
-			} else {
-				service.updateTrip(trip);
-			}
-			// Actualizamos el javabean de trips inyectado en la tabla
-			trips = (Trip[]) service.getTrips().toArray(new Trip[0]);
-			return "exito"; // Nos vamos a la vista de listado.
-
-		} catch (Exception e) {
-			e.printStackTrace();
-			return "error"; // Nos vamos a la vista de error.
-		}
-
+		return "exito";
 	}
 }

@@ -16,8 +16,8 @@ import com.sdi.infrastructure.Factories;
 import com.sdi.model.Application;
 
 @ManagedBean(name = "applicationsController")
-public class BeanApplications{
-	private FacesContext context=FacesContext.getCurrentInstance();
+public class BeanApplications {
+	private FacesContext context = FacesContext.getCurrentInstance();
 	@ManagedProperty(value = "#{application}")
 	private BeanApplication application;
 
@@ -27,7 +27,8 @@ public class BeanApplications{
 	public void init() {
 		System.out.println("BeanApplications - PostConstruct");
 		application = (BeanApplication) FacesContext.getCurrentInstance()
-				.getExternalContext().getSessionMap().get(new String("application"));
+				.getExternalContext().getSessionMap()
+				.get(new String("application"));
 		if (application == null) {
 			System.out.println("BeanApplications - No existia");
 			application = new BeanApplication();
@@ -66,9 +67,10 @@ public class BeanApplications{
 		ApplicationService service;
 		try {
 			service = Factories.services.createApplicationService();
-			applications = (Application[]) service.getApplications().toArray(new Application[0]);
+			applications = (Application[]) service.getApplications().toArray(
+					new Application[0]);
 
-			return "exito"; 
+			return "exito";
 
 		} catch (Exception e) {
 			context.addMessage(null, new FacesMessage(e.getMessage()));
@@ -81,14 +83,15 @@ public class BeanApplications{
 		ApplicationService service;
 		try {
 			service = Factories.services.createApplicationService();
-			Long [] ids= {application.getUserId(), application.getTripId()};
+			Long[] ids = { application.getUserId(), application.getTripId() };
 			service.deleteApplication(ids);
-			applications = (Application[]) service.getApplications().toArray(new Application[0]);
+			applications = (Application[]) service.getApplications().toArray(
+					new Application[0]);
 			return "exito";
 
 		} catch (Exception e) {
 			context.addMessage(null, new FacesMessage(e.getMessage()));
-			return "error"; 
+			return "error";
 		}
 
 	}
@@ -97,8 +100,8 @@ public class BeanApplications{
 		ApplicationService service;
 		try {
 			service = Factories.services.createApplicationService();
-			Long [] ids = {application.getUserId(), application.getTripId()};
-			application = (BeanApplication)service.findById(ids);
+			Long[] ids = { application.getUserId(), application.getTripId() };
+			application = (BeanApplication) service.findById(ids);
 			return "exito";
 
 		} catch (Exception e) {
@@ -115,24 +118,25 @@ public class BeanApplications{
 				.getResourceBundle(facesContext, "msgs");
 		try {
 			service = Factories.services.createApplicationService();
-			if (application.getUserId() == null 
-					&& application.getTripId()==null) {
+			if (application.getUserId() == null
+					&& application.getTripId() == null) {
 				application.setTripId(tripId);
 				application.setUserId(userId);
 				service.saveApplication(application);
 			} else {
-				FacesMessage message= new FacesMessage(
-						FacesMessage.SEVERITY_ERROR, 
+				FacesMessage message = new FacesMessage(
+						FacesMessage.SEVERITY_ERROR,
 						bundle.getString("error_solicitudRealizada"),
 						bundle.getString("error_solicitudRealizada"));
 				throw new ValidatorException(message);
 			}
-			applications = (Application[]) service.getApplications().toArray(new Application[0]);
+			applications = (Application[]) service.getApplications().toArray(
+					new Application[0]);
 			return "exito";
 
 		} catch (Exception e) {
 			context.addMessage(null, new FacesMessage(e.getMessage()));
-			return "error"; 
+			return "error";
 		}
 
 	}

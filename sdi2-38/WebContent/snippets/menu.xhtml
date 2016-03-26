@@ -14,7 +14,9 @@
 				rendered="#{sesion.usuario==null}" 
 				action="registro"/>
 			<p:menuitem id="linkMisViajes" style="float:left"
-				value="#{msgs.enlace_misViajes}" rendered="#{sesion.usuario!=null}" />
+				value="#{msgs.enlace_misViajes}" 
+				rendered="#{sesion.usuario!=null}" 
+				action="#{involucrado.misViajes(sesion.usuario.id)}"/>
 			<p:menuitem id="linkRegistrarViaje" style="float:left"
 				value="#{msgs.enlace_registrarViaje}"
 				rendered="#{sesion.usuario!=null}" />

@@ -13,6 +13,7 @@ import alb.util.log.Log;
 import com.sdi.infrastructure.Factories;
 import com.sdi.model.User;
 import com.sdi.model.UserStatus;
+import com.sdi.util.CifradoMD5;
 
 @ManagedBean(name = "registro")
 @ViewScoped
@@ -105,21 +106,26 @@ public class BeanRegistro implements Serializable {
 		u.setLogin(login);
 		u.setName(nombre);
 		u.setSurname(apellidos);
-		u.setPassword(pass);
+		u.setPassword(CifradoMD5.getStringMessageDigest(pass));
 		u.setEmail(email);
 		u.setStatus(UserStatus.ACTIVE);
 		//u.setRol(Rol.cliente);
 		
-		//try {
-		Factories.persistence.createUserDao().save(u); //TODO Como se si un usuario no ha podido ser creado satisfactoriamente?
-		/*} catch (PersistenceException | AlreadyPersistedException e) {
-			Log.error("Ha ocurrido un error intentando persistir al usuario [%s]: %s", login, e.getMessage());
+		try {
+			Factories.persistence.createUserDao().save(u); //TODO Como se si un usuario no ha podido ser creado satisfactoriamente?
+		} catch (Exception e) {
+			Log.error("Ha ocurrido un error intentando persistir al usuario [%s]: %s", login);
+			FacesMessage message= new FacesMessage(FacesMessage.SEVERITY_ERROR,
+					bundle.getString("error_guardar"),
+					bundle.getString("error_guardar"));
+			facesContext.addMessage(null, message);
 			return Resultado.error.name();
 		}
-		*/
 		Log.info("Se ha creado un nuevo usuario cliente con login [%s]", login);
-		//TODO request.setAttribute("mensaje", "¡Se ha realizado el registro satisfactoriamente!");
-		
+		FacesMessage message=new FacesMessage(FacesMessage.SEVERITY_INFO,
+				bundle.getString("info_registroCorrecto"),
+				bundle.getString("info_registroCorrecto"));
+		facesContext.addMessage(null, message);
 		return Resultado.exito.name();
 	}
 	

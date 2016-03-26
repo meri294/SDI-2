@@ -1,6 +1,7 @@
 package com.sdi.business.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import com.sdi.business.TripService;
 import com.sdi.business.impl.classes.trip.TripsAlta;
@@ -35,6 +36,11 @@ public class SimpleTripService implements TripService {
 	@Override
 	public Trip findById(Long id) throws Exception {
 		return new TripsBuscar().find(id);
+	}
+	
+	@Override 
+	public Map<String, List<Trip>> findInvolucrado(Long id) throws Exception{
+		return new TripsBuscar().findInvolucrado(id);
 	}
 
 }
