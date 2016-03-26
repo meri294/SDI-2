@@ -112,7 +112,7 @@ public class BeanRegistro implements Serializable {
 		//u.setRol(Rol.cliente);
 		
 		try {
-			Factories.persistence.createUserDao().save(u); //TODO Como se si un usuario no ha podido ser creado satisfactoriamente?
+			Factories.persistence.createUserDao().save(u);
 		} catch (Exception e) {
 			Log.error("Ha ocurrido un error intentando persistir al usuario [%s]: %s", login);
 			FacesMessage message= new FacesMessage(FacesMessage.SEVERITY_ERROR,
