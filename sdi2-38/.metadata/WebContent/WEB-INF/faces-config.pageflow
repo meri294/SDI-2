@@ -3,9 +3,9 @@
   <nodes xsi:type="pageflow:PFPage" name="*" id="pf14589219433400" referenceLink="//@navigationRule.0/@fromViewId|" outlinks="pf14589219433411 pf14589219433412 pf14589219433413 pf145892211902614" path="*"/>
   <nodes xsi:type="pageflow:PFPage" name="error.xhtml" id="pf14589219433414" referenceLink="//@navigationRule.2/@navigationCase.1/@toViewId|" inlinks="pf14589219433411 pf14589219433415" path="/error.xhtml"/>
   <nodes xsi:type="pageflow:PFPage" name="listaViajes.xhtml" id="pf14589219433416" referenceLink="//@navigationRule.2/@fromViewId|" outlinks="pf14589219433415 pf14589934397810" inlinks="pf14589219433412" path="/listaViajes.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="login.xhtml" id="pf14589219433418" referenceLink="//@navigationRule.1/@fromViewId|" outlinks="pf14589219433419 pf145892194334110 pf145892194334111" inlinks="pf14589219433413 pf145892194334110" path="/login.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="principalRegistrado.xhtml" id="pf145892194334112" referenceLink="//@navigationRule.1/@navigationCase.0/@toViewId|" inlinks="pf14589219433419" path="/principalRegistrado.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="registro.xhtml" id="pf145892194334113" referenceLink="//@navigationRule.1/@navigationCase.2/@toViewId|" inlinks="pf145892194334111" path="/registro.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="login.xhtml" id="pf14589219433418" referenceLink="//@navigationRule.2/@navigationCase.0/@toViewId|" outlinks="pf14589219433419 pf145892194334110 pf145892194334111" inlinks="pf14589219433413 pf145892194334110 pf14590126119240" path="/login.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="principalRegistrado.xhtml" id="pf145892194334112" referenceLink="//@navigationRule.2/@navigationCase.0/@toViewId|" inlinks="pf14589219433419" path="/principalRegistrado.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="registro.xhtml" id="pf145892194334113" referenceLink="//@navigationRule.2/@navigationCase.1/@toViewId|" outlinks="pf14590126119240" inlinks="pf145892194334111" path="/registro.xhtml"/>
   <nodes xsi:type="pageflow:PFPage" name="viajesInvolucrado.xhtml" id="pf145892211902715" referenceLink="//@navigationRule.2/@navigationCase.0/@toViewId|" inlinks="pf145892211902614 pf14589934397810" path="/viajesInvolucrado.xhtml"/>
   <links id="pf14589219433411" target="pf14589219433414" source="pf14589219433400" outcome="error" redirect="true"/>
   <links id="pf14589219433412" target="pf14589219433416" source="pf14589219433400" outcome="exito" redirect="true" fromaction="#{tripsController.listado}"/>
@@ -16,4 +16,5 @@
   <links id="pf14589219433415" target="pf14589219433414" source="pf14589219433416" outcome="error" fromaction="#{applicationsController.salva(sesion.usuario.id, valtrip.id)}"/>
   <links id="pf145892211902614" target="pf145892211902715" source="pf14589219433400" outcome="exito" redirect="true" fromaction="#{involucrado.misViajes(sesion.usuario.id)}"/>
   <links id="pf14589934397810" target="pf145892211902715" source="pf14589219433416" outcome="exito" fromaction="#{applicationsController.salva(sesion.usuario.id, valtrip.id)}"/>
+  <links id="pf14590126119240" target="pf14589219433418" source="pf145892194334113" outcome="exito" redirect="true"/>
 </pageflow:Pageflow>
