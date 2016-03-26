@@ -2,6 +2,7 @@
 
 TO-DO:
   · Completar la implementación de los enlaces de menu.xhtml
+  · Completar la implementación de registroViajes.xhtml
   
   
 Contraseñas de los usuarios:
