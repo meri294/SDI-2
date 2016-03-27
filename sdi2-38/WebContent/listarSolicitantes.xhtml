@@ -10,6 +10,18 @@
     </ui:define>
 
 	<ui:define name="cuerpo">
+	<h:form>
+		<p:panel>
+			<p:dataTable id="tablaSolicitantes" var="soli"
+					value="#{applicationsController.applications}" border="10"
+					emptyMessage="#{msgs.mensaje_sinSolicitantes}">
+				<p:column id="identificador">
+						<f:facet name="header">#{msgs.campo_identificador}</f:facet>
+						#{soli.id}
+					</p:column>
+			</p:dataTable>
+		</p:panel>
+	</h:form>
 	<div>
 		<table border="1" align="center">
 			<tr>
