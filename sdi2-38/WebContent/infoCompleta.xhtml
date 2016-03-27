@@ -15,10 +15,13 @@
 			#{seatController.promoter.name} #{seatController.promoter.surname}</p>
 		<h:form>
 			Los participantes confirmados del viaje son:
-			<p:dataList value="#seatController.participantes" var="part"
+			<p:dataList value="#{seatController.participantes}" var="part"
 				type="ordered">
 				#{part.name} #{part.surname}	
 			</p:dataList>
+			
+			<ui:include src="/snippets/error-messages.xhtml" />
+			
 		</h:form>
 	</div>
 	</ui:define>

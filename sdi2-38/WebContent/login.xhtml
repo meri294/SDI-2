@@ -10,7 +10,6 @@
 	<ui:define name="cuerpo">
 		<div>
 			<h:form  method="post">
-				<h:messages style="color:red;margin:8px;"/>
 				<center>
 					<h1>#{msgs.titulo_inicieSesion}</h1>
 				</center>
@@ -25,6 +24,8 @@
 						
 						<h:commandButton value="#{msgs.enlace_enviar}" action="#{login.validar}" />
 				</h:panelGrid>
+				
+				<ui:include src="/snippets/error-messages.xhtml" />
 			</h:form>
 			<hr />
 			<br />
