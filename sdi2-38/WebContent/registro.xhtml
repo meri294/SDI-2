@@ -57,17 +57,17 @@
   			
   			#{msgs.campo_contraseña}
   			<h:panelGroup>
-					<h:inputSecret value="#{registro.pass}" required="true"
+					<p:password value="#{registro.pass}" required="true"
 						requiredMessage="#{msgs.mensaje_campoObligatorio}" id="pass">
-					</h:inputSecret>
+					</p:password>
 					<h:message for="pass" />
 				</h:panelGroup>
   			
 			#{msgs.campo_repetirContraseña}
 			<h:panelGroup>
-					<h:inputSecret value="#{registro.repitePass}" required="true"
+					<p:password value="#{registro.repitePass}" required="true"
 						requiredMessage="#{msgs.mensaje_campoObligatorio}" id="repitePass">
-					</h:inputSecret>
+					</p:password>
 					<h:message for="repitePass" />
 				</h:panelGroup>
 
