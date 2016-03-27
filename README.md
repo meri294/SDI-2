@@ -3,6 +3,9 @@
 TO-DO:
   · Completar la implementación de los enlaces de menu.xhtml
   · Completar la implementación de registroViajes.xhtml
+  · Completar la implementación de modificarViajes.xhtml
+  · Completar la implementación de trip-form.xhtml
+  · Completar la implementación de muestraViaje.xhtml
   
   
 Contraseñas de los usuarios:
