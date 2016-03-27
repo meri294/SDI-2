@@ -48,9 +48,13 @@
 		<center>
 			<p><h:outputFormat value="#{msgs.mensaje_quedanXplazas}"> <f:param value="${viaje.availablePax}"/></h:outputFormat></p>
 		</center>
-		<a href="irAInicio">#{msgs.enlace_cancelar}</a>
-		<!-- <ui:include src="/snippets/muestraMensaje.xhtml" /> -->
+		
+		<ui:include src="/snippets/error-messages.xhtml" />
 	</div>
+	</ui:define>
+	
+	<ui:define name="pie">
+		<ui:include src="/snippets/pie-casa.xhtml" />
 	</ui:define>
 
 </ui:composition>
