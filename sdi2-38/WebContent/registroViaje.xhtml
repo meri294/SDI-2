@@ -9,145 +9,20 @@
     </ui:define>
 
 	<ui:define name="cuerpo">
-		<form action="guardarViaje" method="post">
+		<form id="guardarViaje">
 
 		<center>
 			<h1>#{msgs.titulo_registreViaje}</h1>
 		</center>
 		<hr>
 		<br>
-		<table align="center">
-			<tr>
-				<td><strong>#{msgs.campo_datosSalida}</strong></td>
-			</tr>
-			<tr>
-				<td align="right">#{msgs.campo_direccion}</td>
-				<td><input type="text" name="departureAddress" align="left"
-					size="50"></td>
-			</tr>
-			<tr>
-				<td align="right">#{msgs.campo_ciudad}</td>
-				<td><input type="text" name="departureCity" align="left"
-					size="15"></td>
-			</tr>
-			<tr>
-				<td align="right">#{campo_estado}</td>
-				<td><input type="text" name="departureState" align="left"
-					size="15"></td>
-			</tr>
-			<tr>
-				<td align="right">#{msgs.campo_pais}</td>
-				<td><input type="text" name="departureCountry" align="left"
-					size="15"></td>
-			</tr>
-			<tr>
-				<td align="right">#{msgs.campo_codigoPostal}</td>
-				<td><input type="text" name="departureCP" align="left"
-					size="15"></td>
-			</tr>
-			<tr>
-				<td align="right">#{msgs.campo_latitud}</td>
-				<td><input type="text" name="departureLatitude" align="left"
-					size="15"></td>
-			</tr>
-			<tr>
-				<td align="right">#{msgs.campo_longitud}</td>
-				<td><input type="text" name="departureLongitud" align="left"
-					size="15"></td>
-			</tr>
-			<tr>
-				<td align="right">#{msgs.campo_fechaConFormato}</td>
-				<td><input type="text" name="departureDate" align="left"
-					size="10"></td>
-			</tr>
-			<tr>
-				<td align="right">#{msgs.campo_horaConFormato}</td>
-				<td><input type="text" name="departureHour" align="left"
-					size="5"></td>
-			</tr>
-			<tr>
-				<td><strong>#{msgs.campo_datosLlegada}</strong></td>
-			</tr>
-			<tr>
-				<td align="right">#{msgs.campo_direccion}</td>
-				<td><input type="text" name="arrivalAddress" align="left"
-					size="50"></td>
-			</tr>
-			<tr>
-				<td align="right">#{msgs.campo_ciudad}</td>
-				<td><input type="text" name="arrivalCity" align="left"
-					size="15"></td>
-			</tr>
-			<tr>
-				<td align="right">#{campo_estado}</td>
-				<td><input type="text" name="arrivalState" align="left"
-					size="15"></td>
-			</tr>
-			<tr>
-				<td align="right">#{msgs.campo_pais}</td>
-				<td><input type="text" name="arrivalCountry" align="left"
-					size="15"></td>
-			</tr>
-			<tr>
-				<td align="right">#{msgs.campo_codigoPostal}</td>
-				<td><input type="text" name="arrivalCP" align="left" size="15"></td>
-			</tr>
-			<tr>
-				<td align="right">#{msgs.campo_latitud}</td>
-				<td><input type="text" name="arrivalLatitude" align="left"
-					size="15"></td>
-			</tr>
-			<tr>
-				<td align="right">#{msgs.campo_longitud}</td>
-				<td><input type="text" name="arrivalLongitud" align="left"
-					size="15"></td>
-			</tr>
-			<tr>
-				<td align="right">#{msgs.campo_fechaConFormato}</td>
-				<td><input type="text" name="arrivalDate" align="left"
-					size="10"></td>
-			</tr>
-			<tr>
-				<td align="right">#{msgs.campo_horaConFormato}</td>
-				<td>
-					<input type="text" name="arrivalHour" align="left" size="5">
-				</td>
-			</tr>
-			<tr>
-				<td><strong>#{msgs.campos_datosGenerales}</strong></td>
-			</tr>
-			<tr>
-				<td align="right">#{msgs.campo_fechaCierreConFormato}</td>
-				<td><input type="text" name="closingDate" align="left"
-					size="10"></td>
-			</tr>
-			<tr>
-				<td align="right">#{msgs.campo_horaCierreConFormato}</td>
-				<td>
-					<input type="text" name="closingHour" align="left" size="5">
-				</td>
-			</tr>
-			<tr>
-				<td align="right">#{msgs.campo_pasajerosMaximos}</td>
-				<td><input type="text" name="maxPas" align="left" size="2"></td>
-			</tr>
-			<tr>
-				<td align="right">#{msgs.campo_precioEstimado}</td>
-				<td><input type="text" name="estimatedCost" align="left"
-					size="7"></td>
-			</tr>
-			<tr>
-				<td align="right">#{msgs.campo_comentarios}</td>
-				<td>
-					<input type="text" name="comments" align="left" size="30">
-				</td>
-			</tr>
-			<tr>
-				<td><input type="submit" value="Enviar" /></td>
-			</tr>
-		</table>
-		<a href="irAInicio">#{msgs.enlace_cancelar}</a> <br>
-		<!-- <ui:include src="/snippets/muestraMensaje.xhtml" /> -->
+		
+		<ui:include src="/snippets/trip-form.xhtml" />
+		
+		<!-- TODO COMPLETAR -->	
+		<h:commandButton value="#{msgs.enlace_enviar}"
+					action="#{tripsController.METODO_QUE_CREE_EL_VIAJE}">
+					
 	</form>
 	<hr>
 	</ui:define>
