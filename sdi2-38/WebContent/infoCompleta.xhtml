@@ -11,28 +11,15 @@
 
 	<ui:define name="cuerpo">
 		<div>
-		<p>
-			El promotor de este viajes es: <a
-				href="infoUsuario?id=${promotor.id}">${promotor.name}</a>
-		</p>
-		<c:choose>
-			<c:when test="${participantes.isEmpty()}">
-				<center>Actualmente no hay ningún participante confirmado
-				</center>
-			</c:when>
-			<c:otherwise>
-				<p>Participantes:</p>
-				<ul>
-					<c:forEach var="entry" items="${participantes}" 
-					varStatus="i">
-						<li><a href="infoUsuario?id=${entry.id}">${entry.name}
-								${entry.surname}</a></li>
-					</c:forEach>
-				</ul>
-			</c:otherwise>
-		</c:choose>
-		<a href="irAInicio">Cancelar</a>
-		<!-- <ui:include src="/snippets/muestraMensaje.xhtml" /> -->
+		<p>El promotor de este viajes es: 
+			#{seatController.promoter.name} #{seatController.promoter.surname}</p>
+		<h:form>
+			Los participantes confirmados del viaje son:
+			<p:dataList value="#seatController.participantes" var="part"
+				type="ordered">
+				#{part.name} #{part.surname}	
+			</p:dataList>
+		</h:form>
 	</div>
 	</ui:define>
 
