@@ -14,7 +14,9 @@
 		<center>
 			<h1><h:outputFormat value="#{msgs.titulo_bienvenido}"> <f:param value="#{sesion.usuario.name}"/></h:outputFormat></h1>
 		</center>
-		<!-- <ui:include src="/snippets/muestraMensaje.xhtml" /> -->
+		
+		<h:messages />
+		
 	</h:form>
 	</ui:define>
 
