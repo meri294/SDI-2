@@ -13,40 +13,50 @@
 
 	<ui:define name="cuerpo">
 		<div>
-		<table border="1" align="center">
-			<tr>
-				<th>#{msgs.campo_origen}</th>
-				<th>#{msgs.campo_fechaSalida}</th>
-				<th>#{msgs.campo_destino}</th>
-				<th>#{msgs.campo_fechaLlegada}</th>
-				<th>#{msgs.campo_plazasLibres}</th>
-				<th>#{msgs.campo_plazasTotales}</th>
-				<th>#{msgs.campo_precio}</th>
-				<th>#{msgs.campo_fechaCierre}</th>
+		<h:panelGrid columns="8" styleClass="formTable">
+		
+			#{msgs.campo_origen}
+			
+			#{msgs.campo_fechaSalida}
+			
+			#{msgs.campo_destino}
+			
+			#{msgs.campo_fechaLlegada}
+			
+			#{msgs.campo_plazasLibres}
+			
+			#{msgs.campo_plazasTotales}
+			
+			#{msgs.campo_precio}
+			
+			#{msgs.campo_fechaCierre}
+			
+			<!-- Fin de cabeceras de las columnas -->
 
-			</tr>
+			#{tripsController.trip.departure.address} - #{tripsController.trip.departure.zipCode}, #{tripsController.trip.departure.city} (#{tripsController.trip.departure.state})
+			
+			#{tripsController.trip.departureDate}
+			
+			#{tripsController.trip.destination.address} - #{tripsController.trip.destination.zipCode}, #{tripsController.trip.destination.city} (#{tripsController.trip.destination.state})
+			
+			#{tripsController.trip.arrivalDate}
+			
+			#{tripsController.trip.availablePax}
+			
+			#{tripsController.trip.maxPax}
+			
+			#{tripsController.trip.estimatedCost}
+			
+			#{tripsController.trip.closingDate}
+		</h:panelGrid>
 
-			<tr>
-				<td>${viaje.departure.address}-${viaje.departure.zipCode},
-					${viaje.departure.city}(${viaje.departure.city})</td>
-				<td>${viaje.departureDate}</td>
-				<td>${viaje.destination.address}-${viaje.destination.zipCode},
-					${viaje.destination.city}(${viaje.destination.city})</td>
-				<td>${viaje.arrivalDate}</td>
-				<td>${viaje.availablePax}</td>
-				<td>${viaje.maxPax}</td>
-				<td>${viaje.estimatedCost}</td>
-				<td>${viaje.closingDate}</td>
-			</tr>
-		</table>
-
+		<!-- TODO COMPLETAR -->
 		<center>
-			<p><a href="masInfo?id=${viaje.id}">
-				#{msgs.mensaje_consultarMasInformacionViaje}</a>
-			</p>
+			<h:commandButton value="#{msgs.mensaje_consultarMasInformacionViaje}"
+					action="ALGO QUE PREPARE LOS DATOS Y REDIRIJA A infoCompleta">
 		</center>
-		<a href="irAInicio">#{msgs.enlace_cancelar}</a>
-		<!-- <ui:include src="/snippets/muestraMensaje.xhtml" /> -->
+		
+		<h:messages/>
 	</div>
 	</ui:define>
 
