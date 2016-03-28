@@ -1,7 +1,6 @@
 # SDI-2
 
 TO-DO:
-  · Completar la implementación de los enlaces de menu.xhtml
   · Comprobar funcionamiento de registroViajes.xhtml
   · Comprobar funcionamiento de modificarViajes.xhtml
   · Revisar código para modificar viajes en BeanTrips (marcado con un TO-DO)
