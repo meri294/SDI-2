@@ -31,7 +31,7 @@ public class BeanTrips implements Serializable {
 
     @ManagedProperty(value = "#{trip}")
     private BeanTrip trip;
-    
+
     @ManagedProperty(value = "#{involucrado}")
     private BeanInvolucrado involucrado;
 
@@ -64,7 +64,7 @@ public class BeanTrips implements Serializable {
 	    FacesContext.getCurrentInstance().getExternalContext()
 		    .getSessionMap().put("sesion", sesion);
 	}
-	
+
 	involucrado = (BeanInvolucrado) FacesContext.getCurrentInstance()
 		.getExternalContext().getSessionMap().get("involucrado");
 
@@ -156,7 +156,7 @@ public class BeanTrips implements Serializable {
 	FacesContext facesContext = FacesContext.getCurrentInstance();
 	ResourceBundle bundle = facesContext.getApplication()
 		.getResourceBundle(facesContext, "msgs");
-	
+
 	trip.iniciaTrip(event);
 
 	departureDateConFormato = bundle.getString("default_date");
@@ -266,21 +266,40 @@ public class BeanTrips implements Serializable {
 		Factories.services.createSeatsService().save(
 			crearSeat(sesion.getUsuario().getId(), trip.getId()));
 	    } else {
+
+		/* TODO Tiene sentido mirar el estado del viaje?
+		Trip tripEnBBDD = service.findById(trip.getId());
+		if (tripEnBBDD.getStatus() == TripStatus.CANCELLED
+			|| tripEnBBDD.getStatus() == TripStatus.DONE) {
+		    Log.error("El viaje ha sido cancelado o ya se ha realizado");
+		    FacesContext.getCurrentInstance().addMessage(
+			    null,
+			    new FacesMessage(bundle
+				    .getString("error_tratandoViaje")));
+		    // request.setAttribute("mensaje",
+		    // "El viaje ha sido cancelado "
+		    // + "o ya se ha realizado");
+
+		    return Resultado.error.name();
+		}
+		*/
+
 		service.updateTrip(trip);
 	    }
+	    
 	    // Actualizamos el javabean de trips inyectado en la tabla
 	    trips = (Trip[]) service.getTrips().toArray(new Trip[0]);
-	    
+
 	    return involucrado.misViajes(); // Nos vamos a la vista de listado.
 
 	} catch (Exception e) {
 	    e.printStackTrace();
-	    Log.error("Se ha producido un error registrando el viaje");
+	    Log.error("Se ha producido un error tratando el viaje");
 	    FacesContext.getCurrentInstance()
 		    .addMessage(
 			    null,
 			    new FacesMessage(bundle
-				    .getString("error_registrandoViaje")));
+				    .getString("error_tratandoViaje")));
 
 	    return Resultado.error.name(); // Nos vamos a la vista de error.
 	}
