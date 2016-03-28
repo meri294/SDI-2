@@ -6,6 +6,7 @@ TO-DO:
   · Completar la implementación de modificarViajes.xhtml
   · Completar la implementación de trip-form.xhtml
   · Completar la implementación de muestraViaje.xhtml
+  · ¿Fusionar BeanTrips y BeanInvolucrados?
   
   
 Contraseñas de los usuarios:
