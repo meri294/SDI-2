@@ -7,7 +7,6 @@ TO-DO:
   · Revisar código para modificar viajes en BeanTrips (marcado con un TO-DO)
   · Completar la implementación de muestraViaje.xhtml
   · Comprobar que funciona bien la cabecera de muestraViaje.xhtml
-  · ¿Fusionar BeanTrips y BeanInvolucrados?
   
   
 Contraseñas de los usuarios:
