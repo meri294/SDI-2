@@ -2,6 +2,8 @@ package com.sdi.presentation;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
+import java.util.Map;
 import java.util.ResourceBundle;
 
 import javax.annotation.PostConstruct;
@@ -32,10 +34,12 @@ public class BeanTrips implements Serializable {
     @ManagedProperty(value = "#{trip}")
     private BeanTrip trip;
 
-    @ManagedProperty(value = "#{involucrado}")
-    private BeanInvolucrado involucrado;
-
-    private Trip[] trips = null;
+    private Trip[] tripsDisponibles = null;
+    private Trip[] promotor = null;
+    private Trip[] excluido = null;
+    private Trip[] participante = null;
+    private Trip[] enEspera = null;
+    private Trip[] sinPlaza = null;
 
     private String departureDateConFormato = "";
     private String departureHourConFormato = "";
@@ -64,15 +68,6 @@ public class BeanTrips implements Serializable {
 	    FacesContext.getCurrentInstance().getExternalContext()
 		    .getSessionMap().put("sesion", sesion);
 	}
-
-	involucrado = (BeanInvolucrado) FacesContext.getCurrentInstance()
-		.getExternalContext().getSessionMap().get("involucrado");
-
-	if (involucrado == null) {
-	    involucrado = new BeanInvolucrado();
-	    FacesContext.getCurrentInstance().getExternalContext()
-		    .getSessionMap().put("involucrado", sesion);
-	}
     }
 
     @PreDestroy
@@ -80,8 +75,8 @@ public class BeanTrips implements Serializable {
 	System.out.println("BeanTrips - PreDestroy");
     }
 
-    public Trip[] getTrips() {
-	return (trips);
+    public Trip[] getTripsDisponibles() {
+	return (tripsDisponibles);
     }
 
     public void setTrip(BeanTrip trip) {
@@ -100,8 +95,48 @@ public class BeanTrips implements Serializable {
 	this.sesion = sesion;
     }
 
-    public void setTrips(Trip[] trips) {
-	this.trips = trips;
+    public void setTripsDisponibles(Trip[] trips) {
+	this.tripsDisponibles = trips;
+    }
+    
+    public Trip[] getPromotor() {
+	return promotor;
+    }
+
+    public void setPromotor(Trip[] promotor) {
+	this.promotor = promotor;
+    }
+
+    public Trip[] getExcluido() {
+	return excluido;
+    }
+
+    public void setExcluido(Trip[] excluido) {
+	this.excluido = excluido;
+    }
+
+    public Trip[] getParticipante() {
+	return participante;
+    }
+
+    public void setParticipante(Trip[] participante) {
+	this.participante = participante;
+    }
+
+    public Trip[] getEnEspera() {
+	return enEspera;
+    }
+
+    public void setEnEspera(Trip[] enEspera) {
+	this.enEspera = enEspera;
+    }
+
+    public Trip[] getSinPlaza() {
+	return sinPlaza;
+    }
+
+    public void setSinPlaza(Trip[] sinPlaza) {
+	this.sinPlaza = sinPlaza;
     }
 
     public String getDepartureDateConFormato() {
@@ -175,7 +210,7 @@ public class BeanTrips implements Serializable {
 	    service = Factories.services.createTripService();
 	    // De esta forma le damos informaci��n a toArray para poder hacer el
 	    // casting a Trip[]
-	    trips = (Trip[]) service.getTrips().toArray(new Trip[0]);
+	    tripsDisponibles = (Trip[]) service.getTrips().toArray(new Trip[0]);
 
 	    return "exito";
 
@@ -195,7 +230,7 @@ public class BeanTrips implements Serializable {
 	    // Aliminamos el trip seleccionado en la tabla
 	    service.deleteTrip(trip.getId());
 	    // Actualizamos el javabean de trips inyectado en la tabla.
-	    trips = (Trip[]) service.getTrips().toArray(new Trip[0]);
+	    tripsDisponibles = (Trip[]) service.getTrips().toArray(new Trip[0]);
 	    return "exito"; // Nos vamos a la vista de listado.
 
 	} catch (Exception e) {
@@ -288,9 +323,9 @@ public class BeanTrips implements Serializable {
 	    }
 	    
 	    // Actualizamos el javabean de trips inyectado en la tabla
-	    trips = (Trip[]) service.getTrips().toArray(new Trip[0]);
+	    tripsDisponibles = (Trip[]) service.getTrips().toArray(new Trip[0]);
 
-	    return involucrado.misViajes(); // Nos vamos a la vista de listado.
+	    return sacarMisViajes(); // Nos vamos a la vista de listado.
 
 	} catch (Exception e) {
 	    e.printStackTrace();
@@ -322,5 +357,24 @@ public class BeanTrips implements Serializable {
 	seat.setUserId(userId);
 	seat.setStatus(SeatStatus.ACCEPTED);
 	return seat;
+    }
+    
+    public String sacarMisViajes() {
+	TripService service;
+	try {
+	    service = Factories.services.createTripService();
+	    Map<String, List<Trip>> invol = service.findInvolucrado(sesion.getUsuario().getId());
+	    promotor = (Trip[]) invol.get("promotor").toArray(new Trip[0]);
+	    enEspera = (Trip[]) invol.get("enEspera").toArray(new Trip[0]);
+	    participante = (Trip[]) invol.get("participante").toArray(
+		    new Trip[0]);
+	    excluido = (Trip[]) invol.get("excluido").toArray(new Trip[0]);
+	    sinPlaza = (Trip[]) invol.get("sinPlaza").toArray(new Trip[0]);
+	} catch (Exception e) {
+	    FacesContext.getCurrentInstance().addMessage(null,
+		    new FacesMessage(e.getMessage()));
+	    return "error";
+	}
+	return "exito";
     }
 }

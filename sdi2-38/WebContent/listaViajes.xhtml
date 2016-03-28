@@ -15,7 +15,7 @@
 		<h:form>
 			<p:panel>
 				<p:dataTable id="tablaViajes" var="valtrip"
-					value="#{tripsController.trips}" border="10"
+					value="#{tripsController.tripsDisponibles}" border="10"
 					emptyMessage="#{msgs.mensaje_sinViajesDisponibles}">
 					<p:column id="idViaje">
 						<f:facet name="header">#{msgs.campo_idViaje}</f:facet>

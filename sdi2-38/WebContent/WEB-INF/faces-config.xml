@@ -61,11 +61,6 @@
 		<managed-bean-class>com.sdi.presentation.BeanApplications</managed-bean-class>
 		<managed-bean-scope>session</managed-bean-scope>
 	</managed-bean>
-	<managed-bean>
-		<managed-bean-name>involucrado</managed-bean-name>
-		<managed-bean-class>com.sdi.presentation.BeanInvolucrado</managed-bean-class>
-		<managed-bean-scope>session</managed-bean-scope>
-	</managed-bean>
 
 	<navigation-rule>
 		<from-view-id>*</from-view-id>
@@ -86,7 +81,7 @@
 			<redirect />
 		</navigation-case>
 		<navigation-case>
-			<from-action>#{involucrado.misViajes(sesion.usuario.id)}</from-action>
+			<from-action>#{tripsController.sacarMisViajes}</from-action>
 			<from-outcome>exito</from-outcome>
 			<to-view-id>/viajesInvolucrado.xhtml</to-view-id>
 			<redirect/>

@@ -15,7 +15,7 @@
 		<h:form>
 			<p:panel>
 				<p:dataTable id="tablaViajesPromo" var="valtrip"
-					value="#{involucrado.promotor}"
+					value="#{tripsController.promotor}"
 					emptyMessage="#{msgs.mensaje_sinViajesPromotor}">
 					<p:column id="promoidViaje">
 						<f:facet name="header">#{msgs.campo_idViaje}</f:facet>
@@ -48,7 +48,7 @@
 					</p:column>
 				</p:dataTable>
 				<p:dataTable id="tablaViajesParti" var="valtrip"
-					value="#{involucrado.participante}"
+					value="#{tripsController.participante}"
 					emptyMessage="#{msgs.mensaje_sinViajesParticipante}">
 					<p:column id="partiidViaje">#{valtrip.id}</p:column>
 					<p:column id="partiEstado">#{valtrip.status}</p:column>
@@ -61,7 +61,7 @@
 					#{msgs.enlace_cancelar}</p:column>
 				</p:dataTable>
 				<p:dataTable id="tablaViajesEx" var="valtrip"
-					value="#{involucrado.excluido}"
+					value="#{tripsController.excluido}"
 					emptyMessage="#{msgs.mensaje_sinViajesExcluidos}">
 					<p:column id="partiidViaje">#{valtrip.id}</p:column>
 					<p:column id="excEstado">#{valtrip.status}</p:column>
@@ -75,7 +75,7 @@
 					</p:column>
 				</p:dataTable>
 				<p:dataTable id="tablaViajesEspera" var="valtrip"
-					value="#{involucrado.enEspera}"
+					value="#{tripsController.enEspera}"
 					emptyMessage="#{msgs.mensaje_noViajesEspera}">
 					<p:column id="partiidViaje">#{valtrip.id}</p:column>
 					<p:column id="espEstado">#{valtrip.status}</p:column>
@@ -89,7 +89,7 @@
 					</p:column>
 				</p:dataTable>
 				<p:dataTable id="tablaViajesSin" var="valtrip"
-					value="#{involucrado.sinPlaza}"
+					value="#{tripsController.sinPlaza}"
 					emptyMessage="#{msgs.mensaje_noViajeSinPlaza}">
 					<p:column id="partiidViaje">#{valtrip.id}</p:column>
 					<p:column id="sinEstado">#{valtrip.status}</p:column>

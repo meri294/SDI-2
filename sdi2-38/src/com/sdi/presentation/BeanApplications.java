@@ -4,7 +4,6 @@ import java.util.ResourceBundle;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
-import javax.el.ELContext;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
@@ -20,7 +19,12 @@ import com.sdi.model.Application;
 @ManagedBean(name = "applicationsController")
 @SessionScoped
 public class BeanApplications {
+    
 	private FacesContext context = FacesContext.getCurrentInstance();
+	
+	@ManagedProperty(value = "#{tripsController}")
+	private BeanTrips beanTrips;
+	
 	@ManagedProperty(value = "#{application}")
 	private BeanApplication application;
 
@@ -37,6 +41,15 @@ public class BeanApplications {
 			application = new BeanApplication();
 			FacesContext.getCurrentInstance().getExternalContext()
 					.getSessionMap().put("application", application);
+		}
+		
+		beanTrips = (BeanTrips) FacesContext.getCurrentInstance()
+			.getExternalContext().getSessionMap().get("tripsController");
+
+		if (beanTrips == null) {
+		    beanTrips = new BeanTrips();
+		    FacesContext.getCurrentInstance().getExternalContext()
+			    .getSessionMap().put("tripsController", beanTrips);
 		}
 	}
 
@@ -126,11 +139,7 @@ public class BeanApplications {
 				application.setTripId(tripId);
 				application.setUserId(userId);
 				service.saveApplication(application);
-				ELContext elContext = FacesContext.getCurrentInstance().getELContext();
-				BeanInvolucrado bean 
-				    = (BeanInvolucrado) FacesContext.getCurrentInstance().getApplication()
-				    .getELResolver().getValue(elContext, null, "involucrado");
-				bean.misViajes();
+				beanTrips.sacarMisViajes();
 			} else {
 				FacesMessage message = new FacesMessage(
 						FacesMessage.SEVERITY_ERROR,
