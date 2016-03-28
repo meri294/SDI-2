@@ -6,18 +6,24 @@
 	template="/templates/template-general.xhtml">
 
 	<ui:define name="titulo">
-      <h:outputFormat value="#{msgs.cabecera_rellenable}"> <f:param value="#{msgs.cabecera_principalRegistrado}"/></h:outputFormat>
-    </ui:define>
+		<h:outputFormat value="#{msgs.cabecera_rellenable}">
+			<f:param value="#{msgs.cabecera_principalRegistrado}" />
+		</h:outputFormat>
+	</ui:define>
 
 	<ui:define name="cuerpo">
 		<h:form>
-		<center>
-			<h1><h:outputFormat value="#{msgs.titulo_bienvenido}"> <f:param value="#{sesion.usuario.name}"/></h:outputFormat></h1>
-		</center>
-		
-		<ui:include src="/snippets/error-messages.xhtml" />
-		
-	</h:form>
+			<center>
+				<h1>
+					<h:outputFormat id="bienvenido" value="#{msgs.titulo_bienvenido}">
+						<f:param value="#{sesion.usuario.name}" />
+					</h:outputFormat>
+				</h1>
+			</center>
+
+			<ui:include src="/snippets/error-messages.xhtml" />
+
+		</h:form>
 	</ui:define>
 
 </ui:composition>

@@ -9,7 +9,7 @@
 
 	<ui:define name="cuerpo">
 		<div>
-			<h:form  method="post">
+			<h:form id="login-form" method="post">
 				<center>
 					<h1>#{msgs.titulo_inicieSesion}</h1>
 				</center>
@@ -17,15 +17,16 @@
 				<br />
 				<h:panelGrid columns="2" styleClass="formTable">
 						#{msgs.campo_nombreUsuario}
-						<p:inputText value="#{login.login}" size="15" />
+						<p:inputText id="user" value="#{login.login}" size="15" />
 						
 						#{msgs.campo_suContraseña}
-						<p:password value="#{login.pass}" size="15" />
+						<p:password id="pass" value="#{login.pass}" size="15" />
 						
-						<h:commandButton value="#{msgs.enlace_enviar}" action="#{login.validar}" />
+						<h:commandButton id="log" value="#{msgs.enlace_enviar}" action="#{login.validar}" />
 				</h:panelGrid>
 				
 				<ui:include src="/snippets/error-messages.xhtml" />
+				<h:messages style="color:red;margin:8px;"/>
 			</h:form>
 			<hr />
 			<br />
