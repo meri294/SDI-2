@@ -5,6 +5,7 @@
 	xmlns:f="http://java.sun.com/jsf/core">
 	
 	<p:menubar id="mimenu">
+	
 		<p:submenu id="opciones" style="float:left" label="#{msgs.menu_Opciones}">
 			
 			<p:menuitem id="linkOpciones" style="float:left"
@@ -26,10 +27,6 @@
 				rendered="#{sesion.usuario!=null}"
 				action="registrarViaje"
 				actionListener="#{tripsController.iniciaTrip}" />
-				
-			<p:menuitem id="linkComentarViaje" style="float:left"
-				value="#{msgs.enlace_comentarViaje}"
-				rendered="#{sesion.usuario!=null}" />
 				
 			<p:menuitem id="linkCerrarSesion" style="float:left"
 				value="#{msgs.enlace_cerrarSesion}"
