@@ -12,4 +12,8 @@ public interface ServicesFactory {
 
 	public ApplicationService createApplicationService();
 
+	public SeatsService createSeatsService();
+
+	public UserService createUserService();
+
 }

@@ -43,7 +43,7 @@
 					<p:column rendered="#{sesion.usuario!=null}">
 						<f:facet name="header">#{msgs.enlace_detalles}</f:facet>
 						<p:commandLink id="verDetalles_#{valtrip.id}"
-							action="#{seatsController.participantes(valtrip.id)}"
+							action="#{seatController.obtenerParticipantes(valtrip.id)}"
 							type="submit" value="#{msgs.ver_participantes}">
 						</p:commandLink>
 					</p:column>

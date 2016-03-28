@@ -47,6 +47,11 @@
 		<managed-bean-scope>session</managed-bean-scope>
 	</managed-bean>
 	<managed-bean>
+		<managed-bean-name>seatController</managed-bean-name>
+		<managed-bean-class>com.sdi.presentation.BeanSeats</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
 		<managed-bean-name>application</managed-bean-name>
 		<managed-bean-class>com.sdi.presentation.BeanApplication</managed-bean-class>
 		<managed-bean-scope>session</managed-bean-scope>
@@ -131,6 +136,12 @@
 			<from-outcome>error</from-outcome>
 			<to-view-id>/listaViajes.xhtml</to-view-id>
 			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-action>#{seatController.obtenerParticipantes(valtrip.id)}</from-action>
+			<from-outcome>exito</from-outcome>
+			<to-view-id>/infoCompleta.xhtml</to-view-id>
+			<redirect/>
 		</navigation-case>
 	</navigation-rule>
 

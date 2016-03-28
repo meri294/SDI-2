@@ -4,8 +4,10 @@ import com.sdi.business.ApplicationService;
 import com.sdi.business.CambioUsuarioService;
 import com.sdi.business.LoginService;
 import com.sdi.business.ReinicioBBDDService;
+import com.sdi.business.SeatsService;
 import com.sdi.business.ServicesFactory;
 import com.sdi.business.TripService;
+import com.sdi.business.UserService;
 
 public class SimpleServicesFactory implements ServicesFactory {
 
@@ -34,4 +36,15 @@ public class SimpleServicesFactory implements ServicesFactory {
 		return new SimpleApplicationService();
 	}
 
+	@Override
+	public SeatsService createSeatsService(){
+		return new SimpleSeatsService();
+	}
+
+	@Override
+	public UserService createUserService() {
+		return new SimpleUserService();
+	}
+	
+	
 }
