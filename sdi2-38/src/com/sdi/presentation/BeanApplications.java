@@ -130,7 +130,7 @@ public class BeanApplications {
 				BeanInvolucrado bean 
 				    = (BeanInvolucrado) FacesContext.getCurrentInstance().getApplication()
 				    .getELResolver().getValue(elContext, null, "involucrado");
-				bean.misViajes(userId);
+				bean.misViajes();
 			} else {
 				FacesMessage message = new FacesMessage(
 						FacesMessage.SEVERITY_ERROR,

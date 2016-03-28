@@ -20,11 +20,13 @@
 			<p:menuitem id="linkMisViajes" style="float:left"
 				value="#{msgs.enlace_misViajes}" 
 				rendered="#{sesion.usuario!=null}" 
-				action="#{involucrado.misViajes(sesion.usuario.id)}"/>
+				action="#{involucrado.misViajes}"/>
 				
 			<p:menuitem id="linkRegistrarViaje" style="float:left"
 				value="#{msgs.enlace_registrarViaje}"
-				rendered="#{sesion.usuario!=null}" />
+				rendered="#{sesion.usuario!=null}"
+				action="registrarViaje"
+				actionListener="#{tripsController.iniciaTrip}" />
 				
 			<p:menuitem id="linkComentarViaje" style="float:left"
 				value="#{msgs.enlace_comentarViaje}"

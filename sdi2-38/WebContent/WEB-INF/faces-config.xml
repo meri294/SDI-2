@@ -91,6 +91,11 @@
 			<to-view-id>/viajesInvolucrado.xhtml</to-view-id>
 			<redirect/>
 		</navigation-case>
+		<navigation-case>
+			<from-outcome>registrarViaje</from-outcome>
+			<to-view-id>/registroViaje.xhtml</to-view-id>
+			<redirect/>
+		</navigation-case>
 	</navigation-rule>
 
 	<navigation-rule>
@@ -141,6 +146,21 @@
 			<from-action>#{seatController.obtenerParticipantes(valtrip.id)}</from-action>
 			<from-outcome>exito</from-outcome>
 			<to-view-id>/infoCompleta.xhtml</to-view-id>
+			<redirect/>
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>/registroViaje.xhtml</from-view-id>
+		<navigation-case>
+			<from-action>#{tripsController.salva}</from-action>
+			<from-outcome>fracaso</from-outcome>
+			<to-view-id>/registroViaje.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-action>#{tripsController.salva}</from-action>
+			<from-outcome>exito</from-outcome>
+			<to-view-id>/viajesInvolucrado.xhtml</to-view-id>
 			<redirect/>
 		</navigation-case>
 	</navigation-rule>

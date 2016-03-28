@@ -8,6 +8,7 @@ public class TripsAlta {
 
 	public void save(Trip trip) {
 		TripDao dao = Factories.persistence.createTripDao();
-		dao.save(trip);
+		Long id = dao.save(trip);
+		trip.setId(id);
 	}
 }

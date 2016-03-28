@@ -7,5 +7,7 @@ import com.sdi.model.Seat;
 public interface SeatsService {
 
 	public List<Seat> getParticipantes(Long idTrip);
+	
+	public void save(Seat seat);
 
 }

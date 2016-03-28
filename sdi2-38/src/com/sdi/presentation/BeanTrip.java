@@ -47,31 +47,34 @@ public class BeanTrip extends Trip implements Serializable {
 		ResourceBundle bundle = facesContext.getApplication()
 				.getResourceBundle(facesContext, "msgs");
 		setId(null);
-		setArrivalDate(MariaDateUtil.completeFromBundle(
-				bundle.getString("default_date")));
-		setAvailablePax(Integer.valueOf(
-				bundle.getString("default_available_pax")));
-		setClosingDate(MariaDateUtil.completeFromBundle(
-				bundle.getString("default_date")));
+		setArrivalDate(MariaDateUtil.completeFromString(
+			bundle.getString("default_date"),
+			bundle.getString("default_hour")));
+		setAvailablePax(Integer.valueOf(bundle
+			.getString("default_available_pax")));
+		setClosingDate(MariaDateUtil.completeFromString(
+			bundle.getString("default_date"),
+			bundle.getString("default_hour")));
 		setComments(bundle.getString("default_trip_comments"));
-		setDepartureDate(MariaDateUtil.completeFromBundle(
-				bundle.getString("default_date")));
+		setDepartureDate(MariaDateUtil.completeFromString(
+			bundle.getString("default_date"),
+			bundle.getString("default_hour")));
 		setDeparture(MariaModelUtil.AddressPointFromString(
-				bundle.getString("default_address"),
-				bundle.getString("default_city"),
-				bundle.getString("default_state"),
-				bundle.getString("default_country"),
-				bundle.getString("default_cp"),
-				bundle.getString("default_coordinates")));
+			bundle.getString("default_address"),
+			bundle.getString("default_city"),
+			bundle.getString("default_state"),
+			bundle.getString("default_country"),
+			bundle.getString("default_cp"),
+			bundle.getString("default_coordinates")));
 		setDestination(MariaModelUtil.AddressPointFromString(
-				bundle.getString("default_address"),
-				bundle.getString("default_city"),
-				bundle.getString("default_state"),
-				bundle.getString("default_country"),
-				bundle.getString("default_cp"),
-				bundle.getString("default_coordinates")));
-		setEstimatedCost(Double.valueOf(bundle.getString
-				("default_estimated_cost")));
+			bundle.getString("default_address"),
+			bundle.getString("default_city"),
+			bundle.getString("default_state"),
+			bundle.getString("default_country"),
+			bundle.getString("default_cp"),
+			bundle.getString("default_coordinates")));
+		setEstimatedCost(Double.valueOf(bundle
+			.getString("default_estimated_cost")));
 		setMaxPax(Integer.valueOf(bundle.getString("default_maxPax")));
 		setPromoterId(null);
 		setStatus(null);
