@@ -23,11 +23,11 @@
 					</p:column>
 					<p:column id="aceptarPasajero">
 						<f:facet name="header">#{msgs.enlace_aceptar}</f:facet>
-						<h:commandLink action="ACEPTAR AL VIAJERO" value="#{msgs.enlace_aceptar}"/>
+						<h:commandLink action="#{applicationsController.aceptar(soli)}" value="#{msgs.enlace_aceptar}"/>
 					</p:column>
 					<p:column id="excluirPasajero">
 						<f:facet name="header">#{msgs.enlace_excluir}</f:facet>
-						<h:commandLink action="EXCLUIR AL VIAJERO" value="#{msgs.enlace_excluir}"/>
+						<h:commandLink action="#{applicationsController.excluir(soli)}" value="#{msgs.enlace_excluir}"/>
 					</p:column>
 				</p:dataTable>
 			</p:panel>

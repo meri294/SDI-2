@@ -20,7 +20,7 @@ public interface SeatsService {
 	public void aceptarPlaza(Seat seat) throws Exception;
 	
 	/**
-	 * Crea una plaza en estado aceptado con los datos pasados
+	 * Crea y persiste una plaza en estado aceptado con los datos pasados
 	 * y disminuye el número de plazas disponibles en el viaje
 	 * 
 	 * @param userId ID del usuario
@@ -28,5 +28,13 @@ public interface SeatsService {
 	 * @throws Exception
 	 */
 	public void aceptarPlaza(Long userId, Long tripId) throws Exception;
+
+	/**
+	 * Crea y persiste una plaza en estado excluido con los datos pasados
+	 * 
+	 * @param userId ID del usuario
+	 * @param tripId ID del viaje
+	 */
+	public void excluirPlaza(Long userId, Long tripId);
 
 }

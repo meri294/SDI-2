@@ -188,5 +188,23 @@
 			<redirect />
 		</navigation-case>
 	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>/listarSolicitantes.xhtml</from-view-id>
+		<navigation-case>
+			<from-action>#{applicationsController.aceptar(soli)}</from-action>
+			<from-outcome>exito</from-outcome>
+			<to-view-id>/listarSolicitantes.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-action>#{applicationsController.excluir(soli)}</from-action>
+			<from-outcome>exito</from-outcome>
+			<to-view-id>/listarSolicitantes.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>fracaso</from-outcome>
+			<to-view-id>/listarSolicitantes.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
 
 </faces-config>

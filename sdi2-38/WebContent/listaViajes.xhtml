@@ -36,7 +36,7 @@
 					<p:column rendered="#{sesion.usuario!=null}">
 						<f:facet name="header">#{msgs.enlace_solicitar}</f:facet>
 						<p:commandLink id="solicitarlink"
-							action="#{applicationsController.salva(sesion.usuario.id, valtrip.id)}"
+							action="#{applicationsController.salva(valtrip.id)}"
 							type="submit" value="#{msgs.enlace_solicitar}">
 						</p:commandLink>
 					</p:column>
