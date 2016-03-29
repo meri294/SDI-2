@@ -2,9 +2,7 @@
 
 TO-DO:
   · Comprobar funcionamiento de modificarViajes.xhtml
-  · Revisar código para modificar viajes en BeanTrips (marcado con un TO-DO)
-  · Completar la implementación de muestraViaje.xhtml
-  · Comprobar que funciona bien la cabecera de muestraViaje.xhtml
+  · Implementar todas las opciones de viajesInvolucrado (hay algunas borradas)
   
   
 Contraseñas de los usuarios:
