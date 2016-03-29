@@ -43,4 +43,43 @@ public class SimpleTripService implements TripService {
 		return new TripsBuscar().findInvolucrado(id);
 	}
 
+	@Override
+	public void disminuirPlazasDisponibles(Long id) throws Exception {
+	    disminuirPlazasDisponibles(this.findById(id));
+	    
+	}
+
+	@Override
+	public void disminuirPlazasDisponibles(Trip trip) throws Exception {
+	    
+	    int nuevasPlazasDisponibles = trip.getAvailablePax() - 1;
+	    
+	    if(nuevasPlazasDisponibles < 0)
+		throw new Exception("No hay plazas disponibles para disminuir");
+	    
+	    trip.setAvailablePax(nuevasPlazasDisponibles);
+	    
+	    updateTrip(trip);
+	    
+	}
+
+	@Override
+	public void aumentarPlazasDisponibles(Long id) throws Exception {
+	    aumentarPlazasDisponibles(this.findById(id));
+	    
+	}
+
+	@Override
+	public void aumentarPlazasDisponibles(Trip trip) throws Exception {
+	    int nuevasPlazasDisponibles = trip.getAvailablePax() + 1;
+	    
+	    if(nuevasPlazasDisponibles > trip.getMaxPax())
+		throw new Exception("Ya están todas las plazas libres, no puede haber más plazas libres que plazas máximas");
+	    
+	    trip.setAvailablePax(nuevasPlazasDisponibles);
+	    
+	    updateTrip(trip);
+	    
+	}
+
 }
