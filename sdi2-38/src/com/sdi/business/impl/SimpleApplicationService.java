@@ -47,4 +47,9 @@ public class SimpleApplicationService implements ApplicationService {
 		return new ApplicationBuscar().find(ids);
 	}
 
+	@Override
+	public List<Application> getApplicationsWithoutSeatFor(Long tripId) {
+	    return new ApplicationsListado().getApplicationsWithoutSeatFor(tripId);
+	}
+
 }

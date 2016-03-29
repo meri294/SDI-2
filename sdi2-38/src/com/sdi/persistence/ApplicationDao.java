@@ -11,4 +11,6 @@ public interface ApplicationDao extends GenericDAO<Application, Long[]> {
 
 	List<Application> findByTripId(Long tripId);
 
+	List<Application> findWithoutSeat(Long tripId);
+
 }

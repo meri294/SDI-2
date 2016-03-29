@@ -47,7 +47,8 @@
 					<p:column id="promoOpciones">
 						<f:facet name="header">#{msgs.campo_opciones}</f:facet>
 						<!-- TO-DO: Completar -->
-						<h:commandLink value="#{msgs.enlace_verSolicitantes}"/>
+						<h:commandLink value="#{msgs.enlace_verSolicitantes}"
+						action="#{applicationsController.sacarSolicitudes(valtrip.id)}"/>
 						<br/>
 						<h:commandLink value="#{msgs.enlace_modificarViaje}"
 						action="#{tripsController.preparaModificacion(valtrip)}"/>

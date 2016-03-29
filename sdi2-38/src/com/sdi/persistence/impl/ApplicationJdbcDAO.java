@@ -66,4 +66,10 @@ public class ApplicationJdbcDAO implements ApplicationDao {
 				new ApplicationMapper(), tripId);
 	}
 
+	@Override
+	public List<Application> findWithoutSeat(Long tripId) {
+	    return jdbcTemplate.queryForList("APPLICATION_FIND_WITHOUT_SEATS_BY_TRIP_ID",
+			new ApplicationMapper(), tripId, tripId);
+	}
+
 }

@@ -1,5 +1,6 @@
 package com.sdi.presentation;
 
+import java.util.List;
 import java.util.ResourceBundle;
 
 import javax.annotation.PostConstruct;
@@ -9,8 +10,6 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
-import javax.faces.event.ActionEvent;
-import javax.faces.validator.ValidatorException;
 
 import com.sdi.business.ApplicationService;
 import com.sdi.infrastructure.Factories;
@@ -215,7 +214,7 @@ public class BeanApplications {
 	    // Con la estructura actual es costoso hacerlo, asi que en su lugar
 	    // vuelvo a sacar el listado de solicitudes
 
-	    return listado();
+	    return sacarSolicitudes(application.getTripId());
 
 	} catch (Exception e) {
 	    context.addMessage(null, new FacesMessage(e.getMessage()));
@@ -233,6 +232,17 @@ public class BeanApplications {
 	// TODO Quitar esta application de la lista de solicitudes
 	// Con la estructura actual es costoso hacerlo, asi que en su lugar
 	// vuelvo a sacar el listado de solicitudes
-	return listado();
+	return sacarSolicitudes(application.getTripId());
+    }
+    
+    public String sacarSolicitudes(Long tripId) {
+	
+	//Recoger las SOLICITUDES (o sea, sin seat creado) del viaje pasado
+	List<Application> listApp = Factories.services.createApplicationService().getApplicationsWithoutSeatFor(tripId);
+	
+	//Guardarlas en applications
+	applications = (Application[]) listApp.toArray(new Application[0]);
+	
+	return Resultado.exito.name();
     }
 }

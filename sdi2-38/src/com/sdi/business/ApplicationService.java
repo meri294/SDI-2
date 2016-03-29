@@ -20,4 +20,6 @@ public interface ApplicationService {
 	
 	Application findById(Long[] ids) throws Exception;
 
+	List<Application> getApplicationsWithoutSeatFor(Long tripId);
+
 }

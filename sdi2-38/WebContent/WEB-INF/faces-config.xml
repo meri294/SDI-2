@@ -172,6 +172,12 @@
 			<to-view-id>/modificarViaje.xhtml</to-view-id>
 			<redirect />
 		</navigation-case>
+		<navigation-case>
+			<from-action>#{applicationsController.sacarSolicitudes(valtrip.id)}</from-action>
+			<from-outcome>exito</from-outcome>
+			<to-view-id>/listarSolicitantes.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
 	</navigation-rule>
 	
 	<navigation-rule>
