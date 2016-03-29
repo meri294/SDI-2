@@ -75,7 +75,7 @@
 				</h:panelGroup>
 
 				<h:commandButton value="#{msgs.enlace_enviar}"
-					action="#{registro.registrar}">
+					action="#{registro.registrar}" id="registrarse">
 					<!-- Ojo que aquí render tiene que incluir todo el formulario 
      ya que los mensajes de error pueden ser renderizados también por Ajax de form implícita -->
 					<f:ajax execute="@form" render="@form" />

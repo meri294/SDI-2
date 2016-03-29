@@ -6,6 +6,7 @@ TO-DO:
   · Revisar código para modificar viajes en BeanTrips (marcado con un TO-DO)
   · Completar la implementación de muestraViaje.xhtml
   · Comprobar que funciona bien la cabecera de muestraViaje.xhtml
+  - Arreglar tripsController.salva nunca cambia el número de plazas libres
   
   
 Contraseñas de los usuarios:
