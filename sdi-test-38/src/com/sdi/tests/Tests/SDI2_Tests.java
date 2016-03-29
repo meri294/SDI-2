@@ -13,6 +13,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 import com.sdi.tests.pageobjects.PO_AltaForm;
 import com.sdi.tests.pageobjects.PO_LoginForm;
+import com.sdi.tests.pageobjects.PO_RegViajeForm;
 import com.sdi.tests.utils.SeleniumUtils;
 
 //Ordenamos las pruebas por el nombre del método
@@ -101,18 +102,36 @@ public class SDI2_Tests {
 		SeleniumUtils.EsperaCargaPagina(driver, "id", "form-pie", 10);
 		SeleniumUtils.textoPresentePagina(driver,
 				"Formulario de inicio de sesión");
+		SeleniumUtils.EsperaCargaPagina(driver, "id", "form-pie", 10);
+		SeleniumUtils.textoPresentePagina(driver, "Inicie sesión");
 	}
 
 	// 6. [RegViajeVal] Registro de un viaje nuevo con datos válidos.
 	/*
 	 * @Test public void t06_RegViajeVal() {
 	 * 
-	 * } // 7. [RegViajeInVal] Registro de un viaje nuevo con datos inválidos.
-	 * 
-	 * @Test public void t07_RegViajeInVal() {
-	 * 
-	 * } // 8. [EditViajeVal] Edición de viaje existente con datos válidos.
-	 * 
+	 * } /
+	 */
+	// 7. [RegViajeInVal] Registro de un viaje nuevo con datos inválidos.
+	@Test
+	public void t07_RegViajeInVal() {
+		t03_IdVal();
+		SeleniumUtils.EsperaCargaPagina(driver, "id", "form-pie", 10);
+		SeleniumUtils.ClickSubopcionMenuHover(driver, "form-cabecera:opciones",
+				"form-cabecera:linkRegistrarViaje");
+		SeleniumUtils.EsperaCargaPagina(driver, "id", "form-pie", 10);
+		new PO_RegViajeForm().rellenaFormulario(driver, "addres1", "city1",
+				"state1", "", "35260", "", "", "20/08/2016",
+				"12:00", "address2", "city2", "state2", "country2", "25036",
+				"2.366", "-53.6982", "21/08/2016", "01:00", "22:05", "4", "296.85",
+				"Viaje de prueba","23/08/2016");
+		SeleniumUtils.EsperaCargaPagina(driver, "id", "form-pie", 10);
+		SeleniumUtils.textoPresentePagina(driver, "Registre un nuevo viaje");
+	}
+
+	// 8. [EditViajeVal] Edición de viaje existente con datos válidos.
+
+	/*
 	 * @Test public void t08_EditViajeVal() {
 	 * 
 	 * } // 9. [EditViajeInVal] Edición de viaje existente con datos inválidos.
@@ -177,9 +196,11 @@ public class SDI2_Tests {
 		SeleniumUtils.ClickSubopcionMenuHover(driver, "form-cabecera:idioma",
 				"form-cabecera:linkespa");
 		driver.get("http://localhost:8280/sdi2-38/login.xhtml");
+		SeleniumUtils.EsperaCargaPagina(driver, "id", "form-pie", 10);
 		SeleniumUtils.textoPresentePagina(driver,
 				"Formulario de inicio de sesión");
 		driver.get("http://localhost:8280/sdi2-38/registro.xhtml");
+		SeleniumUtils.EsperaCargaPagina(driver, "id", "form-pie", 10);
 		SeleniumUtils.textoPresentePagina(driver, "Registre una nueva cuenta");
 	}
 	/*
