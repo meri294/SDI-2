@@ -243,6 +243,6 @@
 		</h:panelGroup>
 	</h:panelGrid>
 		
-	<h:commandButton id="enviar" value="#{msgs.enlace_enviar}" action="#{tripsController.salva}"/>
+	<h:commandButton id="enviar" value="#{msgs.enlace_enviar}" action="#{tripsController.salva(sesion.usuario.id)}"/>
 
 </ui:composition>

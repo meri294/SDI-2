@@ -148,12 +148,12 @@
 	<navigation-rule>
 		<from-view-id>/registroViaje.xhtml</from-view-id>
 		<navigation-case>
-			<from-action>#{tripsController.salva}</from-action>
+			<from-action>#{tripsController.salva(sesion.usuario.id)}</from-action>
 			<from-outcome>fracaso</from-outcome>
 			<to-view-id>/registroViaje.xhtml</to-view-id>
 		</navigation-case>
 		<navigation-case>
-			<from-action>#{tripsController.salva}</from-action>
+			<from-action>#{tripsController.salva(sesion.usuario.id)}</from-action>
 			<from-outcome>exito</from-outcome>
 			<to-view-id>/viajesInvolucrado.xhtml</to-view-id>
 			<redirect/>

@@ -24,6 +24,14 @@ public class Waypoint {
 		return lon;
 	}
 
+	public void setLat(Double lat) {
+		this.lat = lat;
+	}
+
+	public void setLon(Double lon) {
+		this.lon = lon;
+	}
+
 	@Override
 	public String toString() {
 		return "Waypoint [lat=" + lat + ", lon=" + lon + "]";

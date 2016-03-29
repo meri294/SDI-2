@@ -16,6 +16,7 @@ import javax.faces.event.ActionEvent;
 
 import com.sdi.model.Seat;
 import com.sdi.model.SeatStatus;
+import com.sdi.model.TripStatus;
 
 import alb.util.log.Log;
 
@@ -258,7 +259,7 @@ public class BeanTrips implements Serializable {
 
     }
 
-    public String salva() {
+    public String salva(Long userId) {
 
 	FacesContext facesContext = FacesContext.getCurrentInstance();
 	ResourceBundle bundle = facesContext.getApplication()
@@ -286,6 +287,8 @@ public class BeanTrips implements Serializable {
 	trip.setDepartureDate(fechaSalida);
 	trip.setArrivalDate(fechaLlegada);
 	trip.setClosingDate(fechaCierre);
+	trip.setPromoterId(userId);
+	trip.setStatus(TripStatus.OPEN);
 
 	TripService service;
 	try {

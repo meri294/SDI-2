@@ -19,7 +19,7 @@
   <links id="pf14591607515507" target="pf145916075155014" source="pf14591607515506" outcome="exito" redirect="true" fromaction="#{applicationsController.salva(sesion.usuario.id, valtrip.id)}"/>
   <links id="pf14591859414681" target="pf14591859414682" source="pf14591607515506" outcome="exito" redirect="true" fromaction="#{seatController.obtenerParticipantes(valtrip.id)}"/>
   <links id="pf14591859414680" target="pf14591859414683" source="pf14591607515490" outcome="registrarViaje" redirect="true"/>
-  <links id="pf14591955066604" target="pf145916075155014" source="pf14591859414683" outcome="exito" redirect="true" fromaction="#{tripsController.salva}"/>
+  <links id="pf14591955066604" target="pf145916075155014" source="pf14591859414683" outcome="exito" redirect="true" fromaction="#{tripsController.salva(sesion.usuario.id)}"/>
   <links id="pf145916075155011" target="pf14591607515509" source="pf14591607515509" outcome="error" redirect="true" fromaction="#{login.validar}">
     <bendPoints d1Height="-36" d2Height="-36"/>
     <bendPoints d1Width="-64" d1Height="-36" d2Width="-64" d2Height="-36"/>
@@ -30,7 +30,7 @@
     <bendPoints d1Width="-64" d1Height="-36" d2Width="-64" d2Height="-36"/>
     <bendPoints d1Width="-64" d2Width="-64"/>
   </links>
-  <links id="pf14591955066605" target="pf14591859414683" source="pf14591859414683" outcome="fracaso" fromaction="#{tripsController.salva}">
+  <links id="pf14591955066605" target="pf14591859414683" source="pf14591859414683" outcome="fracaso" fromaction="#{tripsController.salva(sesion.usuario.id)}">
     <bendPoints d1Height="-36" d2Height="-36"/>
     <bendPoints d1Width="-64" d1Height="-36" d2Width="-64" d2Height="-36"/>
     <bendPoints d1Width="-64" d2Width="-64"/>
