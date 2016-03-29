@@ -17,7 +17,7 @@
 				<p:dataTable id="tablaViajes" var="valtrip"
 					value="#{tripsController.tripsDisponibles}" border="10"
 					emptyMessage="#{msgs.mensaje_sinViajesDisponibles}">
-					<p:column id="idViaje">
+					<p:column id="idViaje" sortBy="#{valtrip.id}">
 						<f:facet name="header">#{msgs.campo_idViaje}</f:facet>
 						#{valtrip.id}
 					</p:column>

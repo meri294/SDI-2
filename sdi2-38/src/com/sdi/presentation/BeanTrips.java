@@ -33,7 +33,7 @@ public class BeanTrips implements Serializable {
     @ManagedProperty(value = "#{trip}")
     private BeanTrip trip;
 
-    private Trip[] tripsDisponibles = null;
+    private List<Trip> tripsDisponibles = null;
     private Trip[] promotor = null;
     private Trip[] excluido = null;
     private Trip[] participante = null;
@@ -74,7 +74,7 @@ public class BeanTrips implements Serializable {
 	System.out.println("BeanTrips - PreDestroy");
     }
 
-    public Trip[] getTripsDisponibles() {
+    public List<Trip> getTripsDisponibles() {
 	return (tripsDisponibles);
     }
 
@@ -94,7 +94,7 @@ public class BeanTrips implements Serializable {
 	this.sesion = sesion;
     }
 
-    public void setTripsDisponibles(Trip[] trips) {
+    public void setTripsDisponibles(List<Trip> trips) {
 	this.tripsDisponibles = trips;
     }
     
@@ -209,7 +209,7 @@ public class BeanTrips implements Serializable {
 	    service = Factories.services.createTripService();
 	    // De esta forma le damos informaci��n a toArray para poder hacer el
 	    // casting a Trip[]
-	    tripsDisponibles = (Trip[]) service.getTrips().toArray(new Trip[0]);
+	    tripsDisponibles = service.getTrips();
 
 	    return "exito";
 
@@ -229,7 +229,7 @@ public class BeanTrips implements Serializable {
 	    // Aliminamos el trip seleccionado en la tabla
 	    service.deleteTrip(trip.getId());
 	    // Actualizamos el javabean de trips inyectado en la tabla.
-	    tripsDisponibles = (Trip[]) service.getTrips().toArray(new Trip[0]);
+	    tripsDisponibles = service.getTrips();
 	    return "exito"; // Nos vamos a la vista de listado.
 
 	} catch (Exception e) {
@@ -324,7 +324,7 @@ public class BeanTrips implements Serializable {
 	    }
 	    
 	    // Actualizamos el javabean de trips inyectado en la tabla
-	    tripsDisponibles = (Trip[]) service.getTrips().toArray(new Trip[0]);
+	    tripsDisponibles = service.getTrips();
 
 	    return sacarMisViajes(); // Nos vamos a la vista de listado.
 
