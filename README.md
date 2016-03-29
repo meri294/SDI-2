@@ -1,7 +1,6 @@
 # SDI-2
 
 TO-DO:
-  · Comprobar funcionamiento de modificarViajes.xhtml
   · Implementar todas las opciones de viajesInvolucrado (hay algunas borradas)
   
   
