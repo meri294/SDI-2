@@ -1,7 +1,8 @@
 # SDI-2
 
 TO-DO:
-  · Implementar todas las opciones de viajesInvolucrado (hay algunas borradas)
+  · Implementar todas las opciones de viajesInvolucrado
+  · Arreglar los status de los viajes
   
   
 Contraseñas de los usuarios:
