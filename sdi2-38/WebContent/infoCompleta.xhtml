@@ -6,15 +6,22 @@
 	template="/templates/template-general.xhtml">
 
 	<ui:define name="titulo">
-      ShareMyTrip - Información participantes
+	<h:outputFormat value="#{msgs.cabecera_rellenable}">
+			<f:param value="#{msgs.cabecera_infoCompleta}" />
+		</h:outputFormat>
     </ui:define>
 
 	<ui:define name="cuerpo">
 		<div>
-		<p>El promotor de este viajes es: 
-			#{seatController.promoter.name} #{seatController.promoter.surname}</p>
+		<p>
+		<h:outputFormat value="#{msgs.mensaje_promotorDelViaje}">
+			<f:param value="#{seatController.promoter.name}" />
+			<f:param value="#{seatController.promoter.surname}" />
+		</h:outputFormat>
+		</p>
+		
 		<h:form>
-			Los participantes confirmados del viaje son:
+			#{msgs.mensaje_participantesConfirmados}
 			<p:dataList value="#{seatController.participantes}" var="part"
 				type="ordered">
 				#{part.name} #{part.surname}	
