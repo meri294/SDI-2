@@ -31,37 +31,9 @@
 					</p:column>
 				</p:dataTable>
 			</p:panel>
-		</h:form>
-		<div>
-			<table border="1" align="center">
-				<tr>
-					<th>#{msgs.campo_identificador}</th>
-					<th>#{msgs.campo_nombre}</th>
-					<th>#{msgs.campo_estado}</th>
-					<th>#{msgs.campo_opciones}</th>
-				</tr>
-				<c:forEach var="entry" items="${pendiente}" varStatus="i">
-					<tr>
-						<td><a href="infoUsuario?id=${entry.id}">${entry.id}</a></td>
-						<td>${entry.name}${entry.surname}</td>
-						<td>#{msgs.campo_pendiente}</td>
-						<td><a href="aceptar?user=${entry.id}&id=${viaje.id}">
-								#{msgs.enlace_aceptar}</a><br>
-						<a href="excluir?user=${entry.id}&id=${viaje.id}">
-								#{msgs.enlace_excluir}</a></td>
-					</tr>
-				</c:forEach>
-			</table>
-			<center>
-				<p>
-					<h:outputFormat value="#{msgs.mensaje_quedanXplazas}">
-						<f:param value="${viaje.availablePax}" />
-					</h:outputFormat>
-				</p>
-			</center>
-
 			<h:messages style="color:red;margin:8px;" />
-		</div>
+		</h:form>
+	
 	</ui:define>
 
 	<ui:define name="pie">
