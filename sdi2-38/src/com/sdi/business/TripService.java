@@ -18,5 +18,13 @@ public interface TripService {
 	Trip findById(Long id) throws Exception;
 
 	Map<String, List<Trip>> findInvolucrado(Long id) throws Exception;
+	
+	void disminuirPlazasDisponibles(Long id) throws Exception;
+	
+	void disminuirPlazasDisponibles(Trip trip) throws Exception;
+	
+	void aumentarPlazasDisponibles(Long id) throws Exception;
+	
+	void aumentarPlazasDisponibles(Trip trip) throws Exception;
 
 }

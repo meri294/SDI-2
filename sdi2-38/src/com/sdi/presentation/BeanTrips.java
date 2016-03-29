@@ -14,8 +14,6 @@ import javax.faces.bean.ManagedProperty;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 
-import com.sdi.model.Seat;
-import com.sdi.model.SeatStatus;
 import com.sdi.model.TripStatus;
 
 import alb.util.log.Log;
@@ -298,11 +296,11 @@ public class BeanTrips implements Serializable {
 	    // Salvamos o actualizamos el trip segun sea una operacion de alta
 	    // o de edici��n
 	    if (trip.getId() == null) {
+		trip.setAvailablePax(trip.getMaxPax());
 		service.saveTrip(trip);
 		Log.debug("Viaje registrado correctamente");
 
-		Factories.services.createSeatsService().save(
-			crearSeat(sesion.getUsuario().getId(), trip.getId()));
+		Factories.services.createSeatsService().aceptarPlaza(sesion.getUsuario().getId(), trip.getId());
 	    } else {
 
 		/* TODO Tiene sentido mirar el estado del viaje?
@@ -352,14 +350,6 @@ public class BeanTrips implements Serializable {
 	else if (MariaDateUtil.isBefore(llegada, salida))
 	    resultado = ComprobacionFechaValida.LAS;
 	return resultado;
-    }
-
-    private Seat crearSeat(Long userId, Long id) {
-	Seat seat = new Seat();
-	seat.setTripId(id);
-	seat.setUserId(userId);
-	seat.setStatus(SeatStatus.ACCEPTED);
-	return seat;
     }
     
     public String sacarMisViajes() {
