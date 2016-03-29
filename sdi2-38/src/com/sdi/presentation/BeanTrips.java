@@ -303,22 +303,32 @@ public class BeanTrips implements Serializable {
 		Factories.services.createSeatsService().aceptarPlaza(sesion.getUsuario().getId(), trip.getId());
 	    } else {
 
-		/* TODO Tiene sentido mirar el estado del viaje?
-		Trip tripEnBBDD = service.findById(trip.getId());
-		if (tripEnBBDD.getStatus() == TripStatus.CANCELLED
-			|| tripEnBBDD.getStatus() == TripStatus.DONE) {
-		    Log.error("El viaje ha sido cancelado o ya se ha realizado");
+		String error = null;
+		
+		switch(trip.getStatus()) {
+			case CANCELLED:
+			    error = bundle.getString("error_viajeCancelado");
+			    break;
+					
+			case DONE:
+			    error = bundle.getString("error_viajeRealizado");
+			    break;
+			    
+			default:
+			    break;
+		}
+		
+		if (error != null) {
+		    
+		    Log.error(error);
 		    FacesContext.getCurrentInstance().addMessage(
 			    null,
-			    new FacesMessage(bundle
-				    .getString("error_tratandoViaje")));
-		    // request.setAttribute("mensaje",
-		    // "El viaje ha sido cancelado "
-		    // + "o ya se ha realizado");
+			    new FacesMessage(error));
 
 		    return Resultado.error.name();
 		}
-		*/
+		
+		//TODO Comprobar que las nuevas plazas maximas tienen sentido
 
 		service.updateTrip(trip);
 	    }
