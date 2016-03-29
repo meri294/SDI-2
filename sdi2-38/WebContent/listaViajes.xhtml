@@ -21,7 +21,7 @@
 						<f:facet name="header">#{msgs.campo_idViaje}</f:facet>
 						#{valtrip.id}
 					</p:column>
-					<p:column id="tablaorigen">
+					<p:column id="tablaorigen" sortBy="#{valtrip.departure.city}">
 						<f:facet name="header">#{msgs.campo_origen}</f:facet>
 						#{valtrip.departure.toStringPrincipal()}
 					</p:column>
@@ -29,7 +29,7 @@
 						<f:facet name="header">#{msgs.campo_destino}</f:facet>
 						#{valtrip.destination.toStringPrincipal()}
 					</p:column>
-					<p:column id="tablalibres">
+					<p:column id="tablalibres" sortBy="#{valtrip.availablePax}">
 						<f:facet name="header">#{msgs.campo_plazasLibres}</f:facet>
 						#{valtrip.availablePax}
 					</p:column>
