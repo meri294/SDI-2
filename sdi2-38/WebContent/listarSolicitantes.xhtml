@@ -6,53 +6,36 @@
 	template="/templates/template-general.xhtml">
 
 	<ui:define name="titulo">
-	<h:outputFormat value="#{msgs.cabecera_rellenable}"> <f:param value="#{msgs.cabecera_listarSolicitantes}"/></h:outputFormat>
-    </ui:define>
+		<h:outputFormat value="#{msgs.cabecera_rellenable}">
+			<f:param value="#{msgs.cabecera_listarSolicitantes}" />
+		</h:outputFormat>
+	</ui:define>
 
 	<ui:define name="cuerpo">
-	<h:form>
-		<p:panel>
-			<p:dataTable id="tablaSolicitantes" var="soli"
+		<h:form>
+			<p:panel>
+				<p:dataTable id="tablaSolicitantes" var="soli"
 					value="#{applicationsController.applications}" border="10"
 					emptyMessage="#{msgs.mensaje_sinSolicitantes}">
-				<p:column id="identificador">
+					<p:column id="identificador">
 						<f:facet name="header">#{msgs.campo_identificador}</f:facet>
 						#{soli.id}
 					</p:column>
-			</p:dataTable>
-		</p:panel>
-	</h:form>
-	<div>
-		<table border="1" align="center">
-			<tr>
-				<th>#{msgs.campo_identificador}</th>
-				<th>#{msgs.campo_nombre}</th>
-				<th>#{msgs.campo_estado}</th>
-				<th>#{msgs.campo_opciones}</th>
-			</tr>
-			<c:forEach var="entry" items="${pendiente}" varStatus="i">
-				<tr>
-					<td>
-						<a href="infoUsuario?id=${entry.id}">${entry.id}</a>
-					</td>
-					<td>${entry.name}${entry.surname}</td>
-					<td>#{msgs.campo_pendiente}</td>
-					<td><a href="aceptar?user=${entry.id}&id=${viaje.id}">
-							#{msgs.enlace_aceptar}</a><br> 
-						<a href="excluir?user=${entry.id}&id=${viaje.id}"> 
-						#{msgs.enlace_excluir}</a>
-					</td>
-				</tr>
-			</c:forEach>
-		</table>
-		<center>
-			<p><h:outputFormat value="#{msgs.mensaje_quedanXplazas}"> <f:param value="${viaje.availablePax}"/></h:outputFormat></p>
-		</center>
-		
-		<h:messages style="color:red;margin:8px;"/>
-	</div>
-	</ui:define>
+					<p:column id="aceptarPasajero">
+						<f:facet name="header">#{msgs.enlace_aceptar}</f:facet>
+						<h:commandLink action="ACEPTAR AL VIAJERO" value="#{msgs.enlace_aceptar}"/>
+					</p:column>
+					<p:column id="excluirPasajero">
+						<f:facet name="header">#{msgs.enlace_excluir}</f:facet>
+						<h:commandLink action="EXCLUIR AL VIAJERO" value="#{msgs.enlace_excluir}"/>
+					</p:column>
+				</p:dataTable>
+			</p:panel>
+			<h:messages style="color:red;margin:8px;" />
+		</h:form>
 	
+	</ui:define>
+
 	<ui:define name="pie">
 		<ui:include src="/snippets/pie-casa.xhtml" />
 	</ui:define>
