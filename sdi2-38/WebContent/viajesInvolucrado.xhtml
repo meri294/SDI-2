@@ -46,8 +46,10 @@
 					</p:column>
 					<p:column id="promoOpciones">
 						<f:facet name="header">#{msgs.campo_opciones}</f:facet>
-						<h:commandLink>
-							#{msgs.enlace_verSolicitantes}</h:commandLink>
+						<h:commandLink value="#{msgs.enlace_verSolicitantes}"/>
+						<br/>
+						<h:commandLink value="#{msgs.enlace_modificarViaje}"
+						action="#{tripsController.preparaModificacion(valtrip)}"/>
 					</p:column>
 				</p:dataTable>
 				<p:dataTable id="tablaViajesParti" var="valtrip"

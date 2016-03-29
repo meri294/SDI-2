@@ -46,6 +46,7 @@ public class BeanTrips implements Serializable {
     private String arrivalHourConFormato = "";
     private String closingDateConFormato = "";
     private String closingHourConFormato = "";
+    private Integer pasajerosMaximos = 0;
 
     @PostConstruct
     public void init() {
@@ -97,7 +98,7 @@ public class BeanTrips implements Serializable {
     public void setTripsDisponibles(List<Trip> trips) {
 	this.tripsDisponibles = trips;
     }
-    
+
     public Trip[] getPromotor() {
 	return promotor;
     }
@@ -186,6 +187,14 @@ public class BeanTrips implements Serializable {
 	this.closingHourConFormato = closingHourConFormato;
     }
 
+    public Integer getPasajerosMaximos() {
+	return pasajerosMaximos;
+    }
+
+    public void setPasajerosMaximos(Integer pasajerosMaximos) {
+	this.pasajerosMaximos = pasajerosMaximos;
+    }
+
     public void iniciaTrip(ActionEvent event) {
 	FacesContext facesContext = FacesContext.getCurrentInstance();
 	ResourceBundle bundle = facesContext.getApplication()
@@ -199,6 +208,7 @@ public class BeanTrips implements Serializable {
 	arrivalHourConFormato = bundle.getString("default_hour");
 	closingDateConFormato = bundle.getString("default_date");
 	closingHourConFormato = bundle.getString("default_hour");
+	pasajerosMaximos = Integer.valueOf(bundle.getString("default_maxPax"));
     }
 
     public String listado() {
@@ -296,43 +306,63 @@ public class BeanTrips implements Serializable {
 	    // Salvamos o actualizamos el trip segun sea una operacion de alta
 	    // o de edici��n
 	    if (trip.getId() == null) {
-		trip.setAvailablePax(trip.getMaxPax());
+
+		trip.setMaxPax(pasajerosMaximos);
+		trip.setAvailablePax(pasajerosMaximos);
 		service.saveTrip(trip);
 		Log.debug("Viaje registrado correctamente");
 
-		Factories.services.createSeatsService().aceptarPlaza(sesion.getUsuario().getId(), trip.getId());
+		Factories.services.createSeatsService().aceptarPlaza(
+			sesion.getUsuario().getId(), trip.getId());
+
 	    } else {
 
 		String error = null;
-		
-		switch(trip.getStatus()) {
-			case CANCELLED:
-			    error = bundle.getString("error_viajeCancelado");
-			    break;
-					
-			case DONE:
-			    error = bundle.getString("error_viajeRealizado");
-			    break;
-			    
-			default:
-			    break;
+
+		switch (trip.getStatus()) {
+		case CANCELLED:
+		    error = bundle.getString("error_viajeCancelado");
+		    break;
+
+		case DONE:
+		    error = bundle.getString("error_viajeRealizado");
+		    break;
+
+		default:
+		    break;
 		}
-		
+
 		if (error != null) {
-		    
+
 		    Log.error(error);
-		    FacesContext.getCurrentInstance().addMessage(
-			    null,
+		    FacesContext.getCurrentInstance().addMessage(null,
 			    new FacesMessage(error));
 
 		    return Resultado.error.name();
 		}
-		
-		//TODO Comprobar que las nuevas plazas maximas tienen sentido
+
+		// Se comprueba que las nuevas plazas maximas tienen sentido
+		int plazasConfirmadas = trip.getMaxPax()
+			- trip.getAvailablePax();
+
+		if (pasajerosMaximos < plazasConfirmadas) {
+
+		    // Los pasajeros maximos no pueden ser inferiores a las
+		    // plazas confirmadas
+		    FacesContext.getCurrentInstance().addMessage("viaje:maxPas",
+			    new FacesMessage(
+				    bundle.getString(
+					"mensaje_plazasMaximasInsuficientes")));
+
+		    return Resultado.fracaso.name();
+		}
+
+		trip.setMaxPax(pasajerosMaximos);
+		trip.setAvailablePax(pasajerosMaximos - plazasConfirmadas);
 
 		service.updateTrip(trip);
 	    }
-	    
+
 	    // Actualizamos el javabean de trips inyectado en la tabla
 	    tripsDisponibles = service.getTrips();
 
@@ -341,11 +371,8 @@ public class BeanTrips implements Serializable {
 	} catch (Exception e) {
 	    e.printStackTrace();
 	    Log.error("Se ha producido un error tratando el viaje");
-	    FacesContext.getCurrentInstance()
-		    .addMessage(
-			    null,
-			    new FacesMessage(bundle
-				    .getString("error_tratandoViaje")));
+	    FacesContext.getCurrentInstance().addMessage(null,
+		    new FacesMessage(bundle.getString("error_tratandoViaje")));
 
 	    return Resultado.error.name(); // Nos vamos a la vista de error.
 	}
@@ -361,12 +388,13 @@ public class BeanTrips implements Serializable {
 	    resultado = ComprobacionFechaValida.LAS;
 	return resultado;
     }
-    
+
     public String sacarMisViajes() {
 	TripService service;
 	try {
 	    service = Factories.services.createTripService();
-	    Map<String, List<Trip>> invol = service.findInvolucrado(sesion.getUsuario().getId());
+	    Map<String, List<Trip>> invol = service.findInvolucrado(sesion
+		    .getUsuario().getId());
 	    promotor = (Trip[]) invol.get("promotor").toArray(new Trip[0]);
 	    enEspera = (Trip[]) invol.get("enEspera").toArray(new Trip[0]);
 	    participante = (Trip[]) invol.get("participante").toArray(
@@ -379,5 +407,20 @@ public class BeanTrips implements Serializable {
 	    return "error";
 	}
 	return "exito";
+    }
+    
+    public String preparaModificacion(Trip trip) {
+	this.trip.setTrip(trip);
+	
+	pasajerosMaximos = trip.getMaxPax();
+	departureDateConFormato = MariaDateUtil.dateToString(trip.getDepartureDate());
+    	departureHourConFormato = MariaDateUtil.hourToString(trip.getDepartureDate());
+    	arrivalDateConFormato = MariaDateUtil.dateToString(trip.getArrivalDate());
+    	arrivalHourConFormato = MariaDateUtil.hourToString(trip.getArrivalDate());
+    	closingDateConFormato = MariaDateUtil.dateToString(trip.getClosingDate());
+    	closingHourConFormato = MariaDateUtil.hourToString(trip.getClosingDate());
+	
+	return Resultado.exito.name();
+	
     }
 }
