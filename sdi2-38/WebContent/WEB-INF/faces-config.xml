@@ -9,11 +9,9 @@
 			<var>msgs</var>
 		</resource-bundle>
 	</application>
-	
+
 	<lifecycle>
-		<phase-listener>
-			com.sdi.listener.LoginListener
-		</phase-listener>
+		<phase-listener>com.sdi.listener.LoginListener</phase-listener>
 	</lifecycle>
 
 	<managed-bean>
@@ -84,12 +82,12 @@
 			<from-action>#{tripsController.sacarMisViajes}</from-action>
 			<from-outcome>exito</from-outcome>
 			<to-view-id>/viajesInvolucrado.xhtml</to-view-id>
-			<redirect/>
+			<redirect />
 		</navigation-case>
 		<navigation-case>
 			<from-outcome>registrarViaje</from-outcome>
 			<to-view-id>/registroViaje.xhtml</to-view-id>
-			<redirect/>
+			<redirect />
 		</navigation-case>
 	</navigation-rule>
 
@@ -113,7 +111,7 @@
 			<redirect />
 		</navigation-case>
 	</navigation-rule>
-	
+
 	<navigation-rule>
 		<from-view-id>/registro.xhtml</from-view-id>
 		<navigation-case>
@@ -122,7 +120,7 @@
 			<redirect />
 		</navigation-case>
 	</navigation-rule>
-	
+
 	<navigation-rule>
 		<from-view-id>/listaViajes.xhtml</from-view-id>
 		<navigation-case>
@@ -141,10 +139,10 @@
 			<from-action>#{seatController.obtenerParticipantes(valtrip.id)}</from-action>
 			<from-outcome>exito</from-outcome>
 			<to-view-id>/infoCompleta.xhtml</to-view-id>
-			<redirect/>
+			<redirect />
 		</navigation-case>
 	</navigation-rule>
-	
+
 	<navigation-rule>
 		<from-view-id>/registroViaje.xhtml</from-view-id>
 		<navigation-case>
@@ -156,7 +154,16 @@
 			<from-action>#{tripsController.salva(sesion.usuario.id)}</from-action>
 			<from-outcome>exito</from-outcome>
 			<to-view-id>/viajesInvolucrado.xhtml</to-view-id>
-			<redirect/>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<from-view-id>/viajesInvolucrado.xhtml</from-view-id>
+		<navigation-case>
+			<from-action>#{seatController.obtenerParticipantes(valtrip.id)}</from-action>
+			<from-outcome>exito</from-outcome>
+			<to-view-id>/infoCompleta.xhtml</to-view-id>
+			<redirect />
 		</navigation-case>
 	</navigation-rule>
 
