@@ -203,17 +203,22 @@ public class SDI2_Tests {
 		SeleniumUtils.ClickSubopcionMenuHover(driver, "form-cabecera:opciones",
 				"form-cabecera:linkOpciones");
 		SeleniumUtils.EsperaCargaPagina(driver, "id", "tablaViajes", 10);
-		WebElement element=driver.findElement(
-				By.id("viajesDisponibles:tablaViajes:0:solicitarlink"));
+		WebElement element = driver.findElement(By
+				.id("viajesDisponibles:tablaViajes:0:solicitarlink"));
 		element.click();
 		SeleniumUtils.EsperaCargaPagina(driver, "id", "tablaViajesSin", 10);
-		SeleniumUtils.textoPresentePagina(driver, "Avenida del Procesador 17, cityModif-Spain");
+		SeleniumUtils.textoPresentePagina(driver,
+				"Avenida del Procesador 17, cityModif-Spain");
 		SeleniumUtils.ClickSubopcionMenuHover(driver, "form-cabecera:opciones",
 				"form-cabecera:linkCerrarSesion");
 		t03_IdVal();
 		SeleniumUtils.ClickSubopcionMenuHover(driver, "form-cabecera:opciones",
-				"form-cabecera:linkOpciones");
-		
+				"form-cabecera:linkMisViajes");
+		SeleniumUtils.EsperaCargaPagina(driver, "id", "tablaViajes", 10);
+		By ver = By
+				.xpath("//td[contains(text(), 'Avenida del Procesador 17, cityModif-Spain')]/following-sibling::*/a[contains(@id, 'linkSolicitantes')]");
+		driver.findElement(ver).click();
+
 	}
 
 	// 13. [Ins2ViajeAceptVal] Inscribir en un viaje dos usuarios y ser
