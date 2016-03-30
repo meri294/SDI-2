@@ -67,4 +67,6 @@ public interface SeatsService {
 
 	public void crearSinPlaza(Long userId, Long tripId);
 
+	public void excluirPlaza(Seat findByUserAndTrip) throws Exception;
+
 }

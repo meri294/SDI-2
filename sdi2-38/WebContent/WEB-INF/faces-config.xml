@@ -232,5 +232,14 @@
 			<to-view-id>/listarSolicitantes.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>/infoCompleta.xhtml</from-view-id>
+		<navigation-case>
+			<from-action>#{seatController.excluir(part)}</from-action>
+			<from-outcome>exito</from-outcome>
+			<to-view-id>/infoCompleta.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
 
 </faces-config>

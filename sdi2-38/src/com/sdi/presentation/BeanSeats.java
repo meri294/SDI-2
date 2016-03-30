@@ -13,6 +13,7 @@ import javax.faces.context.FacesContext;
 import com.sdi.business.SeatsService;
 import com.sdi.infrastructure.Factories;
 import com.sdi.model.Seat;
+import com.sdi.model.Trip;
 import com.sdi.model.User;
 
 @ManagedBean(name = "seatController")
@@ -20,6 +21,7 @@ import com.sdi.model.User;
 public class BeanSeats {
 	private FacesContext context = FacesContext.getCurrentInstance();
 
+	private Trip trip;
 	private User promoter;
 	private User[] participantes = null;
 
@@ -49,16 +51,24 @@ public class BeanSeats {
 		this.participantes = participantes;
 	}
 
+	public Trip getTrip() {
+	    return trip;
+	}
+
+	public void setTrip(Trip trip) {
+	    this.trip = trip;
+	}
+
 	public String obtenerParticipantes(Long idTrip) {
 		SeatsService service;
 		try {
 			service = Factories.services.createSeatsService();
-			Long idPromoter = Factories.services.createTripService()
-					.findById(idTrip).getPromoterId();
+			trip = Factories.services.createTripService()
+				.findById(idTrip);
 			List<Seat> seats = service.getParticipantes(idTrip);
-			participantes(seats, idPromoter);
+			participantes(seats, trip.getPromoterId());
 			promoter = Factories.services.createUserService().findById(
-					idPromoter);
+					trip.getPromoterId());
 		} catch (Exception e) {
 			context.addMessage(null, new FacesMessage(e.getMessage()));
 			return "error";
@@ -75,13 +85,16 @@ public class BeanSeats {
 		participantes=(User[]) part.toArray(new User[0]);
 	}
 
-	public String excluir(Long userId, Long tripId) {
-		// TODO Aceptar participante??
-		return null;
-	}
+	public String excluir(User usuario) {
+	    SeatsService sService = Factories.services.createSeatsService();
+	    
+	    try {
+		sService.excluirPlaza(sService.findByUserAndTrip(usuario.getId(), trip.getId()));
 
-	public String aceptar(Long userId, Long tripId) {
-		// TODO Aceptar participante??
-		return null;
+		return Resultado.exito.name();
+	    } catch (Exception e) {
+		context.addMessage(null, new FacesMessage(e.getMessage()));
+		return Resultado.error.name();
+	    }
 	}
 }

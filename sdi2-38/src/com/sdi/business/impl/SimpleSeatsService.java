@@ -22,7 +22,6 @@ public class SimpleSeatsService implements SeatsService {
     @Override
     public void save(Seat seat) {
 	new SeatAlta().save(seat);
-
     }
 
     @Override
@@ -126,6 +125,21 @@ public class SimpleSeatsService implements SeatsService {
 	seat.setStatus(SeatStatus.SIN_PLAZA);
 	
 	save(seat);
+	
+    }
+
+    @Override
+    public void excluirPlaza(Seat seat) throws Exception {
+	//Si el seat esta en aceptado habra que aumentarse las plazas disponibles
+	//en el trip tras excluirlo
+	boolean aumentarPlazas = seat.getStatus().equals(SeatStatus.ACCEPTED);
+	
+	seat.setStatus(SeatStatus.EXCLUDED);
+	
+	update(seat);
+	
+	if(aumentarPlazas)
+	    Factories.services.createTripService().aumentarPlazasDisponibles(seat.getTripId());
 	
     }
 
