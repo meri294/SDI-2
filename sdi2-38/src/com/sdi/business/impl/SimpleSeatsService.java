@@ -95,4 +95,28 @@ public class SimpleSeatsService implements SeatsService {
 	
     }
 
+    @Override
+    public void cancelarPlaza(Long userId, Long tripId) {
+	Seat seat = crearPlaza(userId, tripId);
+	
+	seat.setStatus(SeatStatus.CANCELLED);
+	
+	save(seat);
+	
+    }
+
+    @Override
+    public void cancelarPlaza(Seat seat) throws Exception {
+	//Si el seat esta en aceptado habra que aumentarse las plazas disponibles
+	//en el trip tras cancelarlo
+	boolean aumentarPlazas = seat.getStatus().equals(SeatStatus.ACCEPTED);
+	
+	seat.setStatus(SeatStatus.CANCELLED);
+	
+	update(seat);
+	
+	if(aumentarPlazas)
+	    Factories.services.createTripService().aumentarPlazasDisponibles(seat.getTripId());
+    }
+
 }

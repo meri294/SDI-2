@@ -48,4 +48,21 @@ public interface SeatsService {
 	 */
 	public void delete(Seat seat) throws Exception;
 
+	/**
+	 * Crea y persiste una plaza en estado cancelado con los datos pasados
+	 * 
+	 * @param userId ID del usuario
+	 * @param tripId ID del viaje
+	 */
+	public void cancelarPlaza(Long userId, Long tripId);
+
+	/**
+	 * Cancela la plaza.
+	 * Si estaba en estado aceptado, aumenta las plazas disponibles en el trip
+	 * 
+	 * @param seat Plaza a cancelar
+	 * @throws Exception
+	 */
+	public void cancelarPlaza(Seat seat) throws Exception;
+
 }

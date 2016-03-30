@@ -1,6 +1,7 @@
 package com.sdi.presentation;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -41,6 +42,8 @@ public class BeanTrips implements Serializable {
     private Trip[] participante = null;
     private Trip[] enEspera = null;
     private Trip[] sinPlaza = null;
+
+    private List<Trip> viajesACancelar = new ArrayList<>();
 
     private String departureDateConFormato = "";
     private String departureHourConFormato = "";
@@ -351,10 +354,12 @@ public class BeanTrips implements Serializable {
 
 		    // Los pasajeros maximos no pueden ser inferiores a las
 		    // plazas confirmadas
-		    FacesContext.getCurrentInstance().addMessage("viaje:maxPas",
-			    new FacesMessage(
-				    bundle.getString(
-					"mensaje_plazasMaximasInsuficientes")));
+		    FacesContext
+			    .getCurrentInstance()
+			    .addMessage(
+				    "viaje:maxPas",
+				    new FacesMessage(
+					    bundle.getString("mensaje_plazasMaximasInsuficientes")));
 
 		    return Resultado.fracaso.name();
 		}
@@ -410,68 +415,142 @@ public class BeanTrips implements Serializable {
 	}
 	return "exito";
     }
-    
+
     public String preparaModificacion(Trip trip) {
 	this.trip.setTrip(trip);
-	
+
 	pasajerosMaximos = trip.getMaxPax();
-	departureDateConFormato = MariaDateUtil.dateToString(trip.getDepartureDate());
-    	departureHourConFormato = MariaDateUtil.hourToString(trip.getDepartureDate());
-    	arrivalDateConFormato = MariaDateUtil.dateToString(trip.getArrivalDate());
-    	arrivalHourConFormato = MariaDateUtil.hourToString(trip.getArrivalDate());
-    	closingDateConFormato = MariaDateUtil.dateToString(trip.getClosingDate());
-    	closingHourConFormato = MariaDateUtil.hourToString(trip.getClosingDate());
-	
+	departureDateConFormato = MariaDateUtil.dateToString(trip
+		.getDepartureDate());
+	departureHourConFormato = MariaDateUtil.hourToString(trip
+		.getDepartureDate());
+	arrivalDateConFormato = MariaDateUtil.dateToString(trip
+		.getArrivalDate());
+	arrivalHourConFormato = MariaDateUtil.hourToString(trip
+		.getArrivalDate());
+	closingDateConFormato = MariaDateUtil.dateToString(trip
+		.getClosingDate());
+	closingHourConFormato = MariaDateUtil.hourToString(trip
+		.getClosingDate());
+
 	return Resultado.exito.name();
-	
+
     }
-    
+
     public String cancelarSolicitud(Trip trip) {
-	
+
 	FacesContext facesContext = FacesContext.getCurrentInstance();
 	ResourceBundle bundle = facesContext.getApplication()
 		.getResourceBundle(facesContext, "msgs");
-	
-	//Comprobar si el usuario es promotor del viaje
-	if(trip.getPromoterId().equals(sesion.getUsuario().getId())) {
-	    //Si es promotor, devolver fracaso
-	    FacesContext.getCurrentInstance().addMessage(null,
-		    new FacesMessage(bundle.getString("mensaje_cancelarPromotor")));
-	    
+
+	// Comprobar si el usuario es promotor del viaje
+	if (trip.getPromoterId().equals(sesion.getUsuario().getId())) {
+	    // Si es promotor, devolver fracaso
+	    FacesContext.getCurrentInstance().addMessage(
+		    null,
+		    new FacesMessage(bundle
+			    .getString("mensaje_cancelarPromotor")));
+
 	    return Resultado.fracaso.name();
 	}
-	
-	//Comprobar si el viaje sigue abierto para cancelarse
-	if(!trip.getStatus().equals(TripStatus.OPEN)) {
-	    //Si no, devolver fracaso
-	    FacesContext.getCurrentInstance().addMessage(null,
-		    new FacesMessage(bundle.getString("mensaje_pasadoPlazoCancelacion")));
-	    
+
+	// Comprobar si el viaje sigue abierto para cancelarse
+	if (!trip.getStatus().equals(TripStatus.OPEN)) {
+	    // Si no, devolver fracaso
+	    FacesContext.getCurrentInstance().addMessage(
+		    null,
+		    new FacesMessage(bundle
+			    .getString("mensaje_pasadoPlazoCancelacion")));
+
 	    return Resultado.fracaso.name();
 	}
-	
+
 	try {
-	    
+
 	    SeatsService sService = Factories.services.createSeatsService();
-	    
-	    //Obtener seat creada a partir de solicitud (si es que existe)
-	    Seat seat = sService.findByUserAndTrip(sesion.getUsuario().getId(), trip.getId());
-	    
-	    //Borrar solicitud y seat
-	    Long[] ids = {sesion.getUsuario().getId(), trip.getId()};
-	    Factories.services.createApplicationService().deleteApplication(ids);
-	    
-	    if(seat != null)
+
+	    // Obtener seat creada a partir de solicitud (si es que existe)
+	    Seat seat = sService.findByUserAndTrip(sesion.getUsuario().getId(),
+		    trip.getId());
+
+	    // Borrar solicitud y seat
+	    Long[] ids = { sesion.getUsuario().getId(), trip.getId() };
+	    Factories.services.createApplicationService()
+		    .deleteApplication(ids);
+
+	    if (seat != null)
 		sService.delete(seat);
-	    
+
 	} catch (Exception e) {
 	    // TODO ¿Crear mensaje?
 	    e.printStackTrace();
-	    
+
 	    return Resultado.error.name();
 	}
-	
-	//Renuevo mis viajes
+
+	// Renuevo mis viajes
 	return sacarMisViajes();
+    }
+
+    public void viajesACancelar(Trip trip) {
+	if (viajesACancelar.contains(trip))
+	    viajesACancelar.remove(trip);
+	else
+	    viajesACancelar.add(trip);
+    }
+
+    public String cancelarViajes(Trip trip) {
+	
+	if (!viajesACancelar.contains(trip))
+	    viajesACancelar.add(trip);
+
+	TripService tService = Factories.services.createTripService();
+
+	// Se comprueba si se pueden cancelar todos los viajes
+	String idsNoCancelables = "";
+
+	for (Trip viaje : viajesACancelar) {
+	    if (!viaje.getStatus().equals(TripStatus.OPEN)) {
+		if (!idsNoCancelables.isEmpty())
+		    idsNoCancelables += ", ";
+
+		idsNoCancelables += viaje.getId();
+	    }
+	}
+
+	if (!idsNoCancelables.isEmpty()) {
+
+	    FacesContext facesContext = FacesContext.getCurrentInstance();
+	    ResourceBundle bundle = facesContext.getApplication()
+		    .getResourceBundle(facesContext, "msgs");
+
+	    FacesContext.getCurrentInstance().addMessage(
+		    null,
+		    new FacesMessage(bundle
+			    .getString("mensaje_pasadoPlazoCancelacion")
+			    + idsNoCancelables));
+
+	    return Resultado.fracaso.name();
+
+	}
+
+	try {
+	    // Cancelar viajes
+	    for (Trip viaje : viajesACancelar)
+		tService.cancelar(viaje);
+
+	    // Al terminar reinicio viajesACancelar
+	    viajesACancelar = new ArrayList<>();
+
+	    // Renuevo mis viajes
+	    return sacarMisViajes();
+
+	} catch (Exception e) {
+
+	    // TODO ¿Crear mensaje?
+	    e.printStackTrace();
+
+	    return Resultado.error.name();
+	}
     }
 }

@@ -52,4 +52,11 @@ public class SimpleApplicationService implements ApplicationService {
 	    return new ApplicationsListado().getApplicationsWithoutSeatFor(tripId);
 	}
 
+	@Override
+	public void deleteApplication(Long userId, Long tripId) throws Exception {
+	    Long[] ids = {userId, tripId};
+	    deleteApplication(ids);
+	    
+	}
+
 }

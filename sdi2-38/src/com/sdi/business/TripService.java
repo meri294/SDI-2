@@ -27,4 +27,6 @@ public interface TripService {
 	
 	void aumentarPlazasDisponibles(Trip trip) throws Exception;
 
+	void cancelar(Trip viaje) throws Exception;
+
 }
