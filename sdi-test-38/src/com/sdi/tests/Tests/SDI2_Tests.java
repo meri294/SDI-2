@@ -41,8 +41,7 @@ public class SDI2_Tests {
 
 	// PRUEBAS
 
-	// 1. [RegVal] Registro de Usuario con datos válidos.
-
+	// 1. [RegVal] Registro de Usuario con datos válidos. - PASA
 	@Test
 	public void t01_RegVal() {
 		SeleniumUtils.EsperaCargaPagina(driver, "id", "form-pie", 10);
@@ -56,8 +55,7 @@ public class SDI2_Tests {
 	}
 
 	// 2. [RegInval] Registro de Usuario con datos inválidos (contraseñas //
-	// diferentes).
-
+	// diferentes). - PASA
 	@Test
 	public void t02_RegInval() {
 		SeleniumUtils.EsperaCargaPagina(driver, "id", "form-pie", 10);
@@ -72,8 +70,7 @@ public class SDI2_Tests {
 
 	}
 
-	// 3. [IdVal] Identificación de Usuario registrado con datos válidos.
-
+	// 3. [IdVal] Identificación de Usuario registrado con datos válidos. - PASA
 	@Test
 	public void t03_IdVal() {
 		SeleniumUtils.EsperaCargaPagina(driver, "id", "form-pie", 10);
@@ -82,8 +79,7 @@ public class SDI2_Tests {
 		SeleniumUtils.textoPresentePagina(driver, "Fernando");
 	}
 
-	// 4. [IdInval] Identificación de usuario registrado con datos inválidos.
-
+	// 4. [IdInval] Identificación de usuario registrado con datos inválidos. -PASA
 	@Test
 	public void t04_IdInval() {
 		SeleniumUtils.EsperaCargaPagina(driver, "id", "form-pie", 10);
@@ -97,7 +93,7 @@ public class SDI2_Tests {
 	}
 
 	// 5. [AccInval] Intento de acceso con URL desde un usuario no público
-	// (no // identificado). Intento de acceso a vistas de acceso privado.
+	// (no // identificado). Intento de acceso a vistas de acceso privado. - PASA
 	@Test
 	public void t05_AccInval() {
 		driver.get("http://localhost:8280/sdi2-38/infoCompleta.xhtml");
@@ -110,7 +106,7 @@ public class SDI2_Tests {
 
 	// 6. [RegViajeVal] Registro de un viaje nuevo con datos válidos.
 	@Test
-	public void t06_RegViajeVal() {
+	public void t06_RegViajeVal() { //NO ENCUENTRA VIAJE:DEPARTUREADDRESS
 		t03_IdVal();
 		SeleniumUtils.EsperaCargaPagina(driver, "id", "form-pie", 10);
 		SeleniumUtils.ClickSubopcionMenuHover(driver, "form-cabecera:opciones",
@@ -121,14 +117,12 @@ public class SDI2_Tests {
 				"address2", "city2", "state2", "country2", "25036", "2.366",
 				"-53.6982", "21/08/2016", "01:00", "22:05", "4", "296.85",
 				"Viaje de prueba", "15/08/2016");
-		SeleniumUtils.EsperaCargaPagina(driver, "id", "form-pie", 10);
-		SeleniumUtils
-				.textoPresentePagina(driver, "Share My Trip! - Mis viajes");
+		SeleniumUtils.EsperaCargaPagina(driver, "id", "tablaViajesParti", 10);
 		SeleniumUtils.textoPresentePagina(driver,
 				"Mon Aug 15 22:05:00 CEST 2016");
 	}
 
-	// 7. [RegViajeInVal] Registro de un viaje nuevo con datos inválidos.
+	// 7. [RegViajeInVal] Registro de un viaje nuevo con datos inválidos. - PASA
 	@Test
 	public void t07_RegViajeInVal() {
 		t03_IdVal();
@@ -145,33 +139,39 @@ public class SDI2_Tests {
 		SeleniumUtils.textoPresentePagina(driver, "Registre un nuevo viaje");
 	}
 
-	// 8. [EditViajeVal] Edición de viaje existente con datos válidos.
+	// 8. [EditViajeVal] Edición de viaje existente con datos válidos. - PASA
 	@Test
 	public void t08_EditViajeVal() {
+		// Editamos el viaje de Rue de Percebe cambiando
+		// el nombre de la ciudad
 		t03_IdVal();
 		SeleniumUtils.ClickSubopcionMenuHover(driver, "form-cabecera:opciones",
 				"form-cabecera:linkMisViajes");
 		SeleniumUtils.EsperaCargaPagina(driver, "id", "tablaViajesParti", 10);
-		WebElement element = driver.findElement(By
-				.id("involucrado:tablaViajesPromo:0:modificarVijaeLink"));
+		WebElement element = driver
+				.findElement(By
+						.xpath("//td[contains(text(),'Sat Oct 15 12:50:00 CEST 2016')]/following-sibling::*/a[contains(text(),'Modif')]"));
 		element.click();
 		new PO_ModifViajeForm().rellenaFormulario(driver, "20/10/2016",
 				"23:59", "cityModif", "21/10/2016", "03:05", "12:50",
 				"15/10/2016");
 		SeleniumUtils.EsperaCargaPagina(driver, "id", "tablaViajesParti", 10);
 		SeleniumUtils.textoPresentePagina(driver,
-				"Tue Apr 26 15:00:00 CEST 2016 ");
+				"Sat Oct 15 12:50:00 CEST 2016");
 	}
 
-	// 9. [EditViajeInVal] Edición de viaje existente con datos inválidos.
+	// 9. [EditViajeInVal] Edición de viaje existente con datos inválidos. -PASA
 	@Test
 	public void t09_EditViajeInVal() {
+		// Volvemos a escoger el viaje de Rue del Percebe
+		// pero poninedo mal las fechas
 		t03_IdVal();
 		SeleniumUtils.ClickSubopcionMenuHover(driver, "form-cabecera:opciones",
 				"form-cabecera:linkMisViajes");
 		SeleniumUtils.EsperaCargaPagina(driver, "id", "tablaViajesParti", 10);
-		WebElement element = driver.findElement(By
-				.id("involucrado:tablaViajesPromo:0:modificarVijaeLink"));
+		WebElement element = driver
+				.findElement(By
+						.xpath("//td[contains(text(),'Sat Oct 15 12:50:00 CEST 2016')]/following-sibling::*/a[contains(text(),'Modif')]"));
 		element.click();
 		new PO_ModifViajeForm().rellenaFormulario(driver, "20/10/2016",
 				"23:59", "cityModif", "21/10/2016", "03:05", "12:50",
@@ -194,35 +194,39 @@ public class SDI2_Tests {
 	 * }
 	 */
 	// 12. [Ins1ViajeAceptVal] Inscribir en un viaje un solo usuario y ser
-	// admitido por el promotor.
+	// admitido por el promotor. //PASA
 	@Test
 	public void t12_Ins1ViajeAceptVal() {
+		// Como testSDI solicitamos el viaje 338 (hay margen de sobra de
+		// tiempo)
 		SeleniumUtils.EsperaCargaPagina(driver, "id", "form-pie", 10);
 		new PO_LoginForm().rellenaFormulario(driver, "testSDI", "testSDI");
 		SeleniumUtils.EsperaCargaPagina(driver, "id", "bienvenido", 10);
 		SeleniumUtils.ClickSubopcionMenuHover(driver, "form-cabecera:opciones",
 				"form-cabecera:linkOpciones");
 		SeleniumUtils.EsperaCargaPagina(driver, "id", "tablaViajes", 10);
-		WebElement element = driver.findElement(By
-				.id("viajesDisponibles:tablaViajes:0:solicitarlink"));
+		WebElement element = driver
+				.findElement(By
+						.xpath("//td[contains(text(),'338')]/following-sibling::*/a[contains(text(),'Solicitar')]"));
 		element.click();
 		SeleniumUtils.EsperaCargaPagina(driver, "id", "tablaViajesSin", 10);
 		SeleniumUtils.textoPresentePagina(driver,
-				"Avenida del Procesador 17, cityModif-Spain");
+				"338");
 		SeleniumUtils.ClickSubopcionMenuHover(driver, "form-cabecera:opciones",
 				"form-cabecera:linkCerrarSesion");
-		t03_IdVal();
+		//new PO_LoginForm().rellenaFormulario(driver, "usuario2", "usuario2");
+		login("usuario2", "usuario2");
 		SeleniumUtils.ClickSubopcionMenuHover(driver, "form-cabecera:opciones",
 				"form-cabecera:linkMisViajes");
 		SeleniumUtils.EsperaCargaPagina(driver, "id", "tablaViajes", 10);
 		By ver = By
-				.xpath("//td[contains(text(), 'Avenida del Procesador 17, cityModif-Spain')]/following-sibling::*/a[contains(@id, 'linkSolicitantes')]");
+				.xpath("//td[contains(text(), 'Calle esmalte, Ponga-España')]/following-sibling::*/a[contains(@id, 'linkSolicitantes')]");
 		driver.findElement(ver).click();
 		SeleniumUtils.EsperaCargaPagina(driver, "id", "tablaSolicitantes", 10);
 		By aceptar = By
-				.xpath("//td[contains(text(),'342')]/following-sibling::*/a[contains(text(),'Aceptar')]");
+				.xpath("//td[contains(text(),'321')]/following-sibling::*/a[contains(text(),'Aceptar')]");
 		driver.findElement(aceptar).click();
-		SeleniumUtils.EsperaCargaPaginaNoTexto(driver, "342", 5);
+		SeleniumUtils.EsperaCargaPaginaNoTexto(driver, "338", 5);
 
 	}
 
@@ -255,7 +259,7 @@ public class SDI2_Tests {
 	 * }
 	 */
 	// 17. [i18N1] Cambio del idioma por defecto a un segundo idioma.
-	// (Probar algunas vistas
+	// (Probar algunas vistas -PASA
 	@Test
 	public void t17_i18N1() {
 		SeleniumUtils.EsperaCargaPagina(driver, "id", "form-pie", 10);
@@ -269,8 +273,9 @@ public class SDI2_Tests {
 
 	// 18. [i18N2] Cambio del idioma por defecto a un segundo idioma y
 	// vuelta al idioma por defecto. (Probar algunas vistas)
+	//--NO ENCUENTRA INICIO DE SESIO
 	@Test
-	public void t18_i18N2() {
+	public void t18_i18N2() { 
 		t17_i18N1();
 		SeleniumUtils.ClickSubopcionMenuHover(driver, "form-cabecera:idioma",
 				"form-cabecera:linkespa");
@@ -301,4 +306,10 @@ public class SDI2_Tests {
 	 * 
 	 * }
 	 */
+	
+	private void login(String user, String pass){
+		SeleniumUtils.EsperaCargaPagina(driver, "id", "form-pie", 10);
+		new PO_LoginForm().rellenaFormulario(driver, user, pass);
+		SeleniumUtils.EsperaCargaPagina(driver, "id", "bienvenido", 10);
+	}
 }
