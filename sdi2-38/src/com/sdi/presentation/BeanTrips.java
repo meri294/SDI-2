@@ -389,7 +389,9 @@ public class BeanTrips implements Serializable {
     private ComprobacionFechaValida fechasValidas(Date salida, Date llegada,
 	    Date cierre) {
 	ComprobacionFechaValida resultado = ComprobacionFechaValida.OK;
-	if (MariaDateUtil.isBefore(salida, cierre))
+	if(MariaDateUtil.isBefore(cierre, MariaDateUtil.now()))
+	    resultado = ComprobacionFechaValida.CAA;
+	else if (MariaDateUtil.isBefore(salida, cierre))
 	    resultado = ComprobacionFechaValida.SAC;
 	else if (MariaDateUtil.isBefore(llegada, salida))
 	    resultado = ComprobacionFechaValida.LAS;

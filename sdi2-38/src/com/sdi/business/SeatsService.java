@@ -65,4 +65,6 @@ public interface SeatsService {
 	 */
 	public void cancelarPlaza(Seat seat) throws Exception;
 
+	public void crearSinPlaza(Long userId, Long tripId);
+
 }

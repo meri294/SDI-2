@@ -119,4 +119,14 @@ public class SimpleSeatsService implements SeatsService {
 	    Factories.services.createTripService().aumentarPlazasDisponibles(seat.getTripId());
     }
 
+    @Override
+    public void crearSinPlaza(Long userId, Long tripId) {
+	Seat seat = crearPlaza(userId, tripId);
+	
+	seat.setStatus(SeatStatus.SIN_PLAZA);
+	
+	save(seat);
+	
+    }
+
 }
