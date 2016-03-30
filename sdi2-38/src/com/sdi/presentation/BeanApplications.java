@@ -115,14 +115,6 @@ public class BeanApplications {
 	}
 
     }
-    
-    public String obtenerApplications(Long tripId) {
-	
-	//TODO Obtener todas las aplicaciones para el viaje pasado
-	//QUE NO TENGAN UN SEAT
-	
-	return Resultado.exito.name();
-    }
 
     public String baja(Application application) {
 	ApplicationService service;
@@ -187,8 +179,6 @@ public class BeanApplications {
     public String aceptar(Application application) {
 
 	try {
-	    //TODO HAY QUE HACER QUE SOLO SE PUEDA ACEPTAR PASAJEROS MIENTRAS EL VIAJE ESTE EN OPEN
-	    
 	    // Antes que nada se ha de comprobar si hay sitio para aceptar al
 	    // pasajero!
 	    Trip trip = Factories.services.createTripService().findById(
@@ -226,8 +216,6 @@ public class BeanApplications {
     }
 
     public String excluir(Application application) {
-	
-	//TODO HAY QUE HACER QUE SOLO SE PUEDA EXCLUIR PASAJEROS MIENTRAS EL VIAJE ESTE EN OPEN
 	
 	//Crear y excluir plaza a partir de la application
 	Factories.services.createSeatsService().excluirPlaza(application.getUserId(), application.getTripId());

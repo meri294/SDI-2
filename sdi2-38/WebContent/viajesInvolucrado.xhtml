@@ -59,10 +59,12 @@
 					<p:column id="promoOpciones">
 						<f:facet name="header">#{msgs.campo_opciones}</f:facet>
 						<h:commandLink id="linkSolicitantes" value="#{msgs.enlace_verSolicitantes}"
-						action="#{applicationsController.sacarSolicitudes(valtrip.id)}"/>
+						action="#{applicationsController.sacarSolicitudes(valtrip.id)}"
+						rendered="#{valtrip.status=='OPEN'}"/>
 						<br/>
 						<h:commandLink id="modificarVijaeLink" value="#{msgs.enlace_modificarViaje}"
-						action="#{tripsController.preparaModificacion(valtrip)}"/>
+						action="#{tripsController.preparaModificacion(valtrip)}"
+						rendered="#{valtrip.status=='OPEN'}"/>
 						<br/>
 						<h:commandLink value="#{msgs.enlace_cancelarViaje}"
 						action="#{tripsController.cancelarViajes(valtrip)}"
