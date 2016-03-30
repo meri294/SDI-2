@@ -206,8 +206,14 @@ public class SDI2_Tests {
 		WebElement element=driver.findElement(
 				By.id("viajesDisponibles:tablaViajes:0:solicitarlink"));
 		element.click();
-		//SeleniumUtils.EsperaCargaPagina(driver, "id", "tablaViajesSin", 10);
-		//SeleniumUtils.textoPresentePagina(driver, "Avenida del Procesador 17, cityModif-Spain");
+		SeleniumUtils.EsperaCargaPagina(driver, "id", "tablaViajesSin", 10);
+		SeleniumUtils.textoPresentePagina(driver, "Avenida del Procesador 17, cityModif-Spain");
+		SeleniumUtils.ClickSubopcionMenuHover(driver, "form-cabecera:opciones",
+				"form-cabecera:linkCerrarSesion");
+		t03_IdVal();
+		SeleniumUtils.ClickSubopcionMenuHover(driver, "form-cabecera:opciones",
+				"form-cabecera:linkOpciones");
+		
 	}
 
 	// 13. [Ins2ViajeAceptVal] Inscribir en un viaje dos usuarios y ser
