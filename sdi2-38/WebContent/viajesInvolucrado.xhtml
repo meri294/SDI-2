@@ -12,7 +12,7 @@
 	</ui:define>
 
 	<ui:define name="cuerpo">
-		<h:form>
+		<h:form id="involucrado">
 			<p:panel>
 				<p:dataTable id="tablaViajesPromo" var="valtrip"
 					value="#{tripsController.promotor}"
@@ -44,13 +44,21 @@
 						<f:facet name="header">#{msgs.campo_estado}</f:facet>
 						#{msgs.relation_promoter}
 					</p:column>
+					<p:column id="promoDatosSalida">
+						<f:facet name="header">#{msgs.campo_datosSalida}</f:facet>
+						#{valtrip.departure.toStringPrincipal()}
+					</p:column>
+					<p:column id="promoDatosLlegada">
+						<f:facet name="header">#{msgs.campo_datosLlegada}</f:facet>
+						#{valtrip.destination.toStringPrincipal()}
+					</p:column>
 					<p:column id="promoOpciones">
 						<f:facet name="header">#{msgs.campo_opciones}</f:facet>
 						<!-- TO-DO: Completar -->
 						<h:commandLink value="#{msgs.enlace_verSolicitantes}"
 						action="#{applicationsController.sacarSolicitudes(valtrip.id)}"/>
 						<br/>
-						<h:commandLink value="#{msgs.enlace_modificarViaje}"
+						<h:commandLink id="modificarVijaeLink" value="#{msgs.enlace_modificarViaje}"
 						action="#{tripsController.preparaModificacion(valtrip)}"/>
 						<br/>
 						<!-- TO-DO: Completar -->
@@ -72,6 +80,8 @@
 					<p:column id="partiLlegada">#{valtrip.arrivalDate}</p:column>
 					<p:column id="partiRelacion">#{msgs.relation_participante}
 					</p:column>
+					<p:column id="partiDatosSalida">#{valtrip.departure.toStringPrincipal()}</p:column>
+					<p:column id="partiDatosLlegada">#{valtrip.destination.toStringPrincipal()}</p:column>
 					<p:column id="exOpciones" rendered="#{valtrip.status==OPEN}">
 					<!-- TO-DO: Completar -->
 						<h:commandLink value="#{msgs.enlace_cancelarSolicitud}"/>
@@ -92,6 +102,8 @@
 					<p:column id="excLlegada">#{valtrip.arrivalDate}</p:column>
 					<p:column id="excRelacion">#{msgs.relation_excluido}
 					</p:column>
+					<p:column id="excluDatosSalida">#{valtrip.departure.toStringPrincipal()}</p:column>
+					<p:column id="excluDatosLlegada">#{valtrip.destination.toStringPrincipal()}</p:column>
 					<p:column id="exOpciones" rendered="#{valtrip.status==OPEN}">
 					<!-- TO-DO: Completar -->
 						<h:commandLink value="#{msgs.enlace_cancelarSolicitud}"/>
@@ -112,6 +124,8 @@
 					<p:column id="espLlegada">#{valtrip.arrivalDate}</p:column>
 					<p:column id="espRelacion">#{msgs.relation_enEspera}
 					</p:column>
+					<p:column id="espDatosSalida">#{valtrip.departure.toStringPrincipal()}</p:column>
+					<p:column id="espDatosLlegada">#{valtrip.destination.toStringPrincipal()}</p:column>
 					<p:column id="espOpciones" rendered="#{valtrip.status==OPEN}">
 					<!-- TO-DO: Completar -->
 						<h:commandLink value="#{msgs.enlace_cancelarSolicitud}"/>
@@ -132,6 +146,8 @@
 					<p:column id="sinLlegada">#{valtrip.arrivalDate}</p:column>
 					<p:column id="sinRelacion">#{msgs.relation_sinPlaza}
 					</p:column>
+					<p:column id="sinDatosSalida">#{valtrip.departure.toStringPrincipal()}</p:column>
+					<p:column id="sinDatosLlegada">#{valtrip.destination.toStringPrincipal()}</p:column>
 					<p:column id="sinOpciones" rendered="#{valtrip.status==OPEN}">
 					<!-- TO-DO: Completar -->
 						<h:commandLink value="#{msgs.enlace_cancelarSolicitud}"/>

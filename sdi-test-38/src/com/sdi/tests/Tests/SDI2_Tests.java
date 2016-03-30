@@ -7,12 +7,14 @@ import org.junit.Before;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 import com.sdi.tests.pageobjects.PO_AltaForm;
 import com.sdi.tests.pageobjects.PO_LoginForm;
+import com.sdi.tests.pageobjects.PO_ModifViajeForm;
 import com.sdi.tests.pageobjects.PO_RegViajeForm;
 import com.sdi.tests.utils.SeleniumUtils;
 
@@ -107,11 +109,25 @@ public class SDI2_Tests {
 	}
 
 	// 6. [RegViajeVal] Registro de un viaje nuevo con datos válidos.
-	/*
-	 * @Test public void t06_RegViajeVal() {
-	 * 
-	 * } /
-	 */
+	@Test
+	public void t06_RegViajeVal() {
+		t03_IdVal();
+		SeleniumUtils.EsperaCargaPagina(driver, "id", "form-pie", 10);
+		SeleniumUtils.ClickSubopcionMenuHover(driver, "form-cabecera:opciones",
+				"form-cabecera:linkRegistrarViaje");
+		SeleniumUtils.EsperaCargaPagina(driver, "id", "form-pie", 10);
+		new PO_RegViajeForm().rellenaFormulario(driver, "addres1", "city1",
+				"state1", "country1", "35260", "", "", "20/08/2016", "12:00",
+				"address2", "city2", "state2", "country2", "25036", "2.366",
+				"-53.6982", "21/08/2016", "01:00", "22:05", "4", "296.85",
+				"Viaje de prueba", "15/08/2016");
+		SeleniumUtils.EsperaCargaPagina(driver, "id", "form-pie", 10);
+		SeleniumUtils
+				.textoPresentePagina(driver, "Share My Trip! - Mis viajes");
+		SeleniumUtils.textoPresentePagina(driver,
+				"Mon Aug 15 22:05:00 CEST 2016");
+	}
+
 	// 7. [RegViajeInVal] Registro de un viaje nuevo con datos inválidos.
 	@Test
 	public void t07_RegViajeInVal() {
@@ -121,26 +137,50 @@ public class SDI2_Tests {
 				"form-cabecera:linkRegistrarViaje");
 		SeleniumUtils.EsperaCargaPagina(driver, "id", "form-pie", 10);
 		new PO_RegViajeForm().rellenaFormulario(driver, "addres1", "city1",
-				"state1", "", "35260", "", "", "20/08/2016",
-				"12:00", "address2", "city2", "state2", "country2", "25036",
-				"2.366", "-53.6982", "21/08/2016", "01:00", "22:05", "4", "296.85",
-				"Viaje de prueba","23/08/2016");
+				"state1", "", "35260", "", "", "20/08/2016", "12:00",
+				"address2", "city2", "state2", "country2", "25036", "2.366",
+				"-53.6982", "21/08/2016", "01:00", "22:05", "4", "296.85",
+				"Viaje de prueba", "23/08/2016");
 		SeleniumUtils.EsperaCargaPagina(driver, "id", "form-pie", 10);
 		SeleniumUtils.textoPresentePagina(driver, "Registre un nuevo viaje");
 	}
 
 	// 8. [EditViajeVal] Edición de viaje existente con datos válidos.
+	@Test
+	public void t08_EditViajeVal() {
+		t03_IdVal();
+		SeleniumUtils.ClickSubopcionMenuHover(driver, "form-cabecera:opciones",
+				"form-cabecera:linkMisViajes");
+		SeleniumUtils.EsperaCargaPagina(driver, "id", "tablaViajesParti", 10);
+		WebElement element = driver.findElement(By
+				.id("involucrado:tablaViajesPromo:0:modificarVijaeLink"));
+		element.click();
+		new PO_ModifViajeForm().rellenaFormulario(driver, "20/10/2016", "23:59",
+				"cityModif", "21/10/2016", "03:05", "12:50", "15/10/2016");
+		SeleniumUtils.EsperaCargaPagina(driver, "id", "tablaViajesParti", 10);
+		SeleniumUtils.textoPresentePagina(driver, "Tue Apr 26 15:00:00 CEST 2016 ");
+	}
+
+	// 9. [EditViajeInVal] Edición de viaje existente con datos inválidos.
+	@Test
+	public void t09_EditViajeInVal() {
+		t03_IdVal();
+		SeleniumUtils.ClickSubopcionMenuHover(driver, "form-cabecera:opciones",
+				"form-cabecera:linkMisViajes");
+		SeleniumUtils.EsperaCargaPagina(driver, "id", "tablaViajesParti", 10);
+		WebElement element = driver.findElement(By
+				.id("involucrado:tablaViajesPromo:0:modificarVijaeLink"));
+		element.click();
+		new PO_ModifViajeForm().rellenaFormulario(driver, "20/10/2016", "23:59",
+				"cityModif", "21/10/2016", "03:05", "12:50", "23/10/2016");
+		SeleniumUtils.EsperaCargaPagina(driver, "id", "enviar", 10);
+		SeleniumUtils.textoPresentePagina(driver, "Datos de salida");
+	}
+
+	// 10. [CancelViajeVal] Cancelación de un viaje existente por un
+	// promotor.
 
 	/*
-	 * @Test public void t08_EditViajeVal() {
-	 * 
-	 * } // 9. [EditViajeInVal] Edición de viaje existente con datos inválidos.
-	 * 
-	 * @Test public void t09_EditViajeInVal() {
-	 * 
-	 * } // 10. [CancelViajeVal] Cancelación de un viaje existente por un
-	 * promotor.
-	 * 
 	 * @Test public void t10_CancelViajeVal() {
 	 * 
 	 * } // 11. [CancelMulViajeVal] Cancelación de múltiples viajes existentes
