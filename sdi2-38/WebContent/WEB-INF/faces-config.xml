@@ -157,6 +157,7 @@
 			<redirect />
 		</navigation-case>
 	</navigation-rule>
+	
 	<navigation-rule>
 		<from-view-id>/viajesInvolucrado.xhtml</from-view-id>
 		<navigation-case>
@@ -164,6 +165,51 @@
 			<from-outcome>exito</from-outcome>
 			<to-view-id>/infoCompleta.xhtml</to-view-id>
 			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-action>#{tripsController.preparaModificacion(valtrip)}</from-action>
+			<from-outcome>exito</from-outcome>
+			<to-view-id>/modificarViaje.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-action>#{applicationsController.sacarSolicitudes(valtrip.id)}</from-action>
+			<from-outcome>exito</from-outcome>
+			<to-view-id>/listarSolicitantes.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>/modificarViaje.xhtml</from-view-id>
+		<navigation-case>
+			<from-action>#{tripsController.salva(sesion.usuario.id)}</from-action>
+			<from-outcome>fracaso</from-outcome>
+			<to-view-id>/registroViaje.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-action>#{tripsController.salva(sesion.usuario.id)}</from-action>
+			<from-outcome>exito</from-outcome>
+			<to-view-id>/viajesInvolucrado.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>/listarSolicitantes.xhtml</from-view-id>
+		<navigation-case>
+			<from-action>#{applicationsController.aceptar(soli)}</from-action>
+			<from-outcome>exito</from-outcome>
+			<to-view-id>/listarSolicitantes.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-action>#{applicationsController.excluir(soli)}</from-action>
+			<from-outcome>exito</from-outcome>
+			<to-view-id>/listarSolicitantes.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>fracaso</from-outcome>
+			<to-view-id>/listarSolicitantes.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
 

@@ -42,9 +42,7 @@ public class SimpleSeatsService implements SeatsService {
 
     @Override
     public void aceptarPlaza(Long userId, Long tripId) throws Exception {
-	Seat seat = new Seat();
-	seat.setTripId(tripId);
-	seat.setUserId(userId);
+	Seat seat = crearPlaza(userId, tripId);
 	seat.setStatus(SeatStatus.ACCEPTED);
 
 	save(seat);
@@ -54,6 +52,28 @@ public class SimpleSeatsService implements SeatsService {
 	Factories.services.createTripService().disminuirPlazasDisponibles(
 		tripId);
 
+    }
+
+    @Override
+    public void excluirPlaza(Long userId, Long tripId) {
+	
+	// Crear plaza
+	Seat seat = crearPlaza(userId, tripId);
+	
+	//Pasarla al estado excluido
+	seat.setStatus(SeatStatus.EXCLUDED);
+	
+	//Persistirla
+	save(seat);
+    }
+    
+    private Seat crearPlaza(Long userId, Long tripId) {
+	
+	Seat seat = new Seat();
+	seat.setTripId(tripId);
+	seat.setUserId(userId);
+	
+	return seat;
     }
 
 }

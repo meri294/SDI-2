@@ -13,4 +13,9 @@ public class ApplicationsListado {
 		return dao.findAll();
 	}
 
+	public List<Application> getApplicationsWithoutSeatFor(Long tripId) {
+		ApplicationDao dao = Factories.persistence.createApplicationDao();
+		return dao.findWithoutSeat(tripId);
+	}
+
 }

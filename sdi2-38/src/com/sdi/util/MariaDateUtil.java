@@ -18,6 +18,16 @@ public class MariaDateUtil {
 				Integer.parseInt(hourString[1]));
 	}
 	
+	public static String dateToString(Date date) {
+		DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+		return formatter.format(date);
+	}
+	
+	public static String hourToString(Date date) {
+		DateFormat formatter = new SimpleDateFormat("HH:mm");
+		return formatter.format(date);
+	}
+	
 	/*
 	public static Date completeFromBundle(String date){
 		String dateString[]=date.split(" ")[0].split("/");

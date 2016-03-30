@@ -1,10 +1,9 @@
 # SDI-2
 
 TO-DO:
-  · Comprobar funcionamiento de modificarViajes.xhtml
-  · Revisar código para modificar viajes en BeanTrips (marcado con un TO-DO)
-  · Completar la implementación de muestraViaje.xhtml
-  · Comprobar que funciona bien la cabecera de muestraViaje.xhtml
+  · Implementar todas las opciones de viajesInvolucrado
+  · Arreglar los status de los viajes
+  · Meter que solo se puedan modificar los participantes de un viaje cuando este aun este abierto
   
   
 Contraseñas de los usuarios:

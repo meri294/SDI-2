@@ -46,8 +46,15 @@
 					</p:column>
 					<p:column id="promoOpciones">
 						<f:facet name="header">#{msgs.campo_opciones}</f:facet>
-						<h:commandLink>
-							#{msgs.enlace_verSolicitantes}</h:commandLink>
+						<!-- TO-DO: Completar -->
+						<h:commandLink value="#{msgs.enlace_verSolicitantes}"
+						action="#{applicationsController.sacarSolicitudes(valtrip.id)}"/>
+						<br/>
+						<h:commandLink value="#{msgs.enlace_modificarViaje}"
+						action="#{tripsController.preparaModificacion(valtrip)}"/>
+						<br/>
+						<!-- TO-DO: Completar -->
+						<h:commandLink value="#{msgs.enlace_cancelarViaje}"/>
 					</p:column>
 				</p:dataTable>
 				<p:dataTable id="tablaViajesParti" var="valtrip"
@@ -66,7 +73,9 @@
 					<p:column id="partiRelacion">#{msgs.relation_participante}
 					</p:column>
 					<p:column id="exOpciones" rendered="#{valtrip.status==OPEN}">
-					#{msgs.enlace_cancelar}</p:column>
+					<!-- TO-DO: Completar -->
+						<h:commandLink value="#{msgs.enlace_cancelarSolicitud}"/>
+					</p:column>
 				</p:dataTable>
 				<p:dataTable id="tablaViajesEx" var="valtrip"
 					value="#{tripsController.excluido}"
@@ -84,7 +93,8 @@
 					<p:column id="excRelacion">#{msgs.relation_excluido}
 					</p:column>
 					<p:column id="exOpciones" rendered="#{valtrip.status==OPEN}">
-					#{msgs.enlace_cancelar}
+					<!-- TO-DO: Completar -->
+						<h:commandLink value="#{msgs.enlace_cancelarSolicitud}"/>
 					</p:column>
 				</p:dataTable>
 				<p:dataTable id="tablaViajesEspera" var="valtrip"
@@ -103,7 +113,8 @@
 					<p:column id="espRelacion">#{msgs.relation_enEspera}
 					</p:column>
 					<p:column id="espOpciones" rendered="#{valtrip.status==OPEN}">
-					#{msgs.enlace_cancelar}
+					<!-- TO-DO: Completar -->
+						<h:commandLink value="#{msgs.enlace_cancelarSolicitud}"/>
 					</p:column>
 				</p:dataTable>
 				<p:dataTable id="tablaViajesSin" var="valtrip"
@@ -122,7 +133,8 @@
 					<p:column id="sinRelacion">#{msgs.relation_sinPlaza}
 					</p:column>
 					<p:column id="sinOpciones" rendered="#{valtrip.status==OPEN}">
-					#{msgs.enlace_cancelar}
+					<!-- TO-DO: Completar -->
+						<h:commandLink value="#{msgs.enlace_cancelarSolicitud}"/>
 					</p:column>
 				</p:dataTable>
 			</p:panel>
