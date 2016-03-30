@@ -124,13 +124,13 @@
 	<navigation-rule>
 		<from-view-id>/listaViajes.xhtml</from-view-id>
 		<navigation-case>
-			<from-action>#{applicationsController.salva(sesion.usuario.id, valtrip.id)}</from-action>
+			<from-action>#{applicationsController.salva(valtrip.id)}</from-action>
 			<from-outcome>exito</from-outcome>
 			<to-view-id>/viajesInvolucrado.xhtml</to-view-id>
 			<redirect />
 		</navigation-case>
 		<navigation-case>
-			<from-action>#{applicationsController.salva(sesion.usuario.id, valtrip.id)}</from-action>
+			<from-action>#{applicationsController.salva(valtrip.id)}</from-action>
 			<from-outcome>error</from-outcome>
 			<to-view-id>/listaViajes.xhtml</to-view-id>
 			<redirect />
