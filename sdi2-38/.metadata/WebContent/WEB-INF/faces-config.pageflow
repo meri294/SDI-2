@@ -26,7 +26,11 @@
   <links id="pf14592741591840" target="pf14592741591841" source="pf145916075155014" outcome="exito" redirect="true" fromaction="#{tripsController.preparaModificacion(valtrip)}"/>
   <links id="pf14592745958873" target="pf14591859414683" source="pf14592741591841" outcome="fracaso" fromaction="#{tripsController.salva(sesion.usuario.id)}"/>
   <links id="pf14592745958862" target="pf145916075155014" source="pf14592741591841" outcome="exito" redirect="true" fromaction="#{tripsController.salva(sesion.usuario.id)}"/>
+<<<<<<< HEAD
   <links id="pf14593344895360" target="pf14593344895371" source="pf145916075155014" outcome="exito" redirect="true" fromaction="#{applicationsController.sacarSolicitudes(valtrip.id)}"/>
+=======
+  <links id="pf14593345468640" target="pf14593345468641" source="pf145916075155014" outcome="exito" redirect="true" fromaction="#{applicationsController.sacarSolicitudes(valtrip.id)}"/>
+>>>>>>> 65637e7399275ce58b785ff79b3423f7a315ef85
   <links id="pf145916075155011" target="pf14591607515509" source="pf14591607515509" outcome="error" redirect="true" fromaction="#{login.validar}">
     <bendPoints d1Height="-36" d2Height="-36"/>
     <bendPoints d1Width="-64" d1Height="-36" d2Width="-64" d2Height="-36"/>
@@ -42,17 +46,29 @@
     <bendPoints d1Width="-64" d1Height="-36" d2Width="-64" d2Height="-36"/>
     <bendPoints d1Width="-64" d2Width="-64"/>
   </links>
+<<<<<<< HEAD
   <links id="pf14593344895372" target="pf14593344895371" source="pf14593344895371" outcome="exito" fromaction="#{applicationsController.aceptar(soli)}">
+=======
+  <links id="pf14593345468642" target="pf14593345468641" source="pf14593345468641" outcome="exito" fromaction="#{applicationsController.aceptar(soli)}">
+>>>>>>> 65637e7399275ce58b785ff79b3423f7a315ef85
     <bendPoints d1Height="-36" d2Height="-36"/>
     <bendPoints d1Width="-64" d1Height="-36" d2Width="-64" d2Height="-36"/>
     <bendPoints d1Width="-64" d2Width="-64"/>
   </links>
+<<<<<<< HEAD
   <links id="pf14593344895373" target="pf14593344895371" source="pf14593344895371" outcome="exito" fromaction="#{applicationsController.excluir(soli)}">
+=======
+  <links id="pf14593345468643" target="pf14593345468641" source="pf14593345468641" outcome="exito" fromaction="#{applicationsController.excluir(soli)}">
+>>>>>>> 65637e7399275ce58b785ff79b3423f7a315ef85
     <bendPoints d1Height="-66" d2Height="-66"/>
     <bendPoints d1Width="-94" d1Height="-66" d2Width="-94" d2Height="-66"/>
     <bendPoints d1Width="-94" d2Width="-94"/>
   </links>
+<<<<<<< HEAD
   <links id="pf14593344895374" target="pf14593344895371" source="pf14593344895371" outcome="fracaso">
+=======
+  <links id="pf14593345468644" target="pf14593345468641" source="pf14593345468641" outcome="fracaso">
+>>>>>>> 65637e7399275ce58b785ff79b3423f7a315ef85
     <bendPoints d1Height="-96" d2Height="-96"/>
     <bendPoints d1Width="-124" d1Height="-96" d2Width="-124" d2Height="-96"/>
     <bendPoints d1Width="-124" d2Width="-124"/>
