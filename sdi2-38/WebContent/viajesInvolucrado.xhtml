@@ -81,9 +81,10 @@
 					</p:column>
 					<p:column id="partiDatosSalida">#{valtrip.departure.toStringPrincipal()}</p:column>
 					<p:column id="partiDatosLlegada">#{valtrip.destination.toStringPrincipal()}</p:column>
-					<p:column id="exOpciones" rendered="#{valtrip.status==OPEN}">
-					<!-- TO-DO: Completar -->
-						<h:commandLink value="#{msgs.enlace_cancelarSolicitud}"/>
+					<p:column id="exOpciones">
+						<h:commandLink value="#{msgs.enlace_cancelarSolicitud}"
+						action="#{tripsController.cancelarSolicitud(valtrip)}"
+						 rendered="#{valtrip.status=='OPEN'}"/>
 					</p:column>
 				</p:dataTable>
 				<p:dataTable id="tablaViajesEx" var="valtrip"
@@ -103,9 +104,10 @@
 					</p:column>
 					<p:column id="excluDatosSalida">#{valtrip.departure.toStringPrincipal()}</p:column>
 					<p:column id="excluDatosLlegada">#{valtrip.destination.toStringPrincipal()}</p:column>
-					<p:column id="exOpciones" rendered="#{valtrip.status==OPEN}">
-					<!-- TO-DO: Completar -->
-						<h:commandLink value="#{msgs.enlace_cancelarSolicitud}"/>
+					<p:column id="exOpciones">
+						<h:commandLink value="#{msgs.enlace_cancelarSolicitud}"
+						action="#{tripsController.cancelarSolicitud(valtrip)}"
+						rendered="#{valtrip.status=='OPEN'}"/>
 					</p:column>
 				</p:dataTable>
 				<p:dataTable id="tablaViajesEspera" var="valtrip"
@@ -125,9 +127,10 @@
 					</p:column>
 					<p:column id="espDatosSalida">#{valtrip.departure.toStringPrincipal()}</p:column>
 					<p:column id="espDatosLlegada">#{valtrip.destination.toStringPrincipal()}</p:column>
-					<p:column id="espOpciones" rendered="#{valtrip.status==OPEN}">
-					<!-- TO-DO: Completar -->
-						<h:commandLink value="#{msgs.enlace_cancelarSolicitud}"/>
+					<p:column id="espOpciones">
+						<h:commandLink value="#{msgs.enlace_cancelarSolicitud}"
+						action="#{tripsController.cancelarSolicitud(valtrip)}"
+						rendered="#{valtrip.status=='OPEN'}"/>
 					</p:column>
 				</p:dataTable>
 				<p:dataTable id="tablaViajesSin" var="valtrip"
@@ -147,9 +150,10 @@
 					</p:column>
 					<p:column id="sinDatosSalida">#{valtrip.departure.toStringPrincipal()}</p:column>
 					<p:column id="sinDatosLlegada">#{valtrip.destination.toStringPrincipal()}</p:column>
-					<p:column id="sinOpciones" rendered="#{valtrip.status==OPEN}">
-					<!-- TO-DO: Completar -->
-						<h:commandLink value="#{msgs.enlace_cancelarSolicitud}"/>
+					<p:column id="sinOpciones">
+						<h:commandLink value="#{msgs.enlace_cancelarSolicitud}"
+						action="#{tripsController.cancelarSolicitud(valtrip)}"
+						rendered="#{valtrip.status=='OPEN'}"/>
 					</p:column>
 				</p:dataTable>
 			</p:panel>

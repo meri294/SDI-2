@@ -1,74 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf14590148040662" configfile="/sdi2-38/WebContent/WEB-INF/faces-config.xml">
-  <nodes xsi:type="pageflow:PFPage" name="*" x="122" y="764" id="pf14591607515490" referenceLink="//@navigationRule.0/@fromViewId|" outlinks="pf14591607515501 pf14591607515502 pf14591607515503 pf14591607515504 pf14591859414680" path="*"/>
-  <nodes xsi:type="pageflow:PFPage" name="error.xhtml" x="338" y="178" id="pf14591607515505" referenceLink="//@navigationRule.0/@navigationCase.0/@toViewId|" inlinks="pf14591607515501" path="/error.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="listaViajes.xhtml" x="338" y="562" id="pf14591607515506" referenceLink="//@navigationRule.3/@fromViewId|" outlinks="pf14591607515507 pf14591607515508 pf14591859414681" inlinks="pf14591607515502 pf14591607515508" path="/listaViajes.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="login.xhtml" x="338" y="1553" id="pf14591607515509" referenceLink="//@navigationRule.2/@navigationCase.0/@toViewId|" outlinks="pf145916075155010 pf145916075155011 pf145916075155012" inlinks="pf14591607515503 pf145916075155011 pf145916075155013" path="/login.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="viajesInvolucrado.xhtml" x="554" y="967" id="pf145916075155014" referenceLink="//@navigationRule.6/@navigationCase.1/@toViewId|" outlinks="pf14592673610120 pf14592741591840 pf14593344895360" inlinks="pf14591607515504 pf14591607515507 pf14591955066604 pf14592745958862" path="/viajesInvolucrado.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="principalRegistrado.xhtml" x="554" y="1553" id="pf145916075155015" referenceLink="//@navigationRule.1/@navigationCase.0/@toViewId|" inlinks="pf145916075155010" path="/principalRegistrado.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="registro.xhtml" x="122" y="1553" id="pf145916075155016" referenceLink="//@navigationRule.2/@fromViewId|" outlinks="pf145916075155013" inlinks="pf145916075155012" path="/registro.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="infoCompleta.xhtml" x="770" y="562" id="pf14591859414682" referenceLink="//@navigationRule.5/@navigationCase.0/@toViewId|" inlinks="pf14591859414681 pf14592673610120" path="/infoCompleta.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="registroViaje.xhtml" x="338" y="967" id="pf14591859414683" referenceLink="//@navigationRule.6/@navigationCase.0/@toViewId|" outlinks="pf14591955066605 pf14591955066604" inlinks="pf14591859414680 pf14591955066605 pf14592745958873" path="/registroViaje.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="modificarViaje.xhtml" x="122" y="1169" id="pf14592741591841" referenceLink="//@navigationRule.6/@fromViewId|" outlinks="pf14592745958873 pf14592745958862" inlinks="pf14592741591840" path="/modificarViaje.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="listarSolicitantes.xhtml" x="770" y="967" id="pf14593344895371" referenceLink="//@navigationRule.7/@navigationCase.2/@toViewId|" outlinks="pf14593344895372 pf14593344895373 pf14593344895374" inlinks="pf14593344895360 pf14593344895372 pf14593344895373 pf14593344895374" path="/listarSolicitantes.xhtml"/>
-  <links id="pf14591607515501" target="pf14591607515505" source="pf14591607515490" outcome="error" redirect="true"/>
-  <links id="pf14591607515502" target="pf14591607515506" source="pf14591607515490" outcome="exito" redirect="true" fromaction="#{tripsController.listado}"/>
-  <links id="pf14591607515503" target="pf14591607515509" source="pf14591607515490" outcome="cerrar" redirect="true"/>
-  <links id="pf14591607515504" target="pf145916075155014" source="pf14591607515490" outcome="exito" redirect="true" fromaction="#{tripsController.sacarMisViajes}"/>
-  <links id="pf145916075155010" target="pf145916075155015" source="pf14591607515509" outcome="exito" redirect="true" fromaction="#{login.validar}"/>
-  <links id="pf145916075155012" target="pf145916075155016" source="pf14591607515509" outcome="registro" redirect="true"/>
-  <links id="pf145916075155013" target="pf14591607515509" source="pf145916075155016" outcome="exito" redirect="true"/>
-  <links id="pf14591607515507" target="pf145916075155014" source="pf14591607515506" outcome="exito" redirect="true" fromaction="#{applicationsController.salva(valtrip.id)}"/>
-  <links id="pf14591859414681" target="pf14591859414682" source="pf14591607515506" outcome="exito" redirect="true" fromaction="#{seatController.obtenerParticipantes(valtrip.id)}"/>
-  <links id="pf14591859414680" target="pf14591859414683" source="pf14591607515490" outcome="registrarViaje" redirect="true"/>
-  <links id="pf14591955066604" target="pf145916075155014" source="pf14591859414683" outcome="exito" redirect="true" fromaction="#{tripsController.salva(sesion.usuario.id)}"/>
-  <links id="pf14592673610120" target="pf14591859414682" source="pf145916075155014" outcome="exito" redirect="true" fromaction="#{seatController.obtenerParticipantes(valtrip.id)}"/>
-  <links id="pf14592741591840" target="pf14592741591841" source="pf145916075155014" outcome="exito" redirect="true" fromaction="#{tripsController.preparaModificacion(valtrip)}"/>
-  <links id="pf14592745958873" target="pf14591859414683" source="pf14592741591841" outcome="fracaso" fromaction="#{tripsController.salva(sesion.usuario.id)}"/>
-  <links id="pf14592745958862" target="pf145916075155014" source="pf14592741591841" outcome="exito" redirect="true" fromaction="#{tripsController.salva(sesion.usuario.id)}"/>
-<<<<<<< HEAD
-  <links id="pf14593344895360" target="pf14593344895371" source="pf145916075155014" outcome="exito" redirect="true" fromaction="#{applicationsController.sacarSolicitudes(valtrip.id)}"/>
-=======
-  <links id="pf14593345468640" target="pf14593345468641" source="pf145916075155014" outcome="exito" redirect="true" fromaction="#{applicationsController.sacarSolicitudes(valtrip.id)}"/>
->>>>>>> 65637e7399275ce58b785ff79b3423f7a315ef85
-  <links id="pf145916075155011" target="pf14591607515509" source="pf14591607515509" outcome="error" redirect="true" fromaction="#{login.validar}">
+<pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf14593436924135" configfile="/sdi2-38/WebContent/WEB-INF/faces-config.xml">
+  <nodes xsi:type="pageflow:PFPage" name="*" x="122" y="764" id="pf14593437975116" referenceLink="//@navigationRule.0/@fromViewId|" outlinks="pf14593437975117 pf14593437975118 pf14593437975119 pf145934379751110 pf145934379751111" path="*"/>
+  <nodes xsi:type="pageflow:PFPage" name="error.xhtml" x="338" y="178" id="pf145934379751112" referenceLink="//@navigationRule.0/@navigationCase.0/@toViewId|" inlinks="pf14593437975117" path="/error.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="listaViajes.xhtml" x="338" y="562" id="pf145934379751113" referenceLink="//@navigationRule.3/@fromViewId|" outlinks="pf145934379751114 pf145934379751115 pf145934379751116" inlinks="pf14593437975118 pf145934379751115" path="/listaViajes.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="login.xhtml" x="338" y="1553" id="pf145934379751117" referenceLink="//@navigationRule.2/@navigationCase.0/@toViewId|" outlinks="pf145934379751118 pf145934379751119 pf145934379751120" inlinks="pf14593437975119 pf145934379751119 pf145934379751121" path="/login.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="viajesInvolucrado.xhtml" x="554" y="967" id="pf145934379751122" referenceLink="//@navigationRule.6/@navigationCase.1/@toViewId|" outlinks="pf145934379751123 pf145934379751124 pf145934379751125" inlinks="pf145934379751110 pf145934379751114 pf145934379751126 pf145934379751127" path="/viajesInvolucrado.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="registroViaje.xhtml" x="338" y="967" id="pf145934379751128" referenceLink="//@navigationRule.6/@navigationCase.0/@toViewId|" outlinks="pf145934379751129 pf145934379751126" inlinks="pf145934379751111 pf145934379751129 pf145934379751130" path="/registroViaje.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="principalRegistrado.xhtml" x="554" y="1553" id="pf145934379751131" referenceLink="//@navigationRule.1/@navigationCase.0/@toViewId|" inlinks="pf145934379751118" path="/principalRegistrado.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="registro.xhtml" x="122" y="1553" id="pf145934379751132" referenceLink="//@navigationRule.2/@fromViewId|" outlinks="pf145934379751121" inlinks="pf145934379751120" path="/registro.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="infoCompleta.xhtml" x="770" y="562" id="pf145934379751133" referenceLink="//@navigationRule.5/@navigationCase.0/@toViewId|" inlinks="pf145934379751116 pf145934379751123" path="/infoCompleta.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="modificarViaje.xhtml" x="122" y="1169" id="pf145934379751134" referenceLink="//@navigationRule.6/@fromViewId|" outlinks="pf145934379751130 pf145934379751127" inlinks="pf145934379751124" path="/modificarViaje.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="listarSolicitantes.xhtml" x="770" y="967" id="pf145934379751135" referenceLink="//@navigationRule.7/@navigationCase.2/@toViewId|" outlinks="pf145934379751136 pf145934379751137 pf145934379751138" inlinks="pf145934379751125 pf145934379751136 pf145934379751137 pf145934379751138" path="/listarSolicitantes.xhtml"/>
+  <links id="pf14593437975117" target="pf145934379751112" source="pf14593437975116" outcome="error" redirect="true"/>
+  <links id="pf14593437975118" target="pf145934379751113" source="pf14593437975116" outcome="exito" redirect="true" fromaction="#{tripsController.listado}"/>
+  <links id="pf14593437975119" target="pf145934379751117" source="pf14593437975116" outcome="cerrar" redirect="true"/>
+  <links id="pf145934379751110" target="pf145934379751122" source="pf14593437975116" outcome="exito" redirect="true" fromaction="#{tripsController.sacarMisViajes}"/>
+  <links id="pf145934379751111" target="pf145934379751128" source="pf14593437975116" outcome="registrarViaje" redirect="true"/>
+  <links id="pf145934379751118" target="pf145934379751131" source="pf145934379751117" outcome="exito" redirect="true" fromaction="#{login.validar}"/>
+  <links id="pf145934379751120" target="pf145934379751132" source="pf145934379751117" outcome="registro" redirect="true"/>
+  <links id="pf145934379751121" target="pf145934379751117" source="pf145934379751132" outcome="exito" redirect="true"/>
+  <links id="pf145934379751114" target="pf145934379751122" source="pf145934379751113" outcome="exito" redirect="true" fromaction="#{applicationsController.salva(valtrip.id)}"/>
+  <links id="pf145934379751116" target="pf145934379751133" source="pf145934379751113" outcome="exito" redirect="true" fromaction="#{seatController.obtenerParticipantes(valtrip.id)}"/>
+  <links id="pf145934379751126" target="pf145934379751122" source="pf145934379751128" outcome="exito" redirect="true" fromaction="#{tripsController.salva(sesion.usuario.id)}"/>
+  <links id="pf145934379751123" target="pf145934379751133" source="pf145934379751122" outcome="exito" redirect="true" fromaction="#{seatController.obtenerParticipantes(valtrip.id)}"/>
+  <links id="pf145934379751124" target="pf145934379751134" source="pf145934379751122" outcome="exito" redirect="true" fromaction="#{tripsController.preparaModificacion(valtrip)}"/>
+  <links id="pf145934379751125" target="pf145934379751135" source="pf145934379751122" outcome="exito" redirect="true" fromaction="#{applicationsController.sacarSolicitudes(valtrip.id)}"/>
+  <links id="pf145934379751130" target="pf145934379751128" source="pf145934379751134" outcome="fracaso" fromaction="#{tripsController.salva(sesion.usuario.id)}"/>
+  <links id="pf145934379751127" target="pf145934379751122" source="pf145934379751134" outcome="exito" redirect="true" fromaction="#{tripsController.salva(sesion.usuario.id)}"/>
+  <links id="pf145934379751119" target="pf145934379751117" source="pf145934379751117" outcome="error" redirect="true" fromaction="#{login.validar}">
     <bendPoints d1Height="-36" d2Height="-36"/>
     <bendPoints d1Width="-64" d1Height="-36" d2Width="-64" d2Height="-36"/>
     <bendPoints d1Width="-64" d2Width="-64"/>
   </links>
-  <links id="pf14591607515508" target="pf14591607515506" source="pf14591607515506" outcome="error" redirect="true" fromaction="#{applicationsController.salva(valtrip.id)}">
+  <links id="pf145934379751115" target="pf145934379751113" source="pf145934379751113" outcome="error" redirect="true" fromaction="#{applicationsController.salva(valtrip.id)}">
     <bendPoints d1Height="-36" d2Height="-36"/>
     <bendPoints d1Width="-64" d1Height="-36" d2Width="-64" d2Height="-36"/>
     <bendPoints d1Width="-64" d2Width="-64"/>
   </links>
-  <links id="pf14591955066605" target="pf14591859414683" source="pf14591859414683" outcome="fracaso" fromaction="#{tripsController.salva(sesion.usuario.id)}">
+  <links id="pf145934379751129" target="pf145934379751128" source="pf145934379751128" outcome="fracaso" fromaction="#{tripsController.salva(sesion.usuario.id)}">
     <bendPoints d1Height="-36" d2Height="-36"/>
     <bendPoints d1Width="-64" d1Height="-36" d2Width="-64" d2Height="-36"/>
     <bendPoints d1Width="-64" d2Width="-64"/>
   </links>
-<<<<<<< HEAD
-  <links id="pf14593344895372" target="pf14593344895371" source="pf14593344895371" outcome="exito" fromaction="#{applicationsController.aceptar(soli)}">
-=======
-  <links id="pf14593345468642" target="pf14593345468641" source="pf14593345468641" outcome="exito" fromaction="#{applicationsController.aceptar(soli)}">
->>>>>>> 65637e7399275ce58b785ff79b3423f7a315ef85
+  <links id="pf145934379751136" target="pf145934379751135" source="pf145934379751135" outcome="exito" fromaction="#{applicationsController.aceptar(soli)}">
     <bendPoints d1Height="-36" d2Height="-36"/>
     <bendPoints d1Width="-64" d1Height="-36" d2Width="-64" d2Height="-36"/>
     <bendPoints d1Width="-64" d2Width="-64"/>
   </links>
-<<<<<<< HEAD
-  <links id="pf14593344895373" target="pf14593344895371" source="pf14593344895371" outcome="exito" fromaction="#{applicationsController.excluir(soli)}">
-=======
-  <links id="pf14593345468643" target="pf14593345468641" source="pf14593345468641" outcome="exito" fromaction="#{applicationsController.excluir(soli)}">
->>>>>>> 65637e7399275ce58b785ff79b3423f7a315ef85
+  <links id="pf145934379751137" target="pf145934379751135" source="pf145934379751135" outcome="exito" fromaction="#{applicationsController.excluir(soli)}">
     <bendPoints d1Height="-66" d2Height="-66"/>
     <bendPoints d1Width="-94" d1Height="-66" d2Width="-94" d2Height="-66"/>
     <bendPoints d1Width="-94" d2Width="-94"/>
   </links>
-<<<<<<< HEAD
-  <links id="pf14593344895374" target="pf14593344895371" source="pf14593344895371" outcome="fracaso">
-=======
-  <links id="pf14593345468644" target="pf14593345468641" source="pf14593345468641" outcome="fracaso">
->>>>>>> 65637e7399275ce58b785ff79b3423f7a315ef85
+  <links id="pf145934379751138" target="pf145934379751135" source="pf145934379751135" outcome="fracaso">
     <bendPoints d1Height="-96" d2Height="-96"/>
     <bendPoints d1Width="-124" d1Height="-96" d2Width="-124" d2Height="-96"/>
     <bendPoints d1Width="-124" d2Width="-124"/>

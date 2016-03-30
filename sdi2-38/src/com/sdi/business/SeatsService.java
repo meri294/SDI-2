@@ -36,5 +36,16 @@ public interface SeatsService {
 	 * @param tripId ID del viaje
 	 */
 	public void excluirPlaza(Long userId, Long tripId);
+	
+	public Seat findByUserAndTrip(Long userId, Long tripId);
+
+	/**
+	 * Elimina la plaza.
+	 * Si estaba en estado aceptado, aumenta las plazas disponibles en el trip
+	 * 
+	 * @param seat Plaza a eliminar
+	 * @throws Exception
+	 */
+	public void delete(Seat seat) throws Exception;
 
 }

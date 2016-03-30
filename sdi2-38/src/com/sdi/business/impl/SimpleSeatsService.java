@@ -4,6 +4,8 @@ import java.util.List;
 
 import com.sdi.business.SeatsService;
 import com.sdi.business.impl.classes.seat.SeatAlta;
+import com.sdi.business.impl.classes.seat.SeatBaja;
+import com.sdi.business.impl.classes.seat.SeatBuscar;
 import com.sdi.business.impl.classes.seat.SeatListado;
 import com.sdi.business.impl.classes.seat.SeatUpdate;
 import com.sdi.infrastructure.Factories;
@@ -74,6 +76,23 @@ public class SimpleSeatsService implements SeatsService {
 	seat.setUserId(userId);
 	
 	return seat;
+    }
+
+    @Override
+    public Seat findByUserAndTrip(Long userId, Long tripId) {
+	return new SeatBuscar().findByUserAndTrip(userId, tripId);
+    }
+
+    @Override
+    public void delete(Seat seat) throws Exception {
+	//Si el seat esta en aceptado habra que aumentarse las plazas disponibles
+	//en el trip tras borrarlo
+	
+	new SeatBaja().delete(seat);
+	
+	if(seat.getStatus().equals(SeatStatus.ACCEPTED))
+	    Factories.services.createTripService().aumentarPlazasDisponibles(seat.getTripId());
+	
     }
 
 }

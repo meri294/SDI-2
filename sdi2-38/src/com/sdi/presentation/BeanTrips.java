@@ -14,10 +14,12 @@ import javax.faces.bean.ManagedProperty;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 
+import com.sdi.model.Seat;
 import com.sdi.model.TripStatus;
 
 import alb.util.log.Log;
 
+import com.sdi.business.SeatsService;
 import com.sdi.business.TripService;
 import com.sdi.infrastructure.Factories;
 import com.sdi.model.Trip;
@@ -422,5 +424,54 @@ public class BeanTrips implements Serializable {
 	
 	return Resultado.exito.name();
 	
+    }
+    
+    public String cancelarSolicitud(Trip trip) {
+	
+	FacesContext facesContext = FacesContext.getCurrentInstance();
+	ResourceBundle bundle = facesContext.getApplication()
+		.getResourceBundle(facesContext, "msgs");
+	
+	//Comprobar si el usuario es promotor del viaje
+	if(trip.getPromoterId().equals(sesion.getUsuario().getId())) {
+	    //Si es promotor, devolver fracaso
+	    FacesContext.getCurrentInstance().addMessage(null,
+		    new FacesMessage(bundle.getString("mensaje_cancelarPromotor")));
+	    
+	    return Resultado.fracaso.name();
+	}
+	
+	//Comprobar si el viaje sigue abierto para cancelarse
+	if(!trip.getStatus().equals(TripStatus.OPEN)) {
+	    //Si no, devolver fracaso
+	    FacesContext.getCurrentInstance().addMessage(null,
+		    new FacesMessage(bundle.getString("mensaje_pasadoPlazoCancelacion")));
+	    
+	    return Resultado.fracaso.name();
+	}
+	
+	try {
+	    
+	    SeatsService sService = Factories.services.createSeatsService();
+	    
+	    //Obtener seat creada a partir de solicitud (si es que existe)
+	    Seat seat = sService.findByUserAndTrip(sesion.getUsuario().getId(), trip.getId());
+	    
+	    //Borrar solicitud y seat
+	    Long[] ids = {sesion.getUsuario().getId(), trip.getId()};
+	    Factories.services.createApplicationService().deleteApplication(ids);
+	    
+	    if(seat != null)
+		sService.delete(seat);
+	    
+	} catch (Exception e) {
+	    // TODO ¿Crear mensaje?
+	    e.printStackTrace();
+	    
+	    return Resultado.error.name();
+	}
+	
+	//Renuevo mis viajes
+	return sacarMisViajes();
     }
 }

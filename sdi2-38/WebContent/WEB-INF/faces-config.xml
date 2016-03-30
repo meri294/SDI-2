@@ -178,6 +178,16 @@
 			<to-view-id>/listarSolicitantes.xhtml</to-view-id>
 			<redirect />
 		</navigation-case>
+		<navigation-case>
+			<from-action>#{tripsController.cancelarSolicitud(valtrip)}</from-action>
+			<from-outcome>exito</from-outcome>
+			<to-view-id>/viajesInvolucrado.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-action>#{tripsController.cancelarSolicitud(valtrip)}</from-action>
+			<from-outcome>fracaso</from-outcome>
+			<to-view-id>/viajesInvolucrado.xhtml</to-view-id>
+		</navigation-case>
 	</navigation-rule>
 	
 	<navigation-rule>

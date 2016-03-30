@@ -187,6 +187,8 @@ public class BeanApplications {
     public String aceptar(Application application) {
 
 	try {
+	    //TODO HAY QUE HACER QUE SOLO SE PUEDA ACEPTAR PASAJEROS MIENTRAS EL VIAJE ESTE EN OPEN
+	    
 	    // Antes que nada se ha de comprobar si hay sitio para aceptar al
 	    // pasajero!
 	    Trip trip = Factories.services.createTripService().findById(
@@ -225,8 +227,9 @@ public class BeanApplications {
 
     public String excluir(Application application) {
 	
-	//Crear y excluir plaza a partir de la application
+	//TODO HAY QUE HACER QUE SOLO SE PUEDA EXCLUIR PASAJEROS MIENTRAS EL VIAJE ESTE EN OPEN
 	
+	//Crear y excluir plaza a partir de la application
 	Factories.services.createSeatsService().excluirPlaza(application.getUserId(), application.getTripId());
 	
 	// TODO Quitar esta application de la lista de solicitudes
