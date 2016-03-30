@@ -218,6 +218,11 @@ public class SDI2_Tests {
 		By ver = By
 				.xpath("//td[contains(text(), 'Avenida del Procesador 17, cityModif-Spain')]/following-sibling::*/a[contains(@id, 'linkSolicitantes')]");
 		driver.findElement(ver).click();
+		SeleniumUtils.EsperaCargaPagina(driver, "id", "tablaSolicitantes", 10);
+		By aceptar = By
+				.xpath("//td[contains(text(),'342')]/following-sibling::*/a[contains(text(),'Aceptar')]");
+		driver.findElement(aceptar).click();
+		SeleniumUtils.EsperaCargaPaginaNoTexto(driver, "342", 5);
 
 	}
 
