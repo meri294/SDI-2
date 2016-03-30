@@ -1,12 +1,13 @@
 # SDI-2
 
 TO-DO:
-  · Arreglar los status de los viajes
-  · Meter que solo se puedan modificar los participantes de un viaje cuando este aun este abierto
+  · Comprobar que solo se muestre la opcion de modificar los participantes de un viaje cuando este abierto (viajesInvolucrado)
   · Buscar la excepcion que salta al no estar abierta la BBDD para crear mensaje
   · Comprobar que funciona bien la cancelación de viajes
   · Comprobar que se muestran los checkboxes de cancelación de viajes cuando se debe
-  · Comprobar que la cancelación multiple de viajes
+  · Comprobar que funciona la cancelación multiple de viajes
+  · Comprobar que se muestra la opcion de excluir pasajeros ya aceptados si se es promotor y el viaje esta abierto (infoCompleta)
+  · Comprobar que funciona bien la exclusion de pasajeros ya aceptados (infoCompleta)
   
   
 Contraseñas de los usuarios:
