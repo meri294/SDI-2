@@ -9,8 +9,6 @@ import com.sdi.business.impl.classes.application.ApplicationsBaja;
 import com.sdi.business.impl.classes.application.ApplicationsListado;
 import com.sdi.business.impl.classes.application.ApplicationsUpdate;
 import com.sdi.model.Application;
-import com.sdi.model.Trip;
-import com.sdi.model.User;
 
 public class SimpleApplicationService implements ApplicationService {
 
@@ -52,6 +50,13 @@ public class SimpleApplicationService implements ApplicationService {
 	@Override
 	public List<Application> getApplicationsWithoutSeatFor(Long tripId) {
 	    return new ApplicationsListado().getApplicationsWithoutSeatFor(tripId);
+	}
+
+	@Override
+	public void deleteApplication(Long userId, Long tripId) throws Exception {
+	    Long[] ids = {userId, tripId};
+	    deleteApplication(ids);
+	    
 	}
 
 }

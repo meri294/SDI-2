@@ -4,7 +4,7 @@
   <nodes xsi:type="pageflow:PFPage" name="error.xhtml" x="338" y="178" id="pf145934379751112" referenceLink="//@navigationRule.0/@navigationCase.0/@toViewId|" inlinks="pf14593437975117" path="/error.xhtml"/>
   <nodes xsi:type="pageflow:PFPage" name="listaViajes.xhtml" x="338" y="562" id="pf145934379751113" referenceLink="//@navigationRule.3/@fromViewId|" outlinks="pf145934379751114 pf145934379751115 pf145934379751116" inlinks="pf14593437975118 pf145934379751115" path="/listaViajes.xhtml"/>
   <nodes xsi:type="pageflow:PFPage" name="login.xhtml" x="338" y="1553" id="pf145934379751117" referenceLink="//@navigationRule.2/@navigationCase.0/@toViewId|" outlinks="pf145934379751118 pf145934379751119 pf145934379751120" inlinks="pf14593437975119 pf145934379751119 pf145934379751121" path="/login.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="viajesInvolucrado.xhtml" x="554" y="967" id="pf145934379751122" referenceLink="//@navigationRule.6/@navigationCase.1/@toViewId|" outlinks="pf145934379751123 pf145934379751124 pf145934379751125" inlinks="pf145934379751110 pf145934379751114 pf145934379751126 pf145934379751127" path="/viajesInvolucrado.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="viajesInvolucrado.xhtml" x="554" y="967" id="pf145934379751122" referenceLink="//@navigationRule.6/@navigationCase.1/@toViewId|" outlinks="pf145934379751123 pf145934379751124 pf145934379751125 pf145935474590339 pf145935474590340" inlinks="pf145934379751110 pf145934379751114 pf145934379751126 pf145934379751127 pf145935474590339 pf145935474590340" path="/viajesInvolucrado.xhtml"/>
   <nodes xsi:type="pageflow:PFPage" name="registroViaje.xhtml" x="338" y="967" id="pf145934379751128" referenceLink="//@navigationRule.6/@navigationCase.0/@toViewId|" outlinks="pf145934379751129 pf145934379751126" inlinks="pf145934379751111 pf145934379751129 pf145934379751130" path="/registroViaje.xhtml"/>
   <nodes xsi:type="pageflow:PFPage" name="principalRegistrado.xhtml" x="554" y="1553" id="pf145934379751131" referenceLink="//@navigationRule.1/@navigationCase.0/@toViewId|" inlinks="pf145934379751118" path="/principalRegistrado.xhtml"/>
   <nodes xsi:type="pageflow:PFPage" name="registro.xhtml" x="122" y="1553" id="pf145934379751132" referenceLink="//@navigationRule.2/@fromViewId|" outlinks="pf145934379751121" inlinks="pf145934379751120" path="/registro.xhtml"/>
@@ -56,5 +56,15 @@
     <bendPoints d1Height="-96" d2Height="-96"/>
     <bendPoints d1Width="-124" d1Height="-96" d2Width="-124" d2Height="-96"/>
     <bendPoints d1Width="-124" d2Width="-124"/>
+  </links>
+  <links id="pf145935474590339" target="pf145934379751122" source="pf145934379751122" outcome="exito" fromaction="#{tripsController.cancelarSolicitud(valtrip)}">
+    <bendPoints d1Height="-36" d2Height="-36"/>
+    <bendPoints d1Width="-64" d1Height="-36" d2Width="-64" d2Height="-36"/>
+    <bendPoints d1Width="-64" d2Width="-64"/>
+  </links>
+  <links id="pf145935474590340" target="pf145934379751122" source="pf145934379751122" outcome="fracaso" fromaction="#{tripsController.cancelarSolicitud(valtrip)}">
+    <bendPoints d1Height="-66" d2Height="-66"/>
+    <bendPoints d1Width="-94" d1Height="-66" d2Width="-94" d2Height="-66"/>
+    <bendPoints d1Width="-94" d2Width="-94"/>
   </links>
 </pageflow:Pageflow>

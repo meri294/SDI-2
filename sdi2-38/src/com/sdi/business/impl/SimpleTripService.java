@@ -3,13 +3,19 @@ package com.sdi.business.impl;
 import java.util.List;
 import java.util.Map;
 
+import com.sdi.business.ApplicationService;
+import com.sdi.business.SeatsService;
 import com.sdi.business.TripService;
 import com.sdi.business.impl.classes.trip.TripsAlta;
 import com.sdi.business.impl.classes.trip.TripsBaja;
 import com.sdi.business.impl.classes.trip.TripsBuscar;
 import com.sdi.business.impl.classes.trip.TripsListado;
 import com.sdi.business.impl.classes.trip.TripsUpdate;
+import com.sdi.infrastructure.Factories;
+import com.sdi.model.Application;
+import com.sdi.model.Seat;
 import com.sdi.model.Trip;
+import com.sdi.model.TripStatus;
 
 public class SimpleTripService implements TripService {
 
@@ -79,6 +85,37 @@ public class SimpleTripService implements TripService {
 	    trip.setAvailablePax(nuevasPlazasDisponibles);
 	    
 	    updateTrip(trip);
+	    
+	}
+
+	@Override
+	public void cancelar(Trip trip) throws Exception {
+	    
+	    if(!trip.getStatus().equals(TripStatus.OPEN)) {
+		throw new Exception("No se puede cancelar este viaje");
+	    }
+	    
+	    trip.setStatus(TripStatus.CANCELLED);
+	    
+	    updateTrip(trip);
+	    
+	    ApplicationService appService = Factories.services.createApplicationService();
+	    SeatsService sService = Factories.services.createSeatsService();
+	    
+	    List<Application> applications = appService.findByTripId(trip.getId());
+	    
+	    for(Application app : applications) {
+		
+		Seat seat = sService.findByUserAndTrip(app.getUserId(), app.getTripId());
+		
+		if(seat == null)
+		    sService.cancelarPlaza(app.getUserId(), app.getTripId());
+		
+		else
+		    sService.cancelarPlaza(seat);
+		
+		appService.deleteApplication(app.getUserId(), app.getTripId());
+	    }
 	    
 	}
 

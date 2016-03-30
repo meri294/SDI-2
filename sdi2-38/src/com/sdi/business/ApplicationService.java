@@ -22,4 +22,6 @@ public interface ApplicationService {
 
 	List<Application> getApplicationsWithoutSeatFor(Long tripId);
 
+	void deleteApplication(Long userId, Long tripId) throws Exception;
+
 }
