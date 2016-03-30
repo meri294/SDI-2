@@ -155,10 +155,12 @@ public class SDI2_Tests {
 		WebElement element = driver.findElement(By
 				.id("involucrado:tablaViajesPromo:0:modificarVijaeLink"));
 		element.click();
-		new PO_ModifViajeForm().rellenaFormulario(driver, "20/10/2016", "23:59",
-				"cityModif", "21/10/2016", "03:05", "12:50", "15/10/2016");
+		new PO_ModifViajeForm().rellenaFormulario(driver, "20/10/2016",
+				"23:59", "cityModif", "21/10/2016", "03:05", "12:50",
+				"15/10/2016");
 		SeleniumUtils.EsperaCargaPagina(driver, "id", "tablaViajesParti", 10);
-		SeleniumUtils.textoPresentePagina(driver, "Tue Apr 26 15:00:00 CEST 2016 ");
+		SeleniumUtils.textoPresentePagina(driver,
+				"Tue Apr 26 15:00:00 CEST 2016 ");
 	}
 
 	// 9. [EditViajeInVal] Edición de viaje existente con datos inválidos.
@@ -171,8 +173,9 @@ public class SDI2_Tests {
 		WebElement element = driver.findElement(By
 				.id("involucrado:tablaViajesPromo:0:modificarVijaeLink"));
 		element.click();
-		new PO_ModifViajeForm().rellenaFormulario(driver, "20/10/2016", "23:59",
-				"cityModif", "21/10/2016", "03:05", "12:50", "23/10/2016");
+		new PO_ModifViajeForm().rellenaFormulario(driver, "20/10/2016",
+				"23:59", "cityModif", "21/10/2016", "03:05", "12:50",
+				"23/10/2016");
 		SeleniumUtils.EsperaCargaPagina(driver, "id", "enviar", 10);
 		SeleniumUtils.textoPresentePagina(driver, "Datos de salida");
 	}
@@ -188,24 +191,44 @@ public class SDI2_Tests {
 	 * 
 	 * @Test public void t11_CancelMulViajeVal() {
 	 * 
-	 * } // 12. [Ins1ViajeAceptVal] Inscribir en un viaje un solo usuario y ser
-	 * admitido por el promotor.
-	 * 
-	 * @Test public void t12_Ins1ViajeAceptVal() {
-	 * 
-	 * } // 13. [Ins2ViajeAceptVal] Inscribir en un viaje dos usuarios y ser
-	 * admitidos los dos por el promotor.
-	 * 
-	 * @Test public void t13_Ins2ViajeAceptVal() {
-	 * 
-	 * } // 14. [Ins3ViajeAceptInval] Inscribir en un viaje (2 plazas máximo)
-	 * dos usuarios y ser admitidos los dos y que un tercero intente inscribirse
-	 * en ese mismo viaje pero ya no pueda por falta de plazas.
-	 * 
-	 * @Test public void t14_Ins3ViajeAceptInval() {
-	 * 
-	 * } // 15. [CancelNoPromotorVal] Un usuario no promotor Cancela plaza.
-	 * 
+	 * }
+	 */
+	// 12. [Ins1ViajeAceptVal] Inscribir en un viaje un solo usuario y ser
+	// admitido por el promotor.
+	@Test
+	public void t12_Ins1ViajeAceptVal() {
+		SeleniumUtils.EsperaCargaPagina(driver, "id", "form-pie", 10);
+		new PO_LoginForm().rellenaFormulario(driver, "testSDI", "testSDI");
+		SeleniumUtils.EsperaCargaPagina(driver, "id", "bienvenido", 10);
+		SeleniumUtils.ClickSubopcionMenuHover(driver, "form-cabecera:opciones",
+				"form-cabecera:linkOpciones");
+		SeleniumUtils.EsperaCargaPagina(driver, "id", "tablaViajes", 10);
+		WebElement element=driver.findElement(
+				By.id("viajesDisponibles:tablaViajes:0:solicitarlink"));
+		element.click();
+		//SeleniumUtils.EsperaCargaPagina(driver, "id", "tablaViajesSin", 10);
+		//SeleniumUtils.textoPresentePagina(driver, "Avenida del Procesador 17, cityModif-Spain");
+	}
+
+	// 13. [Ins2ViajeAceptVal] Inscribir en un viaje dos usuarios y ser
+	// admitidos los dos por el promotor.
+	@Test
+	public void t13_Ins2ViajeAceptVal() {
+
+	}
+
+	// 14. [Ins3ViajeAceptInval] Inscribir en un viaje (2 plazas máximo)
+	// dos usuarios y ser admitidos los dos y que un tercero intente inscribirse
+	// en ese mismo viaje pero ya no pueda por falta de plazas.
+
+	@Test
+	public void t14_Ins3ViajeAceptInval() {
+
+	}
+
+	// 15. [CancelNoPromotorVal] Un usuario no promotor Cancela plaza.
+
+	/*
 	 * @Test public void t15_CancelNoPromotorVal() {
 	 * 
 	 * } // 16. [Rech1ViajeVal] Inscribir en un viaje un usuario que será
