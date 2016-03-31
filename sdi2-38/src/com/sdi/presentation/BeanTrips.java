@@ -15,18 +15,16 @@ import javax.faces.bean.ManagedProperty;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 
-import com.sdi.model.AddressPoint;
-import com.sdi.model.Seat;
-import com.sdi.model.TripStatus;
-
 import alb.util.log.Log;
 
 import com.sdi.business.SeatsService;
 import com.sdi.business.TripService;
 import com.sdi.infrastructure.Factories;
+import com.sdi.model.AddressPoint;
+import com.sdi.model.Seat;
 import com.sdi.model.Trip;
+import com.sdi.model.TripStatus;
 import com.sdi.util.MariaDateUtil;
-import com.sdi.util.MariaModelUtil;
 
 @ManagedBean(name = "tripsController")
 public class BeanTrips implements Serializable {

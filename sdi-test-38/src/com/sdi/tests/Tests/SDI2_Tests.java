@@ -274,12 +274,13 @@ public class SDI2_Tests {
 				"form-cabecera:linkCerrarSesion");
 
 		//Aceptar
+		SeleniumUtils.EsperaCargaPagina(driver, "id", "form-pie", 10);
 		login("usuario1", "usuario1");
 		SeleniumUtils.ClickSubopcionMenuHover(driver, "form-cabecera:opciones",
 				"form-cabecera:linkMisViajes");
 		SeleniumUtils.EsperaCargaPagina(driver, "id", "tablaViajes", 10);
 		By ver = By
-				.xpath("//td[contains(text(), 'Calle por defecto, Ciudad1-Pais1')]/following-sibling::*/a[contains(@id, 'linkSolicitantes')]");
+				.xpath("//td[contains(text(), 'Calle de Aladdin, Ciudad1-Pais1')]/following-sibling::*/a[contains(@id, 'linkSolicitantes')]");
 		driver.findElement(ver).click();
 		SeleniumUtils.EsperaCargaPagina(driver, "id", "tablaSolicitantes", 10);
 
