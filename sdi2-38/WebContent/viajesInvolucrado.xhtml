@@ -58,6 +58,10 @@
 					</p:column>
 					<p:column id="promoOpciones">
 						<f:facet name="header">#{msgs.campo_opciones}</f:facet>
+						<p:commandLink id="verDetalles_#{valtrip.id}"
+							action="#{seatController.obtenerParticipantes(valtrip.id)}"
+							type="submit" value="#{msgs.ver_participantes}">
+						</p:commandLink>
 						<h:commandLink id="linkSolicitantes" value="#{msgs.enlace_verSolicitantes}"
 						action="#{applicationsController.sacarSolicitudes(valtrip.id)}"
 						rendered="#{valtrip.status=='OPEN'}"/>
