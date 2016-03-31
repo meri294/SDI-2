@@ -102,6 +102,12 @@ public class SimpleTripService implements TripService {
 	    ApplicationService appService = Factories.services.createApplicationService();
 	    SeatsService sService = Factories.services.createSeatsService();
 	    
+	    List<Seat> seats = sService.getParticipantes(trip.getId());
+	    
+	    for(Seat s : seats)
+		sService.cancelarPlaza(s);
+	   
+	    
 	    List<Application> applications = appService.findByTripId(trip.getId());
 	    
 	    for(Application app : applications) {
