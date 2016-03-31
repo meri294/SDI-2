@@ -101,6 +101,7 @@ public class BeanRegistro implements Serializable {
 					bundle.getString("error_guardar"),
 					bundle.getString("error_guardar"));
 			facesContext.addMessage(null, message);
+			e.printStackTrace();
 			return Resultado.error.name();
 		}
 		Log.info("Se ha creado un nuevo usuario cliente con login [%s]", login);

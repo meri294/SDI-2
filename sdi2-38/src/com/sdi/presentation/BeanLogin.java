@@ -80,7 +80,8 @@ public class BeanLogin implements Serializable {
 			Log.info("El usuario [%s] ha iniciado sesión", login);
 			return Resultado.exito.name();
 		} catch (Exception e) {
-			facesContext.addMessage(null, new FacesMessage(e.getMessage()));		
+			facesContext.addMessage(null, new FacesMessage(bundle.getString("mensaje_abraBBDD")));
+			//e.printStackTrace();
 		}
 		return Resultado.fracaso.name();		
 	}
