@@ -1,7 +1,8 @@
 # SDI-2
 
 TO-DO:
-  · Buscar la excepcion que salta al no estar abierta la BBDD para crear mensaje
+  · Meter primefaces en las vistas
+  · ¿Poner las vistas mas bonitas (viajesInvolucrado, los checkboxes y el boton de cancelar; registroViaje, la opcion de precarga)
   
   
 Contraseñas de los usuarios:
