@@ -7,7 +7,6 @@ TO-DO:
   · Comprobar que se muestran los checkboxes de cancelación de viajes cuando se debe
   · Comprobar que funciona la cancelación multiple de viajes
   · Comprobar que funciona bien la exclusion de pasajeros ya aceptados (infoCompleta)
-  · Arreglar que al registrar/modificar un viaje, si no se mete latitud/longitud se guarden como null
   
   
 Contraseñas de los usuarios:
