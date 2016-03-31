@@ -85,23 +85,6 @@ public class BeanRegistro implements Serializable {
 		ResourceBundle bundle = facesContext.getApplication()
 				.getResourceBundle(facesContext, "msgs");
 		
-		if(u != null) { //Si ya existe un usuario con ese login...
-			Log.info("Se ha intentado registrar un usuario con login [%s] ya existente", login);
-			FacesMessage message= new FacesMessage (FacesMessage.SEVERITY_ERROR,
-					bundle.getString("error_loginExistente"),
-					bundle.getString("error_loginExistente"));
-			facesContext.addMessage("registro:login", message);
-			return Resultado.fracaso.name();
-		}
-		
-		if(!pass.equals(repitePass)) {
-			FacesMessage message= new FacesMessage (FacesMessage.SEVERITY_ERROR,
-					bundle.getString("error_contraDistinta"),
-					bundle.getString("error_contraDistinta"));
-			facesContext.addMessage("registro:pass", message);
-			return Resultado.fracaso.name();
-		}
-		
 		u = new User();
 		u.setLogin(login);
 		u.setName(nombre);
