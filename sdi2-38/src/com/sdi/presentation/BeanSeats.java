@@ -90,7 +90,6 @@ public class BeanSeats {
 	    
 	    if(usuario.getId().equals(trip.getId())) {
 		
-
 		FacesContext facesContext = FacesContext.getCurrentInstance();
 		ResourceBundle bundle = facesContext.getApplication()
 			.getResourceBundle(facesContext, "msgs");
@@ -107,7 +106,7 @@ public class BeanSeats {
 	    try {
 		sService.excluirPlaza(sService.findByUserAndTrip(usuario.getId(), trip.getId()));
 
-		return Resultado.exito.name();
+		return obtenerParticipantes(trip.getId());
 	    } catch (Exception e) {
 		context.addMessage(null, new FacesMessage(e.getMessage()));
 		return Resultado.error.name();
