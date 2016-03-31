@@ -240,6 +240,11 @@
 			<from-outcome>exito</from-outcome>
 			<to-view-id>/infoCompleta.xhtml</to-view-id>
 		</navigation-case>
+		<navigation-case>
+			<from-action>#{seatController.excluir(part)}</from-action>
+			<from-outcome>fracaso</from-outcome>
+			<to-view-id>/infoCompleta.xhtml</to-view-id>
+		</navigation-case>
 	</navigation-rule>
 
 </faces-config>

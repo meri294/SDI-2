@@ -27,7 +27,9 @@
 				#{part.name} #{part.surname}
 				<h:commandLink value="#{msgs.enlace_excluir}"
 				action="#{seatController.excluir(part)}"
-				rendered="#{seatController.trip.status=='OPEN' and seatController.promoter.id==sesion.usuario.id}"/>
+				rendered="#{seatController.promoter.id==sesion.usuario.id 
+				and seatController.trip.status=='OPEN'
+				and part.id!=seatController.promoter.id}"/>
 			</p:dataList>
 			
 			<h:messages style="color:red;margin:8px;"/>
