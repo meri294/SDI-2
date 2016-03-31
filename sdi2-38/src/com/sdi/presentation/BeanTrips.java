@@ -200,6 +200,14 @@ public class BeanTrips implements Serializable {
 	this.pasajerosMaximos = pasajerosMaximos;
     }
 
+    public List<Trip> getViajesACancelar() {
+        return viajesACancelar;
+    }
+
+    public void setViajesACancelar(List<Trip> viajesACancelar) {
+        this.viajesACancelar = viajesACancelar;
+    }
+
     public void iniciaTrip(ActionEvent event) {
 	FacesContext facesContext = FacesContext.getCurrentInstance();
 	ResourceBundle bundle = facesContext.getApplication()
@@ -494,17 +502,21 @@ public class BeanTrips implements Serializable {
 	return sacarMisViajes();
     }
 
-    public void viajesACancelar(Trip trip) {
+    public void modificarViajesACancelar(Trip trip) {
 	if (viajesACancelar.contains(trip))
 	    viajesACancelar.remove(trip);
 	else
 	    viajesACancelar.add(trip);
     }
-
+    
     public String cancelarViajes(Trip trip) {
-	
 	if (!viajesACancelar.contains(trip))
 	    viajesACancelar.add(trip);
+	
+	return cancelarViajes();
+    }
+
+    public String cancelarViajes() {
 
 	TripService tService = Factories.services.createTripService();
 

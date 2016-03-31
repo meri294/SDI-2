@@ -18,8 +18,10 @@
 					value="#{tripsController.promotor}"
 					emptyMessage="#{msgs.mensaje_sinViajesPromotor}">
 					<p:column id="promoidViaje">
-						<h:selectBooleanCheckbox rendered="#{valtrip.status=='OPEN'}">
-							<f:ajax listener="#{tripsController.viajesACancelar(valtrip)}"/>
+						<h:selectBooleanCheckbox rendered="#{valtrip.status=='OPEN'}"
+						value="#{valtrip.selected}">
+							<f:ajax listener="#{tripsController.modificarViajesACancelar(valtrip)}"
+							render="@form"/>
 						</h:selectBooleanCheckbox> 
 						
 						<f:facet name="header">#{msgs.campo_idViaje}</f:facet>
@@ -58,20 +60,12 @@
 					</p:column>
 					<p:column id="promoOpciones">
 						<f:facet name="header">#{msgs.campo_opciones}</f:facet>
-						<p:commandLink id="verDetalles_#{valtrip.id}"
-							action="#{seatController.obtenerParticipantes(valtrip.id)}"
-							type="submit" value="#{msgs.ver_participantes}">
-						</p:commandLink>
 						<h:commandLink id="linkSolicitantes" value="#{msgs.enlace_verSolicitantes}"
 						action="#{applicationsController.sacarSolicitudes(valtrip.id)}"
 						rendered="#{valtrip.status=='OPEN'}"/>
 						<br/>
 						<h:commandLink id="modificarVijaeLink" value="#{msgs.enlace_modificarViaje}"
 						action="#{tripsController.preparaModificacion(valtrip)}"
-						rendered="#{valtrip.status=='OPEN'}"/>
-						<br/>
-						<h:commandLink value="#{msgs.enlace_cancelarViaje}"
-						action="#{tripsController.cancelarViajes(valtrip)}"
 						rendered="#{valtrip.status=='OPEN'}"/>
 					</p:column>
 				</p:dataTable>
@@ -167,6 +161,10 @@
 						rendered="#{valtrip.status=='OPEN'}"/>
 					</p:column>
 				</p:dataTable>
+				
+				<h:commandButton value="#{msgs.enlace_cancelarViaje}"
+				action="#{tripsController.cancelarViajes}"
+				disabled="#{tripsController.viajesACancelar.isEmpty()}"/>
 			</p:panel>
 			<h:messages style="color:red;margin:8px;" />
 		</h:form>
