@@ -1,7 +1,6 @@
 # SDI-2
 
 TO-DO:
-  · Meter primefaces en las vistas
   · ¿Poner las vistas mas bonitas (viajesInvolucrado, los checkboxes y el boton de cancelar; registroViaje, la opcion de precarga)
   
   
