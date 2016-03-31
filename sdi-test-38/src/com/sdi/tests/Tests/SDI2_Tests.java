@@ -228,16 +228,15 @@ public class SDI2_Tests {
 		By aceptar = By
 				.xpath("//td[contains(text(),'320')]/following-sibling::*/a[contains(text(),'Aceptar')]");
 		driver.findElement(aceptar).click();
-		SeleniumUtils.EsperaCargaPaginaNoTexto(driver, "338", 5);
+		SeleniumUtils.EsperaCargaPaginaNoTexto(driver, "320", 5);
 
 	}
 
 	// 13. [Ins2ViajeAceptVal] Inscribir en un viaje dos usuarios y ser
 	// admitidos los dos por el promotor.
-	/*@Test
+	@Test
 	public void t13_Ins2ViajeAceptVal() {
-		*
-
+		
 	}
 
 	// 14. [Ins3ViajeAceptInval] Inscribir en un viaje (2 plazas máximo)
@@ -245,7 +244,55 @@ public class SDI2_Tests {
 	// en ese mismo viaje pero ya no pueda por falta de plazas.
 
 	@Test
-	public void t14_Ins3ViajeAceptInval() {
+	public void t14_Ins3ViajeAceptInval() { //no encuentra la ruta
+		SeleniumUtils.EsperaCargaPagina(driver, "id", "form-pie", 10);
+		new PO_LoginForm().rellenaFormulario(driver, "usuario2", "usuario2");
+		SeleniumUtils.EsperaCargaPagina(driver, "id", "bienvenido", 10);
+		SeleniumUtils.ClickSubopcionMenuHover(driver, "form-cabecera:opciones",
+				"form-cabecera:linkOpciones");
+		SeleniumUtils.EsperaCargaPagina(driver, "id", "tablaViajes", 10);
+		WebElement element = driver
+				.findElement(By
+						.xpath("//td[contains(text(),'322')]/following-sibling::*/a[contains(text(),'Solicitar')]"));
+		element.click();
+		SeleniumUtils.EsperaCargaPagina(driver, "id", "tablaViajesSin", 10);
+		SeleniumUtils.textoPresentePagina(driver, "322");
+		SeleniumUtils.ClickSubopcionMenuHover(driver, "form-cabecera:opciones",
+				"form-cabecera:linkCerrarSesion");
+		login("usuario3", "usuario3");
+		SeleniumUtils.EsperaCargaPagina(driver, "id", "bienvenido", 10);
+		SeleniumUtils.ClickSubopcionMenuHover(driver, "form-cabecera:opciones",
+				"form-cabecera:linkOpciones");
+		SeleniumUtils.EsperaCargaPagina(driver, "id", "tablaViajes", 10);
+		WebElement element2 = driver
+				.findElement(By
+						.xpath("//td[contains(text(),'322')]/following-sibling::*/a[contains(text(),'Solicitar')]"));
+		element2.click();
+		SeleniumUtils.EsperaCargaPagina(driver, "id", "tablaViajesSin", 10);
+		SeleniumUtils.textoPresentePagina(driver, "322");
+		SeleniumUtils.ClickSubopcionMenuHover(driver, "form-cabecera:opciones",
+				"form-cabecera:linkCerrarSesion");
+
+		//Aceptar
+		login("usuario1", "usuario1");
+		SeleniumUtils.ClickSubopcionMenuHover(driver, "form-cabecera:opciones",
+				"form-cabecera:linkMisViajes");
+		SeleniumUtils.EsperaCargaPagina(driver, "id", "tablaViajes", 10);
+		By ver = By
+				.xpath("//td[contains(text(), 'Calle por defecto, Ciudad1-Pais1')]/following-sibling::*/a[contains(@id, 'linkSolicitantes')]");
+		driver.findElement(ver).click();
+		SeleniumUtils.EsperaCargaPagina(driver, "id", "tablaSolicitantes", 10);
+
+		By aceptar = By
+				.xpath("//td[contains(text(),'318')]/following-sibling::*/a[contains(text(),'Aceptar')]");
+		driver.findElement(aceptar).click();
+		SeleniumUtils.EsperaCargaPaginaNoTexto(driver, "318", 5);
+		
+		By aceptar2 = By
+				.xpath("//td[contains(text(),'319')]/following-sibling::*/a[contains(text(),'Aceptar')]");
+		driver.findElement(aceptar2).click();
+		SeleniumUtils.EsperaCargaPaginaNoTexto(driver, "319", 5);
+		
 
 	}
 
