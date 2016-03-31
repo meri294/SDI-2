@@ -57,9 +57,8 @@
 			#{msgs.campo_latitud}
 			<h:panelGroup>
 			<h:inputText value="#{tripsController.trip.departure.waypoint.lat}"
-				converterMessage="#{msgs.mensaje_valorInvalido}"
 				id="departureLatitude" size="15">
-				<f:convertNumber />
+				<f:converter converterId="NullableNumberConverter" />
 			</h:inputText>
 			<h:message for="departureLatitude" style="color:red;margin:8px;" />
 		</h:panelGroup>
@@ -67,9 +66,8 @@
 			#{msgs.campo_longitud}
 			<h:panelGroup>
 			<h:inputText value="#{tripsController.trip.departure.waypoint.lon}"
-				converterMessage="#{msgs.mensaje_valorInvalido}"
 				id="departureLongitud" size="15">
-				<f:convertNumber />
+				<f:converter converterId="NullableNumberConverter" />
 			</h:inputText>
 			<h:message for="departureLongitud" style="color:red;margin:8px;" />
 		</h:panelGroup>
@@ -149,9 +147,8 @@
 			#{msgs.campo_latitud}
 			<h:panelGroup>
 			<h:inputText value="#{tripsController.trip.destination.waypoint.lat}"
-				converterMessage="#{msgs.mensaje_valorInvalido}"
 				id="arrivalLatitude" size="15">
-				<f:convertNumber />
+				<f:converter converterId="NullableNumberConverter" />
 			</h:inputText>
 			<h:message for="arrivalLatitude" style="color:red;margin:8px;" />
 		</h:panelGroup>
@@ -159,9 +156,8 @@
 			#{msgs.campo_longitud}
 			<h:panelGroup>
 			<h:inputText value="#{tripsController.trip.destination.waypoint.lon}"
-				converterMessage="#{msgs.mensaje_valorInvalido}"
 				id="arrivalLongitud" size="15">
-				<f:convertNumber />
+				<f:converter converterId="NullableNumberConverter" />
 			</h:inputText>
 			<h:message for="arrivalLongitud" style="color:red;margin:8px;" />
 		</h:panelGroup>
