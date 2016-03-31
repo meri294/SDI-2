@@ -2,6 +2,7 @@
 
 TO-DO:
   · ¿Poner las vistas mas bonitas (viajesInvolucrado, los checkboxes y el boton de cancelar; registroViaje, la opcion de precarga)
+  · Revisar los TO-DOs
   
   
 Contraseñas de los usuarios:
