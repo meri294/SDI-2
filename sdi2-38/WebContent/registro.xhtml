@@ -26,6 +26,7 @@
 						requiredMessage="#{msgs.mensaje_campoObligatorio}" 
 						id="login"
 						size="15">
+						<f:validator validatorId="LoginValidator" />
 					</h:inputText>
 					<h:message for="login" style="color:red;margin:8px;"/>
 				</h:panelGroup>
@@ -61,6 +62,9 @@
   			<h:panelGroup>
 					<p:password value="#{registro.pass}" required="true"
 						requiredMessage="#{msgs.mensaje_campoObligatorio}" id="pass">
+						
+						<f:validator validatorId="PasswordValidator" />
+						<f:attribute name="repitePass" value="#{repitePass}" />
 					</p:password>
 					<h:message for="pass" style="color:red;margin:8px;"/>
 				</h:panelGroup>
@@ -68,7 +72,8 @@
 			#{msgs.campo_repetirContraseña}
 			<h:panelGroup>
 					<p:password value="#{registro.repitePass}" required="true"
-						requiredMessage="#{msgs.mensaje_campoObligatorio}" id="repitePass">
+						requiredMessage="#{msgs.mensaje_campoObligatorio}" id="repitePass"
+						binding="#{repitePass}">
 					</p:password>
 					<h:message for="repitePass" style="color:red;margin:8px;"/>
 
