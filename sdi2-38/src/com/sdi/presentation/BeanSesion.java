@@ -5,11 +5,6 @@ import java.io.Serializable;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-
-import alb.util.log.Log;
-
-import com.sdi.business.ReinicioBBDDService;
-import com.sdi.infrastructure.Factories;
 import com.sdi.model.User;
 
 @ManagedBean(name = "sesion")
@@ -101,29 +96,6 @@ public class BeanSesion implements Serializable {
 		return false;
 	}
 	*/
-
-	public String reiniciarBBDD() {
-		if (usuario == null /*|| !esAdmin()*/)
-			return Resultado.error.name();
-
-		Log.debug(
-				"Se comienza el reinicio de la base de datos, provocada por el usuario [%s]",
-				usuario.getLogin());
-		ReinicioBBDDService reinicio = Factories.services
-				.createReinicioBBDDService();
-		try {
-			reinicio.borrarContenidoTablas();
-			//reinicio.rellenarTablasMinimos();
-		} catch (Exception e) {
-			Log.error(
-					"Ha ocurrido un error intentando reiniciar la base de datos: %s",
-					e.getMessage());
-			return Resultado.error.name();
-		}
-		Log.debug("Se ha finalizado el reinicio de la base de datos");
-		cerrar();
-		return Resultado.exito.name();
-	}
 
 	@PostConstruct
 	public void init() {
