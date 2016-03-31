@@ -79,7 +79,8 @@ public class SDI2_Tests {
 		SeleniumUtils.textoPresentePagina(driver, "Fernando");
 	}
 
-	// 4. [IdInval] Identificación de usuario registrado con datos inválidos. -PASA
+	// 4. [IdInval] Identificación de usuario registrado con datos inválidos.
+	// -PASA
 	@Test
 	public void t04_IdInval() {
 		SeleniumUtils.EsperaCargaPagina(driver, "id", "form-pie", 10);
@@ -93,7 +94,8 @@ public class SDI2_Tests {
 	}
 
 	// 5. [AccInval] Intento de acceso con URL desde un usuario no público
-	// (no // identificado). Intento de acceso a vistas de acceso privado. - PASA
+	// (no // identificado). Intento de acceso a vistas de acceso privado. -
+	// PASA
 	@Test
 	public void t05_AccInval() {
 		driver.get("http://localhost:8280/sdi2-38/infoCompleta.xhtml");
@@ -106,7 +108,7 @@ public class SDI2_Tests {
 
 	// 6. [RegViajeVal] Registro de un viaje nuevo con datos válidos.
 	@Test
-	public void t06_RegViajeVal() { //NO ENCUENTRA VIAJE:DEPARTUREADDRESS
+	public void t06_RegViajeVal() {
 		t03_IdVal();
 		SeleniumUtils.EsperaCargaPagina(driver, "id", "form-pie", 10);
 		SeleniumUtils.ClickSubopcionMenuHover(driver, "form-cabecera:opciones",
@@ -122,7 +124,8 @@ public class SDI2_Tests {
 				"Mon Aug 15 22:05:00 CEST 2016");
 	}
 
-	// 7. [RegViajeInVal] Registro de un viaje nuevo con datos inválidos. - PASA
+	// 7. [RegViajeInVal] Registro de un viaje nuevo con datos inválidos.
+	// NO ENCUENTRA VIAJE:DEPARTUREADDRESS
 	@Test
 	public void t07_RegViajeInVal() {
 		t03_IdVal();
@@ -210,11 +213,9 @@ public class SDI2_Tests {
 						.xpath("//td[contains(text(),'338')]/following-sibling::*/a[contains(text(),'Solicitar')]"));
 		element.click();
 		SeleniumUtils.EsperaCargaPagina(driver, "id", "tablaViajesSin", 10);
-		SeleniumUtils.textoPresentePagina(driver,
-				"338");
+		SeleniumUtils.textoPresentePagina(driver, "338");
 		SeleniumUtils.ClickSubopcionMenuHover(driver, "form-cabecera:opciones",
 				"form-cabecera:linkCerrarSesion");
-		//new PO_LoginForm().rellenaFormulario(driver, "usuario2", "usuario2");
 		login("usuario2", "usuario2");
 		SeleniumUtils.ClickSubopcionMenuHover(driver, "form-cabecera:opciones",
 				"form-cabecera:linkMisViajes");
@@ -223,8 +224,9 @@ public class SDI2_Tests {
 				.xpath("//td[contains(text(), 'Calle esmalte, Ponga-España')]/following-sibling::*/a[contains(@id, 'linkSolicitantes')]");
 		driver.findElement(ver).click();
 		SeleniumUtils.EsperaCargaPagina(driver, "id", "tablaSolicitantes", 10);
+
 		By aceptar = By
-				.xpath("//td[contains(text(),'321')]/following-sibling::*/a[contains(text(),'Aceptar')]");
+				.xpath("//td[contains(text(),'320')]/following-sibling::*/a[contains(text(),'Aceptar')]");
 		driver.findElement(aceptar).click();
 		SeleniumUtils.EsperaCargaPaginaNoTexto(driver, "338", 5);
 
@@ -232,8 +234,9 @@ public class SDI2_Tests {
 
 	// 13. [Ins2ViajeAceptVal] Inscribir en un viaje dos usuarios y ser
 	// admitidos los dos por el promotor.
-	@Test
+	/*@Test
 	public void t13_Ins2ViajeAceptVal() {
+		*
 
 	}
 
@@ -250,14 +253,14 @@ public class SDI2_Tests {
 
 	/*
 	 * @Test public void t15_CancelNoPromotorVal() {
-	 * 
-	 * } // 16. [Rech1ViajeVal] Inscribir en un viaje un usuario que será
-	 * admitido y después rechazarlo por el promotor.
-	 * 
-	 * @Test public void t16_Rech1ViajeVal() {
-	 * 
-	 * }
 	 */
+	// 16. [Rech1ViajeVal] Inscribir en un viaje un usuario que será
+	// admitido y después rechazarlo por el promotor.
+	@Test
+	public void t16_Rech1ViajeVal() {
+
+	}
+
 	// 17. [i18N1] Cambio del idioma por defecto a un segundo idioma.
 	// (Probar algunas vistas -PASA
 	@Test
@@ -273,9 +276,9 @@ public class SDI2_Tests {
 
 	// 18. [i18N2] Cambio del idioma por defecto a un segundo idioma y
 	// vuelta al idioma por defecto. (Probar algunas vistas)
-	//--NO ENCUENTRA INICIO DE SESIO
+	// --NO ENCUENTRA INICIO DE SESIO
 	@Test
-	public void t18_i18N2() { 
+	public void t18_i18N2() {
 		t17_i18N1();
 		SeleniumUtils.ClickSubopcionMenuHover(driver, "form-cabecera:idioma",
 				"form-cabecera:linkespa");
@@ -287,6 +290,7 @@ public class SDI2_Tests {
 		SeleniumUtils.EsperaCargaPagina(driver, "id", "form-pie", 10);
 		SeleniumUtils.textoPresentePagina(driver, "Registre una nueva cuenta");
 	}
+
 	/*
 	 * // 19. [OpFiltrado] Prueba para el filtrado opcional.
 	 * 
@@ -306,10 +310,11 @@ public class SDI2_Tests {
 	 * 
 	 * }
 	 */
-	
-	private void login(String user, String pass){
+
+	private void login(String user, String pass) {
 		SeleniumUtils.EsperaCargaPagina(driver, "id", "form-pie", 10);
 		new PO_LoginForm().rellenaFormulario(driver, user, pass);
 		SeleniumUtils.EsperaCargaPagina(driver, "id", "bienvenido", 10);
 	}
+
 }
