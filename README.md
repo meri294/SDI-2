@@ -2,9 +2,7 @@
 
 TO-DO:
   · Buscar la excepcion que salta al no estar abierta la BBDD para crear mensaje
-  · Comprobar que funciona bien la cancelación de viajes
   · Comprobar que funciona la cancelación multiple de viajes
-  · Comprobar que funciona bien la exclusion de pasajeros ya aceptados (infoCompleta)
   
   
 Contraseñas de los usuarios:
