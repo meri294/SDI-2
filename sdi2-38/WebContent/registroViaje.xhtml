@@ -18,6 +18,16 @@
 		<hr/>
 		<br/>
 		
+		<h:selectBooleanCheckbox value="#{tripsController.precargarDatos}">
+			<f:ajax listener="#{tripsController.modificarViajesACancelar(valtrip)}"
+			render="@form"/>
+		</h:selectBooleanCheckbox>
+		
+		#{msgs.mensaje_precargarDatos}
+		
+		<br/>
+		<br/>
+		
 		<ui:include src="/snippets/trip-form.xhtml" />
 					
 	</h:form>

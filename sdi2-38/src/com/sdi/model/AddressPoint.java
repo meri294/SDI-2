@@ -25,6 +25,10 @@ public class AddressPoint {
 		this.zipCode = zipCode;
 		this.waypoint = waypoint;
 	}
+	
+	public AddressPoint() {
+	    this("", "", "", "", "", new Waypoint(null, null));
+	}
 
 	public String getAddress() {
 		return address;

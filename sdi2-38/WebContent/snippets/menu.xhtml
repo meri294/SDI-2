@@ -26,7 +26,7 @@
 				value="#{msgs.enlace_registrarViaje}"
 				rendered="#{sesion.usuario!=null}"
 				action="registrarViaje"
-				actionListener="#{tripsController.iniciaTrip}" />
+				actionListener="#{tripsController.setPrecargarDatos(tripsController.precargarDatos)}" />
 				
 			<p:menuitem id="linkCerrarSesion" style="float:left"
 				value="#{msgs.enlace_cerrarSesion}"

@@ -15,6 +15,7 @@ import javax.faces.bean.ManagedProperty;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 
+import com.sdi.model.AddressPoint;
 import com.sdi.model.Seat;
 import com.sdi.model.TripStatus;
 
@@ -25,6 +26,7 @@ import com.sdi.business.TripService;
 import com.sdi.infrastructure.Factories;
 import com.sdi.model.Trip;
 import com.sdi.util.MariaDateUtil;
+import com.sdi.util.MariaModelUtil;
 
 @ManagedBean(name = "tripsController")
 public class BeanTrips implements Serializable {
@@ -52,6 +54,8 @@ public class BeanTrips implements Serializable {
     private String closingDateConFormato = "";
     private String closingHourConFormato = "";
     private Integer pasajerosMaximos = 0;
+    
+    private boolean precargarDatos = false;
 
     @PostConstruct
     public void init() {
@@ -206,6 +210,42 @@ public class BeanTrips implements Serializable {
 
     public void setViajesACancelar(List<Trip> viajesACancelar) {
         this.viajesACancelar = viajesACancelar;
+    }
+    
+    public boolean isPrecargarDatos() {
+        return precargarDatos;
+    }
+
+    public void setPrecargarDatos(boolean precargarDatos) {
+        this.precargarDatos = precargarDatos;
+        
+        if(precargarDatos)
+            iniciaTrip(null);
+        else
+            iniciaTripVacio();
+    }
+
+    private void iniciaTripVacio() {
+	trip.setId(null);
+	trip.setArrivalDate(null);
+	trip.setAvailablePax(null);
+	trip.setClosingDate(null);
+	trip.setComments(null);
+	trip.setDepartureDate(null);
+	trip.setDeparture(new AddressPoint());
+	trip.setDestination(new AddressPoint());
+	trip.setEstimatedCost(null);
+	trip.setMaxPax(null);
+	trip.setPromoterId(null);
+	trip.setStatus(null);
+	
+	departureDateConFormato = null;
+	departureHourConFormato = null;
+	arrivalDateConFormato = null;
+	arrivalHourConFormato = null;
+	closingDateConFormato = null;
+	closingHourConFormato = null;
+	pasajerosMaximos = null;
     }
 
     public void iniciaTrip(ActionEvent event) {
