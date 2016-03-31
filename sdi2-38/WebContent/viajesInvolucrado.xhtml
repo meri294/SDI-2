@@ -164,7 +164,8 @@
 				
 				<h:commandButton value="#{msgs.enlace_cancelarViaje}"
 				action="#{tripsController.cancelarViajes}"
-				disabled="#{tripsController.viajesACancelar.isEmpty()}"/>
+				disabled="#{tripsController.viajesACancelar.isEmpty()}"
+				id="btCancelar"/>
 			</p:panel>
 			<h:messages style="color:red;margin:8px;" />
 		</h:form>
