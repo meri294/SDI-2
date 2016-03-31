@@ -180,22 +180,56 @@ public class SDI2_Tests {
 				"23:59", "cityModif", "21/10/2016", "03:05", "12:50",
 				"23/10/2016");
 		SeleniumUtils.EsperaCargaPagina(driver, "id", "enviar", 10);
-		SeleniumUtils.textoPresentePagina(driver, "Datos de salida");
+		driver.findElement(By
+				.xpath(".//span[contains(text(),'La fecha de salida es anterior a la de cierre')]"));
 	}
 
 	// 10. [CancelViajeVal] Cancelación de un viaje existente por un
-	// promotor.
+	// promotor. PASA
+	@Test
+	public void t10_CancelViajeVal() {
+		SeleniumUtils.EsperaCargaPagina(driver, "id", "form-pie", 10);
+		login("usuario2", "usuario2");
+		SeleniumUtils.EsperaCargaPagina(driver, "id", "form-pie", 10);
+		SeleniumUtils.ClickSubopcionMenuHover(driver, "form-cabecera:opciones",
+				"form-cabecera:linkMisViajes");
+		SeleniumUtils.EsperaCargaPagina(driver, "id", "tablaViajesParti", 10);
+		WebElement check = driver.findElement(By
+				.xpath(".//a[contains(text(),'332')]/preceding-sibling::*"));
+		check.click();
+		SeleniumUtils.EsperaCargaPagina(driver, "id", "tablaViajesParti", 10);
+		driver.findElement(By.id("involucrado:btCancelar")).click();
+		SeleniumUtils.EsperaCargaPagina(driver, "id", "tablaViajesParti", 20);
+		driver.findElement(By
+				.xpath("//a[contains(text(),'332')]/parent::*/following-sibling::*[contains(text(),'CANCELLED')]"));
+	}
 
-	/*
-	 * @Test public void t10_CancelViajeVal() {
-	 * 
-	 * } // 11. [CancelMulViajeVal] Cancelación de múltiples viajes existentes
-	 * por un promotor.
-	 * 
-	 * @Test public void t11_CancelMulViajeVal() {
-	 * 
-	 * }
-	 */
+	// 11. [CancelMulViajeVal] Cancelación de múltiples viajes existentes por un
+	// promotor.
+	@Test
+	public void t11_CancelMulViajeVal() {
+
+		SeleniumUtils.EsperaCargaPagina(driver, "id", "form-pie", 10);
+		login("usuario1", "usuario1");
+		SeleniumUtils.EsperaCargaPagina(driver, "id", "form-pie", 10);
+		SeleniumUtils.ClickSubopcionMenuHover(driver, "form-cabecera:opciones",
+				"form-cabecera:linkMisViajes");
+		SeleniumUtils.EsperaCargaPagina(driver, "id", "tablaViajesParti", 10);
+		driver.findElement(
+				By.xpath(".//a[contains(text(),'326')]/preceding-sibling::*"))
+				.click();
+		SeleniumUtils.EsperaCargaPagina(driver, "id", "tablaViajesParti", 10);
+		driver.findElement(
+				By.xpath(".//a[contains(text(),'327')]/preceding-sibling::*"))
+				.click();
+		driver.findElement(By.id("involucrado:btCancelar")).click();
+		SeleniumUtils.EsperaCargaPagina(driver, "id", "tablaViajesParti", 20);
+		driver.findElement(By
+				.xpath("//a[contains(text(),'326')]/parent::*/following-sibling::*[contains(text(),'CANCELLED')]"));
+		driver.findElement(By
+				.xpath("//a[contains(text(),'327')]/parent::*/following-sibling::*[contains(text(),'CANCELLED')]"));
+	}
+
 	// 12. [Ins1ViajeAceptVal] Inscribir en un viaje un solo usuario y ser
 	// admitido por el promotor. //PASA
 	@Test
@@ -236,15 +270,14 @@ public class SDI2_Tests {
 	// admitidos los dos por el promotor.
 	@Test
 	public void t13_Ins2ViajeAceptVal() {
-		
+
 	}
 
 	// 14. [Ins3ViajeAceptInval] Inscribir en un viaje (2 plazas máximo)
 	// dos usuarios y ser admitidos los dos y que un tercero intente inscribirse
 	// en ese mismo viaje pero ya no pueda por falta de plazas.
-
 	@Test
-	public void t14_Ins3ViajeAceptInval() { //no encuentra la ruta
+	public void t14_Ins3ViajeAceptInval() { // no encuentra la ruta
 		SeleniumUtils.EsperaCargaPagina(driver, "id", "form-pie", 10);
 		new PO_LoginForm().rellenaFormulario(driver, "usuario2", "usuario2");
 		SeleniumUtils.EsperaCargaPagina(driver, "id", "bienvenido", 10);
@@ -273,9 +306,10 @@ public class SDI2_Tests {
 		SeleniumUtils.ClickSubopcionMenuHover(driver, "form-cabecera:opciones",
 				"form-cabecera:linkCerrarSesion");
 
-		//Aceptar
+		// Aceptar
 		SeleniumUtils.EsperaCargaPagina(driver, "id", "form-pie", 10);
 		login("usuario1", "usuario1");
+		SeleniumUtils.EsperaCargaPagina(driver, "id", "form-pie", 10);
 		SeleniumUtils.ClickSubopcionMenuHover(driver, "form-cabecera:opciones",
 				"form-cabecera:linkMisViajes");
 		SeleniumUtils.EsperaCargaPagina(driver, "id", "tablaViajes", 10);
@@ -288,25 +322,76 @@ public class SDI2_Tests {
 				.xpath("//td[contains(text(),'318')]/following-sibling::*/a[contains(text(),'Aceptar')]");
 		driver.findElement(aceptar).click();
 		SeleniumUtils.EsperaCargaPaginaNoTexto(driver, "318", 5);
-		
+
 		By aceptar2 = By
 				.xpath("//td[contains(text(),'319')]/following-sibling::*/a[contains(text(),'Aceptar')]");
 		driver.findElement(aceptar2).click();
 		SeleniumUtils.EsperaCargaPaginaNoTexto(driver, "319", 5);
-		
+
+		// Otro usuario
+		SeleniumUtils.ClickSubopcionMenuHover(driver, "form-cabecera:opciones",
+				"form-cabecera:linkCerrarSesion");
+		SeleniumUtils.EsperaCargaPagina(driver, "id", "form-pie", 10);
+		login("testSDI", "testSDI");
+		SeleniumUtils.EsperaCargaPagina(driver, "id", "bienvenido", 10);
+		SeleniumUtils.ClickSubopcionMenuHover(driver, "form-cabecera:opciones",
+				"form-cabecera:linkOpciones");
+		SeleniumUtils.EsperaCargaPaginaNoTexto(driver, "322", 10);
 
 	}
 
 	// 15. [CancelNoPromotorVal] Un usuario no promotor Cancela plaza.
+	@Test
+	public void t15_CancelNoPromotorVal() {
+		login("usuario3", "usuario3");
+		SeleniumUtils.EsperaCargaPagina(driver, "id", "form-pie", 10);
+		SeleniumUtils.ClickSubopcionMenuHover(driver, "form-cabecera:opciones",
+				"form-cabecera:linkMisViajes");
+		SeleniumUtils.EsperaCargaPagina(driver, "id", "tablaViajesEx", 10);
+		driver.findElement(
+				By.xpath(".//a[contains(text(),'322')]/../following-sibling::*/a[contains(text(),'Cancelar')]"))
+				.click();
+		SeleniumUtils.EsperaCargaPaginaNoTexto(driver, "322", 10);
 
-	/*
-	 * @Test public void t15_CancelNoPromotorVal() {
-	 */
+	}
+
 	// 16. [Rech1ViajeVal] Inscribir en un viaje un usuario que será
 	// admitido y después rechazarlo por el promotor.
 	@Test
 	public void t16_Rech1ViajeVal() {
-
+		login("usuario3", "usuario3");
+		SeleniumUtils.EsperaCargaPagina(driver, "id", "form-pie", 10);
+		SeleniumUtils.ClickSubopcionMenuHover(driver, "form-cabecera:opciones",
+				"form-cabecera:linkOpciones");
+		SeleniumUtils.EsperaCargaPagina(driver, "id", "tablaViajes", 10);
+		WebElement element = driver
+				.findElement(By
+						.xpath("//td[contains(text(),'340')]/following-sibling::*/a[contains(text(),'Solicitar')]"));
+		element.click();
+		SeleniumUtils.EsperaCargaPagina(driver, "id", "tablaViajesSin", 10);
+		SeleniumUtils.textoPresentePagina(driver, "340");
+		SeleniumUtils.ClickSubopcionMenuHover(driver, "form-cabecera:opciones",
+				"form-cabecera:linkCerrarSesion");
+		SeleniumUtils.EsperaCargaPagina(driver, "id", "form-pie", 10);
+		login("usuario1", "usuario1");
+		
+		SeleniumUtils.ClickSubopcionMenuHover(driver, "form-cabecera:opciones",
+				"form-cabecera:linkMisViajes");
+		SeleniumUtils.EsperaCargaPagina(driver, "id", "tablaViajes", 10);
+		By ver = By
+				.xpath("//td[contains(text(), 'Sun Aug 21 01:00:00 CEST 2016')]/following-sibling::*/a[contains(@id, 'linkSolicitantes')]");
+		driver.findElement(ver).click();
+		SeleniumUtils.EsperaCargaPagina(driver, "id", "tablaSolicitantes", 10);
+		driver.findElement(By.xpath(
+				".//td[contains(text(),'319')]/following-sibling::*/a[contains(text(),'Aceptar')]"));
+		SeleniumUtils.EsperaCargaPaginaNoTexto(driver, "319", 10);
+		SeleniumUtils.ClickSubopcionMenuHover(driver, "form-cabecera:opciones",
+				"form-cabecera:linkMisViajes");
+		SeleniumUtils.EsperaCargaPagina(driver, "id", "tablaViajes", 10);
+		driver.findElement(By.xpath(".//a[contains(text(),'340')]")).click();
+		SeleniumUtils.EsperaCargaPagina(driver, "id", "form-pie", 10);
+		driver.findElement(By.xpath(
+				".//li[contains(text(),'Maria')]/a[contains(text(),'Excluir')]"));
 	}
 
 	// 17. [i18N1] Cambio del idioma por defecto a un segundo idioma.
