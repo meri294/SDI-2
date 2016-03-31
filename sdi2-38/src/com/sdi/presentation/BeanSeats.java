@@ -2,6 +2,7 @@ package com.sdi.presentation;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ResourceBundle;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
@@ -86,6 +87,21 @@ public class BeanSeats {
 	}
 
 	public String excluir(User usuario) {
+	    
+	    if(usuario.getId().equals(trip.getId())) {
+		
+
+		FacesContext facesContext = FacesContext.getCurrentInstance();
+		ResourceBundle bundle = facesContext.getApplication()
+			.getResourceBundle(facesContext, "msgs");
+		FacesContext.getCurrentInstance().addMessage(
+			    null,
+			    new FacesMessage(bundle
+				    .getString("mensaje_excluirPromotor")));
+		
+		return Resultado.fracaso.name();
+	    }
+	    
 	    SeatsService sService = Factories.services.createSeatsService();
 	    
 	    try {
