@@ -18,44 +18,42 @@
 			</center>
 			<hr/>
 			<br/>
-			<h:panelGrid columns="2" styleClass="formTable">
+			<p:panelGrid columns="2" styleClass="formTable">
 			
 			#{msgs.campo_identificador}
 			<h:panelGroup>
-					<h:inputText value="#{registro.login}" required="true"
+					<p:inputText value="#{registro.login}" required="true"
 						requiredMessage="#{msgs.mensaje_campoObligatorio}" 
 						id="login"
 						size="15">
 						<f:validator validatorId="LoginValidator" />
-					</h:inputText>
-					<h:message for="login" style="color:red;margin:8px;"/>
+					</p:inputText>
+					<p:message for="login" style="color:red;margin:8px;"/>
 				</h:panelGroup>
   			
 			#{msgs.campo_nombre}
 			<h:panelGroup>
-					<h:inputText value="#{registro.nombre}" required="true"
-						requiredMessage="#{msgs.mensaje_campoObligatorio}" id="nombre">
-					</h:inputText>
-					<h:message for="nombre" style="color:red;margin:8px;"/>
+					<p:inputText value="#{registro.nombre}" required="true"
+						requiredMessage="#{msgs.mensaje_campoObligatorio}" id="nombre" />
+					<p:message for="nombre" style="color:red;margin:8px;"/>
 				</h:panelGroup>
   			
   			#{msgs.campo_apellidos}
   			<h:panelGroup>
-					<h:inputText value="#{registro.apellidos}" required="true"
-						requiredMessage="#{msgs.mensaje_campoObligatorio}" id="apellidos">
-					</h:inputText>
-					<h:message for="apellidos" style="color:red;margin:8px;"/>
+					<p:inputText value="#{registro.apellidos}" required="true"
+						requiredMessage="#{msgs.mensaje_campoObligatorio}" id="apellidos"/>
+					<p:message for="apellidos" style="color:red;margin:8px;"/>
 				</h:panelGroup>
   			
   			#{msgs.campo_email}
   			<h:panelGroup>
-					<h:inputText value="#{registro.email}" required="true"
+					<p:inputText value="#{registro.email}" required="true"
 						requiredMessage="#{msgs.mensaje_campoObligatorio}"
 						validatorMessage="#{msgs.mensaje_valorInvalido}"
 						id="email">
 						<f:validateRegex pattern=".+@.+\.[a-z]+"/>
-					</h:inputText>
-					<h:message for="email" style="color:red;margin:8px;"/>
+					</p:inputText>
+					<p:message for="email" style="color:red;margin:8px;"/>
 				</h:panelGroup>
   			
   			#{msgs.campo_contraseña}
@@ -66,27 +64,22 @@
 						<f:validator validatorId="PasswordValidator" />
 						<f:attribute name="repitePass" value="#{repitePass}" />
 					</p:password>
-					<h:message for="pass" style="color:red;margin:8px;"/>
+					<p:message for="pass" style="color:red;margin:8px;"/>
 				</h:panelGroup>
   			
 			#{msgs.campo_repetirContraseña}
 			<h:panelGroup>
 					<p:password value="#{registro.repitePass}" required="true"
 						requiredMessage="#{msgs.mensaje_campoObligatorio}" id="repitePass"
-						binding="#{repitePass}">
-					</p:password>
-					<h:message for="repitePass" style="color:red;margin:8px;"/>
+						binding="#{repitePass}"/>
+					<p:message for="repitePass" style="color:red;margin:8px;"/>
 
 				</h:panelGroup>
 
-				<h:commandButton value="#{msgs.enlace_enviar}"
-					action="#{registro.registrar}" id="registrarse">
-					<!-- Ojo que aquí render tiene que incluir todo el formulario 
-     ya que los mensajes de error pueden ser renderizados también por Ajax de form implícita -->
-					<f:ajax execute="@form" render="@form" />
-				</h:commandButton>
+				<p:commandButton value="#{msgs.enlace_enviar}" action="#{registro.registrar}"
+				id="registrarse" update="@form" />
 
-			</h:panelGrid>
+			</p:panelGrid>
 		</h:form>
 		<hr/>
 	</ui:define>

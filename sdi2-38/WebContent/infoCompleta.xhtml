@@ -25,14 +25,14 @@
 			<p:dataList value="#{seatController.participantes}" var="part"
 				type="ordered">
 				#{part.name} #{part.surname}
-				<h:commandLink value="#{msgs.enlace_excluir}"
+				<p:commandLink value="#{msgs.enlace_excluir}"
 				action="#{seatController.excluir(part)}"
 				rendered="#{seatController.promoter.id==sesion.usuario.id 
 				and seatController.trip.status=='OPEN'
-				and part.id!=seatController.promoter.id}"/>
+				and part.id!=seatController.promoter.id}" update="@form"/>
 			</p:dataList>
 			
-			<h:messages style="color:red;margin:8px;"/>
+			<p:messages style="color:red;margin:8px;"/>
 			
 		</h:form>
 	</div>

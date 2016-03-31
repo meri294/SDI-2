@@ -18,11 +18,11 @@
 					value="#{tripsController.promotor}"
 					emptyMessage="#{msgs.mensaje_sinViajesPromotor}">
 					<p:column id="promoidViaje">
-						<h:selectBooleanCheckbox rendered="#{valtrip.status=='OPEN'}"
+						<p:selectBooleanCheckbox rendered="#{valtrip.status=='OPEN'}"
 						value="#{valtrip.selected}">
-							<f:ajax listener="#{tripsController.modificarViajesACancelar(valtrip)}"
+							<p:ajax listener="#{tripsController.modificarViajesACancelar(valtrip)}"
 							render="@form"/>
-						</h:selectBooleanCheckbox> 
+						</p:selectBooleanCheckbox> 
 						
 						<f:facet name="header">#{msgs.campo_idViaje}</f:facet>
 						<p:commandLink id="verDetalles_#{valtrip.id}"
@@ -60,11 +60,11 @@
 					</p:column>
 					<p:column id="promoOpciones">
 						<f:facet name="header">#{msgs.campo_opciones}</f:facet>
-						<h:commandLink id="linkSolicitantes" value="#{msgs.enlace_verSolicitantes}"
+						<p:commandLink id="linkSolicitantes" value="#{msgs.enlace_verSolicitantes}"
 						action="#{applicationsController.sacarSolicitudes(valtrip.id)}"
 						rendered="#{valtrip.status=='OPEN'}"/>
 						<br/>
-						<h:commandLink id="modificarVijaeLink" value="#{msgs.enlace_modificarViaje}"
+						<p:commandLink id="modificarVijaeLink" value="#{msgs.enlace_modificarViaje}"
 						action="#{tripsController.preparaModificacion(valtrip)}"
 						rendered="#{valtrip.status=='OPEN'}"/>
 					</p:column>
@@ -87,9 +87,9 @@
 					<p:column id="partiDatosSalida">#{valtrip.departure.toStringPrincipal()}</p:column>
 					<p:column id="partiDatosLlegada">#{valtrip.destination.toStringPrincipal()}</p:column>
 					<p:column id="exOpciones">
-						<h:commandLink value="#{msgs.enlace_cancelarSolicitud}"
+						<p:commandLink value="#{msgs.enlace_cancelarSolicitud}"
 						action="#{tripsController.cancelarSolicitud(valtrip)}"
-						 rendered="#{valtrip.status=='OPEN'}"/>
+						 rendered="#{valtrip.status=='OPEN'}" update="@form"/>
 					</p:column>
 				</p:dataTable>
 				<p:dataTable id="tablaViajesEx" var="valtrip"
@@ -98,8 +98,7 @@
 					<p:column id="partiidViaje">
 						<p:commandLink id="verDetalles_#{valtrip.id}"
 							action="#{seatController.obtenerParticipantes(valtrip.id)}"
-							type="submit" value="#{valtrip.id}">
-						</p:commandLink>
+							type="submit" value="#{valtrip.id}"/>
 					</p:column>
 					<p:column id="excEstado">#{valtrip.status}</p:column>
 					<p:column id="excCierre">#{valtrip.closingDate}</p:column>
@@ -110,9 +109,9 @@
 					<p:column id="excluDatosSalida">#{valtrip.departure.toStringPrincipal()}</p:column>
 					<p:column id="excluDatosLlegada">#{valtrip.destination.toStringPrincipal()}</p:column>
 					<p:column id="exOpciones">
-						<h:commandLink value="#{msgs.enlace_cancelarSolicitud}"
+						<p:commandLink value="#{msgs.enlace_cancelarSolicitud}"
 						action="#{tripsController.cancelarSolicitud(valtrip)}"
-						rendered="#{valtrip.status=='OPEN'}"/>
+						 rendered="#{valtrip.status=='OPEN'}" update="@form"/>
 					</p:column>
 				</p:dataTable>
 				<p:dataTable id="tablaViajesEspera" var="valtrip"
@@ -121,8 +120,7 @@
 					<p:column id="partiidViaje">
 						<p:commandLink id="verDetalles_#{valtrip.id}"
 							action="#{seatController.obtenerParticipantes(valtrip.id)}"
-							type="submit" value="#{valtrip.id}">
-						</p:commandLink>
+							type="submit" value="#{valtrip.id}"/>
 					</p:column>
 					<p:column id="espEstado">#{valtrip.status}</p:column>
 					<p:column id="espCierre">#{valtrip.closingDate}</p:column>
@@ -133,9 +131,9 @@
 					<p:column id="espDatosSalida">#{valtrip.departure.toStringPrincipal()}</p:column>
 					<p:column id="espDatosLlegada">#{valtrip.destination.toStringPrincipal()}</p:column>
 					<p:column id="espOpciones">
-						<h:commandLink value="#{msgs.enlace_cancelarSolicitud}"
+						<p:commandLink value="#{msgs.enlace_cancelarSolicitud}"
 						action="#{tripsController.cancelarSolicitud(valtrip)}"
-						rendered="#{valtrip.status=='OPEN'}"/>
+						 rendered="#{valtrip.status=='OPEN'}" update="@form"/>
 					</p:column>
 				</p:dataTable>
 				<p:dataTable id="tablaViajesSin" var="valtrip"
@@ -144,8 +142,7 @@
 					<p:column id="partiidViaje">
 						<p:commandLink id="verDetalles_#{valtrip.id}"
 							action="#{seatController.obtenerParticipantes(valtrip.id)}"
-							type="submit" value="#{valtrip.id}">
-						</p:commandLink>
+							type="submit" value="#{valtrip.id}"/>
 					</p:column>
 					<p:column id="sinEstado">#{valtrip.status}</p:column>
 					<p:column id="sinCierre">#{valtrip.closingDate}</p:column>
@@ -156,18 +153,18 @@
 					<p:column id="sinDatosSalida">#{valtrip.departure.toStringPrincipal()}</p:column>
 					<p:column id="sinDatosLlegada">#{valtrip.destination.toStringPrincipal()}</p:column>
 					<p:column id="sinOpciones">
-						<h:commandLink value="#{msgs.enlace_cancelarSolicitud}"
+						<p:commandLink value="#{msgs.enlace_cancelarSolicitud}"
 						action="#{tripsController.cancelarSolicitud(valtrip)}"
-						rendered="#{valtrip.status=='OPEN'}"/>
+						 rendered="#{valtrip.status=='OPEN'}" update="@form"/>
 					</p:column>
 				</p:dataTable>
 				
-				<h:commandButton value="#{msgs.enlace_cancelarViaje}"
+				<p:commandButton value="#{msgs.enlace_cancelarViaje}"
 				action="#{tripsController.cancelarViajes}"
 				disabled="#{tripsController.viajesACancelar.isEmpty()}"
-				id="btCancelar"/>
+				id="btCancelar" update="@form"/>
 			</p:panel>
-			<h:messages style="color:red;margin:8px;" />
+			<p:messages style="color:red;margin:8px;" />
 		</h:form>
 	</ui:define>
 

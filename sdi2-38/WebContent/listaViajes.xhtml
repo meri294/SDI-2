@@ -37,19 +37,17 @@
 						<f:facet name="header">#{msgs.enlace_solicitar}</f:facet>
 						<p:commandLink id="solicitarlink"
 							action="#{applicationsController.salva(valtrip.id)}"
-							type="submit" value="#{msgs.enlace_solicitar}">
-						</p:commandLink>
+							type="submit" value="#{msgs.enlace_solicitar}" update="@form" />
 					</p:column>
 					<p:column rendered="#{sesion.usuario!=null}">
 						<f:facet name="header">#{msgs.enlace_detalles}</f:facet>
 						<p:commandLink id="verDetalles_#{valtrip.id}"
 							action="#{seatController.obtenerParticipantes(valtrip.id)}"
-							type="submit" value="#{msgs.ver_participantes}">
-						</p:commandLink>
+							type="submit" value="#{msgs.ver_participantes}" />
 					</p:column>
 				</p:dataTable>
 				
-				<h:messages style="color:red;margin:8px;"/>
+				<p:messages style="color:red;margin:8px;"/>
 			</p:panel>
 		</h:form>
 
