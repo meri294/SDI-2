@@ -20,7 +20,7 @@
 		</h:outputFormat>
 		</p>
 		
-		<h:form>
+		<h:form id="info">
 			#{msgs.mensaje_participantesConfirmados}
 			<p:dataList value="#{seatController.participantes}" var="part"
 				type="ordered">
@@ -32,7 +32,7 @@
 				and part.id!=seatController.promoter.id}" update="@form"/>
 			</p:dataList>
 			
-			<p:messages style="color:red;margin:8px;"/>
+			<p:messages closable="true"/>
 			
 		</h:form>
 	</div>
