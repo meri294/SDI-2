@@ -4,68 +4,68 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
 
-	<strong>#{msgs.campo_datosSalida}</strong>
-
-	<p:panelGrid columns="2" styleClass="formTable">
+	<p:panelGrid columns="2">
+		<f:facet name="header">
+	        <strong>#{msgs.campo_datosSalida}</strong>
+	    </f:facet>
 			#{msgs.campo_direccion}
 			<h:panelGroup>
 			<p:inputText value="#{tripsController.trip.departure.address}"
 				required="true" requiredMessage="#{msgs.mensaje_campoObligatorio}"
-				id="departureAddress" size="15" />
-			<p:message for="departureAddress" style="color:red;margin:8px;" />
+				id="departureAddress" />
+			<p:message for="departureAddress" />
 		</h:panelGroup>
 			
 			#{msgs.campo_ciudad}
 			<h:panelGroup>
 			<p:inputText value="#{tripsController.trip.departure.city}"
 				required="true" requiredMessage="#{msgs.mensaje_campoObligatorio}"
-				id="departureCity" size="15" />
-			<p:message for="departureCity" style="color:red;margin:8px;" />
+				id="departureCity" />
+			<p:message for="departureCity" />
 		</h:panelGroup>
 			
-			#{campo_estado}
+			#{msgs.campo_estado}
 			<h:panelGroup>
 			<p:inputText value="#{tripsController.trip.departure.state}"
 				required="true" requiredMessage="#{msgs.mensaje_campoObligatorio}"
-				id="departureState" size="15" />
-			<p:message for="departureState" style="color:red;margin:8px;" />
+				id="departureState" />
+			<p:message for="departureState" />
 		</h:panelGroup>
 			
 			#{msgs.campo_pais}
 			<h:panelGroup>
 			<p:inputText value="#{tripsController.trip.departure.country}"
 				required="true" requiredMessage="#{msgs.mensaje_campoObligatorio}"
-				id="departureCountry" size="15" />
-			<p:message for="departureCountry" style="color:red;margin:8px;" />
+				id="departureCountry" />
+			<p:message for="departureCountry" />
 		</h:panelGroup>
 			
 			#{msgs.campo_codigoPostal}
 			<h:panelGroup>
 			<p:inputText value="#{tripsController.trip.departure.zipCode}"
 				required="true" requiredMessage="#{msgs.mensaje_campoObligatorio}"
-				converterMessage="#{msgs.mensaje_valorInvalido}" id="departureCP"
-				size="15">
+				converterMessage="#{msgs.mensaje_valorInvalido}" id="departureCP">
 				<f:convertNumber maxFractionDigits="0" />
 			</p:inputText>
-			<p:message for="departureCP" style="color:red;margin:8px;" />
+			<p:message for="departureCP" />
 		</h:panelGroup>
 			
 			#{msgs.campo_latitud}
 			<h:panelGroup>
 			<p:inputText value="#{tripsController.trip.departure.waypoint.lat}"
-				id="departureLatitude" size="15">
+				id="departureLatitude">
 				<f:converter converterId="NullableNumberConverter" />
 			</p:inputText>
-			<p:message for="departureLatitude" style="color:red;margin:8px;" />
+			<p:message for="departureLatitude" />
 		</h:panelGroup>
 			
 			#{msgs.campo_longitud}
 			<h:panelGroup>
 			<p:inputText value="#{tripsController.trip.departure.waypoint.lon}"
-				id="departureLongitud" size="15">
+				id="departureLongitud" >
 				<f:converter converterId="NullableNumberConverter" />
 			</p:inputText>
-			<p:message for="departureLongitud" style="color:red;margin:8px;" />
+			<p:message for="departureLongitud" />
 		</h:panelGroup>
 			
 			#{msgs.campo_fechaConFormato}
@@ -76,7 +76,7 @@
 				<f:validateRegex
 					pattern="[0-9][0-9]\/[0-9][0-9]\/[0-9][0-9][0-9][0-9]" />
 			</p:inputText>
-			<p:message for="departureDate" style="color:red;margin:8px;" />
+			<p:message for="departureDate" />
 		</h:panelGroup>
 			
 			#{msgs.campo_horaConFormato}
@@ -86,72 +86,73 @@
 				validatorMessage="#{msgs.mensaje_valorInvalido}" id="departureHour">
 				<f:validateRegex pattern="[0-9][0-9]\:[0-9][0-9]" />
 			</p:inputText>
-			<p:message for="departureHour" style="color:red;margin:8px;" />
+			<p:message for="departureHour" />
 		</h:panelGroup>
 	</p:panelGrid>
 
-	<strong>#{msgs.campo_datosLlegada}</strong>
 
 	<p:panelGrid columns="2" styleClass="formTable">
+		<f:facet name="header">
+	        <strong>#{msgs.campo_datosLlegada}</strong>
+	    </f:facet>
 			#{msgs.campo_direccion}
 			<h:panelGroup>
 			<p:inputText value="#{tripsController.trip.destination.address}"
 				required="true" requiredMessage="#{msgs.mensaje_campoObligatorio}"
-				id="arrivalAddress" size="15" />
-			<p:message for="arrivalAddress" style="color:red;margin:8px;" />
+				id="arrivalAddress" />
+			<p:message for="arrivalAddress" />
 		</h:panelGroup>
 			
 			#{msgs.campo_ciudad}
 			<h:panelGroup>
 			<p:inputText value="#{tripsController.trip.destination.city}"
 				required="true" requiredMessage="#{msgs.mensaje_campoObligatorio}"
-				id="arrivalCity" size="15" />
-			<p:message for="arrivalCity" style="color:red;margin:8px;" />
+				id="arrivalCity" />
+			<p:message for="arrivalCity" />
 		</h:panelGroup>
 			
-			#{campo_estado}
+			#{msgs.campo_estado}
 			<h:panelGroup>
 			<p:inputText value="#{tripsController.trip.destination.state}"
 				required="true" requiredMessage="#{msgs.mensaje_campoObligatorio}"
-				id="arrivalState" size="15" />
-			<p:message for="arrivalState" style="color:red;margin:8px;" />
+				id="arrivalState" />
+			<p:message for="arrivalState" />
 		</h:panelGroup>
 			
 			#{msgs.campo_pais}
 			<h:panelGroup>
 			<p:inputText value="#{tripsController.trip.destination.country}"
 				required="true" requiredMessage="#{msgs.mensaje_campoObligatorio}"
-				id="arrivalCountry" size="15" />
-			<p:message for="arrivalCountry" style="color:red;margin:8px;" />
+				id="arrivalCountry" />
+			<p:message for="arrivalCountry" />
 		</h:panelGroup>
 			
 			#{msgs.campo_codigoPostal}
 			<h:panelGroup>
 			<p:inputText value="#{tripsController.trip.destination.zipCode}"
 				required="true" requiredMessage="#{msgs.mensaje_campoObligatorio}"
-				converterMessage="#{msgs.mensaje_valorInvalido}" id="arrivalCP"
-				size="15">
+				converterMessage="#{msgs.mensaje_valorInvalido}" id="arrivalCP">
 				<f:convertNumber maxFractionDigits="0" />
 			</p:inputText>
-			<p:message for="arrivalCP" style="color:red;margin:8px;" />
+			<p:message for="arrivalCP" />
 		</h:panelGroup>
 			
 			#{msgs.campo_latitud}
 			<h:panelGroup>
 			<p:inputText value="#{tripsController.trip.destination.waypoint.lat}"
-				id="arrivalLatitude" size="15">
+				id="arrivalLatitude">
 				<f:converter converterId="NullableNumberConverter" />
 			</p:inputText>
-			<p:message for="arrivalLatitude" style="color:red;margin:8px;" />
+			<p:message for="arrivalLatitude" />
 		</h:panelGroup>
 			
 			#{msgs.campo_longitud}
 			<h:panelGroup>
 			<p:inputText value="#{tripsController.trip.destination.waypoint.lon}"
-				id="arrivalLongitud" size="15">
+				id="arrivalLongitud">
 				<f:converter converterId="NullableNumberConverter" />
 			</p:inputText>
-			<p:message for="arrivalLongitud" style="color:red;margin:8px;" />
+			<p:message for="arrivalLongitud" />
 		</h:panelGroup>
 			
 			#{msgs.campo_fechaConFormato}
@@ -162,7 +163,7 @@
 				<f:validateRegex
 					pattern="[0-9][0-9]\/[0-9][0-9]\/[0-9][0-9][0-9][0-9]" />
 			</p:inputText>
-			<p:message for="arrivalDate" style="color:red;margin:8px;" />
+			<p:message for="arrivalDate" />
 		</h:panelGroup>
 			
 			#{msgs.campo_horaConFormato}
@@ -172,13 +173,15 @@
 				validatorMessage="#{msgs.mensaje_valorInvalido}" id="arrivalHour">
 				<f:validateRegex pattern="[0-9][0-9]\:[0-9][0-9]" />
 			</p:inputText>
-			<p:message for="arrivalHour" style="color:red;margin:8px;" />
+			<p:message for="arrivalHour" />
 		</h:panelGroup>
 	</p:panelGrid>
 
-	<strong>#{msgs.campos_datosGenerales}</strong>
-
+	
 	<p:panelGrid columns="2" styleClass="formTable">
+		<f:facet name="header">
+	        <strong>#{msgs.campos_datosGenerales}</strong>
+	    </f:facet>
 			#{msgs.campo_fechaCierreConFormato}
 			<h:panelGroup>
 			<p:inputText value="#{tripsController.closingDateConFormato}"
@@ -187,7 +190,7 @@
 				<f:validateRegex
 					pattern="[0-9][0-9]\/[0-9][0-9]\/[0-9][0-9][0-9][0-9]" />
 			</p:inputText>
-			<p:message for="closingDate" style="color:red;margin:8px;" />
+			<p:message for="closingDate" />
 		</h:panelGroup>
 			
 			#{msgs.campo_horaCierreConFormato}
@@ -197,29 +200,27 @@
 				validatorMessage="#{msgs.mensaje_valorInvalido}" id="closingHour">
 				<f:validateRegex pattern="[0-9][0-9]\:[0-9][0-9]" />
 			</p:inputText>
-			<p:message for="closingHour" style="color:red;margin:8px;" />
+			<p:message for="closingHour" />
 		</h:panelGroup>
 			
 			#{msgs.campo_pasajerosMaximos}
 			<h:panelGroup>
 			<p:inputText value="#{tripsController.pasajerosMaximos}" required="true"
 				requiredMessage="#{msgs.mensaje_campoObligatorio}"
-				converterMessage="#{msgs.mensaje_valorInvalido}" id="maxPas"
-				size="15">
+				converterMessage="#{msgs.mensaje_valorInvalido}" id="maxPas">
 				<f:convertNumber maxFractionDigits="0" />
 			</p:inputText>
-			<p:message for="maxPas" style="color:red;margin:8px;" />
+			<p:message for="maxPas" />
 		</h:panelGroup>
 			
 			#{msgs.campo_precioEstimado}
 			<h:panelGroup>
 			<p:inputText value="#{tripsController.trip.estimatedCost}"
 				required="true" requiredMessage="#{msgs.mensaje_campoObligatorio}"
-				converterMessage="#{msgs.mensaje_valorInvalido}" id="estimatedCost"
-				size="15">
+				converterMessage="#{msgs.mensaje_valorInvalido}" id="estimatedCost">
 				<f:convertNumber maxFractionDigits="2" />
 			</p:inputText>
-			<p:message for="estimatedCost" style="color:red;margin:8px;" />
+			<p:message for="estimatedCost" />
 		</h:panelGroup>
 			
 			#{msgs.campo_comentarios}
@@ -227,7 +228,7 @@
 			<p:inputTextarea value="#{tripsController.trip.comments}"
 				required="true" requiredMessage="#{msgs.mensaje_campoObligatorio}"
 				id="comments" cols="80" rows="10" />
-			<p:message for="comments" style="color:red;margin:8px;" />
+			<p:message for="comments" />
 		</h:panelGroup>
 	</p:panelGrid>
 		
