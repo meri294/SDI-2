@@ -383,7 +383,7 @@ public class SDI2_Tests {
 		driver.findElement(ver).click();
 		SeleniumUtils.EsperaCargaPagina(driver, "id", "tablaSolicitantes", 10);
 		driver.findElement(By.xpath(
-				".//td[contains(text(),'319')]/following-sibling::*/a[contains(text(),'Aceptar')]"));
+				".//td[contains(text(),'319')]/following-sibling::*/a[contains(text(),'Aceptar')]")).click();;
 		SeleniumUtils.EsperaCargaPaginaNoTexto(driver, "319", 10);
 		SeleniumUtils.ClickSubopcionMenuHover(driver, "form-cabecera:opciones",
 				"form-cabecera:linkMisViajes");
