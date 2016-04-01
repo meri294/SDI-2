@@ -9,6 +9,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
+import javax.faces.validator.ValidatorException;
 
 import alb.util.log.Log;
 
@@ -80,8 +81,11 @@ public class BeanLogin implements Serializable {
 			Log.info("El usuario [%s] ha iniciado sesión", login);
 			return Resultado.exito.name();
 		} catch (Exception e) {
-			facesContext.addMessage(null, new FacesMessage(bundle.getString("mensaje_abraBBDD")));
-			//e.printStackTrace();
+			if(e instanceof ValidatorException)
+				facesContext.addMessage(null, ((ValidatorException) e).getFacesMessage());
+			
+			else
+				e.printStackTrace();
 		}
 		return Resultado.fracaso.name();		
 	}

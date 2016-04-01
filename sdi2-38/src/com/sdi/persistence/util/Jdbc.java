@@ -9,6 +9,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.SQLTimeoutException;
 import java.util.Properties;
+import java.util.ResourceBundle;
+
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
+import javax.faces.validator.ValidatorException;
 
 import com.sdi.persistence.PersistenceException;
 
@@ -125,6 +130,16 @@ public class Jdbc {
 
 	private static boolean isInAutoCommitMode(Connection con) {
 		try {
+			if (con == null) {
+				FacesContext context = FacesContext.getCurrentInstance();
+				ResourceBundle bundle = context.getApplication()
+						.getResourceBundle(context, "msgs");
+				FacesMessage message = new FacesMessage(
+						FacesMessage.SEVERITY_ERROR,
+						bundle.getString("mensaje_abraBBDD"),
+						bundle.getString("mensaje_abraBBDD"));
+				throw new ValidatorException(message);
+			}
 			return con.getAutoCommit();
 		} catch (SQLException e) {
 			throw new PersistenceException("Unexpected exception", e);
