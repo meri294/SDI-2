@@ -2,7 +2,6 @@
 
 TO-DO:
   · Revisar los TO-DOs
-  · Meter logs en cada cosa que se haga
   · Revisar la trata de excepciones y creacion de mensajes en caso de error
   
   
