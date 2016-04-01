@@ -61,7 +61,7 @@ public class BeanLogin implements Serializable {
 				.getResourceBundle(facesContext, "msgs");
 
 		if (usuario != null) {
-			Log.info("Se ha intentado iniciar sesión como [%s] "
+			Log.debug("Se ha intentado iniciar sesión como [%s] "
 					+ "teniendo la sesión iniciada como [%s]", login,
 					usuario.getName());
 			sesion.cerrar();
@@ -78,7 +78,7 @@ public class BeanLogin implements Serializable {
 			usuario = Factories.services.createLoginService().validar(login,
 					CifradoMD5.getStringMessageDigest(pass));
 			sesion.setUsuario(usuario);
-			Log.info("El usuario [%s] ha iniciado sesión", login);
+			Log.debug("El usuario [%s] ha iniciado sesión", login);
 			return Resultado.exito.name();
 		} catch (Exception e) {
 			if(e instanceof ValidatorException)

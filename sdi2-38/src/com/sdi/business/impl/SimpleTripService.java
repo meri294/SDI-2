@@ -3,6 +3,8 @@ package com.sdi.business.impl;
 import java.util.List;
 import java.util.Map;
 
+import alb.util.log.Log;
+
 import com.sdi.business.ApplicationService;
 import com.sdi.business.SeatsService;
 import com.sdi.business.TripService;
@@ -67,6 +69,8 @@ public class SimpleTripService implements TripService {
 	    
 	    updateTrip(trip);
 	    
+	    Log.info("Se ha disminuido en una las plazas disponibles del viaje [%d]", trip.getId());
+	    
 	}
 
 	@Override
@@ -86,18 +90,22 @@ public class SimpleTripService implements TripService {
 	    
 	    updateTrip(trip);
 	    
+	    Log.info("Se ha aumentado en una las plazas disponibles del viaje [%d]", trip.getId());
+	    
 	}
 
 	@Override
 	public void cancelar(Trip trip) throws Exception {
 	    
 	    if(!trip.getStatus().equals(TripStatus.OPEN)) {
-		throw new Exception("No se puede cancelar este viaje");
+	    	throw new Exception("No se puede cancelar este viaje");
 	    }
 	    
 	    trip.setStatus(TripStatus.CANCELLED);
 	    
 	    updateTrip(trip);
+	    
+	    Log.info("Se ha cancelado el viaje [%d]", trip.getId());
 	    
 	    ApplicationService appService = Factories.services.createApplicationService();
 	    SeatsService sService = Factories.services.createSeatsService();
@@ -105,7 +113,7 @@ public class SimpleTripService implements TripService {
 	    List<Seat> seats = sService.getParticipantes(trip.getId());
 	    
 	    for(Seat s : seats)
-		sService.cancelarPlaza(s);
+	    	sService.cancelarPlaza(s);
 	   
 	    
 	    List<Application> applications = appService.findByTripId(trip.getId());

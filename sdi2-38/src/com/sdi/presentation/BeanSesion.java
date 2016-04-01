@@ -12,17 +12,6 @@ import com.sdi.model.User;
 public class BeanSesion implements Serializable {
 
 	private User usuario;
-	
-	//private boolean admin = false;
-
-	/*
-	@ManagedProperty(value = "#{contactos}")
-	private BeanContactos contactos;
-	@ManagedProperty(value = "#{correos}")
-	private BeanCorreos correos;
-	@ManagedProperty(value = "#{usuarios}")
-	private BeanUsuarios usuarios;
-	*/
 
 	private static final long serialVersionUID = 1L;
 	
@@ -36,51 +25,7 @@ public class BeanSesion implements Serializable {
 
 	public void setUsuario(User usuario) {
 		this.usuario = usuario;
-		/*
-		if(usuario == null || !usuario.getRol().equals(Rol.administrador))
-			admin = false;
-		else
-			admin = true;
-			
-		contactos.reiniciar(usuario);
-		correos.reiniciar(usuario);
-		usuarios.reiniciar(usuario);
-		*/
 	}
-
-	/*
-	public BeanContactos getContactos() {
-		return contactos;
-	}
-
-	public void setContactos(BeanContactos contactos) {
-		this.contactos = contactos;
-	}
-
-	public BeanCorreos getCorreos() {
-		return correos;
-	}
-
-	public void setCorreos(BeanCorreos correos) {
-		this.correos = correos;
-	}
-
-	public BeanUsuarios getUsuarios() {
-		return usuarios;
-	}
-
-	public void setUsuarios(BeanUsuarios usuarios) {
-		this.usuarios = usuarios;
-	}
-
-	public boolean isAdmin() {
-		return admin;
-	}
-
-	public void setAdmin(boolean admin) {
-		this.admin = admin;
-	}
-	*/
 
 	public String cerrar() {
 
@@ -89,44 +34,8 @@ public class BeanSesion implements Serializable {
 		return "cerrar";
 	}
 
-	/*
-	public boolean esAdmin() {
-		if (usuario.getRol().equals(Rol.administrador))
-			return true;
-		return false;
-	}
-	*/
-
 	@PostConstruct
 	public void init() {
-	    /*
-		contactos = (BeanContactos) FacesContext.getCurrentInstance()
-				.getExternalContext().getSessionMap().get("contactos");
-
-		if (contactos == null) {
-			contactos = new BeanContactos();
-			FacesContext.getCurrentInstance().getExternalContext()
-					.getSessionMap().put("contactos", contactos);
-		}
-		
-		correos = (BeanCorreos) FacesContext.getCurrentInstance()
-				.getExternalContext().getSessionMap().get("correos");
-
-		if (correos == null) {
-			correos = new BeanCorreos();
-			FacesContext.getCurrentInstance().getExternalContext()
-					.getSessionMap().put("correos", correos);
-		}
-		
-		usuarios = (BeanUsuarios) FacesContext.getCurrentInstance()
-				.getExternalContext().getSessionMap().get("usuarios");
-
-		if (usuarios == null) {
-			usuarios = new BeanUsuarios();
-			FacesContext.getCurrentInstance().getExternalContext()
-					.getSessionMap().put("usuarios", usuarios);
-		}
-	*/
 	}
 
 }
