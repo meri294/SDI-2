@@ -73,4 +73,9 @@ public class SeleniumUtils {
 			else busqueda = "//*[contains(text(),'" + id + "')]";
 			return EsperaCargaPaginaxpath(driver, busqueda, timeout);
 		}
+		
+		static public void EsperaCargaPaginaTiempo(WebDriver driver, int timeout)
+		{
+			new WebDriverWait(driver, timeout, timeout*900).until(new TimePredicate());				
+		}
 }
