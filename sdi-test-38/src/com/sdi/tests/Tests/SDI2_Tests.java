@@ -47,7 +47,7 @@ public class SDI2_Tests {
 		SeleniumUtils.EsperaCargaPagina(driver, "id", "form-pie", 10);
 		SeleniumUtils.ClickSubopcionMenuHover(driver, "form-cabecera:opciones",
 				"form-cabecera:linkRegistrarse");
-		SeleniumUtils.EsperaCargaPagina(driver, "id", "form-pie", 10);
+		SeleniumUtils.EsperaCargaPagina(driver, "id", "registro", 10);
 		new PO_AltaForm().rellenaFormulario(driver, "testSDI", "testSDI",
 				"testSDI", "testSDI@mail.es", "testSDI", "testSDI");
 		SeleniumUtils.EsperaCargaPagina(driver, "id", "login-form", 10);
@@ -61,11 +61,11 @@ public class SDI2_Tests {
 		SeleniumUtils.EsperaCargaPagina(driver, "id", "form-pie", 10);
 		SeleniumUtils.ClickSubopcionMenuHover(driver, "form-cabecera:opciones",
 				"form-cabecera:linkRegistrarse");
-		SeleniumUtils.EsperaCargaPagina(driver, "id", "form-pie", 10);
+		SeleniumUtils.EsperaCargaPagina(driver, "id", "registro", 10);
 		new PO_AltaForm().rellenaFormulario(driver, "testSDIInval",
 				"testSDIInval", "testSDIInval", "testSDIInval@mail.es", "no",
 				"testSDIInval");
-		SeleniumUtils.EsperaCargaPagina(driver, "id", "form-pie", 10);
+		SeleniumUtils.EsperaCargaPagina(driver, "id", "registro", 10);
 		SeleniumUtils.textoPresentePagina(driver, "Registre una nueva cuenta");
 
 	}
@@ -110,10 +110,10 @@ public class SDI2_Tests {
 	@Test
 	public void t06_RegViajeVal() {
 		t03_IdVal();
-		SeleniumUtils.EsperaCargaPagina(driver, "id", "form-pie", 10);
+		SeleniumUtils.EsperaCargaPagina(driver, "id", "registradoPrincipal", 10);
 		SeleniumUtils.ClickSubopcionMenuHover(driver, "form-cabecera:opciones",
 				"form-cabecera:linkRegistrarViaje");
-		SeleniumUtils.EsperaCargaPagina(driver, "id", "form-pie", 10);
+		SeleniumUtils.EsperaCargaPagina(driver, "id", "viaje", 10);
 		new PO_RegViajeForm().rellenaFormulario(driver, "addres1", "city1",
 				"state1", "country1", "35260", "", "", "20/08/2016", "12:00",
 				"address2", "city2", "state2", "country2", "25036", "2.366",
@@ -129,16 +129,16 @@ public class SDI2_Tests {
 	@Test
 	public void t07_RegViajeInVal() {
 		t03_IdVal();
-		SeleniumUtils.EsperaCargaPagina(driver, "id", "form-pie", 10);
+		SeleniumUtils.EsperaCargaPagina(driver, "id", "registradoPrincipal", 10);
 		SeleniumUtils.ClickSubopcionMenuHover(driver, "form-cabecera:opciones",
 				"form-cabecera:linkRegistrarViaje");
-		SeleniumUtils.EsperaCargaPagina(driver, "id", "form-pie", 10);
+		SeleniumUtils.EsperaCargaPagina(driver, "id", "viaje", 10);
 		new PO_RegViajeForm().rellenaFormulario(driver, "addres1", "city1",
 				"state1", "", "35260", "", "", "20/08/2016", "12:00",
 				"address2", "city2", "state2", "country2", "25036", "2.366",
 				"-53.6982", "21/08/2016", "01:00", "22:05", "4", "296.85",
 				"Viaje de prueba", "23/08/2016");
-		SeleniumUtils.EsperaCargaPagina(driver, "id", "form-pie", 10);
+		SeleniumUtils.EsperaCargaPagina(driver, "id", "viaje", 10);
 		SeleniumUtils.textoPresentePagina(driver, "Registre un nuevo viaje");
 	}
 
@@ -190,16 +190,14 @@ public class SDI2_Tests {
 	// promotor. PASA
 	@Test
 	public void t10_CancelViajeVal() {
-		SeleniumUtils.EsperaCargaPagina(driver, "id", "form-pie", 10);
 		login("usuario2", "usuario2");
-		SeleniumUtils.EsperaCargaPagina(driver, "id", "form-pie", 10);
 		SeleniumUtils.ClickSubopcionMenuHover(driver, "form-cabecera:opciones",
 				"form-cabecera:linkMisViajes");
 		SeleniumUtils.EsperaCargaPagina(driver, "id", "tablaViajesParti", 10);
 		WebElement check = driver.findElement(By
 				.xpath(".//a[contains(text(),'332')]/preceding-sibling::*"));
 		check.click();
-		SeleniumUtils.EsperaCargaPaginaTiempo(driver, 5);
+		SeleniumUtils.EsperaCargaPaginaTiempo(driver, 10);
 		driver.findElement(By.id("involucrado:btCancelar")).click();
 		SeleniumUtils.EsperaCargaPaginaTiempo(driver, 20);
 		driver.findElement(By
@@ -210,21 +208,18 @@ public class SDI2_Tests {
 	// promotor.
 	@Test
 	public void t11_CancelMulViajeVal() {
-
-		SeleniumUtils.EsperaCargaPagina(driver, "id", "form-pie", 10);
 		login("usuario1", "usuario1");
-		SeleniumUtils.EsperaCargaPagina(driver, "id", "form-pie", 10);
 		SeleniumUtils.ClickSubopcionMenuHover(driver, "form-cabecera:opciones",
 				"form-cabecera:linkMisViajes");
 		SeleniumUtils.EsperaCargaPagina(driver, "id", "tablaViajesParti", 10);
 		driver.findElement(
 				By.xpath(".//a[contains(text(),'326')]/preceding-sibling::*"))
 				.click();
-		SeleniumUtils.EsperaCargaPaginaTiempo(driver, 5);
+		SeleniumUtils.EsperaCargaPaginaTiempo(driver, 10);
 		driver.findElement(
 				By.xpath(".//a[contains(text(),'327')]/preceding-sibling::*"))
 				.click();
-		SeleniumUtils.EsperaCargaPaginaTiempo(driver, 5);
+		SeleniumUtils.EsperaCargaPaginaTiempo(driver, 10);
 		driver.findElement(By.id("involucrado:btCancelar")).click();
 		SeleniumUtils.EsperaCargaPaginaTiempo(driver, 20);
 		driver.findElement(By
@@ -241,7 +236,7 @@ public class SDI2_Tests {
 		// tiempo)
 		SeleniumUtils.EsperaCargaPagina(driver, "id", "form-pie", 10);
 		new PO_LoginForm().rellenaFormulario(driver, "testSDI", "testSDI");
-		SeleniumUtils.EsperaCargaPagina(driver, "id", "bienvenido", 10);
+		SeleniumUtils.EsperaCargaPagina(driver, "id", "registradoPrincipal", 10);
 		SeleniumUtils.ClickSubopcionMenuHover(driver, "form-cabecera:opciones",
 				"form-cabecera:linkOpciones");
 		SeleniumUtils.EsperaCargaPagina(driver, "id", "tablaViajes", 10);
@@ -266,7 +261,7 @@ public class SDI2_Tests {
 		By aceptar = By
 				.xpath("//td[contains(text(),'320')]/following-sibling::*/a[contains(text(),'Aceptar')]");
 		driver.findElement(aceptar).click();
-		SeleniumUtils.EsperaCargaPaginaNoTexto(driver, "320", 5);
+		SeleniumUtils.EsperaCargaPaginaNoTexto(driver, "320", 10);
 
 	}
 
@@ -285,7 +280,7 @@ public class SDI2_Tests {
 	public void t14_Ins3ViajeAceptInval() {
 		SeleniumUtils.EsperaCargaPagina(driver, "id", "form-pie", 10);
 		new PO_LoginForm().rellenaFormulario(driver, "usuario2", "usuario2");
-		SeleniumUtils.EsperaCargaPagina(driver, "id", "bienvenido", 10);
+		SeleniumUtils.EsperaCargaPagina(driver, "id", "registradoPrincipal", 10);
 		SeleniumUtils.ClickSubopcionMenuHover(driver, "form-cabecera:opciones",
 				"form-cabecera:linkOpciones");
 		SeleniumUtils.EsperaCargaPagina(driver, "id", "tablaViajes", 10);
@@ -314,7 +309,7 @@ public class SDI2_Tests {
 		// Aceptar
 		SeleniumUtils.EsperaCargaPagina(driver, "id", "form-pie", 10);
 		login("usuario1", "usuario1");
-		SeleniumUtils.EsperaCargaPagina(driver, "id", "form-pie", 10);
+		SeleniumUtils.EsperaCargaPagina(driver, "id", "registradoPrincipal", 10);
 		SeleniumUtils.ClickSubopcionMenuHover(driver, "form-cabecera:opciones",
 				"form-cabecera:linkMisViajes");
 		SeleniumUtils.EsperaCargaPagina(driver, "id", "tablaViajes", 10);
@@ -326,17 +321,17 @@ public class SDI2_Tests {
 		By aceptar = By
 				.xpath("//td[contains(text(),'318')]/following-sibling::*/a[contains(text(),'Aceptar')]");
 		driver.findElement(aceptar).click();
-		SeleniumUtils.EsperaCargaPaginaNoTexto(driver, "318", 5);
+		SeleniumUtils.EsperaCargaPaginaNoTexto(driver, "318", 10);
 
 		By aceptar2 = By
 				.xpath("//td[contains(text(),'319')]/following-sibling::*/a[contains(text(),'Aceptar')]");
 		driver.findElement(aceptar2).click();
-		SeleniumUtils.EsperaCargaPaginaNoTexto(driver, "319", 5);
+		SeleniumUtils.EsperaCargaPaginaNoTexto(driver, "319", 10);
 
 		// Otro usuario
 		SeleniumUtils.ClickSubopcionMenuHover(driver, "form-cabecera:opciones",
 				"form-cabecera:linkCerrarSesion");
-		SeleniumUtils.EsperaCargaPagina(driver, "id", "form-pie", 10);
+		SeleniumUtils.EsperaCargaPagina(driver, "id", "login-form", 10);
 		login("testSDI", "testSDI");
 		SeleniumUtils.EsperaCargaPagina(driver, "id", "bienvenido", 10);
 		SeleniumUtils.ClickSubopcionMenuHover(driver, "form-cabecera:opciones",
@@ -349,7 +344,6 @@ public class SDI2_Tests {
 	@Test
 	public void t15_CancelNoPromotorVal() {
 		login("usuario3", "usuario3");
-		SeleniumUtils.EsperaCargaPagina(driver, "id", "form-pie", 10);
 		SeleniumUtils.ClickSubopcionMenuHover(driver, "form-cabecera:opciones",
 				"form-cabecera:linkMisViajes");
 		SeleniumUtils.EsperaCargaPagina(driver, "id", "tablaViajesEx", 10);
@@ -365,19 +359,18 @@ public class SDI2_Tests {
 	@Test
 	public void t16_Rech1ViajeVal() {
 		login("usuario3", "usuario3");
-		SeleniumUtils.EsperaCargaPagina(driver, "id", "form-pie", 10);
 		SeleniumUtils.ClickSubopcionMenuHover(driver, "form-cabecera:opciones",
 				"form-cabecera:linkOpciones");
 		SeleniumUtils.EsperaCargaPagina(driver, "id", "tablaViajes", 10);
 		WebElement element = driver
 				.findElement(By
-						.xpath("//td[contains(text(),'340')]/following-sibling::*/a[contains(text(),'Solicitar')]"));
+						.xpath("//td[contains(text(),'350')]/following-sibling::*/a[contains(text(),'Solicitar')]"));
 		element.click();
 		SeleniumUtils.EsperaCargaPagina(driver, "id", "tablaViajesSin", 10);
-		SeleniumUtils.textoPresentePagina(driver, "340");
+		SeleniumUtils.textoPresentePagina(driver, "350");
 		SeleniumUtils.ClickSubopcionMenuHover(driver, "form-cabecera:opciones",
 				"form-cabecera:linkCerrarSesion");
-		SeleniumUtils.EsperaCargaPagina(driver, "id", "form-pie", 10);
+		SeleniumUtils.EsperaCargaPagina(driver, "id", "login-form", 10);
 		login("usuario1", "usuario1");
 		
 		SeleniumUtils.ClickSubopcionMenuHover(driver, "form-cabecera:opciones",
@@ -393,7 +386,7 @@ public class SDI2_Tests {
 		SeleniumUtils.ClickSubopcionMenuHover(driver, "form-cabecera:opciones",
 				"form-cabecera:linkMisViajes");
 		SeleniumUtils.EsperaCargaPagina(driver, "id", "tablaViajes", 10);
-		driver.findElement(By.xpath(".//a[contains(text(),'340')]")).click();
+		driver.findElement(By.xpath(".//a[contains(text(),'350')]")).click();
 		SeleniumUtils.EsperaCargaPagina(driver, "id", "info", 10);
 		driver.findElement(By.xpath(
 				".//li[contains(text(),'Maria')]/a[contains(text(),'Excluir')]"));
@@ -408,7 +401,7 @@ public class SDI2_Tests {
 		SeleniumUtils.ClickSubopcionMenuHover(driver, "form-cabecera:idioma",
 				"form-cabecera:linkingles");
 		driver.get("http://localhost:8280/sdi2-38/registro.xhtml");
-		SeleniumUtils.EsperaCargaPagina(driver, "id", "form-pie", 10);
+		SeleniumUtils.EsperaCargaPagina(driver, "id", "registro", 10);
 		SeleniumUtils.textoPresentePagina(driver, "Register a new account");
 	}
 
@@ -424,7 +417,7 @@ public class SDI2_Tests {
 		SeleniumUtils.textoPresentePagina(driver,
 				"Formulario de inicio de sesión");
 		driver.get("http://localhost:8280/sdi2-38/registro.xhtml");
-		SeleniumUtils.EsperaCargaPagina(driver, "id", "form-pie", 10);
+		SeleniumUtils.EsperaCargaPagina(driver, "id", "registro", 10);
 		SeleniumUtils.textoPresentePagina(driver, "Registre una nueva cuenta");
 	}
 
@@ -451,7 +444,7 @@ public class SDI2_Tests {
 	private void login(String user, String pass) {
 		SeleniumUtils.EsperaCargaPagina(driver, "id", "form-pie", 10);
 		new PO_LoginForm().rellenaFormulario(driver, user, pass);
-		SeleniumUtils.EsperaCargaPagina(driver, "id", "bienvenido", 10);
+		SeleniumUtils.EsperaCargaPagina(driver, "id", "registradoPrincipal", 10);
 	}
 
 }
