@@ -199,7 +199,7 @@ public class SDI2_Tests {
 		check.click();
 		SeleniumUtils.EsperaCargaPaginaTiempo(driver, 10);
 		driver.findElement(By.id("involucrado:btCancelar")).click();
-		SeleniumUtils.EsperaCargaPaginaTiempo(driver, 20);
+		SeleniumUtils.EsperaCargaPaginaTiempo(driver, 10);
 		driver.findElement(By
 				.xpath("//a[contains(text(),'332')]/parent::*/following-sibling::*[contains(text(),'CANCELLED')]"));
 	}
@@ -221,7 +221,7 @@ public class SDI2_Tests {
 				.click();
 		SeleniumUtils.EsperaCargaPaginaTiempo(driver, 10);
 		driver.findElement(By.id("involucrado:btCancelar")).click();
-		SeleniumUtils.EsperaCargaPaginaTiempo(driver, 20);
+		SeleniumUtils.EsperaCargaPaginaTiempo(driver, 10);
 		driver.findElement(By
 				.xpath("//a[contains(text(),'326')]/parent::*/following-sibling::*[contains(text(),'CANCELLED')]"));
 		driver.findElement(By
