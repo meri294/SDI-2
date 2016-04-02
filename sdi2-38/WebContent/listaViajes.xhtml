@@ -25,13 +25,25 @@
 						<f:facet name="header">#{msgs.campo_origen}</f:facet>
 						#{valtrip.departure.toStringPrincipal()}
 					</p:column>
+					<p:column id="tablafechasalida" sortBy="#{valtrip.departureDate}">
+						<f:facet name="header">#{msgs.campo_fechaSalida}</f:facet>
+						#{valtrip.departureDate}
+					</p:column>
 					<p:column id="tabladestino">
 						<f:facet name="header">#{msgs.campo_destino}</f:facet>
 						#{valtrip.destination.toStringPrincipal()}
 					</p:column>
+					<p:column id="tablafechallegada" sortBy="#{valtrip.arrivalDate}">
+						<f:facet name="header">#{msgs.campo_fechaLlegada}</f:facet>
+						#{valtrip.arrivalDate}
+					</p:column>
 					<p:column id="tablalibres" sortBy="#{valtrip.availablePax}">
 						<f:facet name="header">#{msgs.campo_plazasLibres}</f:facet>
 						#{valtrip.availablePax}
+					</p:column>
+					<p:column id="tablafechacierre" sortBy="#{valtrip.closingDate}">
+						<f:facet name="header">#{msgs.titulo_fechaCierre}</f:facet>
+						#{valtrip.closingDate}
 					</p:column>
 					<p:column rendered="#{sesion.usuario!=null}">
 						<f:facet name="header">#{msgs.enlace_solicitar}</f:facet>

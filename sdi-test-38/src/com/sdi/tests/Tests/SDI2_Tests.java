@@ -270,6 +270,55 @@ public class SDI2_Tests {
 	//TODO
 	@Test
 	public void t13_Ins2ViajeAceptVal() {
+		SeleniumUtils.EsperaCargaPagina(driver, "id", "form-pie", 10);
+		new PO_LoginForm().rellenaFormulario(driver, "usuario1", "usuario1");
+		SeleniumUtils.EsperaCargaPagina(driver, "id", "registradoPrincipal", 10);
+		SeleniumUtils.ClickSubopcionMenuHover(driver, "form-cabecera:opciones",
+				"form-cabecera:linkOpciones");
+		SeleniumUtils.EsperaCargaPagina(driver, "id", "tablaViajes", 10);
+		WebElement element = driver
+				.findElement(By
+						.xpath("//td[contains(text(),'343')]/following-sibling::*/a[contains(text(),'Solicitar')]"));
+		element.click();
+		SeleniumUtils.EsperaCargaPagina(driver, "id", "tablaViajesSin", 10);
+		SeleniumUtils.textoPresentePagina(driver, "343");
+		SeleniumUtils.ClickSubopcionMenuHover(driver, "form-cabecera:opciones",
+				"form-cabecera:linkCerrarSesion");
+		login("usuario2", "usuario2");
+		SeleniumUtils.EsperaCargaPagina(driver, "id", "bienvenido", 10);
+		SeleniumUtils.ClickSubopcionMenuHover(driver, "form-cabecera:opciones",
+				"form-cabecera:linkOpciones");
+		SeleniumUtils.EsperaCargaPagina(driver, "id", "tablaViajes", 10);
+		WebElement element2 = driver
+				.findElement(By
+						.xpath("//td[contains(text(),'343')]/following-sibling::*/a[contains(text(),'Solicitar')]"));
+		element2.click();
+		SeleniumUtils.EsperaCargaPagina(driver, "id", "tablaViajesSin", 10);
+		SeleniumUtils.textoPresentePagina(driver, "343");
+		SeleniumUtils.ClickSubopcionMenuHover(driver, "form-cabecera:opciones",
+				"form-cabecera:linkCerrarSesion");
+
+		// Aceptar
+		SeleniumUtils.EsperaCargaPagina(driver, "id", "form-pie", 10);
+		login("usuario3", "usuario3");
+		SeleniumUtils.EsperaCargaPagina(driver, "id", "registradoPrincipal", 10);
+		SeleniumUtils.ClickSubopcionMenuHover(driver, "form-cabecera:opciones",
+				"form-cabecera:linkMisViajes");
+		SeleniumUtils.EsperaCargaPagina(driver, "id", "tablaViajes", 10);
+		By ver = By
+				.xpath(".//a[contains(text(),'343')]/../following-sibling::*/a[contains(@id,'linkSolicitantes')]");
+		driver.findElement(ver).click();
+		SeleniumUtils.EsperaCargaPagina(driver, "id", "tablaSolicitantes", 10);
+
+		By aceptar = By
+				.xpath("//td[contains(text(),'317')]/following-sibling::*/a[contains(text(),'Aceptar')]");
+		driver.findElement(aceptar).click();
+		SeleniumUtils.EsperaCargaPaginaNoTexto(driver, "317", 10);
+
+		By aceptar2 = By
+				.xpath("//td[contains(text(),'318')]/following-sibling::*/a[contains(text(),'Aceptar')]");
+		driver.findElement(aceptar2).click();
+		SeleniumUtils.EsperaCargaPaginaNoTexto(driver, "318", 10);
 
 	}
 
