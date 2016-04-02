@@ -9,6 +9,7 @@ import javax.faces.event.ActionEvent;
 @ManagedBean(name = "settings")
 @SessionScoped
 public class BeanLanguages implements Serializable {
+
 	private static final long serialVersionUID = 2L;
 	private static final Locale ENGLISH = new Locale("en");
 	private static final Locale SPANISH = new Locale("es");

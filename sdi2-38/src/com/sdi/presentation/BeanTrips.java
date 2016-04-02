@@ -28,6 +28,7 @@ import com.sdi.util.MariaDateUtil;
 
 @ManagedBean(name = "tripsController")
 public class BeanTrips implements Serializable {
+
 	private static final long serialVersionUID = 55555L;
 
 	@ManagedProperty(value = "#{sesion}")
@@ -57,6 +58,7 @@ public class BeanTrips implements Serializable {
 
 	@PostConstruct
 	public void init() {
+
 		System.out.println("BeanTrips - PostConstruct");
 		trip = (BeanTrip) FacesContext.getCurrentInstance()
 				.getExternalContext().getSessionMap().get(new String("trip"));
@@ -79,6 +81,7 @@ public class BeanTrips implements Serializable {
 
 	@PreDestroy
 	public void end() {
+
 		System.out.println("BeanTrips - PreDestroy");
 	}
 
@@ -215,6 +218,7 @@ public class BeanTrips implements Serializable {
 	}
 
 	public void setPrecargarDatos(boolean precargarDatos) {
+
 		this.precargarDatos = precargarDatos;
 
 		if (precargarDatos)
@@ -224,6 +228,7 @@ public class BeanTrips implements Serializable {
 	}
 
 	private void iniciaTripVacio() {
+
 		trip.setId(null);
 		trip.setArrivalDate(null);
 		trip.setAvailablePax(null);
@@ -247,6 +252,7 @@ public class BeanTrips implements Serializable {
 	}
 
 	public void iniciaTrip(ActionEvent event) {
+
 		FacesContext facesContext = FacesContext.getCurrentInstance();
 		ResourceBundle bundle = facesContext.getApplication()
 				.getResourceBundle(facesContext, "msgs");
@@ -263,6 +269,7 @@ public class BeanTrips implements Serializable {
 	}
 
 	public String listado() {
+
 		TripService service;
 		try {
 			// Acceso a la implementacion de la capa de negocio
@@ -282,6 +289,7 @@ public class BeanTrips implements Serializable {
 	}
 
 	public String baja(Trip trip) {
+
 		TripService service;
 		try {
 			// Acceso a la implementacion de la capa de negocio
@@ -301,6 +309,7 @@ public class BeanTrips implements Serializable {
 	}
 
 	public String edit() {
+
 		TripService service;
 		try {
 			// Acceso a la implementacion de la capa de negocio
@@ -414,8 +423,10 @@ public class BeanTrips implements Serializable {
 				trip.setAvailablePax(pasajerosMaximos - plazasConfirmadas);
 
 				service.updateTrip(trip);
-				
-				Log.debug("El viaje [%d] ha sido modificado satisfactoriamente", trip.getId());
+
+				Log.debug(
+						"El viaje [%d] ha sido modificado satisfactoriamente",
+						trip.getId());
 			}
 
 			// Actualizamos el javabean de trips inyectado en la tabla
@@ -436,7 +447,7 @@ public class BeanTrips implements Serializable {
 
 	private ComprobacionFechaValida fechasValidas(Date salida, Date llegada,
 			Date cierre) {
-		
+
 		ComprobacionFechaValida resultado = ComprobacionFechaValida.OK;
 		if (MariaDateUtil.isBefore(cierre, MariaDateUtil.now()))
 			resultado = ComprobacionFechaValida.CAA;
@@ -448,7 +459,7 @@ public class BeanTrips implements Serializable {
 	}
 
 	public String sacarMisViajes() {
-		
+
 		TripService service;
 		try {
 			service = Factories.services.createTripService();
@@ -469,7 +480,7 @@ public class BeanTrips implements Serializable {
 	}
 
 	public String preparaModificacion(Trip trip) {
-		
+
 		this.trip.setTrip(trip);
 
 		pasajerosMaximos = trip.getMaxPax();
@@ -533,8 +544,10 @@ public class BeanTrips implements Serializable {
 
 			if (seat != null)
 				sService.delete(seat);
-			
-			Log.debug("Se ha cancelado la solicitud del usuario [%d] para el viaje [%d]", sesion.getUsuario().getId(), trip.getId());
+
+			Log.debug(
+					"Se ha cancelado la solicitud del usuario [%d] para el viaje [%d]",
+					sesion.getUsuario().getId(), trip.getId());
 
 		} catch (Exception e) {
 			// TODO ¿Crear mensaje?
@@ -548,7 +561,7 @@ public class BeanTrips implements Serializable {
 	}
 
 	public void modificarViajesACancelar(Trip trip) {
-		
+
 		if (viajesACancelar.contains(trip))
 			viajesACancelar.remove(trip);
 		else
@@ -556,7 +569,7 @@ public class BeanTrips implements Serializable {
 	}
 
 	public String cancelarViajes(Trip trip) {
-		
+
 		if (!viajesACancelar.contains(trip))
 			viajesACancelar.add(trip);
 

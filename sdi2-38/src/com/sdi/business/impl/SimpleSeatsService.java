@@ -58,8 +58,8 @@ public class SimpleSeatsService implements SeatsService {
 		Factories.services.createTripService().disminuirPlazasDisponibles(
 				tripId);
 
-		Log.debug("El usuario [%d] ha sido aceptado para el viaje [%d]", userId,
-				tripId);
+		Log.debug("El usuario [%d] ha sido aceptado para el viaje [%d]",
+				userId, tripId);
 
 	}
 

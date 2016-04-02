@@ -1,8 +1,8 @@
 package com.sdi.business.exception;
 
 /**
- * Thrown if an operation needs to save an entity and it already exists 
- * in the persistence system 
+ * Thrown if an operation needs to save an entity and it already exists in the
+ * persistence system
  */
 public class EntityAlreadyExistsException extends Exception {
 

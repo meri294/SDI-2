@@ -15,6 +15,7 @@ import com.sdi.util.MariaModelUtil;
 @ManagedBean(name = "trip")
 @SessionScoped
 public class BeanTrip extends Trip implements Serializable {
+
 	private static final long serialVersionUID = 55556L;
 
 	public BeanTrip() {
@@ -25,6 +26,7 @@ public class BeanTrip extends Trip implements Serializable {
 	// se pincha el enlace Editar en la vista listado.xhtml. Podría sustituirse
 	// por un método editar en BeanTrips.
 	public void setTrip(Trip trip) {
+		
 		setId(trip.getId());
 		setArrivalDate(trip.getArrivalDate());
 		setAvailablePax(trip.getAvailablePax());
@@ -43,41 +45,42 @@ public class BeanTrip extends Trip implements Serializable {
 	// Iniciamos los datos del trip con los valores por defecto
 	// extraídos del archivo de propiedades correspondiente
 	public void iniciaTrip(ActionEvent event) {
+		
 		FacesContext facesContext = FacesContext.getCurrentInstance();
 		ResourceBundle bundle = facesContext.getApplication()
 				.getResourceBundle(facesContext, "msgs");
 		setId(null);
 		setArrivalDate(MariaDateUtil.completeFromString(
-			bundle.getString("default_date"),
-			bundle.getString("default_hour")));
+				bundle.getString("default_date"),
+				bundle.getString("default_hour")));
 		setAvailablePax(Integer.valueOf(bundle
-			.getString("default_available_pax")));
+				.getString("default_available_pax")));
 		setClosingDate(MariaDateUtil.completeFromString(
-			bundle.getString("default_date"),
-			bundle.getString("default_hour")));
+				bundle.getString("default_date"),
+				bundle.getString("default_hour")));
 		setComments(bundle.getString("default_trip_comments"));
 		setDepartureDate(MariaDateUtil.completeFromString(
-			bundle.getString("default_date"),
-			bundle.getString("default_hour")));
+				bundle.getString("default_date"),
+				bundle.getString("default_hour")));
 		setDeparture(MariaModelUtil.AddressPointFromString(
-			bundle.getString("default_address"),
-			bundle.getString("default_city"),
-			bundle.getString("default_state"),
-			bundle.getString("default_country"),
-			bundle.getString("default_cp"),
-			bundle.getString("default_coordinates")));
+				bundle.getString("default_address"),
+				bundle.getString("default_city"),
+				bundle.getString("default_state"),
+				bundle.getString("default_country"),
+				bundle.getString("default_cp"),
+				bundle.getString("default_coordinates")));
 		setDestination(MariaModelUtil.AddressPointFromString(
-			bundle.getString("default_address"),
-			bundle.getString("default_city"),
-			bundle.getString("default_state"),
-			bundle.getString("default_country"),
-			bundle.getString("default_cp"),
-			bundle.getString("default_coordinates")));
+				bundle.getString("default_address"),
+				bundle.getString("default_city"),
+				bundle.getString("default_state"),
+				bundle.getString("default_country"),
+				bundle.getString("default_cp"),
+				bundle.getString("default_coordinates")));
 		setEstimatedCost(Double.valueOf(bundle
-			.getString("default_estimated_cost")));
+				.getString("default_estimated_cost")));
 		setMaxPax(Integer.valueOf(bundle.getString("default_maxPax")));
 		setPromoterId(null);
 		setStatus(null);
-		
+
 	}
 }

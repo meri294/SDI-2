@@ -9,8 +9,7 @@ public class TripsBaja {
 		TripDao dao = Factories.persistence.createTripDao();
 		try {
 			dao.delete(id);
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			throw new Exception("Viaje no eliminado " + id, ex);
 		}
 	}

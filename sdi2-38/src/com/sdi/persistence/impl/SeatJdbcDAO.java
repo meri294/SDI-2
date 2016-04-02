@@ -16,6 +16,7 @@ public class SeatJdbcDAO implements SeatDao {
 
 		@Override
 		public Seat toObject(ResultSet rs) throws SQLException {
+			
 			Seat res = new Seat();
 
 			res.setUserId(rs.getLong("user_id"));
@@ -76,12 +77,12 @@ public class SeatJdbcDAO implements SeatDao {
 		return jdbcTemplate.queryForList("SEAT_FIND_BY_USER_ID",
 				new SeatMapper(), userId);
 	}
-	
+
 	@Override
 	public int deleteSinPlaza(Long id) {
 		return jdbcTemplate.execute("SEAT_DELETE_SIN_PLAZA", id);
 	}
-	
+
 	@Override
 	public List<Seat> findAcceptedByUserId(Long userId) {
 		return jdbcTemplate.queryForList("SEAT_FIND_ACCEPTED_BY_USER_ID",

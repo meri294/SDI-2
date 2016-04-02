@@ -81,17 +81,19 @@ public class BeanLogin implements Serializable {
 			Log.debug("El usuario [%s] ha iniciado sesión", login);
 			return Resultado.exito.name();
 		} catch (Exception e) {
-			if(e instanceof ValidatorException)
-				facesContext.addMessage(null, ((ValidatorException) e).getFacesMessage());
-			
+			if (e instanceof ValidatorException)
+				facesContext.addMessage(null,
+						((ValidatorException) e).getFacesMessage());
+
 			else
 				e.printStackTrace();
 		}
-		return Resultado.fracaso.name();		
+		return Resultado.fracaso.name();
 	}
 
 	@PostConstruct
 	public void init() {
+		
 		sesion = (BeanSesion) FacesContext.getCurrentInstance()
 				.getExternalContext().getSessionMap().get("sesion");
 

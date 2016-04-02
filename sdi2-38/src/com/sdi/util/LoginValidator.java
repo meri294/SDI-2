@@ -13,23 +13,24 @@ import com.sdi.infrastructure.Factories;
 import com.sdi.persistence.UserDao;
 
 @FacesValidator("LoginValidator")
-public class LoginValidator implements Validator{
+public class LoginValidator implements Validator {
 
-    private UserDao dao = Factories.persistence.createUserDao();
-    
-    @Override
-    public void validate(FacesContext context, UIComponent component, Object value)
-	    throws ValidatorException {
-	
-	if(dao.findByLogin(value.toString()) != null){
-		ResourceBundle bundle = context.getApplication()
-				.getResourceBundle(context, "msgs");
-		FacesMessage msg = 
-			new FacesMessage(bundle.getString("error_loginExistente"));
+	private UserDao dao = Factories.persistence.createUserDao();
+
+	@Override
+	public void validate(FacesContext context, UIComponent component,
+			Object value) throws ValidatorException {
 		
-		throw new ValidatorException(msg);
+
+		if (dao.findByLogin(value.toString()) != null) {
+			ResourceBundle bundle = context.getApplication().getResourceBundle(
+					context, "msgs");
+			FacesMessage msg = new FacesMessage(
+					bundle.getString("error_loginExistente"));
+
+			throw new ValidatorException(msg);
+		}
+
 	}
-	
-    }
 
 }

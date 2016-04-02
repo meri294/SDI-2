@@ -2,10 +2,9 @@ package com.sdi.business.exception;
 
 /**
  * Represent any system exception that prevents the business layer to get its
- * work done.
- *  The caller to any method that throws this exception it is supposed 
- *  to do anything as it represent far problems.
- *  
+ * work done. The caller to any method that throws this exception it is supposed
+ * to do anything as it represent far problems.
+ * 
  */
 public class BusinessException extends RuntimeException {
 

@@ -34,6 +34,7 @@ public class BeanApplications {
 
 	@PostConstruct
 	public void init() {
+		
 		System.out.println("BeanApplications - PostConstruct");
 
 		beanTrips = (BeanTrips) FacesContext.getCurrentInstance()
@@ -69,6 +70,7 @@ public class BeanApplications {
 	}
 
 	public String listado() {
+		
 		ApplicationService service;
 		try {
 			service = Factories.services.createApplicationService();
@@ -85,6 +87,7 @@ public class BeanApplications {
 	}
 
 	public String baja(Application application) {
+		
 		ApplicationService service;
 		try {
 			service = Factories.services.createApplicationService();
@@ -100,8 +103,9 @@ public class BeanApplications {
 		}
 
 	}
-	
+
 	public String salva(Long tripId) {
+		
 		ApplicationService service;
 
 		try {
@@ -112,9 +116,8 @@ public class BeanApplications {
 			application.setUserId(sesion.getUsuario().getId());
 
 			service.saveApplication(application);
-			
-			Log.debug(
-					"Creada solicitud del usuario [%d] para el viaje [%d]",
+
+			Log.debug("Creada solicitud del usuario [%d] para el viaje [%d]",
 					application.getUserId(), tripId);
 
 			beanTrips.sacarMisViajes();

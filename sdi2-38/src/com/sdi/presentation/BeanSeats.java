@@ -20,6 +20,7 @@ import com.sdi.model.User;
 @ManagedBean(name = "seatController")
 @SessionScoped
 public class BeanSeats {
+
 	private FacesContext context = FacesContext.getCurrentInstance();
 
 	private Trip trip;
@@ -61,6 +62,7 @@ public class BeanSeats {
 	}
 
 	public String obtenerParticipantes(Long idTrip) {
+		
 		SeatsService service;
 		try {
 			service = Factories.services.createSeatsService();
@@ -77,6 +79,7 @@ public class BeanSeats {
 	}
 
 	private void participantes(List<Seat> seats, Long idPromoter) {
+		
 		List<User> part = new ArrayList<User>();
 		for (Seat seat : seats) {
 			part.add(Factories.services.createUserService().findById(

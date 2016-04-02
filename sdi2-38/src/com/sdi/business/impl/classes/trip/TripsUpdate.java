@@ -10,8 +10,7 @@ public class TripsUpdate {
 		TripDao dao = Factories.persistence.createTripDao();
 		try {
 			dao.update(trip);
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			throw new Exception("Viaje no actalizado " + trip, ex);
 		}
 	}

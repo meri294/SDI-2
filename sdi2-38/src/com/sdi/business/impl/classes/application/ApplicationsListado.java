@@ -7,8 +7,8 @@ import com.sdi.model.Application;
 import com.sdi.persistence.ApplicationDao;
 
 public class ApplicationsListado {
-	
-	public List<Application> getApplications() throws Exception {	
+
+	public List<Application> getApplications() throws Exception {
 		ApplicationDao dao = Factories.persistence.createApplicationDao();
 		return dao.findAll();
 	}

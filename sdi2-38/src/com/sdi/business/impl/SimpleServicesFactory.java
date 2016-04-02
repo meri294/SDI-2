@@ -25,7 +25,7 @@ public class SimpleServicesFactory implements ServicesFactory {
 	}
 
 	@Override
-	public SeatsService createSeatsService(){
+	public SeatsService createSeatsService() {
 		return new SimpleSeatsService();
 	}
 
@@ -33,6 +33,5 @@ public class SimpleServicesFactory implements ServicesFactory {
 	public UserService createUserService() {
 		return new SimpleUserService();
 	}
-	
-	
+
 }

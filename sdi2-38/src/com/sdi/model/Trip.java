@@ -26,7 +26,7 @@ public class Trip {
 	private TripStatus status;
 
 	private Long promoterId;
-	
+
 	private boolean selected = false;
 
 	public AddressPoint getDeparture() {
@@ -126,11 +126,11 @@ public class Trip {
 	}
 
 	public boolean isSelected() {
-	    return selected;
+		return selected;
 	}
 
 	public void setSelected(boolean selected) {
-	    this.selected = selected;
+		this.selected = selected;
 	}
 
 	@Override

@@ -20,16 +20,17 @@ public class TripJdbcDAO implements TripDao {
 
 		@Override
 		public Trip toObject(ResultSet rs) throws SQLException {
+			
 			Trip res = new Trip();
 
 			Double lat = rs.getDouble("departure_wpt_lat");
-			if(rs.wasNull())
-			    lat = null;
-			
+			if (rs.wasNull())
+				lat = null;
+
 			Double lon = rs.getDouble("departure_wpt_lon");
-			if(rs.wasNull())
-			    lon = null;
-			
+			if (rs.wasNull())
+				lon = null;
+
 			Waypoint wpt = new Waypoint(lat, lon);
 			AddressPoint ap = new AddressPoint(
 					rs.getString("departure_address"),
@@ -40,13 +41,13 @@ public class TripJdbcDAO implements TripDao {
 			res.setDeparture(ap);
 
 			lat = rs.getDouble("destination_wpt_lat");
-			if(rs.wasNull())
-			    lat = null;
-			
+			if (rs.wasNull())
+				lat = null;
+
 			lon = rs.getDouble("destination_wpt_lon");
-			if(rs.wasNull())
-			    lon = null;
-			
+			if (rs.wasNull())
+				lon = null;
+
 			wpt = new Waypoint(lat, lon);
 			ap = new AddressPoint(rs.getString("destination_address"),
 					rs.getString("destination_city"),
@@ -80,6 +81,7 @@ public class TripJdbcDAO implements TripDao {
 
 	@Override
 	public Long save(Trip dto) {
+		
 		jdbcTemplate.execute("TRIP_INSERT", dto.getDeparture().getAddress(),
 				dto.getDeparture().getCity(), dto.getDeparture().getState(),
 				dto.getDeparture().getCountry(), dto.getDeparture()
@@ -102,6 +104,7 @@ public class TripJdbcDAO implements TripDao {
 
 	@Override
 	public int update(Trip dto) {
+		
 		return jdbcTemplate.execute("TRIP_UPDATE", dto.getDeparture()
 				.getAddress(), dto.getDeparture().getCity(), dto.getDeparture()
 				.getState(), dto.getDeparture().getCountry(), dto
