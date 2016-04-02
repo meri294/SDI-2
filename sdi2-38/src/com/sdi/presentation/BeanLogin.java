@@ -82,8 +82,8 @@ public class BeanLogin implements Serializable {
 			return Resultado.exito.name();
 		} catch (Exception e) {
 			if (e instanceof ValidatorException)
-				facesContext.addMessage(null,
-						((ValidatorException) e).getFacesMessage());			
+				facesContext.addMessage(null, new FacesMessage(e.getMessage()));
+									
 
 			else
 				e.printStackTrace();
