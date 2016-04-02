@@ -1,7 +1,8 @@
 # SDI-2
 
 TO-DO:
-  · Buscar la excepcion que salta al no estar abierta la BBDD para crear mensaje
+  · Revisar los TO-DOs
+  · Revisar la trata de excepciones y creacion de mensajes en caso de error
   
   
 Contraseñas de los usuarios:

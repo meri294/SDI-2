@@ -15,17 +15,20 @@
 				</center>
 				<hr />
 				<br />
-				<h:panelGrid columns="2" styleClass="formTable">
+				
+				<center>
+				<p:messages closable="true"/>
+				<p:panelGrid columns="2">
 						#{msgs.campo_nombreUsuario}
 						<p:inputText id="user" value="#{login.login}" size="15" />
 						
 						#{msgs.campo_suContraseña}
 						<p:password id="pass" value="#{login.pass}" size="15" />
 						
-						<h:commandButton id="log" value="#{msgs.enlace_enviar}" action="#{login.validar}" />
-				</h:panelGrid>
+				</p:panelGrid>
+				<p:commandButton id="log" value="#{msgs.enlace_enviar}" action="#{login.validar}" update="@form"/>
 				
-				<h:messages style="color:red;margin:8px;"/>
+				</center>
 			</h:form>
 			<hr />
 			<br />

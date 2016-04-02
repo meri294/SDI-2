@@ -28,7 +28,6 @@ public class LoginValidator implements Validator{
 			new FacesMessage(bundle.getString("error_loginExistente"));
 		
 		throw new ValidatorException(msg);
-
 	}
 	
     }

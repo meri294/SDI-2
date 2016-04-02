@@ -53,19 +53,18 @@ public class BeanSeats {
 	}
 
 	public Trip getTrip() {
-	    return trip;
+		return trip;
 	}
 
 	public void setTrip(Trip trip) {
-	    this.trip = trip;
+		this.trip = trip;
 	}
 
 	public String obtenerParticipantes(Long idTrip) {
 		SeatsService service;
 		try {
 			service = Factories.services.createSeatsService();
-			trip = Factories.services.createTripService()
-				.findById(idTrip);
+			trip = Factories.services.createTripService().findById(idTrip);
 			List<Seat> seats = service.getParticipantes(idTrip);
 			participantes(seats, trip.getPromoterId());
 			promoter = Factories.services.createUserService().findById(
@@ -78,38 +77,39 @@ public class BeanSeats {
 	}
 
 	private void participantes(List<Seat> seats, Long idPromoter) {
-		List<User> part= new ArrayList<User>();
+		List<User> part = new ArrayList<User>();
 		for (Seat seat : seats) {
 			part.add(Factories.services.createUserService().findById(
 					seat.getUserId()));
 		}
-		participantes=(User[]) part.toArray(new User[0]);
+		participantes = (User[]) part.toArray(new User[0]);
 	}
 
 	public String excluir(User usuario) {
-	    
-	    if(usuario.getId().equals(trip.getId())) {
-		
-		FacesContext facesContext = FacesContext.getCurrentInstance();
-		ResourceBundle bundle = facesContext.getApplication()
-			.getResourceBundle(facesContext, "msgs");
-		FacesContext.getCurrentInstance().addMessage(
-			    null,
-			    new FacesMessage(bundle
-				    .getString("mensaje_excluirPromotor")));
-		
-		return Resultado.fracaso.name();
-	    }
-	    
-	    SeatsService sService = Factories.services.createSeatsService();
-	    
-	    try {
-		sService.excluirPlaza(sService.findByUserAndTrip(usuario.getId(), trip.getId()));
 
-		return obtenerParticipantes(trip.getId());
-	    } catch (Exception e) {
-		context.addMessage(null, new FacesMessage(e.getMessage()));
-		return Resultado.error.name();
-	    }
+		if (usuario.getId().equals(trip.getId())) {
+
+			FacesContext facesContext = FacesContext.getCurrentInstance();
+			ResourceBundle bundle = facesContext.getApplication()
+					.getResourceBundle(facesContext, "msgs");
+			FacesContext.getCurrentInstance().addMessage(
+					null,
+					new FacesMessage(bundle
+							.getString("mensaje_excluirPromotor")));
+
+			return Resultado.fracaso.name();
+		}
+
+		SeatsService sService = Factories.services.createSeatsService();
+
+		try {
+			sService.excluirPlaza(sService.findByUserAndTrip(usuario.getId(),
+					trip.getId()));
+
+			return obtenerParticipantes(trip.getId());
+		} catch (Exception e) {
+			context.addMessage(null, new FacesMessage(e.getMessage()));
+			return Resultado.error.name();
+		}
 	}
 }
