@@ -37,7 +37,8 @@
 						<f:facet name="header">#{msgs.enlace_solicitar}</f:facet>
 						<p:commandLink id="solicitarlink"
 							action="#{applicationsController.salva(valtrip.id)}"
-							type="submit" value="#{msgs.enlace_solicitar}" update="@form" />
+							type="submit" value="#{msgs.enlace_solicitar}" update="@form" 
+							rendered="#{valtrip.promoterId!=sesion.usuario.id}"/>
 					</p:column>
 					<p:column rendered="#{sesion.usuario!=null}">
 						<f:facet name="header">#{msgs.enlace_detalles}</f:facet>
