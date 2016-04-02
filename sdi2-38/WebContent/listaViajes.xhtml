@@ -16,7 +16,11 @@
 			<p:panel>
 				<p:dataTable id="tablaViajes" var="valtrip"
 					value="#{tripsController.tripsDisponibles}" border="10"
-					emptyMessage="#{msgs.mensaje_sinViajesDisponibles}">
+					emptyMessage="#{msgs.mensaje_sinViajesDisponibles}"
+					rows="10"
+                         paginator="true"
+                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                         rowsPerPageTemplate="5,10,15">
 					<p:column id="idViaje" sortBy="#{valtrip.id}">
 						<f:facet name="header">#{msgs.campo_idViaje}</f:facet>
 						#{valtrip.id}

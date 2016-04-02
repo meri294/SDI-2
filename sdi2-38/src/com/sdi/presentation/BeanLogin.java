@@ -61,7 +61,7 @@ public class BeanLogin implements Serializable {
 				.getResourceBundle(facesContext, "msgs");
 
 		if (usuario != null) {
-			Log.debug("Se ha intentado iniciar sesión como [%s] "
+			Log.error("Se ha intentado iniciar sesión como [%s] "
 					+ "teniendo la sesión iniciada como [%s]", login,
 					usuario.getName());
 			sesion.cerrar();
@@ -83,17 +83,18 @@ public class BeanLogin implements Serializable {
 		} catch (Exception e) {
 			if (e instanceof ValidatorException)
 				facesContext.addMessage(null,
-						((ValidatorException) e).getFacesMessage());
+						((ValidatorException) e).getFacesMessage());			
 
 			else
 				e.printStackTrace();
+			Log.error("Error al iniciar la sesión del usuario [%s]", login);
 		}
 		return Resultado.fracaso.name();
 	}
 
 	@PostConstruct
 	public void init() {
-		
+
 		sesion = (BeanSesion) FacesContext.getCurrentInstance()
 				.getExternalContext().getSessionMap().get("sesion");
 

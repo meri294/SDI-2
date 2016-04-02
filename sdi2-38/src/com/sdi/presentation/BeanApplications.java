@@ -77,10 +77,14 @@ public class BeanApplications {
 			applications = (Application[]) service.getApplications().toArray(
 					new Application[0]);
 
+			Log.debug("Se ha obtenido la lista de solicitudes");
 			return "exito";
 
 		} catch (Exception e) {
 			context.addMessage(null, new FacesMessage(e.getMessage()));
+			e.printStackTrace();
+			Log.error ("Ha habido un error procesando el listado de "
+					+ "solicitudes");
 			return "error";
 		}
 
@@ -99,6 +103,7 @@ public class BeanApplications {
 
 		} catch (Exception e) {
 			context.addMessage(null, new FacesMessage(e.getMessage()));
+			e.printStackTrace();
 			return "error";
 		}
 
@@ -129,6 +134,8 @@ public class BeanApplications {
 
 		} catch (Exception e) {
 			context.addMessage(null, new FacesMessage(e.getMessage()));
+			e.printStackTrace();
+			Log.error("No se ha podido guardar la solicitud");
 			return "error";
 		}
 
@@ -152,7 +159,7 @@ public class BeanApplications {
 						null,
 						new FacesMessage(bundle
 								.getString("mensaje_solicitanteNoAceptado")));
-
+				Log.error("No hay plazas disponibles");
 				return Resultado.fracaso.name();
 			}
 
@@ -166,6 +173,7 @@ public class BeanApplications {
 
 		} catch (Exception e) {
 			context.addMessage(null, new FacesMessage(e.getMessage()));
+			e.printStackTrace();
 			return Resultado.error.name();
 		}
 
