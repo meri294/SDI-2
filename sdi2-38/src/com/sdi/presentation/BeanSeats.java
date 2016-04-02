@@ -11,6 +11,8 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
+import alb.util.log.Log;
+
 import com.sdi.business.SeatsService;
 import com.sdi.infrastructure.Factories;
 import com.sdi.model.Seat;
@@ -73,8 +75,10 @@ public class BeanSeats {
 					trip.getPromoterId());
 		} catch (Exception e) {
 			context.addMessage(null, new FacesMessage(e.getMessage()));
+			e.printStackTrace();
 			return "error";
 		}
+		Log.debug("Se han obtenido los participantes del viaje [%s]", idTrip);
 		return "exito";
 	}
 
@@ -108,10 +112,13 @@ public class BeanSeats {
 		try {
 			sService.excluirPlaza(sService.findByUserAndTrip(usuario.getId(),
 					trip.getId()));
-
+			Log.debug("Se ha excluído al usuario [%s] del viaje [%s]",
+					usuario.getId(), trip.getId());
 			return obtenerParticipantes(trip.getId());
 		} catch (Exception e) {
 			context.addMessage(null, new FacesMessage(e.getMessage()));
+			Log.error("Se ha producido un error excluyendo al usuario [%s]",
+					usuario.getId());
 			return Resultado.error.name();
 		}
 	}

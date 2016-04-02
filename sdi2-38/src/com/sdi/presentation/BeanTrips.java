@@ -514,7 +514,10 @@ public class BeanTrips implements Serializable {
 					null,
 					new FacesMessage(bundle
 							.getString("mensaje_cancelarPromotor")));
-
+			Log.error ("No se ha podido realizar la cancelación de solicitud"
+					+ "de plaza del usuario [%d] para el viaje [%d]"
+					+ ", es el promotor",
+					sesion.getUsuario().getId(), trip.getId());
 			return Resultado.fracaso.name();
 		}
 
@@ -525,7 +528,9 @@ public class BeanTrips implements Serializable {
 					null,
 					new FacesMessage(bundle
 							.getString("mensaje_pasadoPlazoCancelacion")));
-
+			Log.error ("No se ha podido realizar la cancelación de solicitud"
+					+ "de plaza del usuario [%d] para el viaje [%d]",
+					sesion.getUsuario().getId(), trip.getId());
 			return Resultado.fracaso.name();
 		}
 
@@ -550,9 +555,12 @@ public class BeanTrips implements Serializable {
 					sesion.getUsuario().getId(), trip.getId());
 
 		} catch (Exception e) {
-			// TODO ¿Crear mensaje?
+			FacesContext.getCurrentInstance().
+			addMessage(null, new FacesMessage(e.getMessage()));
 			e.printStackTrace();
-
+			Log.error ("No se ha podido realizar la cancelación de solicitud"
+					+ "de plaza del usuario [%d] para el viaje [%d]",
+					sesion.getUsuario().getId(), trip.getId());
 			return Resultado.error.name();
 		}
 
@@ -603,7 +611,7 @@ public class BeanTrips implements Serializable {
 					new FacesMessage(bundle
 							.getString("mensaje_pasadoPlazoCancelacion")
 							+ idsNoCancelables));
-
+			Log.error ("Ya ha terminado el plazo para realizar cancelaciones");
 			return Resultado.fracaso.name();
 
 		}
@@ -620,10 +628,8 @@ public class BeanTrips implements Serializable {
 			return sacarMisViajes();
 
 		} catch (Exception e) {
-
-			// TODO ¿Crear mensaje?
 			e.printStackTrace();
-
+			Log.error ("No se ha podido cancelar los viajes solicitados");
 			return Resultado.error.name();
 		}
 	}
