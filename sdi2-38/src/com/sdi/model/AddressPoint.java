@@ -25,9 +25,9 @@ public class AddressPoint {
 		this.zipCode = zipCode;
 		this.waypoint = waypoint;
 	}
-	
+
 	public AddressPoint() {
-	    this("", "", "", "", "", new Waypoint(null, null));
+		this("", "", "", "", "", new Waypoint(null, null));
 	}
 
 	public String getAddress() {
@@ -84,9 +84,9 @@ public class AddressPoint {
 				+ ", state=" + state + ", country=" + country + ", zipCode="
 				+ zipCode + ", waypoint=" + waypoint + "]";
 	}
-	
-	public String toStringPrincipal(){
-		return address + ", "+city+ "-"+country;
+
+	public String toStringPrincipal() {
+		return address + ", " + city + "-" + country;
 	}
 
 	@Override

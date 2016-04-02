@@ -10,8 +10,7 @@ public class ApplicationsUpdate {
 		ApplicationDao dao = Factories.persistence.createApplicationDao();
 		try {
 			dao.update(application);
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			throw new Exception("Solicitud no actualizada " + application, ex);
 		}
 	}

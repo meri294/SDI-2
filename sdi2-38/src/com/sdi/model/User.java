@@ -12,10 +12,10 @@ import javax.xml.crypto.Data;
  * @author alb
  * 
  */
-public class User implements Serializable{
+public class User implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	private Long id;
 	private String login;
 	private String password;
@@ -24,7 +24,7 @@ public class User implements Serializable{
 	private String email;
 
 	private UserStatus status;
-	
+
 	public String getEmail() {
 		return email;
 	}

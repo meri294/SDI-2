@@ -9,8 +9,7 @@ public class ApplicationsBaja {
 		ApplicationDao dao = Factories.persistence.createApplicationDao();
 		try {
 			dao.delete(ids);
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			throw new Exception("Solicitud no eliminada " + ids, ex);
 		}
 	}

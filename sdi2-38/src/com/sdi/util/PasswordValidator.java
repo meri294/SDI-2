@@ -13,27 +13,27 @@ import javax.faces.validator.ValidatorException;
 @FacesValidator("PasswordValidator")
 public class PasswordValidator implements Validator {
 
-    @Override
-    public void validate(FacesContext context, UIComponent component,
-	    Object value) throws ValidatorException {
+	@Override
+	public void validate(FacesContext context, UIComponent component,
+			Object value) throws ValidatorException {
 
-	String password = value.toString();
+		String password = value.toString();
 
-	UIInput uiInputConfirmPassword = (UIInput) component.getAttributes()
-		.get("repitePass");
-	String confirmPassword = uiInputConfirmPassword.getSubmittedValue()
-		.toString();
+		UIInput uiInputConfirmPassword = (UIInput) component.getAttributes()
+				.get("repitePass");
+		String confirmPassword = uiInputConfirmPassword.getSubmittedValue()
+				.toString();
 
-	if (!password.equals(confirmPassword)) {
-	    uiInputConfirmPassword.setValid(false);
-	    
-	    ResourceBundle bundle = context.getApplication()
-			.getResourceBundle(context, "msgs");
-	    
-	    throw new ValidatorException(new FacesMessage(
-		    bundle.getString("error_contraDistinta")));
+		if (!password.equals(confirmPassword)) {
+			uiInputConfirmPassword.setValid(false);
+
+			ResourceBundle bundle = context.getApplication().getResourceBundle(
+					context, "msgs");
+
+			throw new ValidatorException(new FacesMessage(
+					bundle.getString("error_contraDistinta")));
+		}
+
 	}
-
-    }
 
 }

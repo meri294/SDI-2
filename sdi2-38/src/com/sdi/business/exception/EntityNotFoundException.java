@@ -1,8 +1,8 @@
 package com.sdi.business.exception;
 
 /**
- * Thrown if an operation needs to load an entity and does't exist 
- * in the persistence system 
+ * Thrown if an operation needs to load an entity and does't exist in the
+ * persistence system
  */
 public class EntityNotFoundException extends Exception {
 
@@ -20,6 +20,6 @@ public class EntityNotFoundException extends Exception {
 	public EntityNotFoundException(String message, Throwable cause) {
 		super(message, cause);
 	}
-	
+
 	private static final long serialVersionUID = -4201153961047491939L;
 }

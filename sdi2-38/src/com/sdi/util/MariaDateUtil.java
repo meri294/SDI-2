@@ -9,6 +9,7 @@ import java.util.Random;
 public class MariaDateUtil {
 
 	public static Date completeFromString(String date, String hour) {
+
 		String dateString[] = date.split("/");
 		String hourString[] = hour.split(":");
 		return MariaDateUtil.fromDdMmYyyyH(Integer.parseInt(dateString[0]),
@@ -17,30 +18,21 @@ public class MariaDateUtil {
 				Integer.parseInt(hourString[0]),
 				Integer.parseInt(hourString[1]));
 	}
-	
+
 	public static String dateToString(Date date) {
+
 		DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
 		return formatter.format(date);
 	}
-	
+
 	public static String hourToString(Date date) {
+
 		DateFormat formatter = new SimpleDateFormat("HH:mm");
 		return formatter.format(date);
 	}
-	
-	/*
-	public static Date completeFromBundle(String date){
-		String dateString[]=date.split(" ")[0].split("/");
-		String hourString[]=date.split(" ")[1].split(":");
-		return MariaDateUtil.fromDdMmYyyyH(Integer.parseInt(dateString[0]),
-				Integer.parseInt(dateString[1]),
-				Integer.parseInt(dateString[2]),
-				Integer.parseInt(hourString[0]),
-				Integer.parseInt(hourString[1]));
-	}
-	*/
 
 	public static Date fromDdMmYyyyH(int dd, int mm, int yyyy, int h, int m) {
+
 		Calendar c = Calendar.getInstance();
 
 		c.set(Calendar.DAY_OF_MONTH, dd);
@@ -59,6 +51,7 @@ public class MariaDateUtil {
 	 * @return Yestarday at 00:00:00.000
 	 */
 	public static Date yesterday() {
+
 		return addDays(trunc(new Date()), -1);
 	}
 
@@ -66,6 +59,7 @@ public class MariaDateUtil {
 	 * @return Tomorrow at 00:00:00.000
 	 */
 	public static Date tomorrow() {
+
 		return addDays(trunc(new Date()), 1);
 	}
 
@@ -73,6 +67,7 @@ public class MariaDateUtil {
 	 * @return Today at 00:00:00.000
 	 */
 	public static Date today() {
+
 		return trunc(new Date());
 	}
 
@@ -80,43 +75,53 @@ public class MariaDateUtil {
 	 * @return Today at hh:mm:ss.mmm, for example 12/12/2012 12:10:23.021
 	 */
 	public static Date now() {
+
 		return new Date();
 	}
 
 	public static Date rndDateFrom(Date baseDate, int dias) {
+
 		return addDays(baseDate, rnd(0, dias));
 	}
 
 	public static Date rndDateBefore(Date baseDate, int dias) {
+
 		return subDays(baseDate, rnd(1, dias));
 	}
 
 	public static String toString(Date date) {
+
 		DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
 		return formatter.format(date);
 	}
 
 	public static boolean isDateInWindow(Date date, Date from, Date until) {
+
 		return date.compareTo(from) >= 0 && date.compareTo(until) <= 0;
 	}
 
 	public static boolean isNotAfter(Date date, Date reference) {
+
 		return date.compareTo(reference) <= 0;
 	}
 
 	public static boolean isNotBefore(Date date, Date reference) {
+
 		return date.compareTo(reference) >= 0;
 	}
 
 	public static boolean isAfter(Date date, Date reference) {
+
 		return date.compareTo(reference) > 0;
 	}
 
 	public static boolean isBefore(Date date, Date reference) {
+
 		return date.compareTo(reference) < 0;
 	}
 
 	public static boolean sameMonth(Date date, Date date2) {
+
 		Calendar c1 = Calendar.getInstance();
 		Calendar c2 = Calendar.getInstance();
 
@@ -127,6 +132,7 @@ public class MariaDateUtil {
 	}
 
 	public static Date addDays(Date date, int days) {
+
 		Calendar c = Calendar.getInstance();
 		c.setTime(date);
 		c.add(Calendar.DAY_OF_MONTH, days);
@@ -134,6 +140,7 @@ public class MariaDateUtil {
 	}
 
 	public static Date subDays(Date date, int days) {
+
 		return addDays(date, -days);
 	}
 
@@ -146,6 +153,7 @@ public class MariaDateUtil {
 	 * @return
 	 */
 	public static Date trunc(Date date) {
+
 		Calendar c = Calendar.getInstance();
 		c.setTime(date);
 		c.set(Calendar.HOUR_OF_DAY, 0);
@@ -156,16 +164,19 @@ public class MariaDateUtil {
 	}
 
 	public static boolean isFirstDayOfMonth(Date date) {
+
 		Calendar c = Calendar.getInstance();
 		c.setTime(date);
 		return c.get(Calendar.DAY_OF_MONTH) == 1;
 	}
 
 	public static String stringStamp() {
+
 		return new SimpleDateFormat("yyyy.MM.dd.hh.mm.ss").format(new Date());
 	}
 
 	public static Integer month(Date date) {
+
 		Calendar c = Calendar.getInstance();
 		c.setTime(date);
 		return c.get(Calendar.MONTH) + 1;
@@ -174,6 +185,7 @@ public class MariaDateUtil {
 	private static Random rnd = new Random();
 
 	private static int rnd(int min, int max) {
+
 		return rnd.nextInt(max - min) + min;
 	}
 }

@@ -23,17 +23,18 @@ public class SimpleLoginService implements LoginService {
 		User usuario = Factories.persistence.createUserDao().findByLogin(login);
 		if (usuario != null) {
 			if (usuario.getPassword().equals(pass)) {
-				if (usuario.getStatus().equals(UserStatus.ACTIVE)) { 
+				if (usuario.getStatus().equals(UserStatus.ACTIVE)) {
 					return usuario;
 				} else { // Si la cuenta no esta activada...
 					Log.error(
-							"El usuario [%s] ha intentado iniciar sesión estando su cuenta desactivada",
+							"El usuario [%s] ha intentado iniciar "
+							+ "sesión estando su cuenta desactivada",
 							login);
 					FacesMessage message = new FacesMessage(
 							FacesMessage.SEVERITY_ERROR,
 							bundle.getString("error_cancelledAccount"),
 							bundle.getString("error_cancelledAccount"));
-					throw new ValidatorException(message);			
+					throw new ValidatorException(message);
 				}
 
 			}
@@ -56,7 +57,7 @@ public class SimpleLoginService implements LoginService {
 					bundle.getString("error_noSuchUser"),
 					bundle.getString("error_noSuchUser"));
 			throw new ValidatorException(message);
-			
+
 		}
 	}
 

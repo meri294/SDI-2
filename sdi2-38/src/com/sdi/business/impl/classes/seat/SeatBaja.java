@@ -6,11 +6,11 @@ import com.sdi.persistence.SeatDao;
 
 public class SeatBaja {
 
-    public void delete(Seat seat) {
-	SeatDao dao = Factories.persistence.createSeatDao();
-	
-	Long[] ids = {seat.getUserId(), seat.getTripId()};
-	dao.delete(ids);
-    }
+	public void delete(Seat seat) {
+		SeatDao dao = Factories.persistence.createSeatDao();
+
+		Long[] ids = { seat.getUserId(), seat.getTripId() };
+		dao.delete(ids);
+	}
 
 }

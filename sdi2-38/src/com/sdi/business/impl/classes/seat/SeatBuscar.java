@@ -6,9 +6,9 @@ import com.sdi.persistence.SeatDao;
 
 public class SeatBuscar {
 
-    public Seat findByUserAndTrip(Long userId, Long tripId) {
-	SeatDao dao = Factories.persistence.createSeatDao();
-	return dao.findByUserAndTrip(userId, tripId);
-    }
+	public Seat findByUserAndTrip(Long userId, Long tripId) {
+		SeatDao dao = Factories.persistence.createSeatDao();
+		return dao.findByUserAndTrip(userId, tripId);
+	}
 
 }

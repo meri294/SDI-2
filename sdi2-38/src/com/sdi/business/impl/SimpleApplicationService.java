@@ -13,7 +13,7 @@ import com.sdi.model.Application;
 public class SimpleApplicationService implements ApplicationService {
 
 	@Override
-	public List<Application> getApplications() throws Exception{
+	public List<Application> getApplications() throws Exception {
 		return new ApplicationsListado().getApplications();
 	}
 
@@ -29,7 +29,7 @@ public class SimpleApplicationService implements ApplicationService {
 
 	@Override
 	public void deleteApplication(Long[] ids) throws Exception {
-		new ApplicationsBaja().delete(ids);		
+		new ApplicationsBaja().delete(ids);
 	}
 
 	@Override
@@ -49,14 +49,14 @@ public class SimpleApplicationService implements ApplicationService {
 
 	@Override
 	public List<Application> getApplicationsWithoutSeatFor(Long tripId) {
-	    return new ApplicationsListado().getApplicationsWithoutSeatFor(tripId);
+		return new ApplicationsListado().getApplicationsWithoutSeatFor(tripId);
 	}
 
 	@Override
 	public void deleteApplication(Long userId, Long tripId) throws Exception {
-	    Long[] ids = {userId, tripId};
-	    deleteApplication(ids);
-	    
+		Long[] ids = { userId, tripId };
+		deleteApplication(ids);
+
 	}
 
 }

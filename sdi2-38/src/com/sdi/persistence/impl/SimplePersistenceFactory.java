@@ -8,7 +8,7 @@ import com.sdi.persistence.Transaction;
 import com.sdi.persistence.TripDao;
 import com.sdi.persistence.UserDao;
 
-public class SimplePersistenceFactory implements PersistenceFactory{
+public class SimplePersistenceFactory implements PersistenceFactory {
 
 	public Transaction createTransaction() {
 		return new TransactionJdbcImpl();

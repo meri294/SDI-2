@@ -14,7 +14,7 @@ public class BeanSesion implements Serializable {
 	private User usuario;
 
 	private static final long serialVersionUID = 1L;
-	
+
 	public BeanSesion() {
 		init();
 	}

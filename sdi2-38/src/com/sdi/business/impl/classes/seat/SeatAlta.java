@@ -6,10 +6,10 @@ import com.sdi.persistence.SeatDao;
 
 public class SeatAlta {
 
-    public void save(Seat seat) {
-	SeatDao dao = Factories.persistence.createSeatDao();
-	dao.save(seat);
-	
-    }
+	public void save(Seat seat) {
+		SeatDao dao = Factories.persistence.createSeatDao();
+		dao.save(seat);
+
+	}
 
 }
