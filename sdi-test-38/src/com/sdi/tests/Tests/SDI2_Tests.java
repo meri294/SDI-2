@@ -482,7 +482,8 @@ public class SDI2_Tests {
 		SeleniumUtils.EsperaCargaPagina(driver, "id", "info", 10);
 		driver.findElement(By
 				.xpath(".//li[contains(text(),'Maria')]/a[contains(text(),"
-						+ "'Excluir')]"));
+						+ "'Excluir')]")).click();
+		SeleniumUtils.EsperaCargaPaginaNoTexto(driver, "Maria Gonzalez", 10);
 	}
 
 	// 17. [i18N1] Cambio del idioma por defecto a un segundo idioma.
