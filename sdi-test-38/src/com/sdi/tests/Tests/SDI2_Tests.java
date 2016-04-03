@@ -267,7 +267,6 @@ public class SDI2_Tests {
 
 	// 13. [Ins2ViajeAceptVal] Inscribir en un viaje dos usuarios y ser
 	// admitidos los dos por el promotor.
-	//TODO
 	@Test
 	public void t13_Ins2ViajeAceptVal() {
 		SeleniumUtils.EsperaCargaPagina(driver, "id", "form-pie", 10);
