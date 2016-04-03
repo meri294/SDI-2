@@ -41,7 +41,7 @@ public class SDI2_Tests {
 
 	// PRUEBAS
 
-	// 1. [RegVal] Registro de Usuario con datos válidos. - PASA
+	// 1. [RegVal] Registro de Usuario con datos válidos.
 	@Test
 	public void t01_RegVal() {
 		SeleniumUtils.EsperaCargaPagina(driver, "id", "form-pie", 10);
@@ -55,7 +55,7 @@ public class SDI2_Tests {
 	}
 
 	// 2. [RegInval] Registro de Usuario con datos inválidos (contraseñas //
-	// diferentes). - PASA
+	// diferentes).
 	@Test
 	public void t02_RegInval() {
 		SeleniumUtils.EsperaCargaPagina(driver, "id", "form-pie", 10);
@@ -70,7 +70,7 @@ public class SDI2_Tests {
 
 	}
 
-	// 3. [IdVal] Identificación de Usuario registrado con datos válidos. - PASA
+	// 3. [IdVal] Identificación de Usuario registrado con datos válidos.
 	@Test
 	public void t03_IdVal() {
 		SeleniumUtils.EsperaCargaPagina(driver, "id", "form-pie", 10);
@@ -80,7 +80,6 @@ public class SDI2_Tests {
 	}
 
 	// 4. [IdInval] Identificación de usuario registrado con datos inválidos.
-	// -PASA
 	@Test
 	public void t04_IdInval() {
 		SeleniumUtils.EsperaCargaPagina(driver, "id", "form-pie", 10);
@@ -125,7 +124,6 @@ public class SDI2_Tests {
 	}
 
 	// 7. [RegViajeInVal] Registro de un viaje nuevo con datos inválidos.
-	// NO ENCUENTRA VIAJE:DEPARTUREADDRESS
 	@Test
 	public void t07_RegViajeInVal() {
 		t03_IdVal();
@@ -142,7 +140,7 @@ public class SDI2_Tests {
 		SeleniumUtils.textoPresentePagina(driver, "Registre un nuevo viaje");
 	}
 
-	// 8. [EditViajeVal] Edición de viaje existente con datos válidos. - PASA
+	// 8. [EditViajeVal] Edición de viaje existente con datos válidos.
 	@Test
 	public void t08_EditViajeVal() {
 		// Editamos el viaje de Rue de Percebe cambiando
@@ -164,7 +162,7 @@ public class SDI2_Tests {
 				"Sat Oct 15 12:50:00 CEST 2016");
 	}
 
-	// 9. [EditViajeInVal] Edición de viaje existente con datos inválidos. -PASA
+	// 9. [EditViajeInVal] Edición de viaje existente con datos inválidos.
 	@Test
 	public void t09_EditViajeInVal() {
 		// Volvemos a escoger el viaje de Rue del Percebe
@@ -187,7 +185,7 @@ public class SDI2_Tests {
 	}
 
 	// 10. [CancelViajeVal] Cancelación de un viaje existente por un
-	// promotor. PASA
+	// promotor.
 	@Test
 	public void t10_CancelViajeVal() {
 		login("usuario2", "usuario2");
@@ -229,7 +227,7 @@ public class SDI2_Tests {
 	}
 
 	// 12. [Ins1ViajeAceptVal] Inscribir en un viaje un solo usuario y ser
-	// admitido por el promotor. //PASA
+	// admitido por el promotor.
 	@Test
 	public void t12_Ins1ViajeAceptVal() {
 		// Como testSDI solicitamos el viaje 338 (hay margen de sobra de
