@@ -1,0 +1,25 @@
+BeanTrips (tripsController):
+- salva(Long userId): Inserta o persiste los cambios realizados en el viaje almacenado en BeanTrip. Antes de ello comprueba que las fechas y el número de pasajeros máximos son válidos. De no ser así devuelve fracaso.
+- sacarMisViajes(): Guarda en variables los diferentes viajes en los que está involucrado el usuario: viajes en los que es promotor, en los que esta en espera, en los que está aceptado, en los que está excluido y en los que se ha quedado sin plaza.
+- preparaModificacion(Trip trip): Guarda en la variable beanTrip los datos del viaje pasado para proceder a modificarlo.
+- cancelarSolicitud(Trip trip): Cancela la solicitud (y plaza si existe) del usuario en sesión en el viaje pasado. En caso de que el usuario sea promotor o el viaje no esté abierto se devuelve fracaso.
+- cancelarViajes(): Cancela todos los viajes almacenados en la variable viajesACancelar. Si algún viaje no es cancelable se devuelve fracaso.
+
+BeanSesion (sesion):
+- cerrar(): Pasa la variable usuario a null, cerrando la sesión.
+
+BeanSeats (seatController):
+- obtenerParticipantes(Long idTrip): Obtiene todas las plazas aceptadas para el viaje cuyo id se pase, y se guardan en la variable participantes. También se guarda al promotor del viaje en la variable promoter.
+- excluir(User usuario): Excluye al usuario del viaje almacenado en la variable trip. Si el usuario es el promotor del viaje devuelve fracaso.
+
+BeanRegistro (registro):
+- registrar(): Crea y registra un nuevo usuario basándose en las variables almacenadas.
+
+BeanLogin (login):
+- validar(): Valida el login y la contraseña introducidas para comprobar si se trata de un usuario correcto. En caso de que no sea correcto devuelve fracaso o error.
+
+BeanApplications (applicationsController):
+- salva(Long tripId): Crea una solicitud por parte del usuario en sesión para el viaje cuyo id se pase.
+- aceptar(Application application): Crea una plaza aceptada a partir del usuario y viaje de la solicitud. Si no hay plazas disponibles en el viaje, no se crea y se devuelve fracaso.
+- excluir(Application application): Crea una plaza excluida a partir del usuario y viaje de la solicitud.
+- sacarSolicitudes(Long tripId): Recupera las solicitudes sin plaza creada para el viaje cuyo id se pase y se guardan en la variable applications.
