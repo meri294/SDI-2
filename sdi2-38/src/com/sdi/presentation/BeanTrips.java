@@ -351,6 +351,15 @@ public class BeanTrips implements Serializable {
 
 			return Resultado.fracaso.name();
 		}
+		
+		if(pasajerosMaximos < 2) {
+			FacesContext.getCurrentInstance().addMessage(
+					"viaje:maxPas",
+					new FacesMessage(bundle.getString("mensaje_pasajerosMaximosIncorrectos")));
+			Log.error(bundle.getString("mensaje_pasajerosMaximosIncorrectos"));
+
+			return Resultado.fracaso.name();
+		}
 
 		trip.setDepartureDate(fechaSalida);
 		trip.setArrivalDate(fechaLlegada);

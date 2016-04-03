@@ -94,7 +94,7 @@ public class BeanSeats {
 
 	public String excluir(User usuario) {
 
-		if (usuario.getId().equals(trip.getId())) {
+		if (usuario.getId().equals(trip.getPromoterId())) {
 
 			FacesContext facesContext = FacesContext.getCurrentInstance();
 			ResourceBundle bundle = facesContext.getApplication()
