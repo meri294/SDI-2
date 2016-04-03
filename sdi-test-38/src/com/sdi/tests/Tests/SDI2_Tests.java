@@ -21,6 +21,9 @@ import com.sdi.tests.utils.SeleniumUtils;
 //Ordenamos las pruebas por el nombre del método
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class SDI2_Tests {
+	
+	private final static String EXTERNO="http://localhost:8180/sdi2-38/";
+	//private final static String INTERNO="http://localhost:8280/sdi2-38";
 
 	WebDriver driver;
 	List<WebElement> elementos = null;
@@ -31,7 +34,7 @@ public class SDI2_Tests {
 	@Before
 	public void run() {
 		driver = new FirefoxDriver();
-		driver.get("http://localhost:8280/sdi2-38");
+		driver.get(EXTERNO);
 	}
 
 	@After
@@ -446,7 +449,8 @@ public class SDI2_Tests {
 		SeleniumUtils.textoPresentePagina(driver, "Inicie sesión");
 		SeleniumUtils.ClickSubopcionMenuHover(driver, "form-cabecera:idioma",
 				"form-cabecera:linkingles");
-		driver.get("http://localhost:8280/sdi2-38/registro.xhtml");
+		SeleniumUtils.ClickSubopcionMenuHover(driver, "form-cabecera:opciones",
+				"form-cabecera:linkRegistrarse");
 		SeleniumUtils.EsperaCargaPagina(driver, "id", "registro", 10);
 		SeleniumUtils.textoPresentePagina(driver, "Register a new account");
 	}
@@ -458,11 +462,13 @@ public class SDI2_Tests {
 		t17_i18N1();
 		SeleniumUtils.ClickSubopcionMenuHover(driver, "form-cabecera:idioma",
 				"form-cabecera:linkespa");
-		driver.get("http://localhost:8280/sdi2-38/login.xhtml");
+		driver.findElement(By.xpath(
+				".//a[@id='form-pie:inicioGeneral']")).click();
 		SeleniumUtils.EsperaCargaPagina(driver, "id", "login-form", 10);
 		SeleniumUtils.textoPresentePagina(driver,
 				"Formulario de inicio de sesión");
-		driver.get("http://localhost:8280/sdi2-38/registro.xhtml");
+		SeleniumUtils.ClickSubopcionMenuHover(driver, "form-cabecera:opciones",
+				"form-cabecera:linkRegistrarse");
 		SeleniumUtils.EsperaCargaPagina(driver, "id", "registro", 10);
 		SeleniumUtils.textoPresentePagina(driver, "Registre una nueva cuenta");
 	}

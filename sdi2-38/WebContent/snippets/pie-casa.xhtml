@@ -6,9 +6,9 @@
 	
 	<h:form id="form-pie">
 		
-		<p:commandLink value="#{msgs.enlace_casa}" immediate="true"
+		<p:commandLink id ="inicioRegistrado" value="#{msgs.enlace_casa}" immediate="true"
 			action="/principalRegistrado.xhtml" rendered="#{sesion.usuario!=null}"/>
-		<p:commandLink value="#{msgs.enlace_casa}"
+		<p:commandLink id="inicioGeneral" value="#{msgs.enlace_casa}"
 			action="/login.xhtml" rendered="#{sesion.usuario==null}" />
 		<p:separator />
 	</h:form>
