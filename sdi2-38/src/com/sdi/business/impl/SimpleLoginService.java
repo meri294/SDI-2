@@ -41,8 +41,8 @@ public class SimpleLoginService implements LoginService {
 
 			else { // Si no coincide su contraseña...
 				Log.error(
-						"El usuario [%s] ha introducido una contraseña incorrecta",
-						login);
+						"El usuario [%s] ha introducido una contraseña "
+						+ "incorrecta",login);
 				FacesMessage message = new FacesMessage(
 						FacesMessage.SEVERITY_ERROR,
 						bundle.getString("error_invalidPassword"),

@@ -32,7 +32,7 @@ public class TripsBuscar {
 	}
 
 	public Map<String, List<Trip>> findInvolucrado(Long id) {
-		Map<String, List<Trip>> involucrados = new HashMap<String, List<Trip>>();
+		Map<String, List<Trip>> involucrados=new HashMap<String, List<Trip>>();
 		TripDao tripDao = Factories.persistence.createTripDao();
 		viajesPromocionados = tripDao.findByPromoterId(id);
 		obtenerViajesInteresado(id, tripDao);

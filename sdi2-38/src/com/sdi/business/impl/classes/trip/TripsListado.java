@@ -47,12 +47,13 @@ public class TripsListado {
 							// applicaciones pendientes
 
 							Log.debug(
-									"Se ha cerrado el plazo para modificar el viaje [%d]",
-									trip.getId());
+									"Se ha cerrado el plazo para modificar "
+									+ "el viaje [%d]",trip.getId());
 
 							List<Application> apps = Factories.services
 									.createApplicationService()
-									.getApplicationsWithoutSeatFor(trip.getId());
+									.getApplicationsWithoutSeatFor(
+											trip.getId());
 
 							for (Application app : apps)
 								Factories.services.createSeatsService()
@@ -70,7 +71,7 @@ public class TripsListado {
 
 	private TripStatus calcularNuevoEstado(Trip trip) {
 
-		if (MariaDateUtil.isAfter(MariaDateUtil.now(), trip.getClosingDate())) {
+		if (MariaDateUtil.isAfter(MariaDateUtil.now(), trip.getClosingDate())){
 			if (MariaDateUtil.isAfter(MariaDateUtil.now(),
 					trip.getDepartureDate()))
 				return TripStatus.DONE;
