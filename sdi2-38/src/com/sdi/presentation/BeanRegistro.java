@@ -96,8 +96,8 @@ public class BeanRegistro implements Serializable {
 			Factories.persistence.createUserDao().save(u);
 		} catch (Exception e) {
 			Log.error(
-					"Ha ocurrido un error intentando persistir al usuario [%s]: %s",
-					login);
+					"Ha ocurrido un error intentando persistir al usuario "
+					+ "[%s]: %s", login);
 			FacesMessage message = new FacesMessage(
 					FacesMessage.SEVERITY_ERROR,
 					bundle.getString("error_guardar"),

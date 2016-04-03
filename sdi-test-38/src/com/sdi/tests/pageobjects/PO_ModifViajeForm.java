@@ -7,7 +7,8 @@ import org.openqa.selenium.WebElement;
 public class PO_ModifViajeForm {
 
 	public void rellenaFormulario(WebDriver driver,String depDate, String depHour,
-			String arrCity,	String arrDate, String arrHour, String closHour,  String closDate) {
+			String arrCity,	String arrDate, String arrHour, String closHour,  
+			String closDate) {
 
 		// Datos de salida
 		WebElement departureDate = driver.findElement(By

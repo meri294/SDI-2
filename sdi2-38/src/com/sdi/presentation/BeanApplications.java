@@ -14,6 +14,7 @@ import javax.faces.context.FacesContext;
 import alb.util.log.Log;
 
 import com.sdi.business.ApplicationService;
+import com.sdi.business.SeatsService;
 import com.sdi.infrastructure.Factories;
 import com.sdi.model.Application;
 import com.sdi.model.Trip;
@@ -119,7 +120,6 @@ public class BeanApplications {
 			Application application = new Application();
 			application.setTripId(tripId);
 			application.setUserId(sesion.getUsuario().getId());
-
 			service.saveApplication(application);
 
 			Log.debug("Creada solicitud del usuario [%d] para el viaje [%d]",
@@ -166,9 +166,13 @@ public class BeanApplications {
 			// Crear/aceptar seat a partir de la application
 			Factories.services.createSeatsService().aceptarPlaza(
 					application.getUserId(), application.getTripId());
-
+			if (Factories.services.createTripService().
+					findById(application.getTripId())
+					.getAvailablePax()==0){
+				pasarAsinPlaza(application.getTripId());
+			}
 			// Vuelvo a sacar el listado de solicitudes
-
+			
 			return sacarSolicitudes(application.getTripId());
 
 		} catch (Exception e) {
@@ -177,6 +181,17 @@ public class BeanApplications {
 			return Resultado.error.name();
 		}
 
+	}
+
+	private void pasarAsinPlaza(Long tripId) {
+		List<Application> listApp=Factories.services
+				.createApplicationService().getApplicationsWithoutSeatFor(
+						tripId);
+		SeatsService service = Factories.services.createSeatsService();
+		for (Application app: listApp){
+			service.crearSinPlaza(app.getUserId(), app.getTripId());
+		}
+		
 	}
 
 	public String excluir(Application application) {

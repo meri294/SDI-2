@@ -57,7 +57,7 @@ public class SimpleSeatsService implements SeatsService {
 		// en el viaje
 		Factories.services.createTripService().disminuirPlazasDisponibles(
 				tripId);
-
+		
 		Log.debug("El usuario [%d] ha sido aceptado para el viaje [%d]",
 				userId, tripId);
 
@@ -172,6 +172,11 @@ public class SimpleSeatsService implements SeatsService {
 			Factories.services.createTripService().aumentarPlazasDisponibles(
 					seat.getTripId());
 
+	}
+
+	@Override
+	public List<Seat> obtenerSinPLaza(Long id) {
+		return new SeatListado().listarSinPlaza(id);
 	}
 
 }

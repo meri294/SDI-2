@@ -16,4 +16,6 @@ public interface SeatDao extends GenericDAO<Seat, Long[]> {
 	int deleteSinPlaza(Long id);
 
 	List<Seat> findAcceptedByUserId(Long userId);
+
+	List<Seat> findSinPlaza(Long id);
 }

@@ -411,10 +411,9 @@ public class BeanTrips implements Serializable {
 					// plazas confirmadas
 					FacesContext
 							.getCurrentInstance()
-							.addMessage(
-									"viaje:maxPas",
-									new FacesMessage(
-											bundle.getString("mensaje_plazasMaximasInsuficientes")));
+							.addMessage("viaje:maxPas",
+									new FacesMessage(bundle.getString(
+										"mensaje_plazasMaximasInsuficientes")));
 
 					return Resultado.fracaso.name();
 				}
@@ -549,9 +548,10 @@ public class BeanTrips implements Serializable {
 
 			if (seat != null)
 				sService.delete(seat);
-
+	
 			Log.debug(
-					"Se ha cancelado la solicitud del usuario [%d] para el viaje [%d]",
+					"Se ha cancelado la solicitud del usuario [%d] para "
+					+ "el viaje [%d]",
 					sesion.getUsuario().getId(), trip.getId());
 
 		} catch (Exception e) {

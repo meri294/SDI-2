@@ -83,13 +83,18 @@ public class SimpleTripService implements TripService {
 
 	@Override
 	public void aumentarPlazasDisponibles(Trip trip) throws Exception {
+		SeatsService service = Factories.services.createSeatsService();
 		int nuevasPlazasDisponibles = trip.getAvailablePax() + 1;
 
 		if (nuevasPlazasDisponibles > trip.getMaxPax())
 			throw new Exception(
-					"Ya están todas las plazas libres, no puede haber más plazas libres que plazas máximas");
+					"Ya están todas las plazas libres, no puede haber más "
+					+ "plazas libres que plazas máximas");
 
 		trip.setAvailablePax(nuevasPlazasDisponibles);
+		List<Seat> sinPlaza=service.obtenerSinPLaza(trip.getId());
+		for (Seat seat: sinPlaza)
+			service.delete(seat);
 
 		updateTrip(trip);
 

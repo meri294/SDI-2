@@ -13,4 +13,9 @@ public class SeatListado {
 		return dao.findByTrip(idTrip);
 	}
 
+	public List<Seat> listarSinPlaza(Long id) {
+		SeatDao dao = Factories.persistence.createSeatDao();
+		return dao.findSinPlaza(id);
+	}
+
 }

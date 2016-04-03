@@ -21,8 +21,7 @@ public class ApplicationsAlta {
 		if (posible == null)
 			dao.save(application);
 		else {
-			FacesMessage message = new FacesMessage(
-					FacesMessage.SEVERITY_ERROR, posible, posible);
+			FacesMessage message = new FacesMessage(posible);
 			throw new ValidatorException(message);
 		}
 	}
@@ -32,7 +31,11 @@ public class ApplicationsAlta {
 		ResourceBundle bundle = facesContext.getApplication()
 				.getResourceBundle(facesContext, "msgs");
 		TripDao dao = Factories.persistence.createTripDao();
+		ApplicationDao appDao=Factories.persistence.createApplicationDao();
 		Trip trip = dao.findById(app.getTripId());
+		Long [] ids= {app.getUserId(), app.getTripId()};
+		if(appDao.findById(ids)!=null)
+			return bundle.getString("error_solicitudRealizada");
 		if (trip.getPromoterId().equals(app.getUserId()))
 			return bundle.getString("error_esPromotor");
 		if (MariaDateUtil.isAfter(MariaDateUtil.now(), trip.getClosingDate()))

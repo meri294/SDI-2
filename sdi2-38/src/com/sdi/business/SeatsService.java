@@ -119,4 +119,6 @@ public interface SeatsService {
 	 */
 	public void excluirPlaza(Seat seat) throws Exception;
 
+	public List<Seat> obtenerSinPLaza(Long id);
+
 }

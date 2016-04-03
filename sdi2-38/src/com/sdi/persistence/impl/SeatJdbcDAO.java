@@ -89,4 +89,10 @@ public class SeatJdbcDAO implements SeatDao {
 				new SeatMapper(), userId);
 	}
 
+	@Override
+	public List<Seat> findSinPlaza(Long id) {
+		return jdbcTemplate.queryForList("SEAT_OBTAIN_SINPLAZA", 
+				new SeatMapper(), id);
+	}
+
 }
