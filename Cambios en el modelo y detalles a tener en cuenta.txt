@@ -1,0 +1,6 @@
+Cambios en el modelo y detalles a tener en cuenta
+
+- Se añadió el valor CANCELLED al enumerable com.sdi.model.SeatStatus para la cancelación de plazas de un viaje cancelado por el promotor 
+- Se añadió el atributo booleano selected en com.sdi.model.Trip para permitir la visualización ajaxificada de qué viajes han sido seleccionados para cancelar.
+- A la hora de registrar o modificar un viaje, en la variable de pasajeros máximos no tenemos en cuenta al promotor. De manera que en un viaje
+	que sea registrado con 5 pasajeros máximos, realmente habrán 4 plazas disponibles tras crear la del promotor.
